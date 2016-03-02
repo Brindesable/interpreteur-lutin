@@ -80,14 +80,14 @@ protected:
     
 private:
 //------------------------------------------------------- Attributs privés
-	//Le flux d'entrée contenant les sources.
-	istream& sources;
+    //Le flux d'entrée contenant les sources.
+    istream& sources;
 
     //Le tampon de mémoire contenant une partie du programme.
     string tampon;
-	
-	//Le Symbole sous le curseur.
-	Symbole symbole_courant;
+    
+    //Le Symbole sous le curseur.
+    Symbole symbole_courant;
 
     static const vector<RegexSymbole> regex_symboles;
     
