@@ -83,7 +83,24 @@ int main(int argc, char *argv[])
 
 	fileReader.open(fileName.c_str());
 	if (fileReader.is_open())
-	{
+	{	// SI le fichier existe
+		/*
+		LutinReader lutinReader(fileReader);
+		lutinReader.Construire()
+
+		if(paramA)
+		{	lutinReader.AnalyseStatique();
+		}
+		if(paramO)
+		{	lutinReader.Transformation();
+		}
+		if(paramP)
+		{	lutinReader.Affichage();
+		}
+		if(paramE)
+		{	lutinReader.Execution();
+		}
+		*/
 		fileReader.close();
 	}
 	else
