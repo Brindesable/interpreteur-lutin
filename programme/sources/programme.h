@@ -1,75 +1,81 @@
 /*************************************************************************
-             Symbole  -  Représente un symbole du langage.
+             Programme  -  Représente un Programme du langage.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
  *************************************************************************/
 
-//---------- Interface de la classe <Symbole> (fichier symbole.h) ------
-#if ! defined ( SYMBOLE_H )
-#define SYMBOLE_H
+//---------- Interface de la classe <Programme> (fichier programme.h) ------
+#if ! defined ( PROGRAMME_H )
+#define PROGRAMME_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include <map>
+#include <vector>
+#include "symbole.h"
+#include "pin.h"
+#include "pdecl.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Symbole>
-// Représente un symbole du langage.
-// 
+// Rôle de la classe <Programme>
+// Représente un Programme du langage.
+//
 //------------------------------------------------------------------------
-
-class Symbole
+using namespace std;
+class Programme : public Symbole
 {
 //----------------------------------------------------------------- PUBLIC
-    
+
 public:
 //----------------------------------------------------- Méthodes publiques
     void print();
     // Mode d'emploi :
-    // Affiche le Symbole.
-    
+    // Affiche le Programme.
+
 //------------------------------------------------- Surcharge d'opérateurs
     operator int() const;
     // Mode d'emploi :
-    // Permet de caster le Symbole en int.
-    // L'entier retourné est l'identifiant du Symbole.
-    
-//-------------------------------------------- Constructeurs - destructeur    
-    Symbole(int identifiant);
+    // Permet de caster le Programme en int.
+    // L'entier retourné est l'identifiant du Programme.
+
+//-------------------------------------------- Constructeurs - destructeur
+    Programme(int identifiant, vector<PDECL*>& declarations, vector<PIN*>& instructions);
     // Mode d'emploi :
     //
-    
-    virtual ~Symbole();
+
+    void Execute(map<string, int>& values);
+
+    virtual ~Programme();
     // Mode d'emploi :
     //
-    
+
 //------------------------------------------------------------------ PRIVE
-    
+
 protected:
 //----------------------------------------------------- Méthodes protégées
-    
+
 private:
 //------------------------------------------------------- Méthodes privées
-    
+
 protected:
 //----------------------------------------------------- Attributs protégés
-    //L'identifiant du Symbole.
-    int identifiant;
+
 private:
 //------------------------------------------------------- Attributs privés
+    vector<PDECL*> declarations;
+    vector<PIN*> instructions;
 
-    
 //---------------------------------------------------------- Classes amies
-    
+
 //-------------------------------------------------------- Classes privées
-    
+
 //----------------------------------------------------------- Types privés
-    
+
 };
 
-//----------------------------------------- Types dépendants de <Symbole>
+//----------------------------------------- Types dépendants de <Programme>
 
-#endif // SYMBOLE_H
+#endif // PROGRAMME_H

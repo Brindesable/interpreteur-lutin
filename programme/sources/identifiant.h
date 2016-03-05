@@ -1,75 +1,89 @@
 /*************************************************************************
-             Symbole  -  Représente un symbole du langage.
+             Identifiant  -  Représente un Identifiant du langage.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
  *************************************************************************/
 
-//---------- Interface de la classe <Symbole> (fichier symbole.h) ------
-#if ! defined ( SYMBOLE_H )
-#define SYMBOLE_H
+//---------- Interface de la classe <Identifiant> (fichier identifiant.h) ------
+#if ! defined ( IDENTIFIANT_H )
+#define IDENTIFIANT_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "facteur.h"
+#include <map>
+#include <string>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Symbole>
-// Représente un symbole du langage.
-// 
+// Rôle de la classe <Identifiant>
+// Représente un Identifiant du langage.
+//
 //------------------------------------------------------------------------
-
-class Symbole
+using namespace std;
+class Identifiant : public Facteur
 {
 //----------------------------------------------------------------- PUBLIC
-    
+
 public:
 //----------------------------------------------------- Méthodes publiques
     void print();
     // Mode d'emploi :
-    // Affiche le Symbole.
-    
+    // Affiche le Identifiant.
+
 //------------------------------------------------- Surcharge d'opérateurs
     operator int() const;
     // Mode d'emploi :
-    // Permet de caster le Symbole en int.
-    // L'entier retourné est l'identifiant du Symbole.
-    
-//-------------------------------------------- Constructeurs - destructeur    
-    Symbole(int identifiant);
+    // Permet de caster le Identifiant en int.
+    // L'entier retourné est l'identifiant du Identifiant.
+
+    int Evaluate(map<string, int>& values);
+    // Mode d'emploi :
+    // Permet d'évaluer l'Identifiant
+    // L'entier retourné est la valeur de l'Identifiant
+
+    string getName(){return name;}
+
+//-------------------------------------------- Constructeurs - destructeur
+    Identifiant(int identifiant, const string& name);
     // Mode d'emploi :
     //
-    
-    virtual ~Symbole();
+
+    virtual ~Identifiant();
     // Mode d'emploi :
     //
-    
+
+
+
+
 //------------------------------------------------------------------ PRIVE
-    
+
 protected:
 //----------------------------------------------------- Méthodes protégées
-    
+
 private:
 //------------------------------------------------------- Méthodes privées
-    
+
 protected:
 //----------------------------------------------------- Attributs protégés
-    //L'identifiant du Symbole.
-    int identifiant;
+
 private:
 //------------------------------------------------------- Attributs privés
+        //L'identifiant du Identifiant.
+        int identifiant;
+        //Nom de l'Identifiant
+        string name;
 
-    
 //---------------------------------------------------------- Classes amies
-    
+
 //-------------------------------------------------------- Classes privées
-    
+
 //----------------------------------------------------------- Types privés
-    
+
 };
 
-//----------------------------------------- Types dépendants de <Symbole>
+//----------------------------------------- Types dépendants de <Identifiant>
 
-#endif // SYMBOLE_H
+#endif // IDENTIFIANT_H

@@ -1,75 +1,87 @@
 /*************************************************************************
-             Symbole  -  Représente un symbole du langage.
+             ExpressionMoins  -  Représente un ExpressionMoins du langage.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
  *************************************************************************/
 
-//---------- Interface de la classe <Symbole> (fichier symbole.h) ------
-#if ! defined ( SYMBOLE_H )
-#define SYMBOLE_H
+//---------- Interface de la classe <ExpressionMoins> (fichier expressionmoins.h) ------
+#if ! defined ( EXPRESSIONMOINS_H )
+#define EXPRESSIONMOINS_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include <map>
+#include "symbole.h"
+#include "expression.h"
+#include "terme.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Symbole>
-// Représente un symbole du langage.
-// 
+// Rôle de la classe <ExpressionMoins>
+// Représente un ExpressionMoins du langage.
+//
 //------------------------------------------------------------------------
+using namespace std;
 
-class Symbole
+class ExpressionMoins : public Expression
 {
 //----------------------------------------------------------------- PUBLIC
-    
+
 public:
 //----------------------------------------------------- Méthodes publiques
     void print();
     // Mode d'emploi :
-    // Affiche le Symbole.
-    
+    // Affiche le ExpressionMoins.
+
+    virtual int Evaluate(map<string, int>& values);
+    // Mode d'emploi :
+    // Permet d'évaluer l'ExpressionMoins
+    // L'entier retourné est la valeur de l'ExpressionMoins
+
 //------------------------------------------------- Surcharge d'opérateurs
     operator int() const;
     // Mode d'emploi :
-    // Permet de caster le Symbole en int.
-    // L'entier retourné est l'identifiant du Symbole.
-    
-//-------------------------------------------- Constructeurs - destructeur    
-    Symbole(int identifiant);
+    // Permet de caster le ExpressionMoins en int.
+    // L'entier retourné est l'identifiant du ExpressionMoins.
+
+//-------------------------------------------- Constructeurs - destructeur
+    ExpressionMoins(int identifiant, Expression* expression, Terme* terme);
     // Mode d'emploi :
     //
-    
-    virtual ~Symbole();
+
+    virtual ~ExpressionMoins();
     // Mode d'emploi :
     //
-    
+
+
+
+
 //------------------------------------------------------------------ PRIVE
-    
+
 protected:
 //----------------------------------------------------- Méthodes protégées
-    
+
 private:
 //------------------------------------------------------- Méthodes privées
-    
+
 protected:
 //----------------------------------------------------- Attributs protégés
-    //L'identifiant du Symbole.
-    int identifiant;
+
 private:
 //------------------------------------------------------- Attributs privés
+    Expression* expression;
+    Terme* terme;
 
-    
 //---------------------------------------------------------- Classes amies
-    
+
 //-------------------------------------------------------- Classes privées
-    
+
 //----------------------------------------------------------- Types privés
-    
+
 };
 
-//----------------------------------------- Types dépendants de <Symbole>
+//----------------------------------------- Types dépendants de <ExpressionMoins>
 
-#endif // SYMBOLE_H
+#endif //  EXPRESSIONMOINS_H

@@ -1,75 +1,77 @@
 /*************************************************************************
-             Symbole  -  Représente un symbole du langage.
+             PDECL  -  Représente un PDECL du langage.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
  *************************************************************************/
 
-//---------- Interface de la classe <Symbole> (fichier symbole.h) ------
-#if ! defined ( SYMBOLE_H )
-#define SYMBOLE_H
+//---------- Interface de la classe <PDECL> (fichier pedcl.h) ------
+#if ! defined ( PDECL_H )
+#define PDECL_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include <map>
+#include "symbole.h"
 //------------------------------------------------------------- Constantes
-
+const int NON_EVALUATED = INT_MAX; //TODO find another solution
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Symbole>
-// Représente un symbole du langage.
-// 
+// Rôle de la classe <PDECL>
+// Représente un PDECL du langage.
+//
 //------------------------------------------------------------------------
-
-class Symbole
+using namespace std;
+class PDECL : public Symbole
 {
 //----------------------------------------------------------------- PUBLIC
-    
+
 public:
 //----------------------------------------------------- Méthodes publiques
     void print();
     // Mode d'emploi :
-    // Affiche le Symbole.
-    
+    // Affiche le PDECL.
+
 //------------------------------------------------- Surcharge d'opérateurs
     operator int() const;
     // Mode d'emploi :
-    // Permet de caster le Symbole en int.
-    // L'entier retourné est l'identifiant du Symbole.
-    
-//-------------------------------------------- Constructeurs - destructeur    
-    Symbole(int identifiant);
+    // Permet de caster le PDECL en int.
+    // L'entier retourné est l'identifiant du PDECL.
+
+//-------------------------------------------- Constructeurs - destructeur
+    PDECL(int identifiant);
     // Mode d'emploi :
     //
-    
-    virtual ~Symbole();
+
+    virtual void Execute(map<string, int>& values)=0;
+
+    virtual ~PDECL();
     // Mode d'emploi :
     //
-    
+
 //------------------------------------------------------------------ PRIVE
-    
+
 protected:
 //----------------------------------------------------- Méthodes protégées
-    
+
 private:
 //------------------------------------------------------- Méthodes privées
-    
+
 protected:
 //----------------------------------------------------- Attributs protégés
-    //L'identifiant du Symbole.
-    int identifiant;
+
 private:
 //------------------------------------------------------- Attributs privés
 
-    
+
 //---------------------------------------------------------- Classes amies
-    
+
 //-------------------------------------------------------- Classes privées
-    
+
 //----------------------------------------------------------- Types privés
-    
+
 };
 
-//----------------------------------------- Types dépendants de <Symbole>
+//----------------------------------------- Types dépendants de <PDECL>
 
-#endif // SYMBOLE_H
+#endif // PDECL_H

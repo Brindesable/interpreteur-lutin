@@ -1,75 +1,82 @@
 /*************************************************************************
-             Symbole  -  Représente un symbole du langage.
+             TermeDivision  -  Représente un TermeDivision du langage.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
  *************************************************************************/
 
-//---------- Interface de la classe <Symbole> (fichier symbole.h) ------
-#if ! defined ( SYMBOLE_H )
-#define SYMBOLE_H
+//---------- Interface de la classe <TermeDivision> (fichier termedivision.h) ------
+#if ! defined ( TERMEDIVISION_H )
+#define TERMEDIVISION_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include "terme.h"
+#include "facteur.h"
+#include "map"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Symbole>
-// Représente un symbole du langage.
-// 
+// Rôle de la classe <TermeDivision>
+// Représente un TermeDivision du langage.
+//
 //------------------------------------------------------------------------
 
-class Symbole
+class TermeDivision : public Terme
 {
 //----------------------------------------------------------------- PUBLIC
-    
+
 public:
 //----------------------------------------------------- Méthodes publiques
     void print();
     // Mode d'emploi :
-    // Affiche le Symbole.
-    
+    // Affiche le TermeDivision.
+
 //------------------------------------------------- Surcharge d'opérateurs
     operator int() const;
     // Mode d'emploi :
-    // Permet de caster le Symbole en int.
-    // L'entier retourné est l'identifiant du Symbole.
-    
-//-------------------------------------------- Constructeurs - destructeur    
-    Symbole(int identifiant);
+    // Permet de caster le TermeDivision en int.
+    // L'entier retourné est l'identifiant du TermeDivision.
+
+//-------------------------------------------- Constructeurs - destructeur
+    TermeDivision(int identifiant, Terme* terme, Facteur* facteur);
     // Mode d'emploi :
     //
-    
-    virtual ~Symbole();
+
+    virtual ~TermeDivision();
     // Mode d'emploi :
     //
-    
+
+    int Evaluate(map<string, int>& values);
+    // Mode d'emploi :
+    // Permet d'évaluer l'TermeDivision
+    // L'entier retourné est la valeur de l'TermeDivision
+
+
 //------------------------------------------------------------------ PRIVE
-    
+
 protected:
 //----------------------------------------------------- Méthodes protégées
-    
+
 private:
 //------------------------------------------------------- Méthodes privées
-    
+
 protected:
 //----------------------------------------------------- Attributs protégés
-    //L'identifiant du Symbole.
-    int identifiant;
+
 private:
 //------------------------------------------------------- Attributs privés
-
-    
+    Terme* terme;
+    Facteur* facteur;
 //---------------------------------------------------------- Classes amies
-    
+
 //-------------------------------------------------------- Classes privées
-    
+
 //----------------------------------------------------------- Types privés
-    
+
 };
 
-//----------------------------------------- Types dépendants de <Symbole>
+//----------------------------------------- Types dépendants de <TermeDivision>
 
-#endif // SYMBOLE_H
+#endif // TERMEDIVISION_H
