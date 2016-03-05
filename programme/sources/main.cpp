@@ -13,6 +13,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <fstream>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -33,6 +34,7 @@ int main(int argc, char *argv[])
 {
 	bool paramP(false), paramA(false), paramE(false), paramO(false);
 	string fileName("");
+	ifstream fileReader;
 
 	if(argc == 1)
 	{	// Si il n'y a aucun argument
@@ -77,6 +79,16 @@ int main(int argc, char *argv[])
 				}
 			}
 		}
+	}
+
+	fileReader.open(fileName.c_str());
+	if (fileReader.is_open())
+	{
+		fileReader.close();
+	}
+	else
+	{	cerr << "Erreur a l'ouverture du fichier " << fileName << endl;
+		exit (EXIT_FAILURE);
 	}
 
 	return 0;
