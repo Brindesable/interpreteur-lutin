@@ -15,9 +15,8 @@
 #include <string.h>
 #include <fstream>
 using namespace std;
-
 //------------------------------------------------------ Include personnel
-
+#include "lutin-reader.h"
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
@@ -84,9 +83,9 @@ int main(int argc, char *argv[])
 	fileReader.open(fileName.c_str());
 	if (fileReader.is_open())
 	{	// SI le fichier existe
-		/*
+
 		LutinReader lutinReader(fileReader);
-		lutinReader.Construire()
+		lutinReader.Construire();
 
 		if(paramA)
 		{	lutinReader.AnalyseStatique();
@@ -100,7 +99,7 @@ int main(int argc, char *argv[])
 		if(paramE)
 		{	lutinReader.Execution();
 		}
-		*/
+
 		fileReader.close();
 	}
 	else
