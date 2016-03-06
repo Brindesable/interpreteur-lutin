@@ -1,4 +1,4 @@
-﻿/*************************************************************************
+/*************************************************************************
 
 						automate  -  description
 						-----------------------
@@ -6,74 +6,49 @@
 		copyright   : (C) 2016 par Team-Papassau - H4101
 
 *************************************************************************/
-​
+
 //---------- Réalisation de la classe <automate> (fichier automate.h) --
-​
+
 //---------------------------------------------------------------- INCLUDE
-​
+
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-​
+
 //------------------------------------------------------ Include personnel
 #include "automate.h"
-​
+
 //------------------------------------------------------------- Constantes
-​
+
 //---------------------------------------------------- Variables de classe
-​
+
 //----------------------------------------------------------- Types privés
-​
-​
+
+
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
-​
+
 //----------------------------------------------------- Méthodes publiques
-// type automate::Méthode ( liste de paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-​
-​
+Symbole* Lecture()
+{
+	return 0;
+} //----- Fin de Lecture
+
 //------------------------------------------------- Surcharge d'opérateurs
-Automate &Automate::operator = (const Automate &unAutomate)
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-​
-​
+
 //-------------------------------------------- Constructeurs - destructeur
-Automate::Automate (const Automate &unAutomate)
-// Algorithme :
-//
-{
-#ifdef MAP
-	cout << "Appel au constructeur de copie de <automate>" << endl;
-#endif
-} //----- Fin de automate (constructeur de copie)
 
-​
 
-Automate::Automate ()
-// Algorithme :
-//
+
+Automate::Automate(istream& s) : sources(s)//, lexer(s)
 {
-#ifdef MAP
-	cout << "Appel au constructeur de <automate>" << endl;
-#endif
-} //----- Fin de automate
+
+} //----- Fin de Automate
 
 
 Automate::~Automate ()
-// Algorithme :
-//
 {
-#ifdef MAP
-	cout << "Appel au destructeur de <automate>" << endl;
-#endif
-} //----- Fin de ~automate
+} //----- Fin de ~Automate
 
 
   //------------------------------------------------------------------ PRIVE

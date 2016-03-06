@@ -1,4 +1,4 @@
-﻿/*************************************************************************
+/*************************************************************************
 
 						automate  -  description
 						-----------------------
@@ -6,29 +6,31 @@
 		copyright   : (C) 2016 par Team-Papassau - H4101
 
 *************************************************************************/
-​
+
 //---------- Interface de la classe <automate> (fichier automate.cpp) ------
 #if ! defined ( AUTOMATE_H )
 #define AUTOMATE_H
-​
+
 //--------------------------------------------------- Interfaces utilisées
 #include <stack>
+#include <vector>
+#include "symbole.h"
+#include "lexer.h"
 using namespace std;
-​
+
 //------------------------------------------------------------- Constantes
-​
+
 //------------------------------------------------------------------ Types
 
-class Symbole;
 class Etat;
-​
+
 //------------------------------------------------------------------------
 // Rôle de la classe <automate>
 //
 //
 //------------------------------------------------------------------------
-​
-class Automate :
+
+class Automate
 {
 	//----------------------------------------------------------------- PUBLIC
 
@@ -41,31 +43,17 @@ public:
 	//
 
 	// Type de la méthode à confirmer
-	void Lecture();
+	Symbole* Lecture();
 	// Mode d'emploi : Méthode initiant l'analyse du programme.
 	//
 	// Contrat :
 	//
 
-
-
-
 	//------------------------------------------------- Surcharge d'opérateurs
-	Automate &operator = (const Automate &unAutomate);
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
 
 
 	//-------------------------------------------- Constructeurs - destructeur
-	Automate (const Automate &unAutomate);
-	// Mode d'emploi (constructeur de copie) :
-	//
-	// Contrat :
-	//
-
-	Automate ();
+	Automate (istream& s);
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -88,10 +76,11 @@ private:
 protected:
 	//----------------------------------------------------- Attributs protégés
 
+	//Le flux d'entrée contenant les sources.
+    istream& sources;
 	stack<Symbole> pileSymboles;	// Pile des symboles
-	stack<Etat> pileEtats;			// Pile des Etats
-
-
+	//stack<Etat> pileEtats;			// Pile des Etats
+	Lexer lexer;
 
 private:
 	//------------------------------------------------------- Attributs privés
@@ -103,7 +92,7 @@ private:
 	//----------------------------------------------------------- Types privés
 
 };
-​
+
 //----------------------------------------- Types dépendants de <automate>
-​
+
 #endif // AUTOMATE_H

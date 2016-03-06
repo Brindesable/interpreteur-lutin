@@ -28,6 +28,7 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void LutinReader::Construire()
 {
+	//programme = automate.Lecture();
 } //----- Fin de Construire
 
 void LutinReader::AnalyseStatique()
@@ -51,7 +52,7 @@ void LutinReader::Transformation()
 
 //-------------------------------------------- Constructeurs - destructeur
 
-LutinReader::LutinReader(istream& sources) : sources(sources)
+LutinReader::LutinReader(istream& s) : sources(s), programme(0), automate(s)
 {
 } //----- Fin de LutinReader
 

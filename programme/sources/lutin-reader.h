@@ -11,6 +11,8 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <istream>
+#include "symbole.h"
+#include "automate.h"
 
 using namespace std;
 
@@ -71,8 +73,11 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-    //Le flux d'entrée contenant les sources.
+    // Le flux d'entrée contenant les sources.
     istream& sources;
+    // P
+    Symbole * programme;
+    Automate automate;
 
 //---------------------------------------------------------- Classes amies
 
