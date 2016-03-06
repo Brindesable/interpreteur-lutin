@@ -11,7 +11,10 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <istream>
+#include <regex>
 #include "symbole.h"
+
+ using namespace std;
 
 //------------------------------------------------------------- Constantes
 
@@ -34,10 +37,10 @@ public:
     // Retourne le Symbole sous le curseur.
     // Ne passe pas le curseur sur le prochain Symbole.
     
-    Symbole Read();
+    bool Read();
     // Mode d'emploi :
-    // Retourne le Symbole sous le curseur.
     // Fait avancer le curseur d'un Symbole.
+    // Retourne true si un Symbole a été lu.
     
     
 //------------------------------------------------- Surcharge d'opérateurs
@@ -59,21 +62,36 @@ protected:
     
 private:
 //------------------------------------------------------- Méthodes privées
-    
+
+//-------------------------------------------------------- Classes privées
+    struct RegexSymbole
+    {
+        //Le motif a trouver.
+        const regex motif;
+
+        RegexSymbole(const regex& motif) : motif(motif)
+        {
+
+        }
+    };
+
 protected:
 //----------------------------------------------------- Attributs protégés
     
 private:
 //------------------------------------------------------- Attributs privés
-	//Le flux d'entrée contenant les sources.
-	istream& sources;
-	
-	//Le Symbole sous le curseur.
-	Symbole symbole_courant;
+    //Le flux d'entrée contenant les sources.
+    istream& sources;
+
+    //Le tampon de mémoire contenant une partie du programme.
+    string tampon;
+    
+    //Le Symbole sous le curseur.
+    Symbole symbole_courant;
+
+    static const vector<RegexSymbole> regex_symboles;
     
 //---------------------------------------------------------- Classes amies
-    
-//-------------------------------------------------------- Classes privées
     
 //----------------------------------------------------------- Types privés
     
