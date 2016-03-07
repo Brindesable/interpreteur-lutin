@@ -10,6 +10,7 @@
 #define SYMBOLE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include "symboletype.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -38,7 +39,7 @@ public:
     // L'entier retourné est l'identifiant du Symbole.
     
 //-------------------------------------------- Constructeurs - destructeur    
-    Symbole(int identifiant);
+    Symbole(SymboleType type);
     // Mode d'emploi :
     //
     
@@ -57,7 +58,7 @@ private:
 protected:
 //----------------------------------------------------- Attributs protégés
     //L'identifiant du Symbole.
-    int identifiant;
+    SymboleType type;
 private:
 //------------------------------------------------------- Attributs privés
 

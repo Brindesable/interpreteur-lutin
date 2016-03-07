@@ -36,8 +36,8 @@ Symbole* FabriqueSymbole::CreerSymbole(const SymboleType& type,
 
     switch (type)
     {
-        case VAR:
-            symbole = new SymboleTerminal(VAR, 'v');
+        default:
+            symbole = new SymboleTerminal(VAR, valeur);
             break;
     }
 

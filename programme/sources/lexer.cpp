@@ -87,7 +87,7 @@ bool Lexer::Read()
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(-1)
+Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(ERROR)
 {
     //On supprime tous les espaces au début du programme.
     char c;

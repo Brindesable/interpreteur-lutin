@@ -17,6 +17,7 @@
 
 enum SymboleType
 {
+    ERROR,
     VAR,
     CONST,
     ECRIRE,

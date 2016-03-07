@@ -35,12 +35,12 @@ void Symbole::print()
 //------------------------------------------------- Surcharge d'opérateurs
 Symbole::operator int() const
 {
-	return identifiant;
+	return type;
 } //----- Fin de operator int
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Symbole::Symbole(int identifiant) : identifiant(identifiant)
+Symbole::Symbole(SymboleType type) : type(type)
 {
 	
 } //----- Fin de Symbole

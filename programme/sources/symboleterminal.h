@@ -11,6 +11,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "symbole.h"
+#include "symboletype.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -30,17 +31,19 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void print()
     {
-        
+
     }
     // Mode d'emploi :
     // Affiche le SymboleTerminal.
 
-    char getTerminal() {return terminal;}
+    const string& getTerminal() {return terminal;}
+    // Mode d'emploi :
+    // Retourne une référence constante vers le terminal.
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    SymboleTerminal(int identifiant, char terminal) : Symbole(identifiant), terminal(terminal)
+    SymboleTerminal(SymboleType type, const string& terminal) : Symbole(type), terminal(terminal)
     {
 
     }
@@ -67,7 +70,7 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-    char terminal;
+    string terminal;
 
 //---------------------------------------------------------- Classes amies
 
