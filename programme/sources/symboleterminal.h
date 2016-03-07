@@ -10,6 +10,7 @@
 #define SYMBOLETERMINAL_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include "symbole.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -21,31 +22,35 @@
 //
 //------------------------------------------------------------------------
 
-class SymboleTerminalTerminal : SymboleTerminal
+class SymboleTerminal : public Symbole
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void print()
+    {
+        
+    }
     // Mode d'emploi :
     // Affiche le SymboleTerminal.
 
-    char getTerminal(){return terminal;}
+    char getTerminal() {return terminal;}
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le SymboleTerminal en int.
-    // L'entier retourné est l'identifiant du SymboleTerminal.
 
 //-------------------------------------------- Constructeurs - destructeur
-    SymboleTerminal(int identifiant, char terminal): Symbole(identifiant), terminal(terminal) {}
+    SymboleTerminal(int identifiant, char terminal) : Symbole(identifiant), terminal(terminal)
+    {
+
+    }
     // Mode d'emploi :
     //
 
+    virtual ~SymboleTerminal()
+    {
 
-    virtual ~SymboleTerminal();
+    }
     // Mode d'emploi :
     //
 

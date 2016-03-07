@@ -1,17 +1,16 @@
 /*************************************************************************
-      Lexer  -  Lit le programme en entrée, et le sépare en Symboles.
+    FabriqueSymbole  -  Fabrique un symbole en fonction de son type.
  -------------------
- début                : 01/03/2016
+ début                : 06/03/2016
  copyright            : (C) 2016 par mgaillard
  ************************************************************************/
 
-//---------- Interface de la classe <Lexer> (fichier lexer.h) ------
-#if ! defined ( LEXER_H )
-#define LEXER_H
+//- Interface de la classe <FabriqueSymbole> (fichier fabriquesymbole.h) -
+#if ! defined ( FABRIQUESYMBOLE_H )
+#define FABRIQUESYMBOLE_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <istream>
-#include <regex>
+#include <string>
 #include "symbole.h"
 #include "symboletype.h"
 
@@ -22,39 +21,28 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Lexer>
+// Rôle de la classe <FabriqueSymbole>
 // Lit le programme en entrée, et le sépare en Symboles.
 // Le programme est lu petit à petit dans une mémoire tampon.
 //------------------------------------------------------------------------
 
-class Lexer
+class FabriqueSymbole
 {
 //----------------------------------------------------------------- PUBLIC
     
 public:
 //----------------------------------------------------- Méthodes publiques
-    Symbole GetNext() const;
+    static Symbole* CreerSymbole(const SymboleType& type,
+                                 const string& valeur);
     // Mode d'emploi :
-    // Retourne le Symbole sous le curseur.
-    // Ne passe pas le curseur sur le prochain Symbole.
-    
-    bool Read();
-    // Mode d'emploi :
-    // Fait avancer le curseur d'un Symbole.
-    // Retourne true si un Symbole a été lu.
+    // Construit un Symbole en fonction de son type et de sa valeur.
+    // Le Symbole est alloué dans cette méthode.
+    // La libération de la mémoire est à la charge de l'utilisateur.
     
 //------------------------------------------------- Surcharge d'opérateurs
     
     
-//-------------------------------------------- Constructeurs - destructeur    
-    Lexer(istream& sources);
-    // Mode d'emploi :
-    // Contruit un lexer pour analyser les sources provenant d'un 
-    // flux d'entrée.
-    
-    ~Lexer();
-    // Mode d'emploi :
-    //
+//-------------------------------------------- Constructeurs - destructeur
     
 //------------------------------------------------------------------ PRIVE
     
@@ -64,37 +52,11 @@ protected:
 private:
 //------------------------------------------------------- Méthodes privées
 
-//-------------------------------------------------------- Classes privées
-    struct RegexSymbole
-    {
-        //Le motif a trouver.
-        const regex motif;
-
-        const SymboleType type; 
-
-        RegexSymbole(const regex& motif, const SymboleType& type) :
-            motif(motif),
-            type(type)
-        {
-
-        }
-    };
-
 protected:
 //----------------------------------------------------- Attributs protégés
     
 private:
 //------------------------------------------------------- Attributs privés
-    //Le flux d'entrée contenant les sources.
-    istream& sources;
-
-    //Le tampon de mémoire contenant une partie du programme.
-    string tampon;
-    
-    //Le Symbole sous le curseur.
-    Symbole symbole_courant;
-
-    static const vector<RegexSymbole> regex_symboles;
     
 //---------------------------------------------------------- Classes amies
     
@@ -102,6 +64,6 @@ private:
     
 };
 
-//----------------------------------------- Types dépendants de <Lexer>
+//---------------------------------- Types dépendants de <FabriqueSymbole>
 
-#endif // LEXER_H
+#endif // FABRIQUESYMBOLE_H

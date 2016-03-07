@@ -10,7 +10,6 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
 #include <regex>
 
@@ -18,23 +17,24 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "lexer.h"
+#include "fabriquesymbole.h"
 
 //------------------------------------------------------------- Constantes
 const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
-        {regex("^(var)\\s+")},
-        {regex("^(const)\\s+")},
-        {regex("^(ecrire)\\s+")},
-        {regex("^(lire)\\s+")},
-        {regex("^(;)\\s*")},
-        {regex("^(:=)\\s*")},
-        {regex("^(=)\\s*")},
-        {regex("^(,)\\s*")},
-        {regex("^(\\+)\\s*")},
-        {regex("^(-)\\s*")},
-        {regex("^(/)\\s*")},
-        {regex("^(\\*)\\s*")},
-        {regex("^(\\d+)\\s*")},
-        {regex("^(\\w+)\\s*")}
+        {regex("^(var)\\s+"), VAR},
+        {regex("^(const)\\s+"), CONST},
+        {regex("^(ecrire)\\s+"), ECRIRE},
+        {regex("^(lire)\\s+"), LIRE},
+        {regex("^(;)\\s*"), POINT_VIRGULE},
+        {regex("^(:=)\\s*"), AFFECTATION},
+        {regex("^(=)\\s*"), EGAL},
+        {regex("^(,)\\s*"), VIRGULE},
+        {regex("^(\\+)\\s*"), PLUS},
+        {regex("^(-)\\s*"), MOINS},
+        {regex("^(/)\\s*"), DIVISE},
+        {regex("^(\\*)\\s*"), MULTIPLIE},
+        {regex("^(\\d+)\\s*"), VALEUR},
+        {regex("^(\\w+)\\s*"), IDENTIFICATEUR}
     };
 
 //---------------------------------------------------- Variables de classe
@@ -43,6 +43,7 @@ const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
 
 
 //----------------------------------------------------------------- PUBLIC
+
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
@@ -68,9 +69,7 @@ bool Lexer::Read()
         {
             if (matche.ready())
             {
-                //cout << matche.str(1) << endl;
-
-                symbole_courant = Symbole(itRegex - regex_symboles.begin());
+                Symbole* symbole = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
 
                 tampon = matche.suffix().str();
                 
@@ -96,7 +95,7 @@ Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(-1)
     {
         sources.get(c);
     }
-    while (c == ' ');
+    while (isspace(c));
     //On remet le dernier caractère lu dans le flux.
     sources.unget();
 
@@ -114,3 +113,9 @@ Lexer::~Lexer()
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
+
+int main()
+{
+
+	return 0;
+}
