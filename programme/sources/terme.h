@@ -11,7 +11,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "expression.h"
-#include "map"
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -28,30 +28,17 @@ class Terme : public Expression
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
-    // Mode d'emploi :
-    // Affiche le Terme.
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le Terme en int.
-    // L'entier retourné est l'identifiant du Terme.
 
 //-------------------------------------------- Constructeurs - destructeur
-    Terme(int identifiant);
+    Terme(SymboleType type) : Expression(type) {}
     // Mode d'emploi :
     //
 
-    virtual ~Terme();
+    virtual ~Terme() {}
     // Mode d'emploi :
     //
-
-    virtual int Evaluate(map<string, int>& values)=0;
-    // Mode d'emploi :
-    // Permet d'évaluer l'Terme
-    // L'entier retourné est la valeur de l'Terme
-
 
 //------------------------------------------------------------------ PRIVE
 

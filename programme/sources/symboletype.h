@@ -31,7 +31,7 @@ enum SymboleType
     DIVISE,
     MULTIPLIE,
     VALEUR,
-    IDENTIFICATEUR
+    IDENTIFIANT
 };
 
 #endif // SYMBOLETYPE_H

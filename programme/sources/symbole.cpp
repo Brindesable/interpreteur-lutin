@@ -27,10 +27,6 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void Symbole::print()
-{
-	
-} //----- Fin de print
 
 //------------------------------------------------- Surcharge d'opérateurs
 Symbole::operator int() const

@@ -33,7 +33,7 @@ class Lexer
     
 public:
 //----------------------------------------------------- Méthodes publiques
-    Symbole GetNext() const;
+    Symbole* GetNext() const;
     // Mode d'emploi :
     // Retourne le Symbole sous le curseur.
     // Ne passe pas le curseur sur le prochain Symbole.
@@ -92,7 +92,7 @@ private:
     string tampon;
     
     //Le Symbole sous le curseur.
-    Symbole symbole_courant;
+    Symbole* symbole_courant;
 
     static const vector<RegexSymbole> regex_symboles;
     

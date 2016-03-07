@@ -29,14 +29,14 @@ class SymboleTerminal : public Symbole
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print()
+    void print() const
     {
 
     }
     // Mode d'emploi :
     // Affiche le SymboleTerminal.
 
-    const string& getTerminal() {return terminal;}
+    const string& Terminal() const {return terminal;}
     // Mode d'emploi :
     // Retourne une référence constante vers le terminal.
 

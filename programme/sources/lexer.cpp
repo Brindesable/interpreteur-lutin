@@ -34,7 +34,7 @@ const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
         {regex("^(/)\\s*"), DIVISE},
         {regex("^(\\*)\\s*"), MULTIPLIE},
         {regex("^(\\d+)\\s*"), VALEUR},
-        {regex("^(\\w+)\\s*"), IDENTIFICATEUR}
+        {regex("^(\\w+)\\s*"), IDENTIFIANT}
     };
 
 //---------------------------------------------------- Variables de classe
@@ -48,7 +48,7 @@ const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
 
 //----------------------------------------------------- Méthodes publiques
 
-Symbole Lexer::GetNext() const
+Symbole* Lexer::GetNext() const
 {
     return symbole_courant;
 } //----- Fin de getNext
@@ -69,7 +69,7 @@ bool Lexer::Read()
         {
             if (matche.ready())
             {
-                Symbole* symbole = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
+                symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
 
                 tampon = matche.suffix().str();
                 
@@ -87,7 +87,7 @@ bool Lexer::Read()
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(ERROR)
+Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(nullptr)
 {
     //On supprime tous les espaces au début du programme.
     char c;
