@@ -1,0 +1,154 @@
+
+
+/*************************************************************************
+
+ GeneratedState115  -  description
+
+ -------------------
+
+ début                : 7/03/2016
+
+ copyright            : (C) 2016 par TFavrot
+
+ *************************************************************************/
+
+
+
+//---------- Interface de la classe <GeneratedState115> (fichier GeneratedState115.h) ------
+
+#if ! defined ( GENERATEDSTATE115 )
+
+#define GENERATEDSTATE115
+
+
+
+//--------------------------------------------------- Interfaces utilisées
+
+#include <vector>
+#include <string>
+#include "../etat.h"
+#include "../symbole.h"
+#include "../automate.h"
+using namespace std;
+
+//------------------------------------------------------------- Constantes
+
+
+
+//------------------------------------------------------------------ Types
+
+
+
+//------------------------------------------------------------------------
+
+// Rôle de la classe <GeneratedState115>
+
+//
+
+//
+
+//------------------------------------------------------------------------
+
+
+
+class GeneratedState115 : public Etat
+
+{
+
+    //----------------------------------------------------------------- PUBLIC
+
+    
+
+public:
+
+    //----------------------------------------------------- Méthodes publiques
+
+    // type Méthode ( liste de paramètres );
+
+    // Mode d'emploi :
+
+    //
+
+    // Contrat :
+
+    //
+
+    bool Transition (Automate & automate, Symbole *s);
+    Symbole* Reduction (vector<Symbole*> s) = 0;
+
+    //-------------------------------------------- Constructeurs - destructeur
+
+    GeneratedState115 ( const string name );
+
+    // Mode d'emploi (constructeur de copie) :
+
+    //
+
+    // Contrat :
+
+    //
+
+    
+
+    virtual ~GeneratedState115 ( );
+
+    // Mode d'emploi :
+
+    //
+
+    // Contrat :
+
+    //
+
+    
+
+    //------------------------------------------------------------------ PRIVE
+
+    
+
+protected:
+
+    //----------------------------------------------------- Méthodes protégées
+
+    
+
+private:
+
+    //------------------------------------------------------- Méthodes privées
+
+    
+
+protected:
+
+    //----------------------------------------------------- Attributs protégés
+
+    
+
+private:
+
+    //------------------------------------------------------- Attributs privés
+
+    
+
+    //---------------------------------------------------------- Classes amies
+
+    
+
+    //-------------------------------------------------------- Classes privées
+
+    
+
+    //----------------------------------------------------------- Types privés
+
+    
+
+};
+
+
+
+//----------------------------------------- Types dépendants de <GeneratedState115>
+
+
+
+#endif // GENERATEDSTATE115
+

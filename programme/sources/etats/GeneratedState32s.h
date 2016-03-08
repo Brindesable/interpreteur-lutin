@@ -1,0 +1,154 @@
+
+
+/*************************************************************************
+
+ GeneratedState32s  -  description
+
+ -------------------
+
+ début                : 7/03/2016
+
+ copyright            : (C) 2016 par TFavrot
+
+ *************************************************************************/
+
+
+
+//---------- Interface de la classe <GeneratedState32s> (fichier GeneratedState32s.h) ------
+
+#if ! defined ( GENERATEDSTATE32S )
+
+#define GENERATEDSTATE32S
+
+
+
+//--------------------------------------------------- Interfaces utilisées
+
+#include <vector>
+#include <string>
+#include "../etat.h"
+#include "../symbole.h"
+#include "../automate.h"
+using namespace std;
+
+//------------------------------------------------------------- Constantes
+
+
+
+//------------------------------------------------------------------ Types
+
+
+
+//------------------------------------------------------------------------
+
+// Rôle de la classe <GeneratedState32s>
+
+//
+
+//
+
+//------------------------------------------------------------------------
+
+
+
+class GeneratedState32s : public Etat
+
+{
+
+    //----------------------------------------------------------------- PUBLIC
+
+    
+
+public:
+
+    //----------------------------------------------------- Méthodes publiques
+
+    // type Méthode ( liste de paramètres );
+
+    // Mode d'emploi :
+
+    //
+
+    // Contrat :
+
+    //
+
+    bool Transition (Automate & automate, Symbole *s);
+    Symbole* Reduction (vector<Symbole*> s) = 0;
+
+    //-------------------------------------------- Constructeurs - destructeur
+
+    GeneratedState32s ( const string name );
+
+    // Mode d'emploi (constructeur de copie) :
+
+    //
+
+    // Contrat :
+
+    //
+
+    
+
+    virtual ~GeneratedState32s ( );
+
+    // Mode d'emploi :
+
+    //
+
+    // Contrat :
+
+    //
+
+    
+
+    //------------------------------------------------------------------ PRIVE
+
+    
+
+protected:
+
+    //----------------------------------------------------- Méthodes protégées
+
+    
+
+private:
+
+    //------------------------------------------------------- Méthodes privées
+
+    
+
+protected:
+
+    //----------------------------------------------------- Attributs protégés
+
+    
+
+private:
+
+    //------------------------------------------------------- Attributs privés
+
+    
+
+    //---------------------------------------------------------- Classes amies
+
+    
+
+    //-------------------------------------------------------- Classes privées
+
+    
+
+    //----------------------------------------------------------- Types privés
+
+    
+
+};
+
+
+
+//----------------------------------------- Types dépendants de <GeneratedState32s>
+
+
+
+#endif // GENERATEDSTATE32S
+
