@@ -12,11 +12,13 @@
 
 //-------------------------------------------------------- Include système
 using namespace std;
+#include <string>
 
 //------------------------------------------------------ Include personnel
 #include "fabriquesymbole.h"
 #include "symboleterminal.h"
 #include "identifiant.h"
+#include "valeur.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -39,6 +41,9 @@ Symbole* FabriqueSymbole::CreerSymbole(const SymboleType& type,
     {
         case IDENTIFIANT:
             symbole = new Identifiant(valeur);
+            break;
+        case VALEUR:
+            symbole = new Valeur(stoi(valeur));
             break;
         default:
             symbole = new SymboleTerminal(type, valeur);

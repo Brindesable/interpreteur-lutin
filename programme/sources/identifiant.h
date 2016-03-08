@@ -29,11 +29,11 @@ class Identifiant : public Facteur
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print() const;
+    void Print() const;
     // Mode d'emploi :
     // Affiche le Identifiant.
 
-     int Evaluate(map<string, int>& variables);
+    int Evaluate(map<string, int>& variables);
     // Mode d'emploi :
     // Permet d'évaluer l'Identifiant.
     // L'entier retourné est la valeur de l'Identifiant.

@@ -11,9 +11,10 @@
 
 //-------------------------------------------------------- Include système
 #include <iostream>
-#include <regex>
+#include <boost/regex.hpp>
 
 using namespace std;
+using namespace boost;
 
 //------------------------------------------------------ Include personnel
 #include "lexer.h"
@@ -48,7 +49,7 @@ const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
 
 //----------------------------------------------------- Méthodes publiques
 
-Symbole* Lexer::GetNext() const
+Symbole* Lexer::SymboleCourant() const
 {
     return symbole_courant;
 } //----- Fin de getNext
@@ -67,14 +68,11 @@ bool Lexer::Read()
         smatch matche;
         if (regex_search(tampon, matche, itRegex->motif))
         {
-            if (matche.ready())
-            {
-                symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
+			symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
 
-                tampon = matche.suffix().str();
-                
-                return true;
-            }
+			tampon = matche.suffix().str();
+			
+			return true;
         }
     }
 
@@ -98,7 +96,6 @@ Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(nullptr)
     while (isspace(c));
     //On remet le dernier caractère lu dans le flux.
     sources.unget();
-
 } //----- Fin de Lexer
 
 
@@ -113,9 +110,3 @@ Lexer::~Lexer()
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
-
-int main()
-{
-
-	return 0;
-}

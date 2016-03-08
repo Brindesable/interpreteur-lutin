@@ -38,6 +38,10 @@ public:
     // Construit un Symbole en fonction de son type et de sa valeur.
     // Le Symbole est alloué dans cette méthode.
     // La libération de la mémoire est à la charge de l'utilisateur.
+    // Contrat :
+    // La valeur passée doit être fomatée correctement.
+    // Par exemple dans le cas d'une valeur numérique (type VALEUR),
+    // la chaine de caractère contenant le nombre doit être bien formée.
     
 //------------------------------------------------- Surcharge d'opérateurs
     

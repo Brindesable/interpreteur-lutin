@@ -1,24 +1,25 @@
 /*************************************************************************
-             Valeur  -  Représente un Valeur du langage.
+       Valeur  -  Représente une valeur constante dans le programme.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
  *************************************************************************/
 
-//---------- Interface de la classe <Valeur> (fichier valeur.h) ------
+//----------- Interface de la classe <Valeur> (fichier valeur.h) ---------
 #if ! defined ( VALEUR_H )
 #define VALEUR_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include "facteur.h"
-#include "map"
+#include <map>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Valeur>
-// Représente un Valeur du langage.
+// Représente une valeur constante dans le programme.
 //
 //------------------------------------------------------------------------
 
@@ -28,30 +29,25 @@ class Valeur : public Facteur
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void Print() const;
     // Mode d'emploi :
     // Affiche le Valeur.
+    
+    int Evaluate(map<string, int>& variables);
+    // Mode d'emploi :
+    // Permet d'évaluer l'Identifiant.
+    // L'entier retourné est la valeur de l'Identifiant.
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le Valeur en int.
-    // L'entier retourné est l'identifiant du Valeur.
 
 //-------------------------------------------- Constructeurs - destructeur
-    Valeur(int identifiant, int value);
+    Valeur(int valeur);
     // Mode d'emploi :
     //
 
     virtual ~Valeur();
     // Mode d'emploi :
     //
-
-    int Evaluate(map<string, int>& values);
-    // Mode d'emploi :
-    // Permet d'évaluer l'Valeur
-    // L'entier retourné est la valeur de l'Valeur
-
 
 //------------------------------------------------------------------ PRIVE
 
@@ -66,10 +62,8 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-        //L'identifiant du Valeur.
-        int identifiant;
-        //La valeur de la Valeur.
-        int value;
+	//La valeur de la Valeur.
+	int valeur;
 
 //---------------------------------------------------------- Classes amies
 

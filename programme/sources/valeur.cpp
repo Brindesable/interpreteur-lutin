@@ -1,5 +1,5 @@
 /*************************************************************************
-             Valeur  -  Représente un Expression du langage.
+       Valeur  -  Représente une valeur constante dans le programme.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
@@ -27,26 +27,21 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void Valeur::print()
+void Valeur::Print() const
 {
-
+	cout << "Type:" << type << "\tValeur:      " << valeur << endl;
 } //----- Fin de print
 
-int Valeur::Evaluate(map<string, int> &values)
+int Valeur::Evaluate(map<string, int>& variables)
 {
-    return value;
-
+    return valeur;
 } //----- Fin de Evaluate
 
 //------------------------------------------------- Surcharge d'opérateurs
-Valeur::operator int() const
-{
-    return identifiant;
-} //----- Fin de operator int
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Valeur::Valeur(int Valeur, int value) : Facteur(Valeur), value(value)
+Valeur::Valeur(int valeur) : Facteur(VALEUR), valeur(valeur)
 {
 
 } //----- Fin de Valeur

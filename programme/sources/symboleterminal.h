@@ -10,6 +10,8 @@
 #define SYMBOLETERMINAL_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
+#include <iostream>
 #include "symbole.h"
 #include "symboletype.h"
 
@@ -22,16 +24,15 @@
 // Représente un symbole du langage.
 //
 //------------------------------------------------------------------------
-
 class SymboleTerminal : public Symbole
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print() const
+    void Print() const
     {
-
+		cout << "Type:" << type << "\tTerminal:    " << terminal << endl;
     }
     // Mode d'emploi :
     // Affiche le SymboleTerminal.

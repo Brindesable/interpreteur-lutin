@@ -29,9 +29,9 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void Identifiant::print() const
+void Identifiant::Print() const
 {
-
+	cout << "Type:" << type << "\tIdentifiant: " << nom << endl;
 } //----- Fin de print
 
 int Identifiant::Evaluate(map<string, int>& variables)

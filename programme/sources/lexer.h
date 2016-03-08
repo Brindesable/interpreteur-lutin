@@ -11,7 +11,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <istream>
-#include <regex>
+#include <boost/regex.hpp>
 #include "symbole.h"
 #include "symboletype.h"
 
@@ -33,7 +33,7 @@ class Lexer
     
 public:
 //----------------------------------------------------- Méthodes publiques
-    Symbole* GetNext() const;
+    Symbole* SymboleCourant() const;
     // Mode d'emploi :
     // Retourne le Symbole sous le curseur.
     // Ne passe pas le curseur sur le prochain Symbole.

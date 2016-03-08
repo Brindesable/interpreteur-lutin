@@ -28,7 +28,7 @@ class Symbole
     
 public:
 //----------------------------------------------------- Méthodes publiques
-    virtual void print() const = 0;
+    virtual void Print() const = 0;
     // Mode d'emploi :
     // Affiche le Symbole.
     
