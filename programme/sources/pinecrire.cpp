@@ -15,6 +15,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "pinecrire.h"
+#include "symboletype.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -27,25 +28,19 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void PinEcrire::print()
+void PinEcrire::Print() const
 {
 
-} //----- Fin de print
+} //----- Fin de Print
 
 //------------------------------------------------- Surcharge d'opérateurs
-PinEcrire::operator int() const
+void PinEcrire::Execute(map<string, int>& variables)
 {
-    return identifiant;
-} //----- Fin de operator int
-
-void PinEcrire::Execute(map<string, int> &values)
-{
-    cout<<expression->Evaluate(values)<<endl;
-}
+    cout << expression->Evaluate(variables) << endl;
+} //----- Fin de Execute
 
 //-------------------------------------------- Constructeurs - destructeur
-
-PinEcrire::PinEcrire(int identifiant, Expression* expression) : PIN(identifiant), expression(expression)
+PinEcrire::PinEcrire(Expression* expression) : PIN(PIN_ECRIRE), expression(expression)
 {
 
 } //----- Fin de PinEcrire

@@ -38,7 +38,7 @@ public:
     // Mode d'emploi :
     //
 
-    virtual ~PDECL();
+    virtual ~PDECL() {}
     // Mode d'emploi :
     //
 

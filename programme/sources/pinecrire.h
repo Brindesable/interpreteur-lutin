@@ -10,6 +10,7 @@
 #define PINECRIRE_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <map>
 #include "pin.h"
 #include "expression.h"
@@ -22,29 +23,26 @@
 // Représente un PinEcrire du langage.
 //
 //------------------------------------------------------------------------
-using namespace std;
 class PinEcrire : public PIN
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void Print() const;
     // Mode d'emploi :
     // Affiche le PinEcrire.
-
+	
+	void Execute(map<string, int>& variables);
+	// Mode d'emploi :
+    // Execute le contenu du PinEcrire.
+	
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le PinEcrire en int.
-    // L'entier retourné est l'identifiant du PinEcrire.
 
 //-------------------------------------------- Constructeurs - destructeur
-    PinEcrire(int identifiant, Expression* expression);
+    PinEcrire(Expression* expression);
     // Mode d'emploi :
     //
-
-    void Execute(map<string, int>& values);
 
     virtual ~PinEcrire();
     // Mode d'emploi :
@@ -64,7 +62,6 @@ protected:
 private:
 //------------------------------------------------------- Attributs privés
     Expression* expression;
-
 
 //---------------------------------------------------------- Classes amies
 

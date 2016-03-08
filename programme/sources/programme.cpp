@@ -27,46 +27,33 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void Programme::print()
+void Programme::Print() const
 {
 
-} //----- Fin de print
+} //----- Fin de Print
 
 void Programme::Execute(map<string, int> &values)
 {
     vector<PDECL*>::iterator itDecl;
 
-    for(itDecl = declarations.begin(); itDecl != declarations.end(); itDecl++){
-
-            PDECL* currDecl = *itDecl;
-            currDecl->Execute(values);
+    for(itDecl = declarations.begin(); itDecl != declarations.end(); ++itDecl)
+    {
+		PDECL* currDecl = *itDecl;
+		currDecl->Execute(values);
     }
-
-
 
     vector<PIN*>::iterator itInstr;
 
-    for(itInstr = instructions.begin(); itInstr != instructions.end(); itInstr++){
-
-            PIN* currInstr = *itInstr;
-            currInstr->Execute(values);
+    for(itInstr = instructions.begin(); itInstr != instructions.end(); ++itInstr)
+    {
+		PIN* currInstr = *itInstr;
+		currInstr->Execute(values);
     }
-
-
-
-
-
-}
-
-//------------------------------------------------- Surcharge d'opérateurs
-Programme::operator int() const
-{
-    return identifiant;
-} //----- Fin de operator int
+} //----- Fin de Execute
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Programme::Programme(int identifiant, vector<PDECL*>& declarations, vector<PIN*>& instructions):Symbole(identifiant), declarations(declarations), instructions(instructions)
+Programme::Programme(vector<PDECL*>& declarations, vector<PIN*>& instructions) : Symbole(PROGRAMME), declarations(declarations), instructions(instructions)
 {
 
 } //----- Fin de Programme

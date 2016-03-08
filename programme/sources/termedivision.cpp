@@ -33,14 +33,14 @@ void TermeDivision::Print() const
 } //----- Fin de print
 
 //------------------------------------------------- Surcharge d'opérateurs
-TermeDivision::Evaluate(map<string, int> &variables)
+int TermeDivision::Evaluate(map<string, int> &variables)
 {
     return terme->Evaluate(variables) / facteur->Evaluate(variables);
 }
 
 //-------------------------------------------- Constructeurs - destructeur
 
-TermeDivision::TermeDivision(Terme* terme, Facteur* facteur) : Terme(), terme(terme), facteur(facteur)
+TermeDivision::TermeDivision(Terme* terme, Facteur* facteur) : Terme(TERME_DIVISION), terme(terme), facteur(facteur)
 {
 
 } //----- Fin de TermeDivision

@@ -27,29 +27,24 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void PinLire::print()
+void PinLire::Print() const
 {
 
-} //----- Fin de print
+} //----- Fin de Print
 
 //------------------------------------------------- Surcharge d'opérateurs
-PinLire::operator int() const
-{
-    return identifiant;
-} //----- Fin de operator int
 
-void PinLire::Execute(map<string, int> &values)
+void PinLire::Execute(map<string, int>& variables)
 {
     int val;
-    cin>>val;
+    cin >> val;
 
-    values[id->getName()] = val;
-
-}
+    variables[id->Nom()] = val;
+} //----- Fin de Execute
 
 //-------------------------------------------- Constructeurs - destructeur
 
-PinLire::PinLire(int identifiant, Identifiant* id) : PIN(identifiant), id(id)
+PinLire::PinLire(Identifiant* id) : PIN(PIN_LIRE), id(id)
 {
 
 } //----- Fin de PinLire

@@ -10,6 +10,7 @@
 #define PROGRAMME_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <map>
 #include <vector>
 #include "symbole.h"
@@ -24,29 +25,26 @@
 // Représente un Programme du langage.
 //
 //------------------------------------------------------------------------
-using namespace std;
 class Programme : public Symbole
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void Print() const;
     // Mode d'emploi :
     // Affiche le Programme.
+    
+    void Execute(map<string, int>& variables);
+	// Mode d'emploi :
+    // Execute le contenu du Programme.
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le Programme en int.
-    // L'entier retourné est l'identifiant du Programme.
 
 //-------------------------------------------- Constructeurs - destructeur
-    Programme(int identifiant, vector<PDECL*>& declarations, vector<PIN*>& instructions);
+    Programme(vector<PDECL*>& declarations, vector<PIN*>& instructions);
     // Mode d'emploi :
     //
-
-    void Execute(map<string, int>& values);
 
     virtual ~Programme();
     // Mode d'emploi :

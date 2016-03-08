@@ -15,6 +15,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "termemultiplication.h"
+#include "symboletype.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -27,25 +28,20 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void TermeMultiplication::print()
+void TermeMultiplication::Print() const
 {
 
-} //----- Fin de print
+} //----- Fin de Print
 
 //------------------------------------------------- Surcharge d'opérateurs
-TermeMultiplication::operator int() const
+int TermeMultiplication::Evaluate(map<string, int> &variables)
 {
-    return identifiant;
-} //----- Fin de operator int
-
-TermeMultiplication::Evaluate(map<string, int> &values)
-{
-    return terme->Evaluate(values) * facteur->Evaluate(values);
-}
+    return terme->Evaluate(variables) * facteur->Evaluate(variables);
+} //----- Fin de Evaluate
 
 //-------------------------------------------- Constructeurs - destructeur
 
-TermeMultiplication::TermeMultiplication(int identifiant, Terme* terme, Facteur* facteur) : Terme(identifiant), terme(terme), facteur(facteur)
+TermeMultiplication::TermeMultiplication(Terme* terme, Facteur* facteur) : Terme(TERME_MULTIPLICATION), terme(terme), facteur(facteur)
 {
 
 } //----- Fin de TermeMultiplication

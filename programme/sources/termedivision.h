@@ -9,10 +9,11 @@
 #if ! defined ( TERMEDIVISION_H )
 #define TERMEDIVISION_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces 
+using namespace std;
+#include <map>
 #include "terme.h"
 #include "facteur.h"
-#include <map>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -22,7 +23,6 @@
 // Représente un TermeDivision du langage.
 //
 //------------------------------------------------------------------------
-
 class TermeDivision : public Terme
 {
 //----------------------------------------------------------------- PUBLIC

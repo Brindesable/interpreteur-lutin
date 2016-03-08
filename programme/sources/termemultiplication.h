@@ -10,9 +10,10 @@
 #define TERMEMULTIPLICATION_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
+#include <map>
 #include "terme.h"
 #include "facteur.h"
-#include "map"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -22,37 +23,31 @@
 // Représente un TermeMultiplication du langage.
 //
 //------------------------------------------------------------------------
-
 class TermeMultiplication : public Terme
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void Print() const;
     // Mode d'emploi :
     // Affiche le TermeMultiplication.
+    
+    int Evaluate(map<string, int>& variables);
+    // Mode d'emploi :
+    // Permet d'évaluer le TermeMultiplication
+    // L'entier retourné est la valeur du TermeMultiplication
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le TermeMultiplication en int.
-    // L'entier retourné est l'identifiant du TermeMultiplication.
 
 //-------------------------------------------- Constructeurs - destructeur
-    TermeMultiplication(int identifiant, Terme* terme, Facteur* facteur);
+    TermeMultiplication(Terme* terme, Facteur* facteur);
     // Mode d'emploi :
     //
 
     virtual ~TermeMultiplication();
     // Mode d'emploi :
     //
-
-    int Evaluate(map<string, int>& values);
-    // Mode d'emploi :
-    // Permet d'évaluer l'TermeMultiplication
-    // L'entier retourné est la valeur de l'TermeMultiplication
-
 
 //------------------------------------------------------------------ PRIVE
 

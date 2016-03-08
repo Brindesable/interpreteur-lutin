@@ -10,6 +10,7 @@
 #define PINLIRE_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <map>
 #include "pin.h"
 #include "identifiant.h"
@@ -23,29 +24,26 @@
 // Représente un PinLire du langage.
 //
 //------------------------------------------------------------------------
-using namespace std;
 class PinLire : public PIN
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void Print() const;
     // Mode d'emploi :
     // Affiche le PinLire.
+    
+    void Execute(map<string, int>& variables);
+	// Mode d'emploi :
+    // Execute le contenu du PinLire.
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le PinLire en int.
-    // L'entier retourné est l'identifiant du PinLire.
 
 //-------------------------------------------- Constructeurs - destructeur
-    PinLire(int identifiant, Identifiant* id);
+    PinLire(Identifiant* id);
     // Mode d'emploi :
     //
-
-    void Execute(map<string, int>& values);
 
     virtual ~PinLire();
     // Mode d'emploi :
