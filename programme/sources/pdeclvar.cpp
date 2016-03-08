@@ -27,36 +27,27 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void PdeclVar::print()
+void PdeclVar::Print() const
 {
 
 } //----- Fin de print
 
-void PdeclVar::Execute(map<string, int> &values)
+void PdeclVar::Execute(map<string, int>& variables)
 {
     vector<Identifiant*>::iterator it;
 
-    for(it = declarations.begin(); it != declarations.end(); it++){
-
-        Identifiant* currId = *it;
-
-
-        values[currId->getName()] = NON_EVALUATED;
-
+    for(it = declarations.begin(); it != declarations.end(); ++it)
+    {
+        Identifiant* identifiantCourant = *it;
+        variables[identifiantCourant->Nom()] = Expression::VALEUR_INDEFINIE;
     }
-
-
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-PdeclVar::operator int() const
-{
-    return identifiant;
-} //----- Fin de operator int
 
 //-------------------------------------------- Constructeurs - destructeur
 
-PdeclVar::PdeclVar(int identifiant, vector<Identifiant*>& declarations):PDECL(identifiant), declarations(declarations)
+PdeclVar::PdeclVar(vector<Identifiant*>& declarations) : PDECL(PDECL_VAR), declarations(declarations)
 {
 
 } //----- Fin de PdeclVar

@@ -27,27 +27,19 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void PinAffecter::print()
+void PinAffecter::Print() const
 {
 
-} //----- Fin de print
+} //----- Fin de Print
 
 //------------------------------------------------- Surcharge d'opérateurs
-PinAffecter::operator int() const
+void PinAffecter::Execute(map<string, int>& variables)
 {
-    return identifiant;
-} //----- Fin de operator int
-
-void PinAffecter::Execute(map<string, int> &values)
-{
-
-    values[id->getName()] = expression->Evaluate(values);
-
-}
+    variables[id->Nom()] = expression->Evaluate(variables);
+} //----- Fin de Execute
 
 //-------------------------------------------- Constructeurs - destructeur
-
-PinAffecter::PinAffecter(int identifiant, Identifiant* id, Expression* expression) : PIN(identifiant), id(id), expression(expression)
+PinAffecter::PinAffecter(Identifiant* id, Expression* expression) : PIN(PIN_AFFECTER), id(id), expression(expression)
 {
 
 } //----- Fin de PinAffecter

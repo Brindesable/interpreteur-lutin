@@ -1,5 +1,5 @@
 /*************************************************************************
-             ExpressionPlus  -  Représente un ExpressionPlus du langage.
+        ExpressionPlus  -  Représente un ExpressionPlus du langage.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
@@ -10,10 +10,12 @@
 #define EXPRESSIONPLUS_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <map>
 #include "symbole.h"
 #include "expression.h"
 #include "terme.h"
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -23,40 +25,31 @@
 // Représente un ExpressionPlus du langage.
 //
 //------------------------------------------------------------------------
-using namespace std;
-
 class ExpressionPlus : public Expression
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void Print() const;
     // Mode d'emploi :
     // Affiche le ExpressionPlus.
 
-    virtual int Evaluate(map<string, int>& values);
+    int Evaluate(map<string, int>& variables);
     // Mode d'emploi :
     // Permet d'évaluer l'ExpressionPlus
     // L'entier retourné est la valeur de l'ExpressionPlus
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le ExpressionPlus en int.
-    // L'entier retourné est l'identifiant du ExpressionPlus.
 
 //-------------------------------------------- Constructeurs - destructeur
-    ExpressionPlus(int identifiant, Expression* expression, Terme* terme);
+    ExpressionPlus(Expression* expression, Terme* terme);
     // Mode d'emploi :
     //
 
     virtual ~ExpressionPlus();
     // Mode d'emploi :
     //
-
-
-
 
 //------------------------------------------------------------------ PRIVE
 

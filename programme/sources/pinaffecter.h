@@ -10,6 +10,7 @@
 #define PINAFFECTER_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <map>
 #include "pin.h"
 #include "expression.h"
@@ -23,29 +24,26 @@
 // Représente un PinAffecter du langage.
 //
 //------------------------------------------------------------------------
-using namespace std;
 class PinAffecter : public PIN
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void Print() const;
     // Mode d'emploi :
     // Affiche le PinAffecter.
+    
+    void Execute(map<string, int>& variables);
+	// Mode d'emploi :
+    // Execute le contenu du PinAffecter.
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le PinAffecter en int.
-    // L'entier retourné est l'identifiant du PinAffecter.
 
 //-------------------------------------------- Constructeurs - destructeur
-    PinAffecter(int identifiant, Identifiant* id, Expression* expression);
+    PinAffecter(Identifiant* id, Expression* expression);
     // Mode d'emploi :
     //
-
-    void Execute(map<string, int>& values);
 
     virtual ~PinAffecter();
     // Mode d'emploi :
@@ -66,8 +64,6 @@ private:
 //------------------------------------------------------- Attributs privés
     Identifiant* id;
     Expression* expression;
-
-
 
 //---------------------------------------------------------- Classes amies
 

@@ -15,6 +15,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "expressionmoins.h"
+#include "symboletype.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -27,25 +28,20 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void ExpressionMoins::print()
+void ExpressionMoins::Print() const
 {
 
 } //----- Fin de print
 
 //------------------------------------------------- Surcharge d'opérateurs
-ExpressionMoins::operator int() const
+int ExpressionMoins::Evaluate(map<string, int> &variables)
 {
-    return identifiant;
-} //----- Fin de operator int
-
-ExpressionMoins::Evaluate(map<string, int> &values)
-{
-    return expression->Evaluate(values) - terme->Evaluate(values);
+    return expression->Evaluate(variables) - terme->Evaluate(variables);
 }
 
 //-------------------------------------------- Constructeurs - destructeur
 
-ExpressionMoins::ExpressionMoins(int identifiant, Expression* expression, Terme* terme) : Expression(identifiant), expression(expression), terme(terme)
+ExpressionMoins::ExpressionMoins(Expression* expression, Terme* terme) : Expression(EXPRESSION_MOINS), expression(expression), terme(terme)
 {
 
 } //----- Fin de ExpressionMoins

@@ -10,10 +10,10 @@
 #define PDECL_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <map>
 #include "symbole.h"
 //------------------------------------------------------------- Constantes
-const int NON_EVALUATED = INT_MAX; //TODO find another solution
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
@@ -21,29 +21,22 @@ const int NON_EVALUATED = INT_MAX; //TODO find another solution
 // Représente un PDECL du langage.
 //
 //------------------------------------------------------------------------
-using namespace std;
 class PDECL : public Symbole
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
-    void print();
+//----------------------------------------------------- Méthodes publiques    
+    virtual void Execute(map<string, int>& variables) = 0;
     // Mode d'emploi :
-    // Affiche le PDECL.
+    // Execute le contenu du PDECL.
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le PDECL en int.
-    // L'entier retourné est l'identifiant du PDECL.
 
 //-------------------------------------------- Constructeurs - destructeur
-    PDECL(int identifiant);
+    PDECL(SymboleType type) : Symbole(type) {}
     // Mode d'emploi :
     //
-
-    virtual void Execute(map<string, int>& values)=0;
 
     virtual ~PDECL();
     // Mode d'emploi :

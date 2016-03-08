@@ -10,8 +10,10 @@
 #define PIN_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <map>
 #include "symbole.h"
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -21,31 +23,24 @@
 // Représente un PIN du langage.
 //
 //------------------------------------------------------------------------
-using namespace std;
 class PIN : public Symbole
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
-    // Mode d'emploi :
-    // Affiche le PIN.
+	virtual void Execute(map<string, int>& variables) = 0;
+	// Mode d'emploi :
+    // Execute le contenu du PIN.
 
-//------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le PIN en int.
-    // L'entier retourné est l'identifiant du PIN.
+//------------------------------------------------- Surcharge d'opérateursœ
 
 //-------------------------------------------- Constructeurs - destructeur
-    PIN(int identifiant);
+    PIN(SymboleType type) : Symbole(type) {}
     // Mode d'emploi :
     //
 
-    virtual void Execute(map<string, int>& values)=0;
-
-    virtual ~PIN();
+    virtual ~PIN() {};
     // Mode d'emploi :
     //
 

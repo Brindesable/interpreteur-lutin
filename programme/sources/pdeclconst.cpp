@@ -27,36 +27,29 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void PdeclConst::print()
+void PdeclConst::Print() const
 {
 
 } //----- Fin de print
 
-void PdeclConst::Execute(map<string, int> &values)
+void PdeclConst::Execute(map<string, int>& variables)
 {
     vector<pair<Identifiant*, Valeur*>>::iterator it;
 
-    for(it = declarations.begin(); it != declarations.end(); it++){
+    for(it = declarations.begin(); it != declarations.end(); ++it){
 
         Identifiant* currId = it->first;
         Valeur* currVal = it->second;
 
-        values[currId->getName()] = currVal->Evaluate(values);
-
+        variables[currId->Nom()] = currVal->Evaluate(variables);
     }
-
-
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-PdeclConst::operator int() const
-{
-    return identifiant;
-} //----- Fin de operator int
 
 //-------------------------------------------- Constructeurs - destructeur
 
-PdeclConst::PdeclConst(int identifiant, vector<pair<Identifiant*, Valeur*>>& declarations):PDECL(identifiant), declarations(declarations)
+PdeclConst::PdeclConst(vector<pair<Identifiant*, Valeur*> >& declarations) : PDECL(PDECL_CONST), declarations(declarations)
 {
 
 } //----- Fin de PdeclConst

@@ -32,7 +32,7 @@ using namespace std;
 void Identifiant::Print() const
 {
 	cout << "Type:" << type << "\tIdentifiant: " << nom << endl;
-} //----- Fin de print
+} //----- Fin de Print
 
 int Identifiant::Evaluate(map<string, int>& variables)
 {
@@ -41,7 +41,7 @@ int Identifiant::Evaluate(map<string, int>& variables)
     if(itResultat == variables.end())
     {
     	//Le symbole est inconnu, on lui donne la valeur moins l'infini.
-    	return numeric_limits<int>::min();
+    	return Expression::VALEUR_INDEFINIE;
     }
 
     return itResultat->second;

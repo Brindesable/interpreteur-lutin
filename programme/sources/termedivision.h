@@ -12,7 +12,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include "terme.h"
 #include "facteur.h"
-#include "map"
+#include <map>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -29,30 +29,25 @@ class TermeDivision : public Terme
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void Print() const;
     // Mode d'emploi :
     // Affiche le TermeDivision.
+    
+    int Evaluate(map<string, int>& variables);
+    // Mode d'emploi :
+    // Permet d'évaluer le TermeDivision
+    // L'entier retourné est la valeur du TermeDivision
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le TermeDivision en int.
-    // L'entier retourné est l'identifiant du TermeDivision.
 
 //-------------------------------------------- Constructeurs - destructeur
-    TermeDivision(int identifiant, Terme* terme, Facteur* facteur);
+    TermeDivision(Terme* terme, Facteur* facteur);
     // Mode d'emploi :
     //
 
     virtual ~TermeDivision();
     // Mode d'emploi :
     //
-
-    int Evaluate(map<string, int>& values);
-    // Mode d'emploi :
-    // Permet d'évaluer l'TermeDivision
-    // L'entier retourné est la valeur de l'TermeDivision
-
 
 //------------------------------------------------------------------ PRIVE
 

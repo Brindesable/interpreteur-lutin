@@ -10,8 +10,8 @@
 #define EXPRESSIONMOINS_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <map>
-#include "symbole.h"
 #include "expression.h"
 #include "terme.h"
 //------------------------------------------------------------- Constantes
@@ -23,7 +23,6 @@
 // Représente un ExpressionMoins du langage.
 //
 //------------------------------------------------------------------------
-using namespace std;
 
 class ExpressionMoins : public Expression
 {
@@ -31,33 +30,26 @@ class ExpressionMoins : public Expression
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void Print() const;
     // Mode d'emploi :
     // Affiche le ExpressionMoins.
 
-    virtual int Evaluate(map<string, int>& values);
+    int Evaluate(map<string, int>& variables);
     // Mode d'emploi :
     // Permet d'évaluer l'ExpressionMoins
     // L'entier retourné est la valeur de l'ExpressionMoins
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le ExpressionMoins en int.
-    // L'entier retourné est l'identifiant du ExpressionMoins.
 
 //-------------------------------------------- Constructeurs - destructeur
-    ExpressionMoins(int identifiant, Expression* expression, Terme* terme);
+    ExpressionMoins(Expression* expression, Terme* terme);
     // Mode d'emploi :
     //
 
     virtual ~ExpressionMoins();
     // Mode d'emploi :
     //
-
-
-
-
+    
 //------------------------------------------------------------------ PRIVE
 
 protected:

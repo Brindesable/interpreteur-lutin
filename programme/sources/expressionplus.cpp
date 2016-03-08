@@ -27,25 +27,20 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void ExpressionPlus::print()
+void ExpressionPlus::Print() const
 {
 
 } //----- Fin de print
 
 //------------------------------------------------- Surcharge d'opérateurs
-ExpressionPlus::operator int() const
+int ExpressionPlus::Evaluate(map<string, int>& variables)
 {
-    return identifiant;
-} //----- Fin de operator int
-
-ExpressionPlus::Evaluate(map<string, int> &values)
-{
-    return expression->Evaluate(values) + terme->Evaluate(values);
+    return expression->Evaluate(variables) + terme->Evaluate(variables);
 }
 
 //-------------------------------------------- Constructeurs - destructeur
 
-ExpressionPlus::ExpressionPlus(int identifiant, Expression* expression, Terme* terme) : Expression(identifiant), expression(expression), terme(terme)
+ExpressionPlus::ExpressionPlus(Expression* expression, Terme* terme) : Expression(EXPRESSION_PLUS), expression(expression), terme(terme)
 {
 
 } //----- Fin de ExpressionPlus

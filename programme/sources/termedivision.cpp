@@ -27,25 +27,20 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void TermeDivision::print()
+void TermeDivision::Print() const
 {
 
 } //----- Fin de print
 
 //------------------------------------------------- Surcharge d'opérateurs
-TermeDivision::operator int() const
+TermeDivision::Evaluate(map<string, int> &variables)
 {
-    return identifiant;
-} //----- Fin de operator int
-
-TermeDivision::Evaluate(map<string, int> &values)
-{
-    return terme->Evaluate(values) / facteur->Evaluate(values);
+    return terme->Evaluate(variables) / facteur->Evaluate(variables);
 }
 
 //-------------------------------------------- Constructeurs - destructeur
 
-TermeDivision::TermeDivision(int identifiant, Terme* terme, Facteur* facteur) : Terme(identifiant), terme(terme), facteur(facteur)
+TermeDivision::TermeDivision(Terme* terme, Facteur* facteur) : Terme(), terme(terme), facteur(facteur)
 {
 
 } //----- Fin de TermeDivision

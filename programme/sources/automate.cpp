@@ -36,6 +36,7 @@ void Automate::Decalage(Symbole* symbole, Etat* etat)
 
 void Automate::Reduction(int nbSymboles)
 {
+    /*
     Etat* curr = pileEtats.top();
 
     vector<Symbole*> symboles;
@@ -49,7 +50,7 @@ void Automate::Reduction(int nbSymboles)
 
     curr = pileEtats.top();
     curr->Transition(this, symbole);
-
+	*/
 } //----- Fin de Reduction
 
 

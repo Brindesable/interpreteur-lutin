@@ -10,11 +10,13 @@
 #define PEDCLCONST_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include <map>
 #include <vector>
 #include "pdecl.h"
 #include "identifiant.h"
 #include "valeur.h"
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -24,29 +26,26 @@
 // Représente un PdeclConst du langage.
 //
 //------------------------------------------------------------------------
-using namespace std;
 class PdeclConst : public PDECL
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void Print() const;
     // Mode d'emploi :
     // Affiche le PdeclConst.
+    
+    void Execute(map<string, int>& variables);
+    // Mode d'emploi :
+    // Execute le contenu du PdeclConst.
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le PdeclConst en int.
-    // L'entier retourné est l'identifiant du PdeclConst.
 
 //-------------------------------------------- Constructeurs - destructeur
-    PdeclConst(int identifiant, vector<pair<Identifiant*, Valeur*>>& declarations);
+    PdeclConst(vector<pair<Identifiant*, Valeur*> >& declarations);
     // Mode d'emploi :
     //
-
-    void Execute(map<string, int>& values);
 
     virtual ~PdeclConst();
     // Mode d'emploi :
@@ -65,7 +64,7 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-    vector<pair<Identifiant*, Valeur*>> declarations;
+    vector<pair<Identifiant*, Valeur*> > declarations;
 
 //---------------------------------------------------------- Classes amies
 

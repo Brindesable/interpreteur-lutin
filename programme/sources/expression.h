@@ -13,6 +13,7 @@
  using namespace std;
 #include "symbole.h"
 #include <map>
+#include <limits>
 
 //------------------------------------------------------------- Constantes
 
@@ -34,6 +35,9 @@ public:
     // Mode d'emploi :
     // Permet d'évaluer l'Expression
     // L'entier retourné est la valeur de l'Expression
+    
+    static const int VALEUR_INDEFINIE = numeric_limits<int>::min();
+    //Valeur par défaut d'une variable non définie.
 
 //------------------------------------------------- Surcharge d'opérateurs
 
