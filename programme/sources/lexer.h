@@ -15,7 +15,8 @@
 #include "symbole.h"
 #include "symboletype.h"
 
- using namespace std;
+using namespace std;
+using namespace boost;
 
 //------------------------------------------------------------- Constantes
 

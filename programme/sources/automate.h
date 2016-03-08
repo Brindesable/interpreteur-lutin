@@ -1,109 +1,84 @@
 ﻿/*************************************************************************
+               Automate  -  Automate à pile du langage lutin.
+ -------------------
+ début                : 01/03/2016
+ copyright            : (C) 2016 par Team-Papassau - H4101
+ ************************************************************************/
 
-						automate  -  description
-						-----------------------
-			début   : 01/03/2016
-		copyright   : (C) 2016 par Team-Papassau - H4101
-
-*************************************************************************/
-​
-//---------- Interface de la classe <automate> (fichier automate.cpp) ------
+//-------- Interface de la classe <automate> (fichier automate.cpp) ----
 #if ! defined ( AUTOMATE_H )
 #define AUTOMATE_H
-​
-//--------------------------------------------------- Interfaces utilisées
-#include <stack>
-using namespace std;
-​
-//------------------------------------------------------------- Constantes
-​
-//------------------------------------------------------------------ Types
 
-class Symbole;
+//--------------------------------------------------- Interfaces utilisées
+using namespace std;
+#include <stack>
+#include "symbole.h"
+#include "lexer.h"
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
 class Etat;
-​
+
 //------------------------------------------------------------------------
 // Rôle de la classe <automate>
-//
-//
+// Automate à pile du langage lutin.
 //------------------------------------------------------------------------
-​
-class Automate :
+
+class Automate
 {
-	//----------------------------------------------------------------- PUBLIC
-
+    //----------------------------------------------------------------- PUBLIC
+    
 public:
-	//----------------------------------------------------- Méthodes publiques
-	// type Méthode ( liste de paramètres );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+    //----------------------------------------------------- Méthodes publiques
+    Symbole* Lecture();
+    // Mode d'emploi : Méthode initiant l'analyse du programme.
+    //
 
-	// Type de la méthode à confirmer
-	void Lecture();
-	// Mode d'emploi : Méthode initiant l'analyse du programme.
-	//
-	// Contrat :
-	//
+    void Decalage(Symbole* symbole, Etat* etat);
+    // Mode d'emploi :
+    //
+    
+    void Reduction(int nbSymboles);
+    // Mode d'emploi :
+    //
+    
+    //------------------------------------------------- Surcharge d'opérateurs
 
+    //-------------------------------------------- Constructeurs - destructeur
+    Automate(Lexer& lexer);
+    // Mode d'emploi :
+    //
 
+    virtual ~Automate ();
+    // Mode d'emploi :
+    //
 
-
-	//------------------------------------------------- Surcharge d'opérateurs
-	Automate &operator = (const Automate &unAutomate);
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-
-
-	//-------------------------------------------- Constructeurs - destructeur
-	Automate (const Automate &unAutomate);
-	// Mode d'emploi (constructeur de copie) :
-	//
-	// Contrat :
-	//
-
-	Automate ();
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-
-	virtual ~Automate ();
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-
-	//------------------------------------------------------------------ PRIVE
+    //------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+    //----------------------------------------------------- Méthodes protégées
 
 private:
-	//------------------------------------------------------- Méthodes privées
+    //------------------------------------------------------- Méthodes privées
 
 protected:
-	//----------------------------------------------------- Attributs protégés
-
-	stack<Symbole> pileSymboles;	// Pile des symboles
-	stack<Etat> pileEtats;			// Pile des Etats
-
-
+    //----------------------------------------------------- Attributs protégés
 
 private:
-	//------------------------------------------------------- Attributs privés
-
-	//---------------------------------------------------------- Classes amies
-
-	//-------------------------------------------------------- Classes privées
-
-	//----------------------------------------------------------- Types privés
-
+    //------------------------------------------------------- Attributs privés
+    stack<Symbole*> pileSymboles;
+    stack<Etat*> pileEtats;
+    Lexer& lexer;
+    
+    //---------------------------------------------------------- Classes amies
+    
+    //-------------------------------------------------------- Classes privées
+    
+    //----------------------------------------------------------- Types privés
+    
 };
-​
+
 //----------------------------------------- Types dépendants de <automate>
-​
+
 #endif // AUTOMATE_H
