@@ -10,8 +10,10 @@
 #define EXPRESSION_H
 
 //--------------------------------------------------- Interfaces utilisées
+ using namespace std;
 #include "symbole.h"
-#include "map"
+#include <map>
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -21,7 +23,6 @@
 // Représente un Expression du langage.
 //
 //------------------------------------------------------------------------
-using namespace std;
 
 class Expression : public Symbole
 {
@@ -29,32 +30,21 @@ class Expression : public Symbole
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
-    // Mode d'emploi :
-    // Affiche le Expression.
-
-    virtual int Evaluate(map<string, int>& values)=0;
+    virtual int Evaluate(map<string, int>& variables) = 0;
     // Mode d'emploi :
     // Permet d'évaluer l'Expression
     // L'entier retourné est la valeur de l'Expression
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le Expression en int.
-    // L'entier retourné est l'identifiant du Expression.
 
 //-------------------------------------------- Constructeurs - destructeur
-    Expression(int identifiant);
+    Expression(SymboleType type) : Symbole(type) {}
+    // Mode d'emploi :
+    // Construit un Symbole Expression.
+
+    virtual ~Expression() {}
     // Mode d'emploi :
     //
-
-    virtual ~Expression();
-    // Mode d'emploi :
-    //
-
-
-
 
 //------------------------------------------------------------------ PRIVE
 
@@ -66,8 +56,7 @@ private:
 
 protected:
 //----------------------------------------------------- Attributs protégés
-    //L'identifiant du Expression.
-    int identifiant;
+
 private:
 //------------------------------------------------------- Attributs privés
 

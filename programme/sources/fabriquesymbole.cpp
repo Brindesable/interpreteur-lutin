@@ -1,20 +1,22 @@
 /*************************************************************************
-             Terme  -  Représente un Expression du langage.
+    FabriqueSymbole  -  Fabrique un symbole en fonction de son type.
  -------------------
- début                : 01/03/2016
+ début                : 06/03/2016
  copyright            : (C) 2016 par mgaillard
- *************************************************************************/
+ ************************************************************************/
 
-//---------- Interface de la classe <Terme> (fichier terme.cpp) ------
+//------------- Réalisation de la classe <FabriqueSymbole> ---------------
+//------------------ (fichier fabriquesymbole.cpp) -----------------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
-#include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "terme.h"
+#include "fabriquesymbole.h"
+#include "symboleterminal.h"
+#include "identifiant.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -24,34 +26,32 @@ using namespace std;
 
 
 //----------------------------------------------------------------- PUBLIC
+
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void Terme::print()
+Symbole* FabriqueSymbole::CreerSymbole(const SymboleType& type,
+                                       const string& valeur)
 {
+    Symbole* symbole = nullptr;
 
-} //----- Fin de print
+    switch (type)
+    {
+        case IDENTIFIANT:
+            symbole = new Identifiant(valeur);
+            break;
+        default:
+            symbole = new SymboleTerminal(type, valeur);
+            break;
+    }
+
+    return symbole;
+} //----- Fin de FabriqueSymbole
 
 //------------------------------------------------- Surcharge d'opérateurs
-Terme::operator int() const
-{
-    return identifiant;
-} //----- Fin de operator int
 
-//-------------------------------------------- Constructeurs - destructeur
-
-Terme::Terme(int Terme) : Expression(Terme)
-{
-
-} //----- Fin de Terme
-
-
-Terme::~Terme()
-{
-
-} //----- Fin de ~Terme
-
-
+//-------------------------------------------- Constructeurs - destructeur    
+    
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées

@@ -10,13 +10,32 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
+#include <regex>
+
+using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "lexer.h"
+#include "fabriquesymbole.h"
 
 //------------------------------------------------------------- Constantes
+const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
+        {regex("^(var)\\s+"), VAR},
+        {regex("^(const)\\s+"), CONST},
+        {regex("^(ecrire)\\s+"), ECRIRE},
+        {regex("^(lire)\\s+"), LIRE},
+        {regex("^(;)\\s*"), POINT_VIRGULE},
+        {regex("^(:=)\\s*"), AFFECTATION},
+        {regex("^(=)\\s*"), EGAL},
+        {regex("^(,)\\s*"), VIRGULE},
+        {regex("^(\\+)\\s*"), PLUS},
+        {regex("^(-)\\s*"), MOINS},
+        {regex("^(/)\\s*"), DIVISE},
+        {regex("^(\\*)\\s*"), MULTIPLIE},
+        {regex("^(\\d+)\\s*"), VALEUR},
+        {regex("^(\\w+)\\s*"), IDENTIFIANT}
+    };
 
 //---------------------------------------------------- Variables de classe
 
@@ -24,18 +43,43 @@ using namespace std;
 
 
 //----------------------------------------------------------------- PUBLIC
+
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
 
-Symbole Lexer::GetNext() const
+Symbole* Lexer::GetNext() const
 {
-	
+    return symbole_courant;
 } //----- Fin de getNext
 
-Symbole Lexer::Read()
+bool Lexer::Read()
 {
-	
+    //On alimente le tampon avec les sources.
+    if (tampon.empty() && sources)
+    {
+        getline(sources, tampon);
+    }
+
+    //On recherche séquentiellement les motifs des symboles.
+    for (vector<Lexer::RegexSymbole>::const_iterator itRegex = regex_symboles.begin();itRegex != regex_symboles.end();++itRegex)
+    {
+        smatch matche;
+        if (regex_search(tampon, matche, itRegex->motif))
+        {
+            if (matche.ready())
+            {
+                symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
+
+                tampon = matche.suffix().str();
+                
+                return true;
+            }
+        }
+    }
+
+    //Erreur, rien n'a été trouvé, ou bien le programme est terminé.
+    return false;
 } //----- Fin de Read
 
 
@@ -43,9 +87,18 @@ Symbole Lexer::Read()
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(-1)
+Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(nullptr)
 {
-	
+    //On supprime tous les espaces au début du programme.
+    char c;
+    do
+    {
+        sources.get(c);
+    }
+    while (isspace(c));
+    //On remet le dernier caractère lu dans le flux.
+    sources.unget();
+
 } //----- Fin de Lexer
 
 
@@ -60,3 +113,9 @@ Lexer::~Lexer()
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
+
+int main()
+{
+
+	return 0;
+}

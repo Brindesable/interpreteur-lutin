@@ -10,6 +10,7 @@
 #define IDENTIFIANT_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
 #include "facteur.h"
 #include <map>
 #include <string>
@@ -22,32 +23,29 @@
 // Représente un Identifiant du langage.
 //
 //------------------------------------------------------------------------
-using namespace std;
 class Identifiant : public Facteur
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    void print() const;
     // Mode d'emploi :
     // Affiche le Identifiant.
 
+     int Evaluate(map<string, int>& variables);
+    // Mode d'emploi :
+    // Permet d'évaluer l'Identifiant.
+    // L'entier retourné est la valeur de l'Identifiant.
+
+    const string& Nom() const {return nom;}
+    // Mode d'emploi :
+    // Retourne le nom de l'identifiant.
+
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le Identifiant en int.
-    // L'entier retourné est l'identifiant du Identifiant.
-
-    int Evaluate(map<string, int>& values);
-    // Mode d'emploi :
-    // Permet d'évaluer l'Identifiant
-    // L'entier retourné est la valeur de l'Identifiant
-
-    string getName(){return name;}
 
 //-------------------------------------------- Constructeurs - destructeur
-    Identifiant(int identifiant, const string& name);
+    Identifiant(const string& nom);
     // Mode d'emploi :
     //
 
@@ -71,10 +69,8 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-        //L'identifiant du Identifiant.
-        int identifiant;
         //Nom de l'Identifiant
-        string name;
+        string nom;
 
 //---------------------------------------------------------- Classes amies
 

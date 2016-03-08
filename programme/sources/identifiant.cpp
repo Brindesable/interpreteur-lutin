@@ -12,9 +12,11 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <limits>
 
 //------------------------------------------------------ Include personnel
 #include "identifiant.h"
+#include "symboletype.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -27,33 +29,31 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void Identifiant::print()
+void Identifiant::print() const
 {
 
 } //----- Fin de print
 
-int Identifiant::Evaluate(map<string, int>& values)
+int Identifiant::Evaluate(map<string, int>& variables)
 {
-
-    map<string,int>::iterator res = values.find(name);
-    if(res == values.end()){
-        return -1;
+	//on recherche le nom de cet identifiant dans les variables.
+    map<string,int>::iterator itResultat = variables.find(nom);
+    if(itResultat == variables.end())
+    {
+    	//Le symbole est inconnu, on lui donne la valeur moins l'infini.
+    	return numeric_limits<int>::min();
     }
 
-    return res->second;
+    return itResultat->second;
 
 } //----- Fin de print
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Identifiant::operator int() const
-{
-    return identifiant;
-} //----- Fin de operator int
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Identifiant::Identifiant(int identifiant, const string& name) : Facteur(identifiant),name(name)
+Identifiant::Identifiant(const string& nom) : Facteur(IDENTIFIANT), nom(nom)
 {
 
 } //----- Fin de Identifiant

@@ -11,7 +11,6 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "terme.h"
-#include "map"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -28,30 +27,17 @@ class Facteur : public Terme
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
-    // Mode d'emploi :
-    // Affiche le Facteur.
 
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le Facteur en int.
-    // L'entier retourné est l'identifiant du Facteur.
 
 //-------------------------------------------- Constructeurs - destructeur
-    Facteur(int identifiant);
+    Facteur(SymboleType type) : Terme(type) {}
+    // Mode d'emploi :
+    // Coinstruit un Symbole de type Facteur.
+
+    virtual ~Facteur() {}
     // Mode d'emploi :
     //
-
-    virtual ~Facteur();
-    // Mode d'emploi :
-    //
-
-    virtual int Evaluate(map<string, int>& values)=0;
-    // Mode d'emploi :
-    // Permet d'évaluer l'Facteur
-    // L'entier retourné est la valeur de l'Facteur
-
 
 //------------------------------------------------------------------ PRIVE
 
@@ -66,8 +52,6 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-        //L'identifiant du Facteur.
-        int identifiant;
 
 //---------------------------------------------------------- Classes amies
 
