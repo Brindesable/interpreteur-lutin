@@ -33,6 +33,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState22.h"
+#include "var.h"
 
 
 
@@ -128,7 +129,10 @@ bool GeneratedState22::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState22::Reduction (vector<Symbole*> s)
 {
-// This state does not require any reductions. :-)
+    //le vector ne doit contenir qu'un identifiant.
+    Var* var = new Var(s[0]);
+
+    return var;
 }
 
 

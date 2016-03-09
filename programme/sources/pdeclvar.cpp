@@ -34,20 +34,14 @@ void PdeclVar::Print() const
 
 void PdeclVar::Execute(map<string, int>& variables)
 {
-    vector<Identifiant*>::iterator it;
-
-    for(it = declarations.begin(); it != declarations.end(); ++it)
-    {
-        Identifiant* identifiantCourant = *it;
-        variables[identifiantCourant->Nom()] = Expression::VALEUR_INDEFINIE;
-    }
+   var->Execute(variables);
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-PdeclVar::PdeclVar(vector<Identifiant*>& declarations) : PDECL(PDECL_VAR), declarations(declarations)
+PdeclVar::PdeclVar(Var* var) : PDECL(PDECL_VAR), var(var)
 {
 
 } //----- Fin de PdeclVar

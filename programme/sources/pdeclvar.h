@@ -15,6 +15,7 @@ using namespace std;
 #include <vector>
 #include "pdecl.h"
 #include "identifiant.h"
+#include "var.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -42,7 +43,7 @@ public:
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    PdeclVar(vector<Identifiant*>& declarations);
+    PdeclVar(Var* var);
     // Mode d'emploi :
     //
 
@@ -63,7 +64,7 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-    vector<Identifiant*> declarations;
+    Var* var;
 
 //---------------------------------------------------------- Classes amies
 

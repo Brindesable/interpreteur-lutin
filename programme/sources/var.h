@@ -1,52 +1,54 @@
 /*************************************************************************
-             Expression  -  Représente un Expression du langage.
+                Var  -  Représente un Var du langage.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
  *************************************************************************/
 
-//---------- Interface de la classe <Expression> (fichier Expression.h) ------
-#if ! defined ( EXPRESSION_H )
-#define EXPRESSION_H
+//---------- Interface de la classe <Var> (fichier var.h) ------
+#if ! defined ( VAR_H )
+#define VAR_H
 
 //--------------------------------------------------- Interfaces utilisées
- using namespace std;
-#include "symbole.h"
+using namespace std;
 #include <map>
-#include "limits.h"
+#include <vector>
+#include "symbole.h"
+#include "identifiant.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Expression>
-// Représente un Expression du langage.
+// Rôle de la classe <Var>
+// Représente un Var du langage.
 //
 //------------------------------------------------------------------------
-
-class Expression : public Symbole
+class Var : public Symbole
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    virtual int Evaluate(map<string, int>& variables) = 0;
+    void Print() const;
     // Mode d'emploi :
-    // Permet d'évaluer l'Expression
-    // L'entier retourné est la valeur de l'Expression
-    
-    static const int VALEUR_INDEFINIE = INT_MIN;
-    //Valeur par défaut d'une variable non définie.
+    // Affiche le PdeclVar.
+
+    void Execute(map<string, int>& variables);
+    // Mode d'emploi :
+    // Execute le contenu du PdeclVar.
+
+    void AddDeclaration(Identifiant* id);
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    Expression(SymboleType type) : Symbole(type) {}
+   Var(Identifiant* id);
     // Mode d'emploi :
-    // Construit un Symbole Expression.
+    //
 
-    virtual ~Expression() {}
+    virtual ~Var();
     // Mode d'emploi :
     //
 
@@ -63,7 +65,7 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-
+    vector<Identifiant*> declarations;
 
 //---------------------------------------------------------- Classes amies
 
@@ -73,6 +75,6 @@ private:
 
 };
 
-//----------------------------------------- Types dépendants de <Expression>
+//----------------------------------------- Types dépendants de <PdeclVar>
 
-#endif // EXPRESSION_H
+#endif // VAR_H

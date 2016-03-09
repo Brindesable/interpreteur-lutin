@@ -33,7 +33,8 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState212p.h"
-
+#include "var.h"
+#include "identifiant.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -128,7 +129,14 @@ bool GeneratedState212p::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState212p::Reduction (vector<Symbole*> s)
 {
-// This state does not require any reductions. :-)
+
+    Var* curr = s[0];
+    Identifiant* id = s[2];
+    delete s[1];
+    curr->AddDeclaration(id);
+
+    return curr;
+
 }
 
 

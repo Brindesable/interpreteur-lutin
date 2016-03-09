@@ -1,77 +1,68 @@
-﻿/*************************************************************************
-               Automate  -  Automate à pile du langage lutin.
+/*************************************************************************
+             Var  -  Représente un Var du langage.
  -------------------
  début                : 01/03/2016
- copyright            : (C) 2016 par Team-Papassau - H4101
+ copyright            : (C) 2016 par mgaillard
  *************************************************************************/
- 
-//---------- Réalisation de la classe <Automate> (fichier automate.cpp) --
+
+//---------- Interface de la classe <Var> (fichier var.cpp) ------
+
 //---------------------------------------------------------------- INCLUDE
+
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <vector>
+
 //------------------------------------------------------ Include personnel
-#include "automate.h"
+#include "var.h"
+
 //------------------------------------------------------------- Constantes
+
 //---------------------------------------------------- Variables de classe
+
 //----------------------------------------------------------- Types privés
+
+
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
+
 //----------------------------------------------------- Méthodes publiques
-Symbole* Automate::Lecture()
+void Var::Print() const
 {
-    Symbole* curr;
-    Symbole* next;
-    while(lexer.Read()){
 
+} //----- Fin de print
 
-
-
-    }
-    return 0;
-} //----- Fin de Lecture
-
-void Automate::Decalage(Symbole* symbole, Etat* etat)
+void Var::AddDeclaration(Identifiant* id)
 {
-    pileEtats.push(etat);
-    pileSymboles.push(symbole);
-} //----- Fin de Decalage
+    declarations.push_back(id);
+} //----- Fin de AddDeclaration
 
-void Automate::Reduction(int nbSymboles)
+void Var::Execute(map<string, int>& variables)
 {
-    /*
-    Etat* curr = pileEtats.top();
+    vector<Identifiant*>::iterator it;
 
-    vector<Symbole*> symboles;
-    for(int i = 0; i < nbSymboles; i++)
+    for(it = declarations.begin(); it != declarations.end(); ++it)
     {
-        pileEtats.pop();
-        symboles.push_back(pileSymboles.top());
-        pileSymboles.pop();
+        Identifiant* identifiantCourant = *it;
+        variables[identifiantCourant->Nom()] = Expression::VALEUR_INDEFINIE;
     }
-    Symbole* symbole = curr->Reduction(symboles);
-
-    curr = pileEtats.top();
-    curr->Transition(this, symbole);
-	*/
-} //----- Fin de Reduction
-
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Automate::Automate(Lexer& lexer) : lexer(lexer)
+Var::Var(Identifiant* id) : Symbole(P_VAR)
 {
-	
-} //----- Fin de Automate
+    declarations.push_back(id);
+} //----- Fin de Var
 
 
-Automate::~Automate()
+Var::~Var()
 {
-	
-} //----- Fin de ~Automate
+
+} //----- Fin de ~Var
+
 
 //------------------------------------------------------------------ PRIVE
 

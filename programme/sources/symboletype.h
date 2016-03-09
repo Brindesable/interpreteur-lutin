@@ -30,6 +30,8 @@ enum SymboleType
     MOINS,
     DIVISE,
     MULTIPLIE,
+    OUVRE_PAR,
+    FERME_PAR,
     VALEUR,
     IDENTIFIANT,
     EXPRESSION_MOINS,
@@ -39,6 +41,7 @@ enum SymboleType
     PIN_AFFECTER,
     PIN_ECRIRE,
     PIN_LIRE,
+    VAR_P,
     PROGRAMME,
     TERME_DIVISION,
     TERME_MULTIPLICATION

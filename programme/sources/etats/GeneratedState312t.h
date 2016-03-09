@@ -74,7 +74,7 @@ public:
     //
 
     bool Transition (Automate & automate, Symbole *s);
-    Symbole* Reduction (vector<Symbole*> s) = 0;
+    Symbole* Reduction (vector<Symbole*> s);
 
     //-------------------------------------------- Constructeurs - destructeur
 

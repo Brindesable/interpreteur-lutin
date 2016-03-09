@@ -33,6 +33,8 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState0.h"
+#include "GeneratedState0p.h"
+
 
 
 
@@ -87,31 +89,31 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
 			break;
 		case EGAL:
 			break;
-		case FIN:
-			automate.Decalage(s, new GeneratedStateACCEPTE)
+        case POINT_VIRGULE:
+            automate.Decalage(s, new GeneratedStateACCEPTE);
 			break;
 		case CONST:
-			automate.Decalage(s, new GeneratedState0p)
+            automate.Decalage(s, new GeneratedState0p);
 			break;
 		case CONSTp:
 			break;
 		case EXPRESSION:
 			break;
-		case ECRIRE:
-			automate.Decalage(s, new GeneratedState0p)
+        case ECRIRE:
+            automate.Decalage(s, new GeneratedState0p);
 			break;
 		case F:
 			break;
 		case POINT_VIRGULE:
 			break;
 		case IDENTIFIANT:
-			automate.Decalage(s, new GeneratedState0p)
+            automate.Decalage(s, new GeneratedState0p);
 			break;
 		case LIRE:
-			automate.Decalage(s, new GeneratedState0p)
+            automate.Decalage(s, new GeneratedState0p);
 			break;
 		case PDECL:
-			automate.Decalage(s, new GeneratedState0p)
+            automate.Decalage(s, new GeneratedState0p);
 			break;
 		case PIN:
 			break;
@@ -120,7 +122,7 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
 		case VAL:
 			break;
 		case VAR:
-			automate.Decalage(s, new GeneratedState0p)
+            automate.Decalage(s, new GeneratedState0p);
 			break;
 		case VARp:
 			break;
