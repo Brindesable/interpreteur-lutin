@@ -72,7 +72,7 @@ using namespace std;
 bool GeneratedState2::Transition (Automate & automate, Symbole *s)
 {
 	// Generated code :
-	switch (*s) {
+	switch ((int)*s) {
 		case MOINS:
 			break;
 		case OUVRE_PAR:
@@ -97,12 +97,12 @@ bool GeneratedState2::Transition (Automate & automate, Symbole *s)
 			break;
 		case ECRIRE:
 			break;
-		case F:
+		case FACTEUR:
 			break;
 		case POINT_VIRGULE:
 			break;
 		case IDENTIFIANT:
-			automate.Decalage(s, new GeneratedState22)
+			automate.Decalage(s, new GeneratedState22);
 			break;
 		case LIRE:
 			break;
@@ -112,21 +112,23 @@ bool GeneratedState2::Transition (Automate & automate, Symbole *s)
 			break;
 		case TERME:
 			break;
-		case VAL:
+		case VALEUR:
 			break;
 		case VAR:
 			break;
 		case VARp:
-			automate.Decalage(s, new GeneratedState21)
+			automate.Decalage(s, new GeneratedState21);
 			break;
 		case VIRGULE:
+			break;
+		default:
 			break;
 	}
 	return false;
 
 }
 
-Symbole* GeneratedState2::Reduction (vector<Symbole*> s)
+Symbole* GeneratedState2::Reduction (vector<Symbole*>& s)
 {
 // This state does not require any reductions. :-)
 }
@@ -134,7 +136,7 @@ Symbole* GeneratedState2::Reduction (vector<Symbole*> s)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-GeneratedState2::GeneratedState2 ( const string name ) : Etat(name)
+GeneratedState2::GeneratedState2 ()
 
 // Algorithme :
 
