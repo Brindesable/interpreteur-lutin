@@ -5,86 +5,65 @@
  copyright            : (C) 2016 par kollivier
  *************************************************************************/
 
-//---------- Interface de la classe <LutinReader> (fichier lutin-reader.h) ------
-#if ! defined ( LUTIN_READER_H )
-#define LUTIN_READER_H
+//---------- Réalisation de la classe <LutinReader> (fichier lutin-reader.cpp) --
 
-//--------------------------------------------------- Interfaces utilisées
-#include <istream>
-#include "symbole.h"
-#include "automate.h"
-
+//---------------------------------------------------------------- INCLUDE
+//-------------------------------------------------------- Include système
 using namespace std;
+#include <iostream>
+
+//------------------------------------------------------ Include personnel
+#include "lutin-reader.h"
 
 //------------------------------------------------------------- Constantes
 
-//------------------------------------------------------------------ Types
+//---------------------------------------------------- Variables de classe
 
-//------------------------------------------------------------------------
+//----------------------------------------------------------- Types privés
 
-//------------------------------------------------------------------------
 
-class LutinReader
-{
 //----------------------------------------------------------------- PUBLIC
+//-------------------------------------------------------- Fonctions amies
 
-public:
 //----------------------------------------------------- Méthodes publiques
+void LutinReader::Construire()
+{
+	//programme = automate.Lecture();
+} //----- Fin de Construire
+
+void LutinReader::AnalyseStatique()
+{
+} //----- Fin de AnalyseStatique
+
+void LutinReader::Execution()
+{
+} //----- Fin de Execution
+
+void LutinReader::Affichage()
+{
+} //----- Fin de Affichage
+
+void LutinReader::Transformation()
+{
+} //----- Fin de Transformation
 
 
 //------------------------------------------------- Surcharge d'opérateurs
 
-
 //-------------------------------------------- Constructeurs - destructeur
-    void Construire();
-    // Mode d'emploi :
 
-    void AnalyseStatique();
-    // Mode d'emploi :
+LutinReader::LutinReader(istream& s) : sources(s), programme(0), automate(s)
+{
+} //----- Fin de LutinReader
 
-	void Execution();
-    // Mode d'emploi :
 
-	void Affichage();
-    // Mode d'emploi :
+LutinReader::~LutinReader()
+{
+} //----- Fin de ~LutinReader
 
-    void Transformation();
-    // Mode d'emploi :
-
-    LutinReader(istream& sources);
-    // Mode d'emploi :
-    // Construit LutinReader.
-
-    ~LutinReader();
-    // Mode d'emploi :
 
 //------------------------------------------------------------------ PRIVE
 
-protected:
 //----------------------------------------------------- Méthodes protégées
 
-private:
 //------------------------------------------------------- Méthodes privées
-
-//-------------------------------------------------------- Classes privées
-
-protected:
-//----------------------------------------------------- Attributs protégés
-
-private:
-//------------------------------------------------------- Attributs privés
-    // Le flux d'entrée contenant les sources.
-    istream& sources;
-    // P
-    Symbole * programme;
-    Automate automate;
-
-//---------------------------------------------------------- Classes amies
-
-//----------------------------------------------------------- Types privés
-
-};
-
-//----------------------------------------- Types dépendants de <LutinReader>
-
-#endif // LUTIN_READER_H

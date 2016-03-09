@@ -24,7 +24,7 @@ using namespace std;
 // Représente un PinAffecter du langage.
 //
 //------------------------------------------------------------------------
-class PinAffecter : public PIN
+class PinAffecter : public Pin
 {
 //----------------------------------------------------------------- PUBLIC
 

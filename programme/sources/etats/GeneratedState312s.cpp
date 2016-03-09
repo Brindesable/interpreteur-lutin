@@ -71,6 +71,7 @@ using namespace std;
 
 bool GeneratedState312s::Transition (Automate & automate, Symbole *s)
 {
+
     // Generated code :
     switch (*s) {
     case VALEUR:
@@ -84,7 +85,7 @@ bool GeneratedState312s::Transition (Automate & automate, Symbole *s)
 
 }
 
-Symbole* GeneratedState312s::Reduction (vector<Symbole*> s)
+Symbole* GeneratedState312s::Reduction (vector<Symbole*>& s)
 {
     // This state does not require any reductions. :-)
 }
@@ -92,11 +93,11 @@ Symbole* GeneratedState312s::Reduction (vector<Symbole*> s)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-GeneratedState312s::GeneratedState312s ( const string name ) : Etat(name)
+GeneratedState312s::GeneratedState312s ()
 
-  // Algorithme :
+// Algorithme :
 
-  //
+//
 
 {
 

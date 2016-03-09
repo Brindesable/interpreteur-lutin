@@ -33,7 +33,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState22.h"
-#include "var.h"
+#include "../var.h"
 
 
 
@@ -73,7 +73,7 @@ using namespace std;
 bool GeneratedState22::Transition (Automate & automate, Symbole *s)
 {
 	// Generated code :
-	switch (*s) {
+	switch ((int)*s) {
 		case MOINS:
 			break;
 		case OUVRE_PAR:
@@ -98,7 +98,7 @@ bool GeneratedState22::Transition (Automate & automate, Symbole *s)
 			break;
 		case ECRIRE:
 			break;
-		case F:
+		case FACTEUR:
 			break;
 		case POINT_VIRGULE:
 			automate.Reduction(1);
@@ -113,7 +113,7 @@ bool GeneratedState22::Transition (Automate & automate, Symbole *s)
 			break;
 		case TERME:
 			break;
-		case VAL:
+		case VALEUR:
 			break;
 		case VAR:
 			break;
@@ -122,15 +122,17 @@ bool GeneratedState22::Transition (Automate & automate, Symbole *s)
 		case VIRGULE:
 			automate.Reduction(1);
 			break;
+		default:
+			break;
 	}
 	return false;
 
 }
 
-Symbole* GeneratedState22::Reduction (vector<Symbole*> s)
+Symbole* GeneratedState22::Reduction (vector<Symbole*>& s)
 {
     //le vector ne doit contenir qu'un identifiant.
-    Var* var = new Var(s[0]);
+    Var* var = new Var((Identifiant*)s[0]);
 
     return var;
 }
@@ -138,7 +140,7 @@ Symbole* GeneratedState22::Reduction (vector<Symbole*> s)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-GeneratedState22::GeneratedState22 ( const string name ) : Etat(name)
+GeneratedState22::GeneratedState22 ()
 
 // Algorithme :
 

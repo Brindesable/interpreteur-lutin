@@ -72,7 +72,7 @@ using namespace std;
 bool GeneratedState0p::Transition (Automate & automate, Symbole *s)
 {
 	// Generated code :
-	switch (*s) {
+	switch ((int)*s) {
 		case MOINS:
 			break;
 		case OUVRE_PAR:
@@ -88,50 +88,52 @@ bool GeneratedState0p::Transition (Automate & automate, Symbole *s)
 		case EGAL:
 			break;
 		case FIN:
-			automate.Decalage(s, new GeneratedState1)
+			automate.Decalage(s, new GeneratedState1);
 			break;
 		case CONST:
-			automate.Decalage(s, new GeneratedState3)
+			automate.Decalage(s, new GeneratedState3);
 			break;
 		case CONSTp:
 			break;
 		case EXPRESSION:
 			break;
 		case ECRIRE:
-			automate.Decalage(s, new GeneratedState1)
+			automate.Decalage(s, new GeneratedState1);
 			break;
-		case F:
+		case FACTEUR:
 			break;
 		case POINT_VIRGULE:
 			break;
 		case IDENTIFIANT:
-			automate.Decalage(s, new GeneratedState1)
+			automate.Decalage(s, new GeneratedState1);
 			break;
 		case LIRE:
-			automate.Decalage(s, new GeneratedState1)
+			automate.Decalage(s, new GeneratedState1);
 			break;
 		case PDECL:
 			break;
 		case PIN:
-			automate.Decalage(s, new GeneratedState1)
+			automate.Decalage(s, new GeneratedState1);
 			break;
 		case TERME:
 			break;
-		case VAL:
+		case VALEUR:
 			break;
 		case VAR:
-			automate.Decalage(s, new GeneratedState2)
+			automate.Decalage(s, new GeneratedState2);
 			break;
 		case VARp:
 			break;
 		case VIRGULE:
+			break;
+		default:
 			break;
 	}
 	return false;
 
 }
 
-Symbole* GeneratedState0p::Reduction (vector<Symbole*> s)
+Symbole* GeneratedState0p::Reduction (vector<Symbole*>& s)
 {
 // This state does not require any reductions. :-)
 }
@@ -139,7 +141,7 @@ Symbole* GeneratedState0p::Reduction (vector<Symbole*> s)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-GeneratedState0p::GeneratedState0p ( const string name ) : Etat(name)
+GeneratedState0p::GeneratedState0p ()
 
 // Algorithme :
 

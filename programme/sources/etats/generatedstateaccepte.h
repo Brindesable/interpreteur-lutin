@@ -2,7 +2,7 @@
 
 /*************************************************************************
 
- GeneratedState312t  -  description
+ GeneratedStateACCEPTE  -  description
 
  -------------------
 
@@ -14,11 +14,11 @@
 
 
 
-//---------- Interface de la classe <GeneratedState312t> (fichier GeneratedState312t.h) ------
+//---------- Interface de la classe <GeneratedStateACCEPTE> (fichier GeneratedStateACCEPTE.h) ------
 
-#if ! defined ( GENERATEDSTATE312T )
+#if ! defined ( GENERATEDSTATEACCEPTE )
 
-#define GENERATEDSTATE312T
+#define GENERATEDSTATEACCEPTE
 
 
 
@@ -42,7 +42,7 @@ using namespace std;
 
 //------------------------------------------------------------------------
 
-// Rôle de la classe <GeneratedState312t>
+// Rôle de la classe <GeneratedStateACCEPTE>
 
 //
 
@@ -50,7 +50,7 @@ using namespace std;
 
 //------------------------------------------------------------------------
 
-class GeneratedState312t : public Etat
+class GeneratedStateACCEPTE : public Etat
  {
     //----------------------------------------------------------------- PUBLIC
 
@@ -70,13 +70,12 @@ public:
 
     //
 
-    bool Transition (Automate & automate, Symbole *s);
-    Symbole* Reduction (vector<Symbole*>& s);
-
+    bool Transition(Automate & automate, Symbole *s){}
+    Symbole* Reduction(vector<Symbole*>& s){}
 
     //-------------------------------------------- Constructeurs - destructeur
 
-    GeneratedState312t();
+    GeneratedStateACCEPTE(){}
 
     // Mode d'emploi (constructeur de copie) :
 
@@ -88,7 +87,7 @@ public:
 
 
 
-    virtual ~GeneratedState312t();
+    virtual ~GeneratedStateACCEPTE(){}
 
     // Mode d'emploi :
 
@@ -144,9 +143,9 @@ private:
 
 
 
-//----------------------------------------- Types dépendants de <GeneratedState312t>
+//----------------------------------------- Types dépendants de <GeneratedStateACCEPTE>
 
 
 
-#endif // GENERATEDSTATE312T
+#endif // GENERATEDSTATEACCEPTE
 

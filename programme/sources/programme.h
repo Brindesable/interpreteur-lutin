@@ -42,7 +42,7 @@ public:
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    Programme(vector<PDECL*>& declarations, vector<PIN*>& instructions);
+    Programme(vector<Pdecl*>& declarations, vector<Pin*>& instructions);
     // Mode d'emploi :
     //
 
@@ -63,8 +63,8 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs privés
-    vector<PDECL*> declarations;
-    vector<PIN*> instructions;
+    vector<Pdecl*> declarations;
+    vector<Pin*> instructions;
 
 //---------------------------------------------------------- Classes amies
 

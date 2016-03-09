@@ -26,7 +26,7 @@ using namespace std;
 // Représente un PdeclConst du langage.
 //
 //------------------------------------------------------------------------
-class PdeclConst : public PDECL
+class PdeclConst : public Pdecl
 {
 //----------------------------------------------------------------- PUBLIC
 

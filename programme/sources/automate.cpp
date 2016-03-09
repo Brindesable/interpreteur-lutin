@@ -40,7 +40,7 @@ void Automate::Decalage(Symbole* symbole, Etat* etat)
 
 void Automate::Reduction(int nbSymboles)
 {
-    /*
+
     Etat* curr = pileEtats.top();
 
     vector<Symbole*> symboles;
@@ -53,8 +53,8 @@ void Automate::Reduction(int nbSymboles)
     Symbole* symbole = curr->Reduction(symboles);
 
     curr = pileEtats.top();
-    curr->Transition(this, symbole);
-	*/
+    curr->Transition(*this, symbole);
+
 } //----- Fin de Reduction
 
 
@@ -62,7 +62,7 @@ void Automate::Reduction(int nbSymboles)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Automate::Automate(Lexer& lexer) : lexer(lexer)
+Automate::Automate(istream& sources) : lexer(sources)
 {
 	
 } //----- Fin de Automate

@@ -34,26 +34,26 @@ void Programme::Print() const
 
 void Programme::Execute(map<string, int> &values)
 {
-    vector<PDECL*>::iterator itDecl;
+    vector<Pdecl*>::iterator itDecl;
 
     for(itDecl = declarations.begin(); itDecl != declarations.end(); ++itDecl)
     {
-		PDECL* currDecl = *itDecl;
+        Pdecl* currDecl = *itDecl;
 		currDecl->Execute(values);
     }
 
-    vector<PIN*>::iterator itInstr;
+    vector<Pin*>::iterator itInstr;
 
     for(itInstr = instructions.begin(); itInstr != instructions.end(); ++itInstr)
     {
-		PIN* currInstr = *itInstr;
+        Pin* currInstr = *itInstr;
 		currInstr->Execute(values);
     }
 } //----- Fin de Execute
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Programme::Programme(vector<PDECL*>& declarations, vector<PIN*>& instructions) : Symbole(PROGRAMME), declarations(declarations), instructions(instructions)
+Programme::Programme(vector<Pdecl*>& declarations, vector<Pin*>& instructions) : Symbole(PROGRAMME), declarations(declarations), instructions(instructions)
 {
 
 } //----- Fin de Programme

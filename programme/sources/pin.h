@@ -23,7 +23,7 @@ using namespace std;
 // Représente un PIN du langage.
 //
 //------------------------------------------------------------------------
-class PIN : public Symbole
+class Pin : public Symbole
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -36,11 +36,11 @@ public:
 //------------------------------------------------- Surcharge d'opérateursœ
 
 //-------------------------------------------- Constructeurs - destructeur
-    PIN(SymboleType type) : Symbole(type) {}
+    Pin(SymboleType type) : Symbole(type) {}
     // Mode d'emploi :
     //
 
-    virtual ~PIN() {};
+    virtual ~Pin() {};
     // Mode d'emploi :
     //
 

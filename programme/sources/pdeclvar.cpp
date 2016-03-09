@@ -41,7 +41,7 @@ void PdeclVar::Execute(map<string, int>& variables)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-PdeclVar::PdeclVar(Var* var) : PDECL(PDECL_VAR), var(var)
+PdeclVar::PdeclVar(Var* var) : Pdecl(PDECL_VAR), var(var)
 {
 
 } //----- Fin de PdeclVar

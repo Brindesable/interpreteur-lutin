@@ -23,7 +23,9 @@
 
 #include <vector>
 #include "symbole.h"
-#include "automate.h"
+
+
+class Automate;
 
 //------------------------------------------------------------- Constantes
 
@@ -55,15 +57,15 @@ public:
     //----------------------------------------------------- Méthodes publiques
 
     
-    virtual void Print() const = 0;
+    void Print() const;
    
-	virtual bool Transition (Automate & automate, Symbole *s) = 0;
+    virtual bool Transition (Automate & automate, Symbole *s)=0;
     
-    virtual Symbole* Reduction (vector<Symbole*> s) = 0;
+    virtual Symbole* Reduction (vector<Symbole*>& s)=0;
 
     //-------------------------------------------- Constructeurs - destructeur
 
-    Etat ( const string n ) : name(n) {}
+    Etat () {}
 
     // Mode d'emploi (constructeur de copie) :
 
@@ -74,7 +76,7 @@ public:
     //
     
 
-    virtual ~Etat ();
+    virtual ~Etat ( ) {}
 
     // Mode d'emploi :
 

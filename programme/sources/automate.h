@@ -14,11 +14,12 @@ using namespace std;
 #include <stack>
 #include "symbole.h"
 #include "lexer.h"
+#include "etat.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
-class Etat;
+
 
 //------------------------------------------------------------------------
 // Rôle de la classe <automate>
@@ -46,7 +47,7 @@ public:
     //------------------------------------------------- Surcharge d'opérateurs
 
     //-------------------------------------------- Constructeurs - destructeur
-    Automate(Lexer& lexer);
+    Automate(istream& sources);
     // Mode d'emploi :
     //
 
@@ -69,7 +70,7 @@ private:
     //------------------------------------------------------- Attributs privés
     stack<Symbole*> pileSymboles;
     stack<Etat*> pileEtats;
-    Lexer& lexer;
+    Lexer lexer;
     
     //---------------------------------------------------------- Classes amies
     

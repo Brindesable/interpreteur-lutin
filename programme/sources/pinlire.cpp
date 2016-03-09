@@ -44,7 +44,7 @@ void PinLire::Execute(map<string, int>& variables)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-PinLire::PinLire(Identifiant* id) : PIN(PIN_LIRE), id(id)
+PinLire::PinLire(Identifiant* id) : Pin(PIN_LIRE), id(id)
 {
 
 } //----- Fin de PinLire

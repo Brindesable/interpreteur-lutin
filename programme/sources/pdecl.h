@@ -12,7 +12,9 @@
 //--------------------------------------------------- Interfaces utilisées
 using namespace std;
 #include <map>
+#include <vector>
 #include "symbole.h"
+#include "var.h"
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
 
@@ -21,24 +23,28 @@ using namespace std;
 // Représente un PDECL du langage.
 //
 //------------------------------------------------------------------------
-class PDECL : public Symbole
+class Pdecl : public Symbole
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques    
-    virtual void Execute(map<string, int>& variables) = 0;
+//----------------------------------------------------- Méthodes publiques
+    void AddVar(Var* var){vars.push_back(var);}
+    // Mode d'emploi :
+
+
+    virtual void Execute(map<string, int>& variables){}
     // Mode d'emploi :
     // Execute le contenu du PDECL.
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    PDECL(SymboleType type) : Symbole(type) {}
+    Pdecl(SymboleType type) : Symbole(type) {}
     // Mode d'emploi :
     //
 
-    virtual ~PDECL() {}
+    virtual ~Pdecl() {}
     // Mode d'emploi :
     //
 
@@ -49,6 +55,7 @@ protected:
 
 private:
 //------------------------------------------------------- Méthodes privées
+    vector<Var*> vars;
 
 protected:
 //----------------------------------------------------- Attributs protégés

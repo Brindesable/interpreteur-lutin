@@ -29,6 +29,7 @@
 #include "../etat.h"
 #include "../symbole.h"
 #include "../automate.h"
+#include "all-states.h"
 using namespace std;
 
 //------------------------------------------------------------- Constantes
@@ -49,15 +50,11 @@ using namespace std;
 
 //------------------------------------------------------------------------
 
-
-
 class GeneratedState116 : public Etat
-
-{
-
+ {
     //----------------------------------------------------------------- PUBLIC
 
-    
+
 
 public:
 
@@ -73,12 +70,12 @@ public:
 
     //
 
-    bool Transition (Automate & automate, Symbole *s);
-    Symbole* Reduction (vector<Symbole*> s) = 0;
+    bool Transition(Automate & automate, Symbole *s);
+    Symbole* Reduction(vector<Symbole*>& s);
 
     //-------------------------------------------- Constructeurs - destructeur
 
-    GeneratedState116 ( const string name );
+    GeneratedState116();
 
     // Mode d'emploi (constructeur de copie) :
 
@@ -88,9 +85,9 @@ public:
 
     //
 
-    
 
-    virtual ~GeneratedState116 ( );
+
+    virtual ~GeneratedState116();
 
     // Mode d'emploi :
 
@@ -100,47 +97,47 @@ public:
 
     //
 
-    
+
 
     //------------------------------------------------------------------ PRIVE
 
-    
+
 
 protected:
 
     //----------------------------------------------------- Méthodes protégées
 
-    
+
 
 private:
 
     //------------------------------------------------------- Méthodes privées
 
-    
+
 
 protected:
 
     //----------------------------------------------------- Attributs protégés
 
-    
+
 
 private:
 
     //------------------------------------------------------- Attributs privés
 
-    
+
 
     //---------------------------------------------------------- Classes amies
 
-    
+
 
     //-------------------------------------------------------- Classes privées
 
-    
+
 
     //----------------------------------------------------------- Types privés
 
-    
+
 
 };
 

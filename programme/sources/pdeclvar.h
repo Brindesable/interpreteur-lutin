@@ -26,7 +26,7 @@ using namespace std;
 // Représente un PdeclVar du langage.
 //
 //------------------------------------------------------------------------
-class PdeclVar : public PDECL
+class PdeclVar : public Pdecl
 {
 //----------------------------------------------------------------- PUBLIC
 

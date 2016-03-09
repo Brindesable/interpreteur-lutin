@@ -24,7 +24,7 @@ using namespace std;
 // Représente un PinLire du langage.
 //
 //------------------------------------------------------------------------
-class PinLire : public PIN
+class PinLire : public Pin
 {
 //----------------------------------------------------------------- PUBLIC
 

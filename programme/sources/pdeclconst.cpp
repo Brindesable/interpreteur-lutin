@@ -49,7 +49,7 @@ void PdeclConst::Execute(map<string, int>& variables)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-PdeclConst::PdeclConst(vector<pair<Identifiant*, Valeur*> >& declarations) : PDECL(PDECL_CONST), declarations(declarations)
+PdeclConst::PdeclConst(vector<pair<Identifiant*, Valeur*> >& declarations) : Pdecl(PDECL_CONST), declarations(declarations)
 {
 
 } //----- Fin de PdeclConst

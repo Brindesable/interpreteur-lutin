@@ -72,7 +72,7 @@ using namespace std;
 bool GeneratedState32p::Transition (Automate & automate, Symbole *s)
 {
 	// Generated code :
-	switch (*s) {
+	switch ((int)*s) {
 		case MOINS:
 			break;
 		case OUVRE_PAR:
@@ -97,7 +97,7 @@ bool GeneratedState32p::Transition (Automate & automate, Symbole *s)
 			break;
 		case ECRIRE:
 			break;
-		case F:
+		case FACTEUR:
 			break;
 		case POINT_VIRGULE:
 			break;
@@ -111,8 +111,8 @@ bool GeneratedState32p::Transition (Automate & automate, Symbole *s)
 			break;
 		case TERME:
 			break;
-		case VAL:
-			automate.Decalage(s, new GeneratedState32s)
+		case VALEUR:
+			automate.Decalage(s, new GeneratedState32s);
 			break;
 		case VAR:
 			break;
@@ -120,12 +120,14 @@ bool GeneratedState32p::Transition (Automate & automate, Symbole *s)
 			break;
 		case VIRGULE:
 			break;
+		default:
+			break;
 	}
 	return false;
 
 }
 
-Symbole* GeneratedState32p::Reduction (vector<Symbole*> s)
+Symbole* GeneratedState32p::Reduction (vector<Symbole*>& s)
 {
 // This state does not require any reductions. :-)
 }
@@ -133,7 +135,7 @@ Symbole* GeneratedState32p::Reduction (vector<Symbole*> s)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-GeneratedState32p::GeneratedState32p ( const string name ) : Etat(name)
+GeneratedState32p::GeneratedState32p ()
 
 // Algorithme :
 

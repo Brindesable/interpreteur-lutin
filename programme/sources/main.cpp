@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fstream>
+#include "lutin-reader.h"
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -84,12 +85,12 @@ int main(int argc, char *argv[])
 	fileReader.open(fileName.c_str());
 	if (fileReader.is_open())
 	{	// SI le fichier existe
-		/*
+
 		LutinReader lutinReader(fileReader);
-		lutinReader.Construire()
+        lutinReader.Construire();
 
 		if(paramA)
-		{	lutinReader.AnalyseStatique();
+        {	lutinReader.AnalyseStatique();
 		}
 		if(paramO)
 		{	lutinReader.Transformation();
@@ -100,7 +101,7 @@ int main(int argc, char *argv[])
 		if(paramE)
 		{	lutinReader.Execution();
 		}
-		*/
+
 		fileReader.close();
 	}
 	else

@@ -34,6 +34,7 @@ using namespace std;
 
 #include "GeneratedState0.h"
 #include "GeneratedState0p.h"
+#include "generatedstateaccepte.h"
 
 
 
@@ -73,75 +74,78 @@ using namespace std;
 
 bool GeneratedState0::Transition (Automate & automate, Symbole *s)
 {
-	// Generated code :
-	switch (*s) {
-		case MOINS:
-			break;
-		case OUVRE_PAR:
-			break;
-		case FERME_PAR:
-			break;
-		case MULTIPLIE:
-			break;
-		case DIVISE:
-			break;
-		case PLUS:
-			break;
-		case EGAL:
-			break;
-        case POINT_VIRGULE:
-            automate.Decalage(s, new GeneratedStateACCEPTE);
-			break;
-		case CONST:
-            automate.Decalage(s, new GeneratedState0p);
-			break;
-		case CONSTp:
-			break;
-		case EXPRESSION:
-			break;
-        case ECRIRE:
-            automate.Decalage(s, new GeneratedState0p);
-			break;
-		case F:
-			break;
-		case POINT_VIRGULE:
-			break;
-		case IDENTIFIANT:
-            automate.Decalage(s, new GeneratedState0p);
-			break;
-		case LIRE:
-            automate.Decalage(s, new GeneratedState0p);
-			break;
-		case PDECL:
-            automate.Decalage(s, new GeneratedState0p);
-			break;
-		case PIN:
-			break;
-		case TERME:
-			break;
-		case VAL:
-			break;
-		case VAR:
-            automate.Decalage(s, new GeneratedState0p);
-			break;
-		case VARp:
-			break;
-		case VIRGULE:
-			break;
-	}
-	return false;
+    // Generated code :
+    switch ((int)*s) {
+    case MOINS:
+        break;
+    case OUVRE_PAR:
+        break;
+    case FERME_PAR:
+        break;
+    case MULTIPLIE:
+        break;
+    case DIVISE:
+        break;
+    case PLUS:
+        break;
+    case EGAL:
+        break;
+    case POINT_VIRGULE:
+        automate.Decalage(s, new GeneratedStateACCEPTE);
+        break;
+    case FIN:
+        automate.Decalage(s, new GeneratedStateACCEPTE);
+        break;
+    case CONST:
+        automate.Decalage(s, new GeneratedState0p);
+        break;
+    case CONSTp:
+        break;
+    case EXPRESSION:
+        break;
+    case ECRIRE:
+        automate.Decalage(s, new GeneratedState0p);
+        break;
+    case FACTEUR:
+        break;
+    case IDENTIFIANT:
+        automate.Decalage(s, new GeneratedState0p);
+        break;
+    case LIRE:
+        automate.Decalage(s, new GeneratedState0p);
+        break;
+    case PDECL:
+        automate.Decalage(s, new GeneratedState0p);
+        break;
+    case PIN:
+        break;
+    case TERME:
+        break;
+    case VALEUR:
+        break;
+    case VAR:
+        automate.Decalage(s, new GeneratedState0p);
+        break;
+    case VARp:
+        break;
+    case VIRGULE:
+        break;
+    default:
+        break;
+    }
+    return false;
 
 }
 
-Symbole* GeneratedState0::Reduction (vector<Symbole*> s)
+Symbole* GeneratedState0::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    // This state does not require any reductions. :-)
 }
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
-GeneratedState0::GeneratedState0 ( const string name ) : Etat(name)
+GeneratedState0::GeneratedState0 ()
 
 // Algorithme :
 
@@ -155,36 +159,36 @@ GeneratedState0::GeneratedState0 ( const string name ) : Etat(name)
 
 #endif
 
-    } //----- Fin de GeneratedState0 (constructeur de copie)
-        
+} //----- Fin de GeneratedState0 (constructeur de copie)
 
-    GeneratedState0::~GeneratedState0 ( )
 
-    // Algorithme :
+GeneratedState0::~GeneratedState0 ( )
 
-    //
+// Algorithme :
 
-    {
+//
+
+{
 
 #ifdef MAP
 
-        cout << "Appel au destructeur de <GeneratedState0>" << endl;
+    cout << "Appel au destructeur de <GeneratedState0>" << endl;
 
 #endif
 
-    } //----- Fin de ~GeneratedState0
+} //----- Fin de ~GeneratedState0
 
-    
 
-    
 
-    //------------------------------------------------------------------ PRIVE
 
-    
 
-    //----------------------------------------------------- Méthodes protégées
+//------------------------------------------------------------------ PRIVE
 
-    
 
-    //------------------------------------------------------- Méthodes privées
+
+//----------------------------------------------------- Méthodes protégées
+
+
+
+//------------------------------------------------------- Méthodes privées
 

@@ -23,7 +23,7 @@ using namespace std;
 // Représente un PinEcrire du langage.
 //
 //------------------------------------------------------------------------
-class PinEcrire : public PIN
+class PinEcrire : public Pin
 {
 //----------------------------------------------------------------- PUBLIC
 

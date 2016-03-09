@@ -72,7 +72,7 @@ using namespace std;
 bool GeneratedState113::Transition (Automate & automate, Symbole *s)
 {
 	// Generated code :
-	switch (*s) {
+	switch ((int)*s) {
 		case MOINS:
 			automate.Reduction(1);
 			break;
@@ -102,7 +102,7 @@ bool GeneratedState113::Transition (Automate & automate, Symbole *s)
 			break;
 		case ECRIRE:
 			break;
-		case F:
+		case FACTEUR:
 			break;
 		case POINT_VIRGULE:
 			automate.Reduction(1);
@@ -117,7 +117,7 @@ bool GeneratedState113::Transition (Automate & automate, Symbole *s)
 			break;
 		case TERME:
 			break;
-		case VAL:
+		case VALEUR:
 			break;
 		case VAR:
 			break;
@@ -125,12 +125,14 @@ bool GeneratedState113::Transition (Automate & automate, Symbole *s)
 			break;
 		case VIRGULE:
 			break;
+		default:
+			break;
 	}
 	return false;
 
 }
 
-Symbole* GeneratedState113::Reduction (vector<Symbole*> s)
+Symbole* GeneratedState113::Reduction (vector<Symbole*>& s)
 {
 // This state does not require any reductions. :-)
 }
@@ -138,7 +140,7 @@ Symbole* GeneratedState113::Reduction (vector<Symbole*> s)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-GeneratedState113::GeneratedState113 ( const string name ) : Etat(name)
+GeneratedState113::GeneratedState113 ()
 
 // Algorithme :
 
