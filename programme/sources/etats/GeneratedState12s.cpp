@@ -33,7 +33,9 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState12s.h"
-
+#include "../pin.h"
+#include "../pinlire.h"
+#include "../identifiant.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -132,7 +134,10 @@ bool GeneratedState12s::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState12s::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Pin* pin = (Pin*)s[3];
+    Identifiant* id = (Identifiant*)s[1];
+    pin->AddPinInst(new PinLire(id));
+    return pin;
 }
 
 

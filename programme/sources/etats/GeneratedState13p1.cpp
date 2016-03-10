@@ -74,6 +74,7 @@ bool GeneratedState13p1::Transition (Automate & automate, Symbole *s)
 	// Generated code :
 	switch ((int)*s) {
 		case MOINS:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState1113);
 			break;
 		case OUVRE_PAR:
@@ -85,6 +86,7 @@ bool GeneratedState13p1::Transition (Automate & automate, Symbole *s)
 		case DIVISE:
 			break;
 		case PLUS:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState1112);
 			break;
 		case EGAL:
@@ -102,6 +104,7 @@ bool GeneratedState13p1::Transition (Automate & automate, Symbole *s)
 		case FACTEUR:
 			break;
 		case POINT_VIRGULE:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState13p11);
 			break;
 		case IDENTIFIANT:

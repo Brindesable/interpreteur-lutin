@@ -33,6 +33,9 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState1111.h"
+#include "../pin.h"
+#include "../expression.h"
+#include "../pinecrire.h"
 
 
 
@@ -132,7 +135,10 @@ bool GeneratedState1111::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState1111::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+        Pin* pin = (Pin*)s[3];
+        Expression* exp = (Expression*)s[1];
+        pin->AddPinInst(new PinEcrire(exp));
+        return pin;
 }
 
 

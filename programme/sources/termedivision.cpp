@@ -40,7 +40,7 @@ int TermeDivision::Evaluate(map<string, int> &variables)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-TermeDivision::TermeDivision(Terme* terme, Facteur* facteur) : Terme(TERME_DIVISION), terme(terme), facteur(facteur)
+TermeDivision::TermeDivision(Terme* terme, Facteur* facteur) : Terme(TERME), terme(terme), facteur(facteur)
 {
 
 } //----- Fin de TermeDivision

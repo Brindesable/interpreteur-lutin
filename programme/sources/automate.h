@@ -32,6 +32,10 @@ class Automate
     
 public:
     //----------------------------------------------------- Méthodes publiques
+
+    void Consommer(){lexer.Read();}
+    // Mode d'emploi : Méthode initiant l'analyse du programme.
+    //
     Symbole* Lecture();
     // Mode d'emploi : Méthode initiant l'analyse du programme.
     //

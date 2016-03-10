@@ -41,7 +41,7 @@ int ExpressionMoins::Evaluate(map<string, int> &variables)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-ExpressionMoins::ExpressionMoins(Expression* expression, Terme* terme) : Expression(EXPRESSION_MOINS), expression(expression), terme(terme)
+ExpressionMoins::ExpressionMoins(Expression* expression, Terme* terme) : Expression(EXPRESSION), expression(expression), terme(terme)
 {
 
 } //----- Fin de ExpressionMoins

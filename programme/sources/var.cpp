@@ -52,7 +52,7 @@ void Var::Execute(map<string, int>& variables)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Var::Var(Identifiant* id) : Symbole(VAR_P)
+Var::Var(Identifiant* id) : PdeclInst(VARp)
 {
     declarations.push_back(id);
 } //----- Fin de Var

@@ -33,6 +33,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState0p.h"
+#include "../pin.h"
 
 
 
@@ -88,9 +89,10 @@ bool GeneratedState0p::Transition (Automate & automate, Symbole *s)
 		case EGAL:
 			break;
 		case FIN:
-			automate.Decalage(s, new GeneratedState1);
+            automate.Reduction(0);
 			break;
 		case CONST:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState3);
 			break;
 		case CONSTp:
@@ -98,28 +100,29 @@ bool GeneratedState0p::Transition (Automate & automate, Symbole *s)
 		case EXPRESSION:
 			break;
 		case ECRIRE:
-			automate.Decalage(s, new GeneratedState1);
+            automate.Decalage(new Pin(PIN), new GeneratedState1);
 			break;
 		case FACTEUR:
 			break;
 		case POINT_VIRGULE:
 			break;
 		case IDENTIFIANT:
-			automate.Decalage(s, new GeneratedState1);
+            automate.Decalage(new Pin(PIN), new GeneratedState1);
 			break;
 		case LIRE:
-			automate.Decalage(s, new GeneratedState1);
+            automate.Decalage(new Pin(PIN), new GeneratedState1);
 			break;
 		case PDECL:
 			break;
 		case PIN:
-			automate.Decalage(s, new GeneratedState1);
+            automate.Decalage(s, new GeneratedState1);
 			break;
 		case TERME:
 			break;
 		case VALEUR:
 			break;
 		case VAR:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState2);
 			break;
 		case VARp:
@@ -135,7 +138,7 @@ bool GeneratedState0p::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState0p::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    return new Pin(PIN);
 }
 
 

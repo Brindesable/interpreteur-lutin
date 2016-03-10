@@ -33,7 +33,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState116.h"
-
+#include "../valeur.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -134,7 +134,9 @@ bool GeneratedState116::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState116::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Valeur* val = (Valeur*)s[0];
+    val->SetSymboleType(FACTEUR);
+    return val;
 }
 
 

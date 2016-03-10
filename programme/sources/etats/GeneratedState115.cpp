@@ -33,6 +33,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState115.h"
+#include "../identifiant.h"
 
 
 
@@ -134,7 +135,9 @@ bool GeneratedState115::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState115::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Identifiant* id = (Identifiant*)s[0];
+    id->SetSymboleType(FACTEUR);
+    return id;
 }
 
 

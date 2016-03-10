@@ -82,9 +82,11 @@ bool GeneratedState112::Transition (Automate & automate, Symbole *s)
 			automate.Reduction(1);
 			break;
 		case MULTIPLIE:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState1121);
 			break;
 		case DIVISE:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState1122);
 			break;
 		case PLUS:
@@ -134,7 +136,11 @@ bool GeneratedState112::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState112::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+
+    Symbole* terme = s[0];
+    terme->SetSymboleType(EXPRESSION);
+
+    return terme;
 }
 
 

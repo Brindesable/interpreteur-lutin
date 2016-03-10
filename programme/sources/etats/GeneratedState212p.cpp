@@ -132,9 +132,8 @@ bool GeneratedState212p::Transition (Automate & automate, Symbole *s)
 Symbole* GeneratedState212p::Reduction (vector<Symbole*>& s)
 {
 
-    Var* curr = (Var*)s[0];
-    Identifiant* id = (Identifiant*)s[2];
-    delete s[1];
+    Var* curr = (Var*)s[2];
+    Identifiant* id = (Identifiant*)s[0];
     curr->AddDeclaration(id);
 
     return curr;

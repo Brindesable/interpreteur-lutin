@@ -35,6 +35,7 @@ using namespace std;
 #include "GeneratedState0.h"
 #include "GeneratedState0p.h"
 #include "generatedstateaccepte.h"
+#include "../pdecl.h"
 
 
 
@@ -91,13 +92,13 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
     case EGAL:
         break;
     case POINT_VIRGULE:
-        automate.Decalage(s, new GeneratedStateACCEPTE);
+        //automate.Decalage(s, new GeneratedStateACCEPTE);
         break;
     case FIN:
-        automate.Decalage(s, new GeneratedStateACCEPTE);
+        //automate.Decalage(s, new GeneratedStateACCEPTE);
         break;
     case CONST:
-        automate.Decalage(s, new GeneratedState0p);
+        //automate.Decalage(s, new GeneratedState0p);
         break;
     case CONSTp:
         break;
@@ -124,11 +125,14 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
     case VALEUR:
         break;
     case VAR:
-        automate.Decalage(s, new GeneratedState0p);
+        automate.Reduction(0);
         break;
     case VARp:
         break;
     case VIRGULE:
+        break;
+    case PROGRAMME:
+        automate.Decalage(s, new GeneratedStateACCEPTE);
         break;
     default:
         break;
@@ -139,7 +143,7 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState0::Reduction (vector<Symbole*>& s)
 {
-    // This state does not require any reductions. :-)
+    return new Pdecl(PDECL);
 }
 
 

@@ -13,8 +13,8 @@
 using namespace std;
 #include <map>
 #include <vector>
-#include "symbole.h"
 #include "identifiant.h"
+#include "pdeclinst.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -25,7 +25,7 @@ using namespace std;
 // Représente un Var du langage.
 //
 //------------------------------------------------------------------------
-class Var : public Symbole
+class Var : public PdeclInst
 {
 //----------------------------------------------------------------- PUBLIC
 

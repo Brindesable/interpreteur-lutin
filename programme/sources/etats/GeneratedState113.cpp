@@ -134,7 +134,10 @@ bool GeneratedState113::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState113::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Symbole* facteur = s[0];
+    facteur->SetSymboleType(TERME);
+
+    return facteur;
 }
 
 

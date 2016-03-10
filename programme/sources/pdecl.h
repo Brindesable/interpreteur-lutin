@@ -14,7 +14,7 @@ using namespace std;
 #include <map>
 #include <vector>
 #include "symbole.h"
-#include "var.h"
+#include "pdeclinst.h"
 //------------------------------------------------------------- Constantes
 //------------------------------------------------------------------ Types
 
@@ -29,11 +29,23 @@ class Pdecl : public Symbole
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void AddVar(Var* var){vars.push_back(var);}
+
+    void Print() const{}
+
+    void AddDecl(PdeclInst* var){decl.push_back(var);}
     // Mode d'emploi :
 
 
-    virtual void Execute(map<string, int>& variables){}
+    virtual void Execute(map<string, int>& variables){
+        vector<PdeclInst*>::iterator it;
+
+        for(it = decl.begin(); it != decl.end(); ++it){
+
+            PdeclInst* currDecl= *it;
+
+            currDecl->Execute(variables);
+        }
+    }
     // Mode d'emploi :
     // Execute le contenu du PDECL.
 
@@ -55,7 +67,7 @@ protected:
 
 private:
 //------------------------------------------------------- Méthodes privées
-    vector<Var*> vars;
+    vector<PdeclInst*> decl;
 
 protected:
 //----------------------------------------------------- Attributs protégés

@@ -40,7 +40,7 @@ void PinEcrire::Execute(map<string, int>& variables)
 } //----- Fin de Execute
 
 //-------------------------------------------- Constructeurs - destructeur
-PinEcrire::PinEcrire(Expression* expression) : Pin(PIN_ECRIRE), expression(expression)
+PinEcrire::PinEcrire(Expression* expression) : expression(expression)
 {
 
 } //----- Fin de PinEcrire

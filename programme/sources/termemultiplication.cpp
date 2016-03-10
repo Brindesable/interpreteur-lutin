@@ -41,7 +41,7 @@ int TermeMultiplication::Evaluate(map<string, int> &variables)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-TermeMultiplication::TermeMultiplication(Terme* terme, Facteur* facteur) : Terme(TERME_MULTIPLICATION), terme(terme), facteur(facteur)
+TermeMultiplication::TermeMultiplication(Terme* terme, Facteur* facteur) : Terme(TERME), terme(terme), facteur(facteur)
 {
 
 } //----- Fin de TermeMultiplication

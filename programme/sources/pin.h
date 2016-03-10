@@ -12,7 +12,9 @@
 //--------------------------------------------------- Interfaces utilisées
 using namespace std;
 #include <map>
+#include <vector>
 #include "symbole.h"
+#include "pininst.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -29,7 +31,23 @@ class Pin : public Symbole
 
 public:
 //----------------------------------------------------- Méthodes publiques
-	virtual void Execute(map<string, int>& variables) = 0;
+    void Print() const{}
+
+    void AddPinInst(PinInst* pinInst){inst.push_back(pinInst);}
+
+
+    virtual void Execute(map<string, int>& variables){
+        vector<PinInst*>::iterator it;
+
+        for(it=inst.begin(); it!=inst.end(); it++){
+
+            PinInst* pinInst = *it;
+
+            pinInst->Execute(variables);
+
+        }
+
+    }
 	// Mode d'emploi :
     // Execute le contenu du PIN.
 
@@ -51,7 +69,7 @@ protected:
 
 private:
 //------------------------------------------------------- Méthodes privées
-
+    vector<PinInst*> inst;
 protected:
 //----------------------------------------------------- Attributs protégés
 

@@ -1,79 +1,74 @@
 /*************************************************************************
-             Symbole  -  Représente un symbole du langage.
+             PdeclInst  -  Représente un PdeclInst du langage.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
  *************************************************************************/
 
-//---------- Interface de la classe <Symbole> (fichier symbole.h) ------
-#if ! defined ( SYMBOLE_H )
-#define SYMBOLE_H
+//---------- Interface de la classe <PdeclInst> (fichier pedcl.h) ------
+#if ! defined ( PDECLINST_H )
+#define PDECLINST_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "symboletype.h"
-
+using namespace std;
+#include <map>
+#include <vector>
+#include "symbole.h"
 //------------------------------------------------------------- Constantes
-
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Symbole>
-// Représente un symbole du langage.
-// 
+// Rôle de la classe <PdeclInst>
+// Représente un PdeclInst du langage.
+//
 //------------------------------------------------------------------------
-
-class Symbole
+class PdeclInst : public Symbole
 {
 //----------------------------------------------------------------- PUBLIC
-    
+
 public:
 //----------------------------------------------------- Méthodes publiques
-    virtual void Print() const = 0;
-    // Mode d'emploi :
-    // Affiche le Symbole.
 
-    void SetSymboleType(SymboleType type){this->type = type;}
-    
+    void Print() const{}
+
+    virtual void Execute(map<string, int>& variables)=0;
+    // Mode d'emploi :
+    // Execute le contenu du PdeclInst.
+
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le Symbole en int.
-    // L'entier retourné est l'identifiant du Symbole.
-    
-//-------------------------------------------- Constructeurs - destructeur    
-    Symbole(SymboleType type);
+
+//-------------------------------------------- Constructeurs - destructeur
+    PdeclInst(SymboleType type) : Symbole(type) {}
     // Mode d'emploi :
     //
 
-    
-    virtual ~Symbole();
+    virtual ~PdeclInst() {}
     // Mode d'emploi :
     //
-    
+
 //------------------------------------------------------------------ PRIVE
-    
+
 protected:
 //----------------------------------------------------- Méthodes protégées
-    
+
 private:
 //------------------------------------------------------- Méthodes privées
-    
+
 protected:
 //----------------------------------------------------- Attributs protégés
-    //L'identifiant du Symbole.
-    SymboleType type;
+
 private:
 //------------------------------------------------------- Attributs privés
 
-    
+
 //---------------------------------------------------------- Classes amies
-    
+
 //-------------------------------------------------------- Classes privées
-    
+
 //----------------------------------------------------------- Types privés
-    
+
 };
 
-//----------------------------------------- Types dépendants de <Symbole>
+//----------------------------------------- Types dépendants de <PDECLInst>
 
-#endif // SYMBOLE_H
+#endif // PDECLINST_H

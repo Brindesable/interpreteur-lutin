@@ -1,79 +1,75 @@
 /*************************************************************************
-             Symbole  -  Représente un symbole du langage.
+             PinInst  -  Représente un PinInst du langage.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
  *************************************************************************/
 
-//---------- Interface de la classe <Symbole> (fichier symbole.h) ------
-#if ! defined ( SYMBOLE_H )
-#define SYMBOLE_H
+//---------- Interface de la classe <PinInst> (fichier pininst.h) ------
+#if ! defined ( PININST_H )
+#define PININST_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "symboletype.h"
+using namespace std;
+#include <map>
+#include <vector>
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Symbole>
-// Représente un symbole du langage.
-// 
+// Rôle de la classe <PinInst>
+// Représente un PinInst du langage.
+//
 //------------------------------------------------------------------------
-
-class Symbole
+class PinInst
 {
 //----------------------------------------------------------------- PUBLIC
-    
+
 public:
 //----------------------------------------------------- Méthodes publiques
-    virtual void Print() const = 0;
-    // Mode d'emploi :
-    // Affiche le Symbole.
+    void Print() const{}
 
-    void SetSymboleType(SymboleType type){this->type = type;}
-    
-//------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
+
+    virtual void Execute(map<string, int>& variables)=0;
     // Mode d'emploi :
-    // Permet de caster le Symbole en int.
-    // L'entier retourné est l'identifiant du Symbole.
-    
-//-------------------------------------------- Constructeurs - destructeur    
-    Symbole(SymboleType type);
+    // Execute le contenu du PIN.
+
+//------------------------------------------------- Surcharge d'opérateursœ
+
+//-------------------------------------------- Constructeurs - destructeur
+    PinInst(){}
     // Mode d'emploi :
     //
 
-    
-    virtual ~Symbole();
+    virtual ~PinInst() {}
     // Mode d'emploi :
     //
-    
+
 //------------------------------------------------------------------ PRIVE
-    
+
 protected:
 //----------------------------------------------------- Méthodes protégées
-    
+
 private:
 //------------------------------------------------------- Méthodes privées
-    
+
 protected:
 //----------------------------------------------------- Attributs protégés
-    //L'identifiant du Symbole.
-    SymboleType type;
+
 private:
 //------------------------------------------------------- Attributs privés
 
-    
+
 //---------------------------------------------------------- Classes amies
-    
+
 //-------------------------------------------------------- Classes privées
-    
+
 //----------------------------------------------------------- Types privés
-    
+
 };
 
-//----------------------------------------- Types dépendants de <Symbole>
+//----------------------------------------- Types dépendants de <PIN>
 
-#endif // SYMBOLE_H
+#endif // PIN_H

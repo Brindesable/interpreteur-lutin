@@ -72,6 +72,7 @@ using namespace std;
 
 bool GeneratedState22::Transition (Automate & automate, Symbole *s)
 {
+
 	// Generated code :
 	switch ((int)*s) {
 		case MOINS:

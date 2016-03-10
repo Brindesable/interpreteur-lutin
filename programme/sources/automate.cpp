@@ -13,23 +13,46 @@ using namespace std;
 #include <vector>
 //------------------------------------------------------ Include personnel
 #include "automate.h"
+#include "etats/GeneratedState0.h"
 //------------------------------------------------------------- Constantes
 //---------------------------------------------------- Variables de classe
 //----------------------------------------------------------- Types privés
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
 //----------------------------------------------------- Méthodes publiques
+void AffichePileSymboles(stack<Symbole*> pileSymboles)
+{
+    while(!pileSymboles.empty()){
+        pileSymboles.top()->Print();
+        pileSymboles.pop();
+    }
+    cout<<endl;
+}
+
+
+
 Symbole* Automate::Lecture()
 {
-    Symbole* curr;
-    Symbole* next;
-    while(lexer.Read()){
+    lexer.Read();
+    pileEtats.push(new GeneratedState0);
 
+    int i = 0;
 
+    do{
+        i++;
+        Symbole* curr = lexer.SymboleCourant();
 
-
+        Etat *  currentState = pileEtats.top();
+        currentState->Transition(*this, curr);
     }
-    return 0;
+    while((int)*pileSymboles.top() != PROGRAMME && i<3000);
+
+   // cout<<"inf "<<pileSymboles.size()<<endl;
+   // cout<<"fin analyse "<<(int)(*pileSymboles.top())<<endl;
+
+
+
+    return pileSymboles.top();
 } //----- Fin de Lecture
 
 void Automate::Decalage(Symbole* symbole, Etat* etat)
@@ -55,8 +78,8 @@ void Automate::Reduction(int nbSymboles)
     curr = pileEtats.top();
     curr->Transition(*this, symbole);
 
-} //----- Fin de Reduction
 
+} //----- Fin de Reduction
 
 //------------------------------------------------- Surcharge d'opérateurs
 

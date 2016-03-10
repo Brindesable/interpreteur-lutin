@@ -75,6 +75,7 @@ bool GeneratedState312s::Transition (Automate & automate, Symbole *s)
     // Generated code :
     switch (*s) {
     case VALEUR:
+        automate.Consommer();
         automate.Decalage(s, new GeneratedState312t);
         break;
 

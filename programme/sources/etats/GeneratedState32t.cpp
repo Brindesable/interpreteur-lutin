@@ -33,7 +33,9 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState32t.h"
-
+#include "../identifiant.h"
+#include "../valeur.h"
+#include "../const.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -72,7 +74,8 @@ using namespace std;
 bool GeneratedState32t::Transition (Automate & automate, Symbole *s)
 {
 	// Generated code :
-	switch ((int)*s) {
+    automate.Reduction(4);
+    /**switch ((int)*s) {
 		case MOINS:
 			break;
 		case OUVRE_PAR:
@@ -123,14 +126,18 @@ bool GeneratedState32t::Transition (Automate & automate, Symbole *s)
 			break;
 		default:
 			break;
-	}
+    }*/
 	return false;
 
 }
 
 Symbole* GeneratedState32t::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    cout<<"redu"<<endl;
+    Identifiant* id = (Identifiant*)s[3];
+    Valeur* val = (Valeur*)s[1];
+
+    return new Const(id, val);
 }
 
 

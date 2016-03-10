@@ -70,12 +70,12 @@ public:
 
     //
 
-    bool Transition(Automate & automate, Symbole *s){}
-    Symbole* Reduction(vector<Symbole*>& s){}
+    bool Transition(Automate & automate, Symbole *s);
+    Symbole* Reduction(vector<Symbole*>& s);
 
     //-------------------------------------------- Constructeurs - destructeur
 
-    GeneratedStateACCEPTE(){}
+    GeneratedStateACCEPTE();
 
     // Mode d'emploi (constructeur de copie) :
 
@@ -87,7 +87,7 @@ public:
 
 
 
-    virtual ~GeneratedStateACCEPTE(){}
+    virtual ~GeneratedStateACCEPTE();
 
     // Mode d'emploi :
 

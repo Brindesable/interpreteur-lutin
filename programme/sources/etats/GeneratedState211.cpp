@@ -34,6 +34,7 @@ using namespace std;
 
 #include "GeneratedState211.h"
 #include "../pdecl.h"
+#include "../var.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -137,7 +138,7 @@ Symbole* GeneratedState211::Reduction (vector<Symbole*>& s)
     Pdecl* pdecl = (Pdecl*)s[3];
     Var* var = (Var*)s[1];
 
-    pdecl->AddVar(var);
+    pdecl->AddDecl(var);
 
     return pdecl;
 

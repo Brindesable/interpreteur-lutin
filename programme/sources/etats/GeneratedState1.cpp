@@ -33,6 +33,9 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState1.h"
+#include "../pdecl.h"
+#include "../pin.h"
+#include "../programme.h"
 
 
 
@@ -97,6 +100,7 @@ bool GeneratedState1::Transition (Automate & automate, Symbole *s)
 		case EXPRESSION:
 			break;
 		case ECRIRE:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState11);
 			break;
 		case FACTEUR:
@@ -104,9 +108,11 @@ bool GeneratedState1::Transition (Automate & automate, Symbole *s)
 		case POINT_VIRGULE:
 			break;
 		case IDENTIFIANT:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState13);
 			break;
 		case LIRE:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState12);
 			break;
 		case PDECL:
@@ -132,7 +138,10 @@ bool GeneratedState1::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState1::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Pin* pin = (Pin*) s[0];
+    Pdecl* pdecl = (Pdecl*) s[1];
+
+    return new Programme(pdecl, pin);
 }
 
 

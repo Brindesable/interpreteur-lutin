@@ -33,7 +33,8 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState311.h"
-
+#include "../pdecl.h"
+#include "../const.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -134,7 +135,12 @@ bool GeneratedState311::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState311::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Pdecl* pdecl = (Pdecl*)s[3];
+    Const* cst = (Const*)s[1];
+
+    pdecl->AddDecl(cst);
+
+    return pdecl;
 }
 
 

@@ -33,6 +33,9 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState11211.h"
+#include "../terme.h"
+#include "../facteur.h"
+#include "../termemultiplication.h"
 
 
 
@@ -134,7 +137,11 @@ bool GeneratedState11211::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState11211::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+
+    Terme* terme = (Terme*)s[2];
+    Facteur* facteur = (Facteur*)s[0];
+    TermeMultiplication* termeMultiplication = new TermeMultiplication(terme, facteur);
+    return termeMultiplication;
 }
 
 

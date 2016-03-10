@@ -14,6 +14,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "lutin-reader.h"
+#include "programme.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -28,7 +29,7 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void LutinReader::Construire()
 {
-	//programme = automate.Lecture();
+    programme = automate.Lecture();
 } //----- Fin de Construire
 
 void LutinReader::AnalyseStatique()
@@ -37,6 +38,11 @@ void LutinReader::AnalyseStatique()
 
 void LutinReader::Execution()
 {
+    cout<<"Debut exec"<<endl;
+    Programme* p = (Programme*)programme;
+    map<string, int> valeurs;
+    p->Execute(valeurs);
+
 } //----- Fin de Execution
 
 void LutinReader::Affichage()

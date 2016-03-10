@@ -1,11 +1,11 @@
 /*************************************************************************
-             ExpressionPlus  -  Représente un ExpressionPlus du langage.
+             Const  -  Représente un Const du langage.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
  *************************************************************************/
 
-//---------- Interface de la classe <ExpressionPlus> (fichier expressionplus.cpp) ------
+//---------- Interface de la classe <Const> (fichier const.cpp) ------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -14,11 +14,11 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "expressionplus.h"
+#include "const.h"
 
 //------------------------------------------------------------- Constantes
 
-//---------------------------------------------------- Variables de classe
+//---------------------------------------------------- Constiables de classe
 
 //----------------------------------------------------------- Types privés
 
@@ -27,29 +27,42 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-void ExpressionPlus::Print() const
+void Const::Print() const
 {
 
 } //----- Fin de print
 
-//------------------------------------------------- Surcharge d'opérateurs
-int ExpressionPlus::Evaluate(map<string, int>& variables)
+void Const::AddDeclaration(Identifiant* id, Valeur* val)
 {
-    return expression->Evaluate(variables) + terme->Evaluate(variables);
+    declarations.push_back(make_pair(id,val));
+} //----- Fin de AddDeclaration
+
+void Const::Execute(map<string, int>& variables)
+{
+    vector<pair<Identifiant*, Valeur*>>::iterator it;
+
+    for(it = declarations.begin(); it != declarations.end(); ++it)
+    {
+        Identifiant* identifiantCourant = it->first;
+        Valeur* valeurCourante = it->second;
+        variables[identifiantCourant->Nom()] = valeurCourante->Evaluate(variables);
+    }
 }
+
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-ExpressionPlus::ExpressionPlus(Expression* expression, Terme* terme) : Expression(EXPRESSION), expression(expression), terme(terme)
+Const::Const(Identifiant* id, Valeur* val) : PdeclInst(CONSTp)
+{
+    declarations.push_back(make_pair(id, val));
+} //----- Fin de Const
+
+
+Const::~Const()
 {
 
-} //----- Fin de ExpressionPlus
-
-
-ExpressionPlus::~ExpressionPlus()
-{
-
-} //----- Fin de ~ExpressionPlus
+} //----- Fin de ~Const
 
 
 //------------------------------------------------------------------ PRIVE

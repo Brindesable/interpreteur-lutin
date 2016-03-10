@@ -33,7 +33,8 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState11121.h"
-
+#include "../terme.h"
+#include "../expressionplus.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -82,9 +83,11 @@ bool GeneratedState11121::Transition (Automate & automate, Symbole *s)
 			automate.Reduction(3);
 			break;
 		case MULTIPLIE:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState1121);
 			break;
 		case DIVISE:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState1122);
 			break;
 		case PLUS:
@@ -134,7 +137,10 @@ bool GeneratedState11121::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState11121::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Terme* terme = (Terme*)s[0];
+    Expression* expression = (Expression*)s[2];
+
+    return new ExpressionPlus(expression, terme);
 }
 
 

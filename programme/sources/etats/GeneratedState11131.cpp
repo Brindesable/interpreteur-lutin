@@ -33,7 +33,9 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState11131.h"
-
+#include "../terme.h"
+#include "../expression.h"
+#include "../expressionmoins.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -134,7 +136,10 @@ bool GeneratedState11131::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState11131::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Terme* terme = (Terme*)s[0];
+    Expression* expression = (Expression*)s[2];
+
+    return new ExpressionMoins(expression, terme);
 }
 
 

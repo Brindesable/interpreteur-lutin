@@ -85,7 +85,8 @@ bool GeneratedState13::Transition (Automate & automate, Symbole *s)
 			break;
 		case PLUS:
 			break;
-		case EGAL:
+        case AFFECTATION:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState13p);
 			break;
 		case FIN:

@@ -39,7 +39,7 @@ void PinAffecter::Execute(map<string, int>& variables)
 } //----- Fin de Execute
 
 //-------------------------------------------- Constructeurs - destructeur
-PinAffecter::PinAffecter(Identifiant* id, Expression* expression) : Pin(PIN_AFFECTER), id(id), expression(expression)
+PinAffecter::PinAffecter(Identifiant* id, Expression* expression) : id(id), expression(expression)
 {
 
 } //----- Fin de PinAffecter

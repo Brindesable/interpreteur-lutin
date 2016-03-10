@@ -33,8 +33,9 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState11221.h"
-
-
+#include "../terme.h"
+#include "../termedivision.h"
+#include "../facteur.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -134,7 +135,10 @@ bool GeneratedState11221::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState11221::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Terme* terme = (Terme*)s[2];
+    Facteur* facteur = (Facteur*)s[0];
+    TermeDivision* termeDivision = new TermeDivision(terme, facteur);
+    return termeDivision;
 }
 
 

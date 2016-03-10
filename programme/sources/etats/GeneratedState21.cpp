@@ -100,6 +100,7 @@ bool GeneratedState21::Transition (Automate & automate, Symbole *s)
 		case FACTEUR:
 			break;
 		case POINT_VIRGULE:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState211);
 			break;
 		case IDENTIFIANT:
@@ -119,6 +120,7 @@ bool GeneratedState21::Transition (Automate & automate, Symbole *s)
 		case VARp:
 			break;
 		case VIRGULE:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState212);
 			break;
 		default:

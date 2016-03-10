@@ -102,6 +102,7 @@ bool GeneratedState12::Transition (Automate & automate, Symbole *s)
 		case POINT_VIRGULE:
 			break;
 		case IDENTIFIANT:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState12p);
 			break;
 		case LIRE:

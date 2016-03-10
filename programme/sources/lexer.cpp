@@ -59,12 +59,19 @@ bool Lexer::Read()
     //On alimente le tampon avec les sources.
     if (tampon.empty() && sources)
     {
-        getline(sources, tampon);
+
+        if(!getline(sources, tampon))
+        {
+            symbole_courant = FabriqueSymbole::CreerSymbole(FIN, "$");
+            return true;
+        }
     }
+
 
     //On recherche séquentiellement les motifs des symboles.
     for (vector<Lexer::RegexSymbole>::const_iterator itRegex = regex_symboles.begin();itRegex != regex_symboles.end();++itRegex)
     {
+
         smatch matche;
         if (regex_search(tampon, matche, itRegex->motif))
         {
@@ -76,7 +83,8 @@ bool Lexer::Read()
         }
     }
 
-    //Erreur, rien n'a été trouvé, ou bien le programme est terminé.
+
+    //Erreur, rien n'a été trouvé.
     return false;
 } //----- Fin de Read
 

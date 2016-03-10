@@ -112,6 +112,7 @@ bool GeneratedState32p::Transition (Automate & automate, Symbole *s)
 		case TERME:
 			break;
 		case VALEUR:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState32s);
 			break;
 		case VAR:

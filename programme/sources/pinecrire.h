@@ -12,8 +12,8 @@
 //--------------------------------------------------- Interfaces utilisées
 using namespace std;
 #include <map>
-#include "pin.h"
 #include "expression.h"
+#include "pininst.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -23,7 +23,7 @@ using namespace std;
 // Représente un PinEcrire du langage.
 //
 //------------------------------------------------------------------------
-class PinEcrire : public Pin
+class PinEcrire : public PinInst
 {
 //----------------------------------------------------------------- PUBLIC
 

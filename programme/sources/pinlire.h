@@ -12,7 +12,7 @@
 //--------------------------------------------------- Interfaces utilisées
 using namespace std;
 #include <map>
-#include "pin.h"
+#include "pininst.h"
 #include "identifiant.h"
 #include "expression.h"
 //------------------------------------------------------------- Constantes
@@ -24,7 +24,7 @@ using namespace std;
 // Représente un PinLire du langage.
 //
 //------------------------------------------------------------------------
-class PinLire : public Pin
+class PinLire : public PinInst
 {
 //----------------------------------------------------------------- PUBLIC
 

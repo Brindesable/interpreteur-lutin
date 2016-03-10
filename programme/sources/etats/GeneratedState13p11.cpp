@@ -33,7 +33,10 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState13p11.h"
-
+#include "../pin.h"
+#include "../identifiant.h"
+#include "../valeur.h"
+#include "../pinaffecter.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -132,7 +135,11 @@ bool GeneratedState13p11::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState13p11::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Pin* pin = (Pin*)s[4];
+    PinAffecter* pinAffecter = new PinAffecter((Identifiant*)s[3],(Expression*)s[1]);
+    pin->AddPinInst(pinAffecter);
+
+    return pin;
 }
 
 

@@ -1,79 +1,81 @@
 /*************************************************************************
-             Symbole  -  Représente un symbole du langage.
+                Const  -  Représente un Const du langage.
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
  *************************************************************************/
 
-//---------- Interface de la classe <Symbole> (fichier symbole.h) ------
-#if ! defined ( SYMBOLE_H )
-#define SYMBOLE_H
+//---------- Interface de la classe <Const> (fichier const.h) ------
+#if ! defined ( CONST_H )
+#define CONST_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "symboletype.h"
+using namespace std;
+#include <map>
+#include <vector>
+#include "identifiant.h"
+#include "valeur.h"
+#include "pdeclinst.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Symbole>
-// Représente un symbole du langage.
-// 
+// Rôle de la classe <Const>
+// Représente un Const du langage.
+//
 //------------------------------------------------------------------------
-
-class Symbole
+class Const : public PdeclInst
 {
 //----------------------------------------------------------------- PUBLIC
-    
+
 public:
 //----------------------------------------------------- Méthodes publiques
-    virtual void Print() const = 0;
+    void Print() const;
     // Mode d'emploi :
-    // Affiche le Symbole.
+    // Affiche le PdeclConst.
 
-    void SetSymboleType(SymboleType type){this->type = type;}
-    
+    void Execute(map<string, int>& constiables);
+    // Mode d'emploi :
+    // Execute le contenu du PdeclConst.
+
+    void AddDeclaration(Identifiant* id, Valeur* val);
+
 //------------------------------------------------- Surcharge d'opérateurs
-    operator int() const;
-    // Mode d'emploi :
-    // Permet de caster le Symbole en int.
-    // L'entier retourné est l'identifiant du Symbole.
-    
-//-------------------------------------------- Constructeurs - destructeur    
-    Symbole(SymboleType type);
+
+//-------------------------------------------- Constructeurs - destructeur
+   Const(Identifiant* id, Valeur* val);
     // Mode d'emploi :
     //
 
-    
-    virtual ~Symbole();
+    virtual ~Const();
     // Mode d'emploi :
     //
-    
+
 //------------------------------------------------------------------ PRIVE
-    
+
 protected:
 //----------------------------------------------------- Méthodes protégées
-    
+
 private:
 //------------------------------------------------------- Méthodes privées
-    
+
 protected:
 //----------------------------------------------------- Attributs protégés
-    //L'identifiant du Symbole.
-    SymboleType type;
+
 private:
 //------------------------------------------------------- Attributs privés
+    vector<pair<Identifiant*, Valeur*>> declarations;
 
-    
 //---------------------------------------------------------- Classes amies
-    
+
 //-------------------------------------------------------- Classes privées
-    
+
 //----------------------------------------------------------- Types privés
-    
+
 };
 
-//----------------------------------------- Types dépendants de <Symbole>
+//----------------------------------------- Types dépendants de <PdeclConst>
 
-#endif // SYMBOLE_H
+#endif // CONST_H

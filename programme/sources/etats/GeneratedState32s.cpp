@@ -33,7 +33,9 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState32s.h"
-
+#include "../identifiant.h"
+#include "../valeur.h"
+#include "../const.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -100,7 +102,7 @@ bool GeneratedState32s::Transition (Automate & automate, Symbole *s)
 		case FACTEUR:
 			break;
 		case POINT_VIRGULE:
-			automate.Decalage(s, new GeneratedState32t);
+            automate.Reduction(3);
 			break;
 		case IDENTIFIANT:
 			break;
@@ -119,6 +121,7 @@ bool GeneratedState32s::Transition (Automate & automate, Symbole *s)
 		case VARp:
 			break;
 		case VIRGULE:
+            automate.Reduction(3);
 			break;
 		default:
 			break;
@@ -129,7 +132,10 @@ bool GeneratedState32s::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState32s::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Identifiant* id = (Identifiant*)s[2];
+    Valeur* val = (Valeur*)s[0];
+
+    return new Const(id, val);
 }
 
 

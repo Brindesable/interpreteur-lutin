@@ -86,6 +86,7 @@ bool GeneratedState32::Transition (Automate & automate, Symbole *s)
 		case PLUS:
 			break;
 		case EGAL:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState32p);
 			break;
 		case FIN:
