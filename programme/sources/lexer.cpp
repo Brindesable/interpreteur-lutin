@@ -57,32 +57,33 @@ Symbole* Lexer::SymboleCourant() const
 bool Lexer::Read()
 {
     //On alimente le tampon avec les sources.
-    if (tampon.empty() && sources)
+    while (tampon.empty() && sources)
     {
-
-        if(!getline(sources, tampon))
-        {
-            symbole_courant = FabriqueSymbole::CreerSymbole(FIN, "$");
-            return true;
-        }
+        //Les sources contiennent encore du texte, on lit la prochaine ligne.
+        getline(sources, tampon);
     }
 
+    //On teste si on est arrivé à la fin des sources.
+    if (tampon.empty() && sources.eof())
+    {
+        //On retourne un symbole de fin.
+        symbole_courant = FabriqueSymbole::CreerSymbole(FIN, "$");
+        return true;
+    }
 
     //On recherche séquentiellement les motifs des symboles.
     for (vector<Lexer::RegexSymbole>::const_iterator itRegex = regex_symboles.begin();itRegex != regex_symboles.end();++itRegex)
     {
-
         smatch matche;
         if (regex_search(tampon, matche, itRegex->motif))
         {
-			symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
+            symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
 
 			tampon = matche.suffix().str();
-			
+
 			return true;
         }
     }
-
 
     //Erreur, rien n'a été trouvé.
     return false;
