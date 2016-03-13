@@ -32,7 +32,7 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void Print() const
     {
-		cout << "Type:" << type << "\tTerminal:    " << terminal << endl;
+		cout << terminal;
     }
     // Mode d'emploi :
     // Affiche le SymboleTerminal.

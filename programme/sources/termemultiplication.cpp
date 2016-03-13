@@ -30,7 +30,9 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void TermeMultiplication::Print() const
 {
-
+    terme->Print();
+    cout << " * ";
+    facteur->Print();
 } //----- Fin de Print
 
 //------------------------------------------------- Surcharge d'opérateurs

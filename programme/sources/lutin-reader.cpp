@@ -42,7 +42,8 @@ void LutinReader::Execution()
 
     map<string, int> valeurs;
     programme->Execute(valeurs);
-
+    
+    cout << endl;
 } //----- Fin de Execution
 
 void LutinReader::Affichage()
@@ -51,6 +52,8 @@ void LutinReader::Affichage()
 	cout << "----------------------" << endl;
     
     programme->Print();
+    
+    cout << endl;
 } //----- Fin de Affichage
 
 void LutinReader::Transformation()

@@ -33,6 +33,8 @@ public:
     // Affiche le Symbole.
 
     void SetSymboleType(SymboleType type){this->type = type;}
+    // Mode d'emploi : 
+    // Permet de modifier le type d'un symbole.
     
 //------------------------------------------------- Surcharge d'opérateurs
     operator int() const;

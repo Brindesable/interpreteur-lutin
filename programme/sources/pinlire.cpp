@@ -29,7 +29,9 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void PinLire::Print() const
 {
-
+    cout << "lire ";
+    id->Print();
+    cout << ";" << endl;
 } //----- Fin de Print
 
 //------------------------------------------------- Surcharge d'opérateurs

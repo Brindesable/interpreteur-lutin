@@ -30,7 +30,9 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void PinEcrire::Print() const
 {
-
+    cout << "ecrire ";
+    expression->Print();
+    cout << ";" << endl;
 } //----- Fin de Print
 
 //------------------------------------------------- Surcharge d'opérateurs

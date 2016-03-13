@@ -29,7 +29,9 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void ExpressionPlus::Print() const
 {
-
+    expression->Print();
+    cout << " + ";
+    terme->Print();
 } //----- Fin de print
 
 //------------------------------------------------- Surcharge d'opérateurs

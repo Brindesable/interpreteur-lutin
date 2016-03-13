@@ -30,7 +30,9 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void ExpressionMoins::Print() const
 {
-
+    expression->Print();
+    cout << " - ";
+    terme->Print();
 } //----- Fin de print
 
 //------------------------------------------------- Surcharge d'opérateurs

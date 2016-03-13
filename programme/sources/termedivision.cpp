@@ -29,7 +29,9 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void TermeDivision::Print() const
 {
-
+    terme->Print();
+    cout << " / ";
+    facteur->Print();
 } //----- Fin de print
 
 //------------------------------------------------- Surcharge d'opérateurs
