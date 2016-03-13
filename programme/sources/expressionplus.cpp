@@ -30,7 +30,7 @@ using namespace std;
 void ExpressionPlus::Print() const
 {
     expression->Print();
-    cout << " + ";
+    cout << "+";
     terme->Print();
 } //----- Fin de print
 

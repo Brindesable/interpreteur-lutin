@@ -31,7 +31,7 @@ using namespace std;
 void TermeMultiplication::Print() const
 {
     terme->Print();
-    cout << " * ";
+    cout << "*";
     facteur->Print();
 } //----- Fin de Print
 

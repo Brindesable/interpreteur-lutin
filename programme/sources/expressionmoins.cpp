@@ -31,7 +31,7 @@ using namespace std;
 void ExpressionMoins::Print() const
 {
     expression->Print();
-    cout << " - ";
+    cout << "-";
     terme->Print();
 } //----- Fin de print
 

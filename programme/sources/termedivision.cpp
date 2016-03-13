@@ -30,7 +30,7 @@ using namespace std;
 void TermeDivision::Print() const
 {
     terme->Print();
-    cout << " / ";
+    cout << "/";
     facteur->Print();
 } //----- Fin de print
 

@@ -37,23 +37,23 @@ void LutinReader::AnalyseStatique()
 
 void LutinReader::Execution()
 {
-    cout << "Execution" << endl;
-    cout << "---------" << endl;
+    //cout << "Execution" << endl;
+    //cout << "---------" << endl;
 
     map<string, int> valeurs;
     programme->Execute(valeurs);
     
-    cout << endl;
+    //cout << endl;
 } //----- Fin de Execution
 
 void LutinReader::Affichage()
 {
-	cout << "Affichage du programme" << endl;
-	cout << "----------------------" << endl;
+	//cout << "Affichage du programme" << endl;
+	//cout << "----------------------" << endl;
     
     programme->Print();
     
-    cout << endl;
+    //cout << endl;
 } //----- Fin de Affichage
 
 void LutinReader::Transformation()

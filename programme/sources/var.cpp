@@ -30,22 +30,22 @@ using namespace std;
 void Var::Print() const
 {
     vector<Identifiant*>::const_iterator it;
-    
-    cout << "var ";
 
     for(it = declarations.begin(); it != declarations.end(); ++it)
     {
         Identifiant* identifiantCourant = *it;
-        
-        //Si on n'est pas au début de la liste.
-        if (it != declarations.begin())
-        {
-            cout << ", ";
-        }
+
+        cout << "var ";
         //On affiche l'identifiant défini.
         identifiantCourant->Print();
+        cout << ";" << endl;
+
+        //Si on n'est pas au début de la liste.
+        if (it == declarations.end())
+        {
+            cout << endl;
+        }
     }
-    cout << ";" << endl;
 } //----- Fin de Print
 
 void Var::AddDeclaration(Identifiant* id)
