@@ -33,6 +33,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState11411.h"
+#include "../expressionparenthese.h"
 
 
 
@@ -134,56 +135,29 @@ bool GeneratedState11411::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState11411::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    Expression* expression = static_cast<Expression*>(s[1]);
+    
+    ExpressionParenthese* expressionParenthese = new ExpressionParenthese(expression);
+    expressionParenthese->SetSymboleType(FACTEUR);
+    return expressionParenthese;
 }
-
 
 //-------------------------------------------- Constructeurs - destructeur
 
 GeneratedState11411::GeneratedState11411 ()
-
-// Algorithme :
-
-//
-
 {
-
-#ifdef MAP
-
-    cout << "Appel au constructeur de <GeneratedState11411>" << endl;
-
-#endif
-
-    } //----- Fin de GeneratedState11411 (constructeur de copie)
+    
+} //----- Fin de GeneratedState11411
         
 
-    GeneratedState11411::~GeneratedState11411 ( )
-
-    // Algorithme :
-
-    //
-
-    {
-
-#ifdef MAP
-
-        cout << "Appel au destructeur de <GeneratedState11411>" << endl;
-
-#endif
-
-    } //----- Fin de ~GeneratedState11411
-
+GeneratedState11411::~GeneratedState11411 ( )
+{
     
+} //----- Fin de ~GeneratedState11411
 
-    
+//------------------------------------------------------------------ PRIVE
 
-    //------------------------------------------------------------------ PRIVE
+//----------------------------------------------------- Méthodes protégées
 
-    
-
-    //----------------------------------------------------- Méthodes protégées
-
-    
-
-    //------------------------------------------------------- Méthodes privées
+//------------------------------------------------------- Méthodes privées
 

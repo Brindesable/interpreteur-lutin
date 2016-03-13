@@ -74,11 +74,13 @@ bool GeneratedState1141::Transition (Automate & automate, Symbole *s)
 	// Generated code :
 	switch ((int)*s) {
 		case MOINS:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState1113);
 			break;
 		case OUVRE_PAR:
 			break;
 		case FERME_PAR:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState11411);
 			break;
 		case MULTIPLIE:
@@ -86,6 +88,7 @@ bool GeneratedState1141::Transition (Automate & automate, Symbole *s)
 		case DIVISE:
 			break;
 		case PLUS:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState1112);
 			break;
 		case EGAL:

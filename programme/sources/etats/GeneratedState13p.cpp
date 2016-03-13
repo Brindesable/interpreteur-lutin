@@ -76,6 +76,7 @@ bool GeneratedState13p::Transition (Automate & automate, Symbole *s)
 		case MOINS:
 			break;
 		case OUVRE_PAR:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState114);
 			break;
 		case FERME_PAR:

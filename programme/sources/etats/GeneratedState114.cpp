@@ -58,17 +58,6 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-// type GeneratedState114::Méthode ( liste de paramètres )
-
-// Algorithme :
-
-//
-
-//{
-
-//} //----- Fin de Méthode
-
-
 bool GeneratedState114::Transition (Automate & automate, Symbole *s)
 {
 	// Generated code :
@@ -76,6 +65,7 @@ bool GeneratedState114::Transition (Automate & automate, Symbole *s)
 		case MOINS:
 			break;
 		case OUVRE_PAR:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState114);
 			break;
 		case FERME_PAR:
@@ -105,6 +95,7 @@ bool GeneratedState114::Transition (Automate & automate, Symbole *s)
 		case POINT_VIRGULE:
 			break;
 		case IDENTIFIANT:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState115);
 			break;
 		case LIRE:
@@ -114,8 +105,10 @@ bool GeneratedState114::Transition (Automate & automate, Symbole *s)
 		case PIN:
 			break;
 		case TERME:
+            automate.Decalage(s, new GeneratedState112);
 			break;
 		case VALEUR:
+            automate.Consommer();
 			automate.Decalage(s, new GeneratedState116);
 			break;
 		case VAR:

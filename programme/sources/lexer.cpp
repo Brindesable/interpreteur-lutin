@@ -34,6 +34,8 @@ const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
         {regex("^(-)\\s*"), MOINS},
         {regex("^(/)\\s*"), DIVISE},
         {regex("^(\\*)\\s*"), MULTIPLIE},
+        {regex("^(\\()\\s*"), OUVRE_PAR},
+        {regex("^(\\))\\s*"), FERME_PAR},
         {regex("^(\\d+)\\s*"), VALEUR},
         {regex("^(\\w+)\\s*"), IDENTIFIANT}
     };
