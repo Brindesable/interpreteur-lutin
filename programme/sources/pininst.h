@@ -29,12 +29,13 @@ class PinInst
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void Print() const{}
-
-
-    virtual void Execute(map<string, int>& variables)=0;
+    virtual void Print() const = 0;
     // Mode d'emploi :
-    // Execute le contenu du PIN.
+    // Affiche le contenu du PinInst.
+
+    virtual void Execute(map<string, int>& variables) = 0;
+    // Mode d'emploi :
+    // Execute le contenu du PinInst.
 
 //------------------------------------------------- Surcharge d'opérateursœ
 

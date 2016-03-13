@@ -31,22 +31,34 @@ class Pin : public Symbole
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void Print() const{}
+    virtual void Print() const
+    {
+        vector<PinInst*>::const_iterator it;
+
+        for(it=inst.begin(); it!=inst.end(); it++)
+        {
+            PinInst* pinInst = *it;
+
+            pinInst->Print();
+        }
+    }
+    // Mode d'emploi
+    // Affiche le contenu du Pin.
 
     void AddPinInst(PinInst* pinInst){inst.push_back(pinInst);}
+    // Mode d'emploi
+    // Ajoute une instruction au programme.
 
-
-    virtual void Execute(map<string, int>& variables){
+    virtual void Execute(map<string, int>& variables)
+    {
         vector<PinInst*>::iterator it;
 
-        for(it=inst.begin(); it!=inst.end(); it++){
-
+        for(it=inst.begin(); it!=inst.end(); it++)
+        {
             PinInst* pinInst = *it;
 
             pinInst->Execute(variables);
-
         }
-
     }
 	// Mode d'emploi :
     // Execute le contenu du PIN.

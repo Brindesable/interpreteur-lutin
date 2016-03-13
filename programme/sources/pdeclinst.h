@@ -28,8 +28,9 @@ class PdeclInst : public Symbole
 
 public:
 //----------------------------------------------------- Méthodes publiques
-
-    void Print() const{}
+    virtual void Print() const = 0;
+    // Mode d'emploi :
+    // Affiche le contenu du PdeclInst.
 
     virtual void Execute(map<string, int>& variables)=0;
     // Mode d'emploi :

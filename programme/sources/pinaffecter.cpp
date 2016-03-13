@@ -29,7 +29,10 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void PinAffecter::Print() const
 {
-
+    id->Print();
+    cout << " := ";
+    expression->Print();
+    cout << ";" << endl;
 } //----- Fin de Print
 
 //------------------------------------------------- Surcharge d'opérateurs
