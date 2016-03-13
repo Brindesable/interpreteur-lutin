@@ -30,16 +30,29 @@ class Pdecl : public Symbole
 public:
 //----------------------------------------------------- Méthodes publiques
 
-    void Print() const{}
+    virtual void Print() const
+    {
+        vector<PdeclInst*>::const_iterator it;
 
-    void AddDecl(PdeclInst* var){decl.push_back(var);}
+        for(it = decl.begin(); it != decl.end(); ++it) {
+
+            PdeclInst* currDecl= *it;
+
+            currDecl->Print();
+        }
+    }
     // Mode d'emploi :
+    // Affiche le contenu du Pdecl. 
 
+    void AddDecl(PdeclInst* var) {decl.push_back(var);}
+    // Mode d'emploi :
+    // Ajoute une déclaration.
 
-    virtual void Execute(map<string, int>& variables){
+    virtual void Execute(map<string, int>& variables)
+    {
         vector<PdeclInst*>::iterator it;
 
-        for(it = decl.begin(); it != decl.end(); ++it){
+        for(it = decl.begin(); it != decl.end(); ++it) {
 
             PdeclInst* currDecl= *it;
 
@@ -54,7 +67,7 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
     Pdecl(SymboleType type) : Symbole(type) {}
     // Mode d'emploi :
-    //
+    // Construit un Pdecl en fonction de son type.
 
     virtual ~Pdecl() {}
     // Mode d'emploi :

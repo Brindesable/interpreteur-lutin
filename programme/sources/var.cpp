@@ -29,8 +29,24 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Var::Print() const
 {
+    vector<Identifiant*>::const_iterator it;
+    
+    cout << "var ";
 
-} //----- Fin de print
+    for(it = declarations.begin(); it != declarations.end(); ++it)
+    {
+        Identifiant* identifiantCourant = *it;
+        
+        //Si on n'est pas au début de la liste.
+        if (it != declarations.begin())
+        {
+            cout << ", ";
+        }
+        //On affiche l'identifiant défini.
+        identifiantCourant->Print();
+    }
+    cout << ";" << endl;
+} //----- Fin de Print
 
 void Var::AddDeclaration(Identifiant* id)
 {

@@ -13,6 +13,7 @@
 using namespace std;
 #include <stack>
 #include "symbole.h"
+#include "programme.h"
 #include "lexer.h"
 #include "etat.h"
 
@@ -36,7 +37,7 @@ public:
     void Consommer(){lexer.Read();}
     // Mode d'emploi : Méthode initiant l'analyse du programme.
     //
-    Symbole* Lecture();
+    Programme* Lecture();
     // Mode d'emploi : Méthode initiant l'analyse du programme.
     //
 

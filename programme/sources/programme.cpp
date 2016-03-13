@@ -29,19 +29,17 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Programme::Print() const
 {
-
+    declarations->Print();
+    instructions->Print();
 } //----- Fin de Print
 
 void Programme::Execute(map<string, int> &values)
 {
+    Pdecl* currDecl = declarations;
+    currDecl->Execute(values);
 
-        Pdecl* currDecl = declarations;
-		currDecl->Execute(values);
-
-
-        Pin* currInstr = instructions;
-		currInstr->Execute(values);
-
+    Pin* currInstr = instructions;
+    currInstr->Execute(values);
 } //----- Fin de Execute
 
 //-------------------------------------------- Constructeurs - destructeur

@@ -41,11 +41,13 @@ public:
     // Execute le contenu du PdeclConst.
 
     void AddDeclaration(Identifiant* id, Valeur* val);
+    // Mode d'emploi :
+    // Ajoute une déclaration à la liste des constantes.
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-   Const(Identifiant* id, Valeur* val);
+    Const(Identifiant* id, Valeur* val);
     // Mode d'emploi :
     //
 

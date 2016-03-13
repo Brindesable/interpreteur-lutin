@@ -29,8 +29,8 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Valeur::Print() const
 {
-	cout << "Type:" << type << "\tValeur:      " << valeur << endl;
-} //----- Fin de print
+	cout << valeur;
+} //----- Fin de Print
 
 int Valeur::Evaluate(map<string, int>& variables)
 {

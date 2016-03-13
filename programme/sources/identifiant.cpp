@@ -31,7 +31,7 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Identifiant::Print() const
 {
-	cout << "Type:" << type << "\tIdentifiant: " << nom << endl;
+    cout << nom;
 } //----- Fin de Print
 
 int Identifiant::Evaluate(map<string, int>& variables)

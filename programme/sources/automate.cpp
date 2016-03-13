@@ -31,7 +31,7 @@ void AffichePileSymboles(stack<Symbole*> pileSymboles)
 
 
 
-Symbole* Automate::Lecture()
+Programme* Automate::Lecture()
 {
     lexer.Read();
     pileEtats.push(new GeneratedState0);
@@ -52,7 +52,7 @@ Symbole* Automate::Lecture()
 
 
 
-    return pileSymboles.top();
+    return static_cast<Programme*>(pileSymboles.top());
 } //----- Fin de Lecture
 
 void Automate::Decalage(Symbole* symbole, Etat* etat)
