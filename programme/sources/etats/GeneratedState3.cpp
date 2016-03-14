@@ -71,6 +71,7 @@ using namespace std;
 
 bool GeneratedState3::Transition (Automate & automate, Symbole *s)
 {
+
 	// Generated code :
 	switch ((int)*s) {
 		case MOINS:

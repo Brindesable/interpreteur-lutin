@@ -98,6 +98,7 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
         //automate.Decalage(s, new GeneratedStateACCEPTE);
         break;
     case CONST:
+        automate.Reduction(0);
         //automate.Decalage(s, new GeneratedState0p);
         break;
     case CONSTp:
@@ -105,15 +106,15 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
     case EXPRESSION:
         break;
     case ECRIRE:
-        automate.Decalage(s, new GeneratedState0p);
+         automate.Reduction(0);
         break;
     case FACTEUR:
         break;
     case IDENTIFIANT:
-        automate.Decalage(s, new GeneratedState0p);
+         automate.Reduction(0);
         break;
     case LIRE:
-        automate.Decalage(s, new GeneratedState0p);
+         automate.Reduction(0);
         break;
     case PDECL:
         automate.Decalage(s, new GeneratedState0p);
