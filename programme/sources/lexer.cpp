@@ -37,7 +37,7 @@ const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
         {regex("^(\\()\\s*"), OUVRE_PAR},
         {regex("^(\\))\\s*"), FERME_PAR},
         {regex("^(\\d+)\\s*"), VALEUR},
-        {regex("^(\\w+)\\s*"), IDENTIFIANT}
+        {regex("^([a-zA-Z]+)\\s*"), IDENTIFIANT}
     };
 
 //---------------------------------------------------- Variables de classe
@@ -63,6 +63,8 @@ bool Lexer::Read()
     {
         //Les sources contiennent encore du texte, on lit la prochaine ligne.
         getline(sources, tampon);
+        currLine++;
+        currCol = 0;
     }
 
     //On teste si on est arrivé à la fin des sources.
@@ -81,22 +83,37 @@ bool Lexer::Read()
         {
             symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
 
+            // on maj le tampon et on enregistre de combien de caracteres on s'est deplace
+            int prevSize = tampon.size();
 			tampon = matche.suffix().str();
+            currCol += prevSize - tampon.size();
 
 			return true;
         }
     }
 
     //Erreur, rien n'a été trouvé.
+    syntaxError = true;
     return false;
 } //----- Fin de Read
 
+string Lexer::GetSyntaxError()
+{
+    stringstream ss;
+    ss << "Erreur lexicale (" << currLine << ":" << currCol+1 << ") caractere " << tampon.c_str()[0];
+    return ss.str();
+}
+
+bool Lexer::CheckSyntaxError()
+{
+    return syntaxError;
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(nullptr)
+Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(nullptr), syntaxError(false), currLine(0), currCol(0)
 {
     //On supprime tous les espaces au début du programme.
     char c;

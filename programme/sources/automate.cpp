@@ -29,8 +29,6 @@ void AffichePileSymboles(stack<Symbole*> pileSymboles)
     cout<<endl;
 }
 
-
-
 Programme* Automate::Lecture()
 {
     lexer.Read();
@@ -39,18 +37,24 @@ Programme* Automate::Lecture()
     int i = 0;
 
     do{
-        i++;
-        Symbole* curr = lexer.SymboleCourant();
+        if(!lexer.CheckSyntaxError())
+        {
+            i++;
+            Symbole* curr = lexer.SymboleCourant();
 
-        Etat *  currentState = pileEtats.top();
-        currentState->Transition(*this, curr);
+            Etat *  currentState = pileEtats.top();
+            currentState->Transition(*this, curr);
+        }
+        else
+        {
+            cerr << lexer.GetSyntaxError() << endl;
+            return 0;
+        }
     }
     while((int)*pileSymboles.top() != PROGRAMME && i<3000);
 
    // cout<<"inf "<<pileSymboles.size()<<endl;
    // cout<<"fin analyse "<<(int)(*pileSymboles.top())<<endl;
-
-
 
     return static_cast<Programme*>(pileSymboles.top());
 } //----- Fin de Lecture

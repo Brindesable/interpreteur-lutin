@@ -43,6 +43,15 @@ public:
     // Mode d'emploi :
     // Fait avancer le curseur d'un Symbole.
     // Retourne true si un Symbole a été lu.
+
+    string GetSyntaxError();
+    // Mode d'emploi :
+    // A appeler si flagError est positionne a true
+    // Donne l'erreur de syntaxe, le caractere incrimine et sa position
+
+    bool CheckSyntaxError();
+    // Mode d'emploi :
+    // Accesseur de syntaxError
     
 //------------------------------------------------- Surcharge d'opérateurs
     
@@ -94,6 +103,12 @@ private:
     
     //Le Symbole sous le curseur.
     Symbole* symbole_courant;
+
+    // deviens true si on trouve une erreur syntaxique
+    bool syntaxError;
+
+    int currLine;
+    int currCol;
 
     static const vector<RegexSymbole> regex_symboles;
     

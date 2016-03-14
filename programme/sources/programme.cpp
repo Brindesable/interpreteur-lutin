@@ -42,9 +42,18 @@ void Programme::Execute(map<string, int> &values)
     currInstr->Execute(values);
 } //----- Fin de Execute
 
+void Programme::PrintError()
+{
+    if(error.size() > 0)
+    {
+        cout << error << endl;
+    }
+} //----- Fin de PrintError
+
 //-------------------------------------------- Constructeurs - destructeur
 
-Programme::Programme(Pdecl*declarations, Pin* instructions) : Symbole(PROGRAMME), declarations(declarations), instructions(instructions)
+Programme::Programme(Pdecl*declarations, Pin* instructions, string err) :
+        Symbole(PROGRAMME), declarations(declarations), instructions(instructions), error(err)
 {
 
 } //----- Fin de Programme

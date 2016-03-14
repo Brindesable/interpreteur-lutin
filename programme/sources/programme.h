@@ -39,10 +39,14 @@ public:
 	// Mode d'emploi :
     // Execute le contenu du Programme.
 
+    void PrintError();
+    // Mode d'emploi :
+    // Affiche error
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    Programme(Pdecl* declarations, Pin* instructions);
+    Programme(Pdecl* declarations, Pin* instructions, string err = "");
     // Mode d'emploi :
     //
 
@@ -65,6 +69,7 @@ private:
 //------------------------------------------------------- Attributs privés
     Pdecl* declarations;
     Pin* instructions;
+    string error;
 
 //---------------------------------------------------------- Classes amies
 

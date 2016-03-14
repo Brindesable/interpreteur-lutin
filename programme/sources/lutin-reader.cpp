@@ -33,6 +33,7 @@ void LutinReader::Construire()
 
 void LutinReader::AnalyseStatique()
 {
+    programme->PrintError();
 } //----- Fin de AnalyseStatique
 
 void LutinReader::Execution()
