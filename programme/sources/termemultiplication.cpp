@@ -89,7 +89,8 @@ TermeMultiplication::TermeMultiplication(Terme* terme, Facteur* facteur) : Terme
 
 TermeMultiplication::~TermeMultiplication()
 {
-
+    delete terme;
+    delete facteur;
 } //----- Fin de ~TermeMultiplication
 
 

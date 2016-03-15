@@ -80,7 +80,14 @@ Var::Var(Identifiant* id) : PdeclInst(VARp)
 
 Var::~Var()
 {
+    vector<Identifiant*>::iterator it;
 
+    for(it = declarations.begin(); it != declarations.end(); ++it)
+    {
+        delete *it;
+    }
+
+    declarations.clear();
 } //----- Fin de ~Var
 
 

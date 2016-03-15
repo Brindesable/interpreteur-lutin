@@ -84,7 +84,16 @@ public:
     // Mode d'emploi :
     //
 
-    virtual ~Pin() {};
+    virtual ~Pin()
+    {
+        vector<PinInst*>::iterator it;
+
+        for (it = inst.begin(); it != inst.end(); ++it)
+        {
+            delete *it;
+        }
+        inst.clear();
+    }
     // Mode d'emploi :
     //
 

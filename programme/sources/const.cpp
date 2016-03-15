@@ -90,7 +90,15 @@ Const::Const(Identifiant* id, Valeur* val) : PdeclInst(CONSTp)
 
 Const::~Const()
 {
+    vector<pair<Identifiant*, Valeur*>>::iterator it;
 
+    for(it = declarations.begin(); it != declarations.end(); ++it)
+    {
+        delete it->first;
+        delete it->second;
+    }
+
+    declarations.clear();
 } //----- Fin de ~Const
 
 

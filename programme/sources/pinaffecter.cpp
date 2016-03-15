@@ -61,7 +61,8 @@ PinAffecter::PinAffecter(Identifiant* id, Expression* expression) : id(id), expr
 
 PinAffecter::~PinAffecter()
 {
-
+    delete id;
+    delete expression;
 } //----- Fin de ~PinAffecter
 
 

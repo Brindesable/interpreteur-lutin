@@ -60,7 +60,7 @@ PinLire::PinLire(Identifiant* id) : id(id)
 
 PinLire::~PinLire()
 {
-
+    delete id;
 } //----- Fin de ~PinLire
 
 

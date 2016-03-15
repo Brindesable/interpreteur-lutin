@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ../lut -e -p ../files/correct.lt
+=======
+../lut -e -p ../files/static3.lt
+>>>>>>> 5f754de92c4060de096bcd1f3f67672f31b30b09
