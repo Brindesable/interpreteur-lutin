@@ -101,7 +101,17 @@ public:
     // Mode d'emploi :
     // Construit un Pdecl en fonction de son type.
 
-    virtual ~Pdecl() {}
+    virtual ~Pdecl()
+    {
+        vector<PdeclInst*>::iterator it;
+
+        for (it = decl.begin(); it != decl.end(); ++it)
+        {
+            delete *it;
+        }
+
+        decl.clear();
+    }
     // Mode d'emploi :
     //
 

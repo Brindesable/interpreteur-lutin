@@ -64,7 +64,7 @@ PinEcrire::PinEcrire(Expression* expression) : expression(expression)
 
 PinEcrire::~PinEcrire()
 {
-
+    delete expression;
 } //----- Fin de ~PinEcrire
 
 

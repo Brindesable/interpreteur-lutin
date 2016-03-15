@@ -74,6 +74,7 @@ LutinReader::LutinReader(istream& s) : sources(s), programme(0), automate(s)
 
 LutinReader::~LutinReader()
 {
+    delete programme;
 } //----- Fin de ~LutinReader
 
 

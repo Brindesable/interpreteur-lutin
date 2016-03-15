@@ -80,7 +80,8 @@ TermeDivision::TermeDivision(Terme* terme, Facteur* facteur) : Terme(TERME), ter
 
 TermeDivision::~TermeDivision()
 {
-
+    delete terme;
+    delete facteur;
 } //----- Fin de ~TermeDivision
 
 
