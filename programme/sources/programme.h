@@ -13,13 +13,19 @@
 using namespace std;
 #include <map>
 #include <vector>
+#include <string>
 #include "symbole.h"
 #include "pin.h"
 #include "pdecl.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
-
+enum VarState
+{
+    DECLAREE,
+    AFFECTEE,
+    UTILISEE
+};
 //------------------------------------------------------------------------
 // Rôle de la classe <Programme>
 // Représente un Programme du langage.
@@ -47,6 +53,8 @@ public:
     // Mode d'emploi :
     // Optimise le programme (remplace les constantes)
 
+    vector<string> AnalyseStatique();
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -68,6 +76,7 @@ private:
     void GetConstVars(map<string, int> & values);
     // Mode d'emploi :
     // Retourne dans values la liste des constantes avec leur valeur
+
 
 protected:
 //----------------------------------------------------- Attributs protégés

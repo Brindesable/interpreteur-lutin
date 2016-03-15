@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "programme.h"
@@ -59,6 +60,38 @@ void Programme::Optimisation(){
     instructions->Optimisation(constantes);
 
 } //----- Fin de Optimisation
+
+vector<string> Programme::AnalyseStatique()
+{
+    vector<string> errors;
+
+    map<string,VarState> vars;
+    vector<string> varsId;
+    declarations->GetVars(varsId);
+
+    map<string, int> constantes;
+    GetConstVars(constantes);
+
+
+    vector<string>::iterator it;
+    for(it = varsId.begin(); it != varsId.end() ; ++it)
+    {
+        map<string,VarState>::iterator itFindVars = vars.find(*it);
+        map<string,int>::iterator itFindConst = constantes.find(*it);
+        if(itFindVars == vars.end() && itFindConst != constantes.end())
+        {
+            vars.insert(pair<string,VarState>(*it, DECLAREE));
+        }
+        else
+        {
+            stringstream ss;
+            ss << "la variable " << *it << " est deja declaree";
+            errors.push_back(ss.str());
+        }
+    }
+
+    return errors;
+} //----- Fin de GetVars
 
 //-------------------------------------------- Constructeurs - destructeur
 

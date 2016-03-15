@@ -33,7 +33,15 @@ void LutinReader::Construire()
 
 void LutinReader::AnalyseStatique()
 {
-    programme->PrintError();
+    vector<string>::iterator itErrors;
+    vector<string> errors;
+
+    errors = programme->AnalyseStatique();
+
+    for(itErrors = errors.begin(); itErrors != errors.end(); ++itErrors)
+    {
+        cout << *itErrors << endl;
+    }
 } //----- Fin de AnalyseStatique
 
 void LutinReader::Execution()

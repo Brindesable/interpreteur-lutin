@@ -78,6 +78,11 @@ void Const::GetConstVars(map<string, int> & values) const{
         values[identifiantCourant->Nom()] = valeurCourante->Evaluate(values);
     }
 }
+
+void Const::GetVars(vector<string> & vars) const
+{
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
