@@ -31,11 +31,17 @@ class Expression : public Symbole
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    virtual int Evaluate(map<string, int>& variables) = 0;
+    virtual int Evaluate(const map<string, int>& variables) const = 0;
     // Mode d'emploi :
     // Permet d'évaluer l'Expression
     // L'entier retourné est la valeur de l'Expression
     
+
+    virtual Expression* Optimisation(const map<string, int>& constantes) = 0;
+    // Mode d'emploi :
+    // Optimise l'expression
+
+//------------------------------------------------------------- Constantes
     static const int VALEUR_INDEFINIE = INT_MIN;
     //Valeur par défaut d'une variable non définie.
 

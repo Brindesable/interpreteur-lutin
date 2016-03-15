@@ -32,10 +32,15 @@ void Valeur::Print() const
 	cout << valeur;
 } //----- Fin de Print
 
-int Valeur::Evaluate(map<string, int>& variables)
+int Valeur::Evaluate(const map<string, int>& variables) const
 {
     return valeur;
 } //----- Fin de Evaluate
+
+Expression* Valeur::Optimisation(const map<string, int>& constantes){
+    SetSymboleType(VALEUR);
+    return this;
+} //----- Fin de Optimisation
 
 //------------------------------------------------- Surcharge d'opérateurs
 

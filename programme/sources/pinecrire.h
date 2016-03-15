@@ -36,6 +36,11 @@ public:
 	void Execute(map<string, int>& variables);
 	// Mode d'emploi :
     // Execute le contenu du PinEcrire.
+
+    void Optimisation(const map<string, int>& constantes);
+    // Mode d'emploi :
+    // Optimise l'instruction
+
 	
 //------------------------------------------------- Surcharge d'opérateurs
 

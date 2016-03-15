@@ -33,10 +33,14 @@ public:
     // Mode d'emploi :
     // Affiche le Valeur.
     
-    int Evaluate(map<string, int>& variables);
+    int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :
     // Permet d'évaluer l'Identifiant.
     // L'entier retourné est la valeur de l'Identifiant.
+
+    Expression* Optimisation(const map<string, int>& constantes);
+    // Mode d'emploi :
+    // Optimise le terme
 
 //------------------------------------------------- Surcharge d'opérateurs
 

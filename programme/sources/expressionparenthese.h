@@ -34,10 +34,14 @@ public:
     // Mode d'emploi :
     // Affiche le ExpressionParenthese.
 
-    int Evaluate(map<string, int>& variables);
+    int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :
     // Permet d'évaluer l'ExpressionParenthese
     // L'entier retourné est la valeur de l'ExpressionParenthese
+
+    Expression* Optimisation(const map<string, int>& constantes);
+    // Mode d'emploi :
+    // Optimise l'expression
 
 //------------------------------------------------- Surcharge d'opérateurs
 

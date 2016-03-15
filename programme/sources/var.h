@@ -41,6 +41,14 @@ public:
 
     void AddDeclaration(Identifiant* id);
 
+    void GetConstVars(map<string, int> & values) const;
+    // Mode d'emploi :
+    // Retourne dans values la liste des constantes avec leur valeur
+
+    bool IsConst() const {return false;}
+    // Mode d'emploi :
+    // Retourne true si la déclaration est une constante.
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

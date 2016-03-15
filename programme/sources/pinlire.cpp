@@ -44,6 +44,12 @@ void PinLire::Execute(map<string, int>& variables)
     variables[id->Nom()] = val;
 } //----- Fin de Execute
 
+void PinLire::Optimisation(const map<string, int>& constantes)
+{
+    //pas d'optimisation à effectuer.
+} //----- Fin de Optimisation
+
+
 //-------------------------------------------- Constructeurs - destructeur
 
 PinLire::PinLire(Identifiant* id) : id(id)

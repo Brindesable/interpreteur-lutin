@@ -62,6 +62,38 @@ public:
     // Mode d'emploi :
     // Execute le contenu du PDECL.
 
+    void GetConstVars(map<string, int> & values){
+
+        vector<PdeclInst*>::iterator it;
+
+        for(it = decl.begin(); it != decl.end(); ++it) {
+            (*it)->GetConstVars(values);
+        }
+    }
+    // Mode d'emploi :
+    // Retourne dans values la liste des constantes avec leur valeur
+
+    void RemoveConstDecl()
+    {
+        vector<PdeclInst*>::iterator it;
+
+        for(it = decl.begin(); it != decl.end(); )
+        {
+            if ((*it)->IsConst())
+            {
+                delete *it;
+                it = decl.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+    }
+    // Mode d'emploi :
+    // Retire les déclarations de constantes.
+
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

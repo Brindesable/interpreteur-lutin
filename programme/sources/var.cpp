@@ -64,6 +64,10 @@ void Var::Execute(map<string, int>& variables)
     }
 }
 
+void Var::GetConstVars(map<string, int> & values) const{
+    //pas de constantes à ajouter
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

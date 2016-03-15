@@ -44,6 +44,14 @@ public:
     // Mode d'emploi :
     // Ajoute une déclaration à la liste des constantes.
 
+    void GetConstVars(map<string, int> & values) const;
+    // Mode d'emploi :
+    // Retourne dans values la liste des constantes avec leur valeur
+
+    bool IsConst() const {return true;}
+    // Mode d'emploi :
+    // Retourne true si la déclaration est une constante.
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

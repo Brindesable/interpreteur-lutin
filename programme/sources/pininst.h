@@ -37,6 +37,9 @@ public:
     // Mode d'emploi :
     // Execute le contenu du PinInst.
 
+    virtual void Optimisation(const map<string, int>& constantes) = 0;
+    // Mode d'emploi :
+    // Optimise l'instruction
 //------------------------------------------------- Surcharge d'opérateursœ
 
 //-------------------------------------------- Constructeurs - destructeur

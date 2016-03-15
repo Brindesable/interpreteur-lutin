@@ -63,6 +63,20 @@ public:
 	// Mode d'emploi :
     // Execute le contenu du PIN.
 
+    void Optimisation(const map<string, int>& constantes){
+        vector<PinInst*>::iterator it;
+
+        for(it=inst.begin(); it!=inst.end(); it++)
+        {
+            PinInst* pinInst = *it;
+
+            pinInst->Optimisation(constantes);
+        }
+    }
+
+    // Mode d'emploi :
+    // Optimise les instructions
+
 //------------------------------------------------- Surcharge d'opérateursœ
 
 //-------------------------------------------- Constructeurs - destructeur

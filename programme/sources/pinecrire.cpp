@@ -35,11 +35,25 @@ void PinEcrire::Print() const
     cout << ";" << endl;
 } //----- Fin de Print
 
-//------------------------------------------------- Surcharge d'opérateurs
 void PinEcrire::Execute(map<string, int>& variables)
 {
     cout << expression->Evaluate(variables) << endl;
 } //----- Fin de Execute
+
+void PinEcrire::Optimisation(const map<string, int>& constantes)
+{
+    Expression* res = expression->Optimisation(constantes);
+
+    if(res != expression){
+        delete expression;
+        expression = res;
+    }
+
+} //----- Fin de Optimisation
+
+
+
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 PinEcrire::PinEcrire(Expression* expression) : expression(expression)

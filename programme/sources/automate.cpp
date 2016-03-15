@@ -53,8 +53,8 @@ Programme* Automate::Lecture()
     }
     while((int)*pileSymboles.top() != PROGRAMME && i<3000);
 
-   // cout<<"inf "<<pileSymboles.size()<<endl;
-   // cout<<"fin analyse "<<(int)(*pileSymboles.top())<<endl;
+    //cout<<"inf "<<pileSymboles.size()<<endl;
+    //cout<<"fin analyse "<<(int)(*pileSymboles.top())<<endl;
 
     return static_cast<Programme*>(pileSymboles.top());
 } //----- Fin de Lecture

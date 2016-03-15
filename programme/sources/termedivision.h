@@ -33,10 +33,14 @@ public:
     // Mode d'emploi :
     // Affiche le TermeDivision.
     
-    int Evaluate(map<string, int>& variables);
+    int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :
     // Permet d'évaluer le TermeDivision
     // L'entier retourné est la valeur du TermeDivision
+
+    Expression* Optimisation(const map<string, int>& constantes);
+    // Mode d'emploi :
+    // Optimise le terme
 
 //------------------------------------------------- Surcharge d'opérateurs
 
