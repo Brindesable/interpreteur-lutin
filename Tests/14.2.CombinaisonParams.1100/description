@@ -1,1 +1,1 @@
-Analyse statique - variable non affectée (et aussi non utilisée).
+Execution du programme option -e -a avec erreur statique. Fonctionnement equivalent à -a seul.

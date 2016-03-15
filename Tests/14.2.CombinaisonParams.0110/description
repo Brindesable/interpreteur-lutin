@@ -1,1 +1,1 @@
-Analyse statique - variable non affectée (et aussi non utilisée).
+Combinaison des options -o -e, avec erreur d'analyse statique. Fonctionnement équivalent à -a seul.
