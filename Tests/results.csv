@@ -8,8 +8,12 @@ Test ID;Return code validation;Out result;StdErr result;File creation result;Glo
 06.2.AnalyseStatique;Ok;Non testé;Echec;Non testé;Echec
 06.3.AnalyseStatique;Ok;Non testé;Echec;Non testé;Echec
 06.4.AnalyseStatique;Ok;Non testé;Echec;Non testé;Echec
+06.5.AnalyseStatique;Ok;Non testé;Echec;Non testé;Echec
 07.Execution;Ok;Ok;Non testé;Non testé;Ok
 08.1.Optimisation;Ok;Echec;Non testé;Non testé;Echec
 08.2.Optimisation;Ok;Echec;Non testé;Non testé;Echec
 09.ErreurLexicale;Ok;Non testé;Ok;Non testé;Ok
-10.ErreurSyntaxique;Ok;Non testé;Echec;Non testé;Echec
+10.1.ErreurSyntaxique;Ok;Non testé;Echec;Non testé;Echec
+10.2.ErreurSyntaxique;Ok;Echec;Echec;Non testé;Echec
+12.1.WhiteSpaces;Echec;Echec;Non testé;Non testé;Echec
+12.2.WhiteSpaces;Ok;Ok;Non testé;Non testé;Ok
