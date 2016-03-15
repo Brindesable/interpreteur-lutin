@@ -68,6 +68,16 @@ void Const::Execute(map<string, int>& variables)
     }
 }
 
+void Const::GetConstVars(map<string, int> & values) const{
+    vector<pair<Identifiant*, Valeur*>>::const_iterator it;
+
+    for(it = declarations.begin(); it != declarations.end(); ++it)
+    {
+        Identifiant* identifiantCourant = it->first;
+        Valeur* valeurCourante = it->second;
+        values[identifiantCourant->Nom()] = valeurCourante->Evaluate(values);
+    }
+}
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

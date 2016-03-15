@@ -16,6 +16,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "termemultiplication.h"
 #include "symboletype.h"
+#include "valeur.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -35,11 +36,48 @@ void TermeMultiplication::Print() const
     facteur->Print();
 } //----- Fin de Print
 
-//------------------------------------------------- Surcharge d'opérateurs
-int TermeMultiplication::Evaluate(map<string, int> &variables)
+int TermeMultiplication::Evaluate(const map<string, int>& variables) const
 {
     return terme->Evaluate(variables) * facteur->Evaluate(variables);
 } //----- Fin de Evaluate
+
+Expression* TermeMultiplication::Optimisation(const map<string, int>& constantes){
+
+    //On optimise les deux branches
+    Expression* facteurOpti = facteur->Optimisation(constantes);
+    Expression* termeOpti = terme->Optimisation(constantes);
+
+    if(facteurOpti != facteur){
+        delete facteur;
+        facteur = static_cast<Facteur*>(facteurOpti);
+    }
+    if(termeOpti != terme){
+        delete terme;
+        terme = static_cast<Terme*>(termeOpti);
+    }
+
+    //on optimise avec les valeurs neutres
+    if((int)*terme == VALEUR && (int)*facteur == VALEUR) {
+        return new Valeur(this->Evaluate(constantes));
+    } else if((int)*terme == VALEUR && terme->Evaluate(constantes) == 1) {
+        Expression* ancienFacteur(facteur);
+        facteur = nullptr;
+        return ancienFacteur;
+    } else if((int)*terme == VALEUR && terme->Evaluate(constantes) == 0) {
+        return new Valeur(0);
+    } else if((int)*facteur == VALEUR && facteur->Evaluate(constantes) == 1) {
+        Expression* ancienTerme(terme);
+        terme = nullptr;
+        return ancienTerme;
+    } else if((int)*facteur == VALEUR && facteur->Evaluate(constantes) == 0) {
+        return new Valeur(0);
+    }
+
+    return this;
+
+} //----- Fin de Optimisation
+
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 

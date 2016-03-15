@@ -35,11 +35,26 @@ void ExpressionParenthese::Print() const
     cout << ")";
 } //----- Fin de Print
 
-//------------------------------------------------- Surcharge d'opérateurs
-int ExpressionParenthese::Evaluate(map<string, int> &variables)
+int ExpressionParenthese::Evaluate(const map<string, int>& variables) const
 {
     return expression->Evaluate(variables);
 }
+
+Expression* ExpressionParenthese::Optimisation(const map<string, int>& constantes){
+    //On optimise les deux branches
+    Expression* expressionOpti = expression->Optimisation(constantes);
+
+    if(expressionOpti != expression)
+    {
+        //Pas besoin de liberer l'ancienne expression.
+        //Elle sera liberée par l'expression qui demande l'optimisation.
+        return static_cast<Expression*>(expressionOpti);
+    }
+
+    return this;
+} //----- Fin de Optimisation
+
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -53,7 +68,7 @@ ExpressionParenthese::ExpressionParenthese(Expression* expression) :
 
 ExpressionParenthese::~ExpressionParenthese()
 {
-
+    delete expression;
 } //----- Fin de ~ExpressionParenthese
 
 

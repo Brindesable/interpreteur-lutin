@@ -16,6 +16,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "expressionmoins.h"
 #include "symboletype.h"
+#include "valeur.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -35,11 +36,38 @@ void ExpressionMoins::Print() const
     terme->Print();
 } //----- Fin de print
 
-//------------------------------------------------- Surcharge d'opérateurs
-int ExpressionMoins::Evaluate(map<string, int> &variables)
+int ExpressionMoins::Evaluate(const map<string, int>& variables) const
 {
     return expression->Evaluate(variables) - terme->Evaluate(variables);
 }
+
+Expression* ExpressionMoins::Optimisation(const map<string, int>& constantes){
+    //On optimise les deux branches
+    Expression* expressionOpti = expression->Optimisation(constantes);
+    Expression* termeOpti = terme->Optimisation(constantes);
+
+    if(expressionOpti != expression){
+        delete expression;
+        expression = static_cast<Expression*>(expressionOpti);
+    }
+    if(termeOpti != terme){
+        delete terme;
+        terme = static_cast<Terme*>(termeOpti);
+    }
+
+    //on optimise avec les valeurs neutres
+    if((int)*terme == VALEUR && (int)*expression == VALEUR) {
+        return new Valeur(this->Evaluate(constantes));
+    } else if((int)*terme == VALEUR && terme->Evaluate(constantes) == 0) {
+        Expression* ancienExp(expression);
+        expression = nullptr;
+        return ancienExp;
+    }
+
+    return this;
+} //----- Fin de Optimisation
+
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -51,7 +79,8 @@ ExpressionMoins::ExpressionMoins(Expression* expression, Terme* terme) : Express
 
 ExpressionMoins::~ExpressionMoins()
 {
-
+    delete expression;
+    delete terme;
 } //----- Fin de ~ExpressionMoins
 
 

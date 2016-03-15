@@ -32,9 +32,17 @@ public:
     // Mode d'emploi :
     // Affiche le contenu du PdeclInst.
 
-    virtual void Execute(map<string, int>& variables)=0;
+    virtual void Execute(map<string, int>& variables) = 0;
     // Mode d'emploi :
     // Execute le contenu du PdeclInst.
+
+    virtual void GetConstVars(map<string, int> & values) const = 0;
+    // Mode d'emploi :
+    // Retourne dans values la liste des constantes avec leur valeur
+
+    virtual bool IsConst() const = 0;
+    // Mode d'emploi :
+    // Retourne true si la déclaration est une constante.
 
 //------------------------------------------------- Surcharge d'opérateurs
 

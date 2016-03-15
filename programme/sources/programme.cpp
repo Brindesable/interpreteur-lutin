@@ -42,6 +42,7 @@ void Programme::Execute(map<string, int> &values)
     currInstr->Execute(values);
 } //----- Fin de Execute
 
+
 void Programme::PrintError()
 {
     if(error.size() > 0)
@@ -49,6 +50,15 @@ void Programme::PrintError()
         cout << error << endl;
     }
 } //----- Fin de PrintError
+
+void Programme::Optimisation(){
+
+    map<string, int> constantes;
+    GetConstVars(constantes);
+    declarations->RemoveConstDecl();
+    instructions->Optimisation(constantes);
+
+} //----- Fin de Optimisation
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -70,3 +80,8 @@ Programme::~Programme()
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
+void Programme::GetConstVars(map<string, int> & values)
+{
+    declarations->GetConstVars(values);
+}
+

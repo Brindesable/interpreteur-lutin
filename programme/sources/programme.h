@@ -43,6 +43,10 @@ public:
     // Mode d'emploi :
     // Affiche error
 
+    void Optimisation();
+    // Mode d'emploi :
+    // Optimise le programme (remplace les constantes)
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -61,6 +65,9 @@ protected:
 
 private:
 //------------------------------------------------------- Méthodes privées
+    void GetConstVars(map<string, int> & values);
+    // Mode d'emploi :
+    // Retourne dans values la liste des constantes avec leur valeur
 
 protected:
 //----------------------------------------------------- Attributs protégés

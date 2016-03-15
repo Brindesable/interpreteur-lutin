@@ -38,8 +38,8 @@ void LutinReader::AnalyseStatique()
 
 void LutinReader::Execution()
 {
-    //cout << "Execution" << endl;
-    //cout << "---------" << endl;
+    cout << "Execution" << endl;
+    cout << "---------" << endl;
 
     map<string, int> valeurs;
     programme->Execute(valeurs);
@@ -49,8 +49,8 @@ void LutinReader::Execution()
 
 void LutinReader::Affichage()
 {
-	//cout << "Affichage du programme" << endl;
-	//cout << "----------------------" << endl;
+    cout << "Affichage du programme" << endl;
+    cout << "----------------------" << endl;
     
     programme->Print();
     
@@ -59,6 +59,7 @@ void LutinReader::Affichage()
 
 void LutinReader::Transformation()
 {
+    programme->Optimisation();
 } //----- Fin de Transformation
 
 

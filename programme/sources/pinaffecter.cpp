@@ -35,11 +35,22 @@ void PinAffecter::Print() const
     cout << ";" << endl;
 } //----- Fin de Print
 
-//------------------------------------------------- Surcharge d'opérateurs
 void PinAffecter::Execute(map<string, int>& variables)
 {
     variables[id->Nom()] = expression->Evaluate(variables);
 } //----- Fin de Execute
+
+void PinAffecter::Optimisation(const map<string, int>& constantes)
+{
+    Expression* res = expression->Optimisation(constantes);
+
+    if(res != expression){
+        delete res;
+        expression = res;
+    }
+
+} //----- Fin de Optimisation
+//------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 PinAffecter::PinAffecter(Identifiant* id, Expression* expression) : id(id), expression(expression)

@@ -38,6 +38,10 @@ public:
 	// Mode d'emploi :
     // Execute le contenu du PinAffecter.
 
+    void Optimisation(const map<string, int>& constantes);
+    // Mode d'emploi :
+    // Optimise l'instruction
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

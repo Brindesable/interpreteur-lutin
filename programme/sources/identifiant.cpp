@@ -17,6 +17,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "identifiant.h"
 #include "symboletype.h"
+#include "valeur.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -34,10 +35,10 @@ void Identifiant::Print() const
     cout << nom;
 } //----- Fin de Print
 
-int Identifiant::Evaluate(map<string, int>& variables)
+int Identifiant::Evaluate(const map<string, int>& variables) const
 {
 	//on recherche le nom de cet identifiant dans les variables.
-    map<string,int>::iterator itResultat = variables.find(nom);
+    map<string,int>::const_iterator itResultat = variables.find(nom);
     if(itResultat == variables.end())
     {
     	//Le symbole est inconnu, on lui donne la valeur moins l'infini.
@@ -48,6 +49,16 @@ int Identifiant::Evaluate(map<string, int>& variables)
 
 } //----- Fin de print
 
+Expression* Identifiant::Optimisation(const map<string, int>& constantes){
+
+    map<string, int>::const_iterator res(constantes.find(nom));
+
+    if(res != constantes.end()){
+        Valeur* val = new Valeur(res->second);
+        return val;
+    }
+    return this;
+} //----- Fin de Optimisation
 
 //------------------------------------------------- Surcharge d'opérateurs
 
