@@ -1,0 +1,13 @@
+Coucou,
+
+la convention pour les test des parametres est la suivante:
+14.x.CombinaisonParams.yyyy avec:
+x 1, 2,3 ,4 ... le fichier de lutin utilise pour realiser ce test et
+y etant une suite de zeros et uns correspondant aux parametres appliques dans ce
+test. (Les parametres sont tries aplhabetiquement)
+Exemple:
+	  aeop
+	y=0101
+veut dire qu'on a active les parametres e et p.
+
+
