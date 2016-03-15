@@ -1,0 +1,5 @@
+const c = 4;
+const d = 0;
+var e;
+e := c/d;
+ecrire e;
