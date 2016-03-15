@@ -35,3 +35,8 @@ Makefile
 cmake_install.cmake
 install_manifest.txt
 
+# Compiled program
+programme/main
+
+# Test result csv
+Tests/results.csv
