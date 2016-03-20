@@ -20,12 +20,7 @@ using namespace std;
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
-enum VarState
-{
-    DECLAREE,
-    AFFECTEE,
-    UTILISEE
-};
+
 //------------------------------------------------------------------------
 // Rôle de la classe <Programme>
 // Représente un Programme du langage.

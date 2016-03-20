@@ -12,6 +12,7 @@ ExpressionParenthese  -  Représente une expression parenthesée du langage.
 //--------------------------------------------------- Interfaces utilisées
 using namespace std;
 #include <map>
+#include <vector>
 #include "expression.h"
 
 //------------------------------------------------------------- Constantes
@@ -42,6 +43,10 @@ public:
     Expression* Optimisation(const map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise l'expression
+
+    void GetIds(vector<string>& ids);
+    // Mode d'emploi :
+    // Obtient tous les identifiants impliques dans l'expression (utilise pour l'analyse statique)
 
 //------------------------------------------------- Surcharge d'opérateurs
 

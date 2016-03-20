@@ -67,6 +67,12 @@ Expression* ExpressionMoins::Optimisation(const map<string, int>& constantes){
     return this;
 } //----- Fin de Optimisation
 
+void ExpressionMoins::GetIds(vector<string>& ids)
+{
+    expression->GetIds(ids);
+    terme->GetIds(ids);
+} //----- Fin de GetIds
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

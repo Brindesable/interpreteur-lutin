@@ -68,6 +68,12 @@ Expression* TermeDivision::Optimisation(const map<string, int>& constantes){
     return this;
 } //----- Fin de Optimisation
 
+void TermeDivision::GetIds(vector<string>& ids)
+{
+    terme->GetIds(ids);
+    facteur->GetIds(ids);
+} //----- Fin de GetIds
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

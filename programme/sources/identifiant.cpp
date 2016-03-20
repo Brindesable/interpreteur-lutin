@@ -60,6 +60,11 @@ Expression* Identifiant::Optimisation(const map<string, int>& constantes){
     return this;
 } //----- Fin de Optimisation
 
+void Identifiant::GetIds(vector<string>& ids)
+{
+    ids.push_back(nom);
+} //----- Fin de GetIds
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

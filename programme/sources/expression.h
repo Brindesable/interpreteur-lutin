@@ -13,6 +13,7 @@
  using namespace std;
 #include "symbole.h"
 #include <map>
+#include <vector>
 #include "limits.h"
 
 //------------------------------------------------------------- Constantes
@@ -40,6 +41,10 @@ public:
     virtual Expression* Optimisation(const map<string, int>& constantes) = 0;
     // Mode d'emploi :
     // Optimise l'expression
+
+    virtual void GetIds(vector<string>& ids) = 0;
+    // Mode d'emploi :
+    // Obtient tous les identifiants impliques dans l'expression (utilise pour l'analyse statique)
 
 //------------------------------------------------------------- Constantes
     static const int VALEUR_INDEFINIE = INT_MIN;
