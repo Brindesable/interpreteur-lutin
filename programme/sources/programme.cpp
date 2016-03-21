@@ -122,7 +122,8 @@ Programme::Programme(Pdecl*declarations, Pin* instructions, string err) :
 
 Programme::~Programme()
 {
-
+    delete declarations;
+    delete instructions;
 } //----- Fin de ~Programme
 
 

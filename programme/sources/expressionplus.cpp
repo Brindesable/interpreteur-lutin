@@ -88,7 +88,8 @@ ExpressionPlus::ExpressionPlus(Expression* expression, Terme* terme) : Expressio
 
 ExpressionPlus::~ExpressionPlus()
 {
-
+    delete expression;
+    delete terme;
 } //----- Fin de ~ExpressionPlus
 
 

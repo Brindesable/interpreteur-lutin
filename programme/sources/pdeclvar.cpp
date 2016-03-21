@@ -49,7 +49,7 @@ PdeclVar::PdeclVar(Var* var) : Pdecl(PDECL_VAR), var(var)
 
 PdeclVar::~PdeclVar()
 {
-
+    delete var;
 } //----- Fin de ~PdeclVar
 
 
