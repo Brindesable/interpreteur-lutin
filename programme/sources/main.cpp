@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 			<< "      [-e] execute interactivement le programme" << endl
 			<< "      [-o] optimise les expressions et instructions" << endl;
 
-		exit (EXIT_FAILURE);
+		return EXIT_FAILURE;
 	}
 	else
 	{	for(int i = 1 ; i < argc; i++)
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 				}
 				else
 				{   cerr << "Erreur, parametre inconnu : " << argv[i] << endl;
-					exit (EXIT_FAILURE);
+					return EXIT_FAILURE;
 				}
 			}
 			else
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 				}
 				else
 				{	cerr << "Erreur, fichier renseigne plus d'une fois" << endl;
-                    exit (EXIT_FAILURE);
+                    return EXIT_FAILURE;
 				}
 			}
 		}
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{	cerr << "Erreur a l'ouverture du fichier " << fileName << endl;
-		exit (EXIT_FAILURE);
+		return EXIT_FAILURE;
 	}
 
 	return 0;
