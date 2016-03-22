@@ -76,12 +76,6 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
 {
     // Generated code :
     switch ((int)*s) {
-    case OUVRE_PAR:
-        break;
-    case POINT_VIRGULE:
-        break;
-    case FIN:
-        break;
     case CONST:
         automate.Reduction(0);
         break;
@@ -102,11 +96,9 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
         break;
     case PROGRAMME:
         automate.Consommer();
-        //On limite la portée de la variable progSymbole à ce case du switch.
-        {
-            Programme* progSymbole = static_cast<Programme*>(s);
-            automate.Accepter(progSymbole);
-        }
+        Programme* progSymbole;
+        progSymbole = static_cast<Programme*>(s);
+        automate.Accepter(progSymbole);
         break;
     default:
         automate.SetErreur();
