@@ -34,13 +34,13 @@ Programme* Automate::Lecture()
     lexer.Read();
     pileEtats.push(new GeneratedState0);
 
-    int i = 0;
+
 
 
     do{
         if(!lexer.CheckSyntaxError())
         {
-            i++;
+
             Symbole* currSymbole = lexer.SymboleCourant();
 
             Etat* currentState = pileEtats.top();
@@ -53,7 +53,7 @@ Programme* Automate::Lecture()
         }
 
     }
-    while(!erreur && (pileSymboles.empty() ||(int)*pileSymboles.top() != PROGRAMME) && i<3000);
+    while(!erreur && (pileSymboles.empty() ||(int)*pileSymboles.top() != PROGRAMME));
 
     if(erreur){
         cout<<"An error occured during the parsing at line "<<lexer.GetCurrLine()<<" near symbol : ";
