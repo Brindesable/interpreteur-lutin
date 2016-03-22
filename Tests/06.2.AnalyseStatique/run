@@ -1,1 +1,1 @@
-../lut -a ../files/static2.lt
+timeout -s 1 2 ../lut -a ../files/static2.lt

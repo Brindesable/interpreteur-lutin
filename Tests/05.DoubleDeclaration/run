@@ -1,1 +1,1 @@
-../lut ../files/double.lt
+timeout -s 1 2 ../lut ../files/double.lt

@@ -1,1 +1,1 @@
-../lut does_not_exist.lt
+timeout -s 1 2 ../lut does_not_exist.lt
