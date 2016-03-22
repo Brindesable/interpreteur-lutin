@@ -61,7 +61,7 @@ void PinLire::AnalyseStatique(map<string, VarState> & vars, const map<string, in
     if(itFindConst != constantes.end())
     {
         stringstream err;
-        err << "la variable " << id->Nom() << " est constante, elle ne peut etre modifiee.";
+        err << "la constante " << id->Nom() << " a ete modifiee.";
         errors.push_back(err.str());
     }
     else if(itFindVar != vars.end())
