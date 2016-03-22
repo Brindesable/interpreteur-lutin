@@ -125,7 +125,7 @@ void Automate::Accepter(Programme* programme)
 
 void Automate::AddAvertissement(const string& avertissement)
 {
-    cout << RED_BEGIN << "Warning : " << avertissement << " ligne " << lexer.GetCurrLine() << RED_END << endl;
+    cerr << RED_BEGIN << "Warning : " << avertissement << " ligne " << lexer.GetCurrLine() << RED_END << endl;
 } //----- Fin de AddAvertissement
 
 //------------------------------------------------- Surcharge d'opérateurs
