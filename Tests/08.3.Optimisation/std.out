@@ -1,0 +1,5 @@
+Affichage du programme
+----------------------
+var x;
+x := 8;
+ecrire x;
