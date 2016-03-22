@@ -103,12 +103,13 @@ bool GeneratedState211::Transition (Automate & automate, Symbole *s)
 Symbole* GeneratedState211::Reduction (vector<Symbole*>& s)
 {
     Pdecl* pdecl = (Pdecl*)s[3];
+    delete s[2];
     Var* var = (Var*)s[1];
+    delete s[0];
 
     pdecl->AddDecl(var);
 
     return pdecl;
-
 }
 
 

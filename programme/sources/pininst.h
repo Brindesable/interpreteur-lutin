@@ -13,6 +13,7 @@
 using namespace std;
 #include <map>
 #include <vector>
+#include "varstate.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -40,6 +41,10 @@ public:
     virtual void Optimisation(const map<string, int>& constantes) = 0;
     // Mode d'emploi :
     // Optimise l'instruction
+
+    virtual void AnalyseStatique(map<string, VarState> & vars, const map<string, int> & constantes, vector<string> & errors) = 0;
+    // Mode d'emploi :
+    // Ajoute des erreur dans le vecteur lorsque l'on trouve des erreurs statiques
 //------------------------------------------------- Surcharge d'opérateursœ
 
 //-------------------------------------------- Constructeurs - destructeur

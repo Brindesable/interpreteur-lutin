@@ -73,6 +73,18 @@ public:
     // Mode d'emploi :
     // Retourne dans values la liste des constantes avec leur valeur
 
+    void GetVars(vector<string> & vars)
+    {
+        vector<PdeclInst*>::iterator it;
+
+        for(it = decl.begin(); it != decl.end(); ++it)
+        {
+            (*it)->GetVars(vars);
+        }
+    }
+    // Mode d'emploi :
+    // Retourne la liste des identifiants des variables declaree (doublons possibles)
+
     void RemoveConstDecl()
     {
         vector<PdeclInst*>::iterator it;

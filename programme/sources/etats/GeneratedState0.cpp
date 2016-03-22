@@ -106,6 +106,7 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
         automate.Reduction(0);
         break;
     case PROGRAMME:
+        automate.Consommer();
         automate.Decalage(s, new GeneratedStateACCEPTE);
         break;
     default:

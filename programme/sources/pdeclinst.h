@@ -40,6 +40,10 @@ public:
     // Mode d'emploi :
     // Retourne dans values la liste des constantes avec leur valeur
 
+    virtual void GetVars(vector<string> & vars) const = 0;
+    // Mode d'emploi :
+    // Retourne la liste des identifiants des variables declaree (doublons possibles)
+
     virtual bool IsConst() const = 0;
     // Mode d'emploi :
     // Retourne true si la déclaration est une constante.

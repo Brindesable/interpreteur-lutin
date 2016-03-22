@@ -46,14 +46,14 @@ public:
 //-------------------------------------------- Constructeurs - destructeur
     SymboleTerminal(SymboleType type, const string& terminal) : Symbole(type), terminal(terminal)
     {
-
+        
     }
     // Mode d'emploi :
     //
 
     virtual ~SymboleTerminal()
     {
-
+        
     }
     // Mode d'emploi :
     //

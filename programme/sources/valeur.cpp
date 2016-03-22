@@ -42,6 +42,10 @@ Expression* Valeur::Optimisation(const map<string, int>& constantes){
     return this;
 } //----- Fin de Optimisation
 
+void Valeur::GetIds(vector<string>& ids)
+{
+} //----- Fin de GetIds
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

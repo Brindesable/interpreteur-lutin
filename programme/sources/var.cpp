@@ -64,9 +64,20 @@ void Var::Execute(map<string, int>& variables)
     }
 }
 
-void Var::GetConstVars(map<string, int> & values) const{
+void Var::GetConstVars(map<string, int> & values) const
+{
     //pas de constantes à ajouter
 }
+
+void Var::GetVars(vector<string> & vars) const
+{
+    vector<Identifiant*>::const_iterator it;
+
+    for(it = declarations.begin(); it != declarations.end(); ++it)
+    {
+        vars.push_back((*it)->Nom());
+    }
+} //----- Fin de GetVars
 
 //------------------------------------------------- Surcharge d'opérateurs
 

@@ -82,15 +82,15 @@ bool GeneratedState0p::Transition (Automate & automate, Symbole *s)
         automate.Decalage(s, new GeneratedState3);
         break;
     case ECRIRE:
-        automate.Decalage(new Pin(PIN), new GeneratedState1);
+        automate.Reduction(0);
         break;
     case POINT_VIRGULE:
         break;
     case IDENTIFIANT:
-        automate.Decalage(new Pin(PIN), new GeneratedState1);
+        automate.Reduction(0);
         break;
     case LIRE:
-        automate.Decalage(new Pin(PIN), new GeneratedState1);
+        automate.Reduction(0);
         break;
     case PIN:
         automate.Decalage(s, new GeneratedState1);
@@ -105,7 +105,6 @@ bool GeneratedState0p::Transition (Automate & automate, Symbole *s)
         break;
     }
     return false;
-
 }
 
 Symbole* GeneratedState0p::Reduction (vector<Symbole*>& s)
