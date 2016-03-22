@@ -50,6 +50,8 @@ public:
     //
 
     void SetErreur(){erreur=true;}
+
+    void AddAvertissement(string warning);
     
     //------------------------------------------------- Surcharge d'opérateurs
 

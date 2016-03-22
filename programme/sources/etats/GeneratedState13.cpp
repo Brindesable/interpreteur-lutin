@@ -84,6 +84,7 @@ bool GeneratedState13::Transition (Automate & automate, Symbole *s)
         //dans ce cas (premiers de Expression)
         //l'utilisateur a oublié le égal, probablement.
         //On ajoute "artificiellement" le symbole.
+        automate.AddAvertissement("':=' oublié !");
         Symbole* affectation;
         affectation = FabriqueSymbole::CreerSymbole(AFFECTATION, ":=");
         automate.Decalage(affectation, new GeneratedState13p);
