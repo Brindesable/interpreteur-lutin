@@ -1,2 +1,2 @@
-../lut ../files/synerror.lt
+timeout -s 1 2 ../lut ../files/synerror.lt
 

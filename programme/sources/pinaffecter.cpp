@@ -75,7 +75,7 @@ void PinAffecter::AnalyseStatique(map<string, VarState> & vars, const map<string
                 if (itFindVar->second == DECLAREE)
                 {
                     stringstream err;
-                    err << "la valeur de " << *itIds << " dans l'expression " << expression->ToString() << " n'est pas connue.";
+                    err << "une valeur dans l'expression " << expression->ToString() << " n'est pas connue.";
                     errors.push_back(err.str());
                 }
                 else
@@ -98,7 +98,7 @@ void PinAffecter::AnalyseStatique(map<string, VarState> & vars, const map<string
     if(itFindConst != constantes.end())
     {
         stringstream err;
-        err << "la variable " << id->Nom() << " est constante, elle ne peut etre modifiee.";
+        err << "la constante " << id->Nom() << " a ete modifiee.";
         errors.push_back(err.str());
     }
     else if(itFindVar != vars.end())

@@ -1,1 +1,1 @@
-../lut -p ../files/correct.lt
+timeout -s 1 2 ../lut -p ../files/correct.lt

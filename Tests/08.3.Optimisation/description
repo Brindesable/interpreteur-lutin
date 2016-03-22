@@ -1,0 +1,2 @@
+Test suite à une régression.
+Segfault lors de l'optimisation d'une expression dans une affectation.
