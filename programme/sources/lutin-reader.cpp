@@ -33,33 +33,41 @@ void LutinReader::Construire()
 
 void LutinReader::AnalyseStatique()
 {
-    programme->PrintError();
+    if(programme != nullptr){
+        programme->PrintError();
+    }
+
 } //----- Fin de AnalyseStatique
 
 void LutinReader::Execution()
 {
-    cout << "Execution" << endl;
-    cout << "---------" << endl;
 
-    map<string, int> valeurs;
-    programme->Execute(valeurs);
-    
+    if(programme != nullptr){
+        cout << "Execution" << endl;
+        cout << "---------" << endl;
+
+        map<string, int> valeurs;
+        programme->Execute(valeurs);
+    }
     //cout << endl;
 } //----- Fin de Execution
 
 void LutinReader::Affichage()
 {
-    cout << "Affichage du programme" << endl;
-    cout << "----------------------" << endl;
-    
-    programme->Print();
-    
+    if(programme != nullptr){
+        cout << "Affichage du programme" << endl;
+        cout << "----------------------" << endl;
+
+        programme->Print();
+    }
     //cout << endl;
 } //----- Fin de Affichage
 
 void LutinReader::Transformation()
 {
-    programme->Optimisation();
+    if(programme != nullptr){
+        programme->Optimisation();
+    }
 } //----- Fin de Transformation
 
 

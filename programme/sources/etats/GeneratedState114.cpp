@@ -60,73 +60,40 @@ using namespace std;
 
 bool GeneratedState114::Transition (Automate & automate, Symbole *s)
 {
-	// Generated code :
-	switch ((int)*s) {
-		case MOINS:
-			break;
-		case OUVRE_PAR:
-            automate.Consommer();
-			automate.Decalage(s, new GeneratedState114);
-			break;
-		case FERME_PAR:
-			break;
-		case MULTIPLIE:
-			break;
-		case DIVISE:
-			break;
-		case PLUS:
-			break;
-		case EGAL:
-			break;
-		case FIN:
-			break;
-		case CONST:
-			break;
-		case CONSTp:
-			break;
-		case EXPRESSION:
-			automate.Decalage(s, new GeneratedState1141);
-			break;
-		case ECRIRE:
-			break;
-		case FACTEUR:
-			automate.Decalage(s, new GeneratedState113);
-			break;
-		case POINT_VIRGULE:
-			break;
-		case IDENTIFIANT:
-            automate.Consommer();
-			automate.Decalage(s, new GeneratedState115);
-			break;
-		case LIRE:
-			break;
-		case PDECL:
-			break;
-		case PIN:
-			break;
-		case TERME:
-            automate.Decalage(s, new GeneratedState112);
-			break;
-		case VALEUR:
-            automate.Consommer();
-			automate.Decalage(s, new GeneratedState116);
-			break;
-		case VAR:
-			break;
-		case VARp:
-			break;
-		case VIRGULE:
-			break;
-		default:
-			break;
-	}
-	return false;
+    // Generated code :
+    switch ((int)*s) {
+    case OUVRE_PAR:
+        automate.Consommer();
+        automate.Decalage(s, new GeneratedState114);
+        break;
+    case EXPRESSION:
+        automate.Decalage(s, new GeneratedState1141);
+        break;
+    case FACTEUR:
+        automate.Decalage(s, new GeneratedState113);
+        break;
+    case IDENTIFIANT:
+        automate.Consommer();
+        automate.Decalage(s, new GeneratedState115);
+        break;
+    case TERME:
+        automate.Decalage(s, new GeneratedState112);
+        break;
+    case VALEUR:
+        automate.Consommer();
+        automate.Decalage(s, new GeneratedState116);
+        break;
+    default:
+        automate.SetErreur();
+        break;
+    }
+    return false;
 
 }
 
 Symbole* GeneratedState114::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    // This state does not require any reductions. :-)
 }
 
 
@@ -146,36 +113,36 @@ GeneratedState114::GeneratedState114 ()
 
 #endif
 
-    } //----- Fin de GeneratedState114 (constructeur de copie)
-        
+} //----- Fin de GeneratedState114 (constructeur de copie)
 
-    GeneratedState114::~GeneratedState114 ( )
 
-    // Algorithme :
+GeneratedState114::~GeneratedState114 ( )
 
-    //
+// Algorithme :
 
-    {
+//
+
+{
 
 #ifdef MAP
 
-        cout << "Appel au destructeur de <GeneratedState114>" << endl;
+    cout << "Appel au destructeur de <GeneratedState114>" << endl;
 
 #endif
 
-    } //----- Fin de ~GeneratedState114
+} //----- Fin de ~GeneratedState114
 
-    
 
-    
 
-    //------------------------------------------------------------------ PRIVE
 
-    
 
-    //----------------------------------------------------- Méthodes protégées
+//------------------------------------------------------------------ PRIVE
 
-    
 
-    //------------------------------------------------------- Méthodes privées
+
+//----------------------------------------------------- Méthodes protégées
+
+
+
+//------------------------------------------------------- Méthodes privées
 

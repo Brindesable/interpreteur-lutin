@@ -4,7 +4,7 @@
  début                : 01/03/2016
  copyright            : (C) 2016 par Team-Papassau - H4101
  *************************************************************************/
- 
+
 //---------- Réalisation de la classe <Automate> (fichier automate.cpp) --
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
@@ -37,6 +37,7 @@ Programme* Automate::Lecture()
     int i = 0;
 
     do{
+
         if(!lexer.CheckSyntaxError())
         {
             i++;
@@ -50,8 +51,16 @@ Programme* Automate::Lecture()
             cerr << lexer.GetSyntaxError() << endl;
             return 0;
         }
+
     }
-    while((int)*pileSymboles.top() != PROGRAMME && i<3000);
+    while(!erreur && (pileSymboles.empty() ||(int)*pileSymboles.top() != PROGRAMME) && i<3000);
+
+    if(erreur){
+        cout<<"An error occured during the parsing at line "<<lexer.GetCurrLine()<<" near symbol : ";
+        lexer.SymboleCourant()->Print();
+        cout<<endl;
+        return nullptr;
+    }
 
     //cout<<"inf "<<pileSymboles.size()<<endl;
     //cout<<"fin analyse "<<(int)(*pileSymboles.top())<<endl;
@@ -89,15 +98,15 @@ void Automate::Reduction(int nbSymboles)
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Automate::Automate(istream& sources) : lexer(sources)
+Automate::Automate(istream& sources) : lexer(sources), erreur(false)
 {
-	
+
 } //----- Fin de Automate
 
 
 Automate::~Automate()
 {
-	
+
 } //----- Fin de ~Automate
 
 //------------------------------------------------------------------ PRIVE

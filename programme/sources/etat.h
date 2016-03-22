@@ -63,6 +63,7 @@ public:
     
     virtual Symbole* Reduction (vector<Symbole*>& s)=0;
 
+
     //-------------------------------------------- Constructeurs - destructeur
 
     Etat () {}

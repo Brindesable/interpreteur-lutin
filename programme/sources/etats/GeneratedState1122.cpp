@@ -73,60 +73,23 @@ bool GeneratedState1122::Transition (Automate & automate, Symbole *s)
 {
     // Generated code :
     switch ((int)*s) {
-    case MOINS:
-        break;
     case OUVRE_PAR:
         automate.Consommer();
         automate.Decalage(s, new GeneratedState114);
         break;
-    case FERME_PAR:
-        break;
-    case MULTIPLIE:
-        break;
-    case DIVISE:
-        break;
-    case PLUS:
-        break;
-    case EGAL:
-        break;
-    case FIN:
-        break;
-    case CONST:
-        break;
-    case CONSTp:
-        break;
-    case EXPRESSION:
-        break;
-    case ECRIRE:
-        break;
     case FACTEUR:
         automate.Decalage(s, new GeneratedState11221);
-        break;
-    case POINT_VIRGULE:
         break;
     case IDENTIFIANT:
         automate.Consommer();
         automate.Decalage(s, new GeneratedState115);
         break;
-    case LIRE:
-        break;
-    case PDECL:
-        break;
-    case PIN:
-        break;
-    case TERME:
-        break;
     case VALEUR:
         automate.Consommer();
         automate.Decalage(s, new GeneratedState116);
         break;
-    case VAR:
-        break;
-    case VARp:
-        break;
-    case VIRGULE:
-        break;
     default:
+        automate.SetErreur();
         break;
     }
     return false;
