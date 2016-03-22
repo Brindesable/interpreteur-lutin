@@ -77,19 +77,8 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
 {
     // Generated code :
     switch ((int)*s) {
-    case MOINS:
-        break;
     case OUVRE_PAR:
-        break;
-    case FERME_PAR:
-        break;
-    case MULTIPLIE:
-        break;
-    case DIVISE:
-        break;
-    case PLUS:
-        break;
-    case EGAL:
+        automate.Consommer();
         break;
     case POINT_VIRGULE:
         //automate.Decalage(s, new GeneratedStateACCEPTE);
@@ -101,14 +90,8 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
         automate.Reduction(0);
         //automate.Decalage(s, new GeneratedState0p);
         break;
-    case CONSTp:
-        break;
-    case EXPRESSION:
-        break;
     case ECRIRE:
          automate.Reduction(0);
-        break;
-    case FACTEUR:
         break;
     case IDENTIFIANT:
          automate.Reduction(0);
@@ -119,23 +102,15 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
     case PDECL:
         automate.Decalage(s, new GeneratedState0p);
         break;
-    case PIN:
-        break;
-    case TERME:
-        break;
-    case VALEUR:
-        break;
     case VAR:
         automate.Reduction(0);
         break;
-    case VARp:
-        break;
-    case VIRGULE:
-        break;
     case PROGRAMME:
+        automate.Consommer();
         automate.Decalage(s, new GeneratedStateACCEPTE);
         break;
     default:
+        automate.SetErreur();
         break;
     }
     return false;

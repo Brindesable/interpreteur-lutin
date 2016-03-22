@@ -1,1 +1,1 @@
-../lut -a ../files/static3.lt
+../lut -a -e -o -p ../files/correct.lt

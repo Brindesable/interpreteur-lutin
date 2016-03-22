@@ -33,33 +33,52 @@ void LutinReader::Construire()
 
 void LutinReader::AnalyseStatique()
 {
-    programme->PrintError();
+
+    if(programme == nullptr){
+        return;
+    }
+
+    vector<string>::iterator itErrors;
+    vector<string> errors;
+
+    errors = programme->AnalyseStatique();
+
+    for(itErrors = errors.begin(); itErrors != errors.end(); ++itErrors)
+    {
+        cout << *itErrors << endl;
+    }
+
 } //----- Fin de AnalyseStatique
 
 void LutinReader::Execution()
 {
-    cout << "Execution" << endl;
-    cout << "---------" << endl;
 
-    map<string, int> valeurs;
-    programme->Execute(valeurs);
-    
+    if(programme != nullptr){
+        cout << "Execution" << endl;
+        cout << "---------" << endl;
+
+        map<string, int> valeurs;
+        programme->Execute(valeurs);
+    }
     //cout << endl;
 } //----- Fin de Execution
 
 void LutinReader::Affichage()
 {
-    cout << "Affichage du programme" << endl;
-    cout << "----------------------" << endl;
-    
-    programme->Print();
-    
+    if(programme != nullptr){
+        cout << "Affichage du programme" << endl;
+        cout << "----------------------" << endl;
+
+        programme->Print();
+    }
     //cout << endl;
 } //----- Fin de Affichage
 
 void LutinReader::Transformation()
 {
-    programme->Optimisation();
+    if(programme != nullptr){
+        programme->Optimisation();
+    }
 } //----- Fin de Transformation
 
 
@@ -74,6 +93,7 @@ LutinReader::LutinReader(istream& s) : sources(s), programme(0), automate(s)
 
 LutinReader::~LutinReader()
 {
+    delete programme;
 } //----- Fin de ~LutinReader
 
 

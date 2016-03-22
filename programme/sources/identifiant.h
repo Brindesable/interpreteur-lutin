@@ -14,6 +14,7 @@ using namespace std;
 #include "facteur.h"
 #include <map>
 #include <string>
+#include <vector>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -46,6 +47,9 @@ public:
     // Mode d'emploi :
     // Optimise le terme
 
+    void GetIds(vector<string>& ids);
+    // Mode d'emploi :
+    // Obtient tous les identifiants impliques dans l'expression (utilise pour l'analyse statique)
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

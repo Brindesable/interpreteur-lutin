@@ -77,6 +77,12 @@ Expression* TermeMultiplication::Optimisation(const map<string, int>& constantes
 
 } //----- Fin de Optimisation
 
+void TermeMultiplication::GetIds(vector<string>& ids)
+{
+    terme->GetIds(ids);
+    facteur->GetIds(ids);
+} //----- Fin de GetIds
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -89,7 +95,8 @@ TermeMultiplication::TermeMultiplication(Terme* terme, Facteur* facteur) : Terme
 
 TermeMultiplication::~TermeMultiplication()
 {
-
+    delete terme;
+    delete facteur;
 } //----- Fin de ~TermeMultiplication
 
 

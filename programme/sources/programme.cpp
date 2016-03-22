@@ -12,9 +12,11 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "programme.h"
+#include "varstate.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -60,6 +62,55 @@ void Programme::Optimisation(){
 
 } //----- Fin de Optimisation
 
+vector<string> Programme::AnalyseStatique()
+{
+    vector<string> errors;
+
+    map<string,VarState> vars;
+    map<string,VarState>::iterator itVars;
+    vector<string> varsId;
+    declarations->GetVars(varsId);
+
+    map<string, int> constantes;
+    GetConstVars(constantes);
+
+    vector<string>::iterator it;
+    for(it = varsId.begin(); it != varsId.end() ; ++it)
+    {
+        map<string,VarState>::iterator itFindVars = vars.find(*it);
+        map<string,int>::iterator itFindConst = constantes.find(*it);
+        if(itFindVars == vars.end() && itFindConst == constantes.end())
+        {
+            vars.insert(pair<string,VarState>(*it, DECLAREE));
+        }
+        else
+        {
+            stringstream ss;
+            ss << "la variable " << *it << " est deja declaree";
+            errors.push_back(ss.str());
+        }
+    }
+
+    instructions->AnalyseStatique(vars, constantes, errors);
+    for(itVars = vars.begin(); itVars != vars.end() ; ++itVars)
+    {
+        if(itVars->second == DECLAREE)
+        {
+            stringstream ss;
+            ss << "variable non affectee :  " << itVars->first;
+            errors.push_back(ss.str());
+        }
+        if(itVars->second == DECLAREE || itVars->second == AFFECTEE)
+        {
+            stringstream ss;
+            ss << "variable non utilisee :  " << itVars->first;
+            errors.push_back(ss.str());
+        }
+    }
+
+    return errors;
+} //----- Fin de GetVars
+
 //-------------------------------------------- Constructeurs - destructeur
 
 Programme::Programme(Pdecl*declarations, Pin* instructions, string err) :
@@ -71,7 +122,8 @@ Programme::Programme(Pdecl*declarations, Pin* instructions, string err) :
 
 Programme::~Programme()
 {
-
+    delete declarations;
+    delete instructions;
 } //----- Fin de ~Programme
 
 

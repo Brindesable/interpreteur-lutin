@@ -72,64 +72,31 @@ using namespace std;
 
 bool GeneratedState11221::Transition (Automate & automate, Symbole *s)
 {
-	// Generated code :
-	switch ((int)*s) {
-		case MOINS:
-			automate.Reduction(3);
-			break;
-		case OUVRE_PAR:
-			break;
-		case FERME_PAR:
-			automate.Reduction(3);
-			break;
-		case MULTIPLIE:
-			automate.Reduction(3);
-			break;
-		case DIVISE:
-			automate.Reduction(3);
-			break;
-		case PLUS:
-			automate.Reduction(3);
-			break;
-		case EGAL:
-			break;
-		case FIN:
-			break;
-		case CONST:
-			break;
-		case CONSTp:
-			break;
-		case EXPRESSION:
-			break;
-		case ECRIRE:
-			break;
-		case FACTEUR:
-			break;
-		case POINT_VIRGULE:
-			automate.Reduction(3);
-			break;
-		case IDENTIFIANT:
-			break;
-		case LIRE:
-			break;
-		case PDECL:
-			break;
-		case PIN:
-			break;
-		case TERME:
-			break;
-		case VALEUR:
-			break;
-		case VAR:
-			break;
-		case VARp:
-			break;
-		case VIRGULE:
-			break;
-		default:
-			break;
-	}
-	return false;
+    // Generated code :
+    switch ((int)*s) {
+    case MOINS:
+        automate.Reduction(3);
+        break;
+    case FERME_PAR:
+        automate.Reduction(3);
+        break;
+    case MULTIPLIE:
+        automate.Reduction(3);
+        break;
+    case DIVISE:
+        automate.Reduction(3);
+        break;
+    case PLUS:
+        automate.Reduction(3);
+        break;
+    case POINT_VIRGULE:
+        automate.Reduction(3);
+        break;
+    default:
+        automate.SetErreur();
+        break;
+    }
+    return false;
 
 }
 
@@ -158,36 +125,36 @@ GeneratedState11221::GeneratedState11221 ()
 
 #endif
 
-    } //----- Fin de GeneratedState11221 (constructeur de copie)
-        
+} //----- Fin de GeneratedState11221 (constructeur de copie)
 
-    GeneratedState11221::~GeneratedState11221 ( )
 
-    // Algorithme :
+GeneratedState11221::~GeneratedState11221 ( )
 
-    //
+// Algorithme :
 
-    {
+//
+
+{
 
 #ifdef MAP
 
-        cout << "Appel au destructeur de <GeneratedState11221>" << endl;
+    cout << "Appel au destructeur de <GeneratedState11221>" << endl;
 
 #endif
 
-    } //----- Fin de ~GeneratedState11221
+} //----- Fin de ~GeneratedState11221
 
-    
 
-    
 
-    //------------------------------------------------------------------ PRIVE
 
-    
 
-    //----------------------------------------------------- Méthodes protégées
+//------------------------------------------------------------------ PRIVE
 
-    
 
-    //------------------------------------------------------- Méthodes privées
+
+//----------------------------------------------------- Méthodes protégées
+
+
+
+//------------------------------------------------------- Méthodes privées
 

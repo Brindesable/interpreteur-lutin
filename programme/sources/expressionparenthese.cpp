@@ -54,6 +54,11 @@ Expression* ExpressionParenthese::Optimisation(const map<string, int>& constante
     return this;
 } //----- Fin de Optimisation
 
+void ExpressionParenthese::GetIds(vector<string>& ids)
+{
+    expression->GetIds(ids);
+} //----- Fin de GetIds
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

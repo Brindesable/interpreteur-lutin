@@ -4,7 +4,7 @@
  début                : 01/03/2016
  copyright            : (C) 2016 par Team-Papassau - H4101
  *************************************************************************/
- 
+
 //---------- Réalisation de la classe <Automate> (fichier automate.cpp) --
 //---------------------------------------------------------------- INCLUDE
 //-------------------------------------------------------- Include système
@@ -34,29 +34,48 @@ Programme* Automate::Lecture()
     lexer.Read();
     pileEtats.push(new GeneratedState0);
 
-    int i = 0;
+
+
 
     do{
         if(!lexer.CheckSyntaxError())
         {
-            i++;
-            Symbole* curr = lexer.SymboleCourant();
 
-            Etat *  currentState = pileEtats.top();
-            currentState->Transition(*this, curr);
+            Symbole* currSymbole = lexer.SymboleCourant();
+
+            Etat* currentState = pileEtats.top();
+            currentState->Transition(*this, currSymbole);
         }
         else
         {
             cerr << lexer.GetSyntaxError() << endl;
-            return 0;
+            return nullptr;
         }
+
     }
-    while((int)*pileSymboles.top() != PROGRAMME && i<3000);
+    while(!erreur && (pileSymboles.empty() ||(int)*pileSymboles.top() != PROGRAMME));
 
-    //cout<<"inf "<<pileSymboles.size()<<endl;
-    //cout<<"fin analyse "<<(int)(*pileSymboles.top())<<endl;
+    if(erreur){
+        cout<<"An error occured during the parsing at line "<<lexer.GetCurrLine()<<" near symbol : ";
+        lexer.SymboleCourant()->Print();
+        cout<<endl;
+        return nullptr;
+    }
+    
+    //Suppression des états restants.
+    while (!pileEtats.empty()) {
+        delete pileEtats.top();
+        pileEtats.pop();
+    }
+    
+    //Suppression du caractère de FIN.
+    delete lexer.SymboleCourant();
+    
+    //Lecture du programme.
+    Programme* programme = static_cast<Programme*>(pileSymboles.top());
+    pileSymboles.pop();
 
-    return static_cast<Programme*>(pileSymboles.top());
+    return programme;
 } //----- Fin de Lecture
 
 void Automate::Decalage(Symbole* symbole, Etat* etat)
@@ -67,37 +86,56 @@ void Automate::Decalage(Symbole* symbole, Etat* etat)
 
 void Automate::Reduction(int nbSymboles)
 {
-
-    Etat* curr = pileEtats.top();
+    Etat* etatReduit = pileEtats.top();
 
     vector<Symbole*> symboles;
     for(int i = 0; i < nbSymboles; i++)
     {
+        //On libère les états sauf l'état reduit
+        //dont on a besoin pour la reduction.
+        if (pileEtats.top() != etatReduit)
+        {
+            delete pileEtats.top();
+        }
         pileEtats.pop();
         symboles.push_back(pileSymboles.top());
         pileSymboles.pop();
     }
-    Symbole* symbole = curr->Reduction(symboles);
-
-    curr = pileEtats.top();
-    curr->Transition(*this, symbole);
-
-
+    
+    Symbole* symbole = etatReduit->Reduction(symboles);
+    //On libère enfin l'état reduit s'il a été dépilé.
+    if (nbSymboles > 0)
+    {
+        delete etatReduit;
+    }
+    
+    Etat* sommet = pileEtats.top();
+    sommet->Transition(*this, symbole);
 } //----- Fin de Reduction
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Automate::Automate(istream& sources) : lexer(sources)
+Automate::Automate(istream& sources) : lexer(sources), erreur(false)
 {
-	
+
 } //----- Fin de Automate
 
 
 Automate::~Automate()
 {
-	
+	//Suppression des états.
+    while (!pileEtats.empty()) {
+        delete pileEtats.top();
+        pileEtats.pop();
+    }
+    
+    //Suppression des symboles.
+    while (!pileSymboles.empty()) {
+        delete pileSymboles.top();
+        pileSymboles.pop();
+    }
 } //----- Fin de ~Automate
 
 //------------------------------------------------------------------ PRIVE

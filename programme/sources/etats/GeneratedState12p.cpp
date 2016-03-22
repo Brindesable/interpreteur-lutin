@@ -71,66 +71,23 @@ using namespace std;
 
 bool GeneratedState12p::Transition (Automate & automate, Symbole *s)
 {
-	// Generated code :
-	switch ((int)*s) {
-		case MOINS:
-			break;
-		case OUVRE_PAR:
-			break;
-		case FERME_PAR:
-			break;
-		case MULTIPLIE:
-			break;
-		case DIVISE:
-			break;
-		case PLUS:
-			break;
-		case EGAL:
-			break;
-		case FIN:
-			break;
-		case CONST:
-			break;
-		case CONSTp:
-			break;
-		case EXPRESSION:
-			break;
-		case ECRIRE:
-			break;
-		case FACTEUR:
-			break;
-		case POINT_VIRGULE:
-            automate.Consommer();
-			automate.Decalage(s, new GeneratedState12s);
-			break;
-		case IDENTIFIANT:
-			break;
-		case LIRE:
-			break;
-		case PDECL:
-			break;
-		case PIN:
-			break;
-		case TERME:
-			break;
-		case VALEUR:
-			break;
-		case VAR:
-			break;
-		case VARp:
-			break;
-		case VIRGULE:
-			break;
-		default:
-			break;
-	}
-	return false;
+    // Generated code :
+    switch ((int)*s) {
+    case POINT_VIRGULE:
+        automate.Consommer();
+        automate.Decalage(s, new GeneratedState12s);
+        break;
+    default:
+        automate.SetErreur();
+        break;
+    }
+    return false;
 
 }
 
 Symbole* GeneratedState12p::Reduction (vector<Symbole*>& s)
 {
-// This state does not require any reductions. :-)
+    // This state does not require any reductions. :-)
 }
 
 
@@ -150,36 +107,36 @@ GeneratedState12p::GeneratedState12p ()
 
 #endif
 
-    } //----- Fin de GeneratedState12p (constructeur de copie)
-        
+} //----- Fin de GeneratedState12p (constructeur de copie)
 
-    GeneratedState12p::~GeneratedState12p ( )
 
-    // Algorithme :
+GeneratedState12p::~GeneratedState12p ( )
 
-    //
+// Algorithme :
 
-    {
+//
+
+{
 
 #ifdef MAP
 
-        cout << "Appel au destructeur de <GeneratedState12p>" << endl;
+    cout << "Appel au destructeur de <GeneratedState12p>" << endl;
 
 #endif
 
-    } //----- Fin de ~GeneratedState12p
+} //----- Fin de ~GeneratedState12p
 
-    
 
-    
 
-    //------------------------------------------------------------------ PRIVE
 
-    
 
-    //----------------------------------------------------- Méthodes protégées
+//------------------------------------------------------------------ PRIVE
 
-    
 
-    //------------------------------------------------------- Méthodes privées
+
+//----------------------------------------------------- Méthodes protégées
+
+
+
+//------------------------------------------------------- Méthodes privées
 

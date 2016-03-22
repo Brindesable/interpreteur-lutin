@@ -80,6 +80,7 @@ bool GeneratedState312s::Transition (Automate & automate, Symbole *s)
         break;
 
     default:
+        automate.SetErreur();
         break;
     }
     return false;

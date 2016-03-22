@@ -71,64 +71,31 @@ using namespace std;
 
 bool GeneratedState116::Transition (Automate & automate, Symbole *s)
 {
-	// Generated code :
-	switch ((int)*s) {
-		case MOINS:
-			automate.Reduction(1);
-			break;
-		case OUVRE_PAR:
-			break;
-		case FERME_PAR:
-			automate.Reduction(1);
-			break;
-		case MULTIPLIE:
-			automate.Reduction(1);
-			break;
-		case DIVISE:
-			automate.Reduction(1);
-			break;
-		case PLUS:
-			automate.Reduction(1);
-			break;
-		case EGAL:
-			break;
-		case FIN:
-			break;
-		case CONST:
-			break;
-		case CONSTp:
-			break;
-		case EXPRESSION:
-			break;
-		case ECRIRE:
-			break;
-		case FACTEUR:
-			break;
-		case POINT_VIRGULE:
-			automate.Reduction(1);
-			break;
-		case IDENTIFIANT:
-			break;
-		case LIRE:
-			break;
-		case PDECL:
-			break;
-		case PIN:
-			break;
-		case TERME:
-			break;
-		case VALEUR:
-			break;
-		case VAR:
-			break;
-		case VARp:
-			break;
-		case VIRGULE:
-			break;
-		default:
-			break;
-	}
-	return false;
+    // Generated code :
+    switch ((int)*s) {
+    case MOINS:
+        automate.Reduction(1);
+        break;
+    case FERME_PAR:
+        automate.Reduction(1);
+        break;
+    case MULTIPLIE:
+        automate.Reduction(1);
+        break;
+    case DIVISE:
+        automate.Reduction(1);
+        break;
+    case PLUS:
+        automate.Reduction(1);
+        break;
+    case POINT_VIRGULE:
+        automate.Reduction(1);
+        break;
+    default:
+        automate.SetErreur();
+        break;
+    }
+    return false;
 
 }
 
@@ -156,36 +123,36 @@ GeneratedState116::GeneratedState116 ()
 
 #endif
 
-    } //----- Fin de GeneratedState116 (constructeur de copie)
-        
+} //----- Fin de GeneratedState116 (constructeur de copie)
 
-    GeneratedState116::~GeneratedState116 ( )
 
-    // Algorithme :
+GeneratedState116::~GeneratedState116 ( )
 
-    //
+// Algorithme :
 
-    {
+//
+
+{
 
 #ifdef MAP
 
-        cout << "Appel au destructeur de <GeneratedState116>" << endl;
+    cout << "Appel au destructeur de <GeneratedState116>" << endl;
 
 #endif
 
-    } //----- Fin de ~GeneratedState116
+} //----- Fin de ~GeneratedState116
 
-    
 
-    
 
-    //------------------------------------------------------------------ PRIVE
 
-    
 
-    //----------------------------------------------------- Méthodes protégées
+//------------------------------------------------------------------ PRIVE
 
-    
 
-    //------------------------------------------------------- Méthodes privées
+
+//----------------------------------------------------- Méthodes protégées
+
+
+
+//------------------------------------------------------- Méthodes privées
 

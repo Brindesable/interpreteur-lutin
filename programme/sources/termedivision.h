@@ -12,6 +12,7 @@
 //--------------------------------------------------- Interfaces 
 using namespace std;
 #include <map>
+#include <vector>
 #include "terme.h"
 #include "facteur.h"
 //------------------------------------------------------------- Constantes
@@ -41,6 +42,10 @@ public:
     Expression* Optimisation(const map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise le terme
+
+    void GetIds(vector<string>& ids);
+    // Mode d'emploi :
+    // Obtient tous les identifiants impliques dans le terme (utilise pour l'analyse statique)
 
 //------------------------------------------------- Surcharge d'opérateurs
 

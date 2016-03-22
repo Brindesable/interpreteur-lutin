@@ -70,8 +70,11 @@ bool Lexer::Read()
     //On teste si on est arrivé à la fin des sources.
     if (tampon.empty() && sources.eof())
     {
-        //On retourne un symbole de fin.
-        symbole_courant = FabriqueSymbole::CreerSymbole(FIN, "$");
+        //On retourne un symbole de fin, si on n'y est pas déjà.
+        if (*symbole_courant != FIN)
+        {
+            symbole_courant = FabriqueSymbole::CreerSymbole(FIN, "$");
+        }
         return true;
     }
 

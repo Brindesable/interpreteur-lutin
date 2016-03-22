@@ -48,6 +48,8 @@ public:
     void Reduction(int nbSymboles);
     // Mode d'emploi :
     //
+
+    void SetErreur(){erreur=true;}
     
     //------------------------------------------------- Surcharge d'opérateurs
 
@@ -76,6 +78,7 @@ private:
     stack<Symbole*> pileSymboles;
     stack<Etat*> pileEtats;
     Lexer lexer;
+    bool erreur;
     
     //---------------------------------------------------------- Classes amies
     

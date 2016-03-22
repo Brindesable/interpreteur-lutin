@@ -78,6 +78,11 @@ void Const::GetConstVars(map<string, int> & values) const{
         values[identifiantCourant->Nom()] = valeurCourante->Evaluate(values);
     }
 }
+
+void Const::GetVars(vector<string> & vars) const
+{
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -90,7 +95,15 @@ Const::Const(Identifiant* id, Valeur* val) : PdeclInst(CONSTp)
 
 Const::~Const()
 {
+    vector<pair<Identifiant*, Valeur*>>::iterator it;
 
+    for(it = declarations.begin(); it != declarations.end(); ++it)
+    {
+        delete it->first;
+        delete it->second;
+    }
+
+    declarations.clear();
 } //----- Fin de ~Const
 
 

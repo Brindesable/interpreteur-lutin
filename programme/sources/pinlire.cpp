@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "pinlire.h"
@@ -49,6 +50,31 @@ void PinLire::Optimisation(const map<string, int>& constantes)
     //pas d'optimisation à effectuer.
 } //----- Fin de Optimisation
 
+void PinLire::AnalyseStatique(map<string, VarState> & vars, const map<string, int> & constantes, vector<string> & errors)
+{
+    map<string,VarState>::iterator itFindVar;
+    map<string,int>::const_iterator itFindConst;
+
+    itFindVar = vars.find(id->Nom());
+    itFindConst = constantes.find(id->Nom());
+
+    if(itFindConst != constantes.end())
+    {
+        stringstream err;
+        err << "la variable " << id->Nom() << " est constante, elle ne peut etre modifiee.";
+        errors.push_back(err.str());
+    }
+    else if(itFindVar != vars.end())
+    {
+        itFindVar->second = AFFECTEE;
+    }
+    else
+    {
+        stringstream err;
+        err << "la variable " << id->Nom() << " n'a pas ete declaree.";
+        errors.push_back(err.str());
+    }
+} //----- Fin de AnalyseStatique
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -60,7 +86,7 @@ PinLire::PinLire(Identifiant* id) : id(id)
 
 PinLire::~PinLire()
 {
-
+    delete id;
 } //----- Fin de ~PinLire
 
 

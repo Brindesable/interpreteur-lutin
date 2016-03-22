@@ -72,76 +72,44 @@ using namespace std;
 
 bool GeneratedState211::Transition (Automate & automate, Symbole *s)
 {
-	// Generated code :
-	switch ((int)*s) {
-		case MOINS:
-			break;
-		case OUVRE_PAR:
-			break;
-		case FERME_PAR:
-			break;
-		case MULTIPLIE:
-			break;
-		case DIVISE:
-			break;
-		case PLUS:
-			break;
-		case EGAL:
-			break;
-		case FIN:
-			automate.Reduction(4);
-			break;
-		case CONST:
-			automate.Reduction(4);
-			break;
-		case CONSTp:
-			break;
-		case EXPRESSION:
-			break;
-		case ECRIRE:
-			automate.Reduction(4);
-			break;
-		case FACTEUR:
-			break;
-		case POINT_VIRGULE:
-			break;
-		case IDENTIFIANT:
-			automate.Reduction(4);
-			break;
-		case LIRE:
-			automate.Reduction(4);
-			break;
-		case PDECL:
-			break;
-		case PIN:
-			break;
-		case TERME:
-			break;
-		case VALEUR:
-			break;
-		case VAR:
-			automate.Reduction(4);
-			break;
-		case VARp:
-			break;
-		case VIRGULE:
-			break;
-		default:
-			break;
-	}
-	return false;
+    // Generated code :
+    switch ((int)*s) {
+    case FIN:
+        automate.Reduction(4);
+        break;
+    case CONST:
+        automate.Reduction(4);
+        break;
+    case ECRIRE:
+        automate.Reduction(4);
+        break;
+    case IDENTIFIANT:
+        automate.Reduction(4);
+        break;
+    case LIRE:
+        automate.Reduction(4);
+        break;
+    case VAR:
+        automate.Reduction(4);
+        break;
+    default:
+        automate.SetErreur();
+        break;
+    }
+    return false;
 
 }
 
 Symbole* GeneratedState211::Reduction (vector<Symbole*>& s)
 {
     Pdecl* pdecl = (Pdecl*)s[3];
+    delete s[2];
     Var* var = (Var*)s[1];
+    delete s[0];
 
     pdecl->AddDecl(var);
 
     return pdecl;
-
 }
 
 
@@ -161,36 +129,36 @@ GeneratedState211::GeneratedState211 ()
 
 #endif
 
-    } //----- Fin de GeneratedState211 (constructeur de copie)
-        
+} //----- Fin de GeneratedState211 (constructeur de copie)
 
-    GeneratedState211::~GeneratedState211 ( )
 
-    // Algorithme :
+GeneratedState211::~GeneratedState211 ( )
 
-    //
+// Algorithme :
 
-    {
+//
+
+{
 
 #ifdef MAP
 
-        cout << "Appel au destructeur de <GeneratedState211>" << endl;
+    cout << "Appel au destructeur de <GeneratedState211>" << endl;
 
 #endif
 
-    } //----- Fin de ~GeneratedState211
+} //----- Fin de ~GeneratedState211
 
-    
 
-    
 
-    //------------------------------------------------------------------ PRIVE
 
-    
 
-    //----------------------------------------------------- Méthodes protégées
+//------------------------------------------------------------------ PRIVE
 
-    
 
-    //------------------------------------------------------- Méthodes privées
+
+//----------------------------------------------------- Méthodes protégées
+
+
+
+//------------------------------------------------------- Méthodes privées
 

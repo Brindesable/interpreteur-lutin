@@ -42,6 +42,10 @@ public:
     // Mode d'emploi :
     // Optimise l'instruction
 
+    void AnalyseStatique(map<string, VarState> & vars, const map<string, int> & constantes, vector<string> & errors);
+    // Mode d'emploi :
+    // Ajoute des erreur dans le vecteur lorsque l'on trouve des erreurs statiques
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

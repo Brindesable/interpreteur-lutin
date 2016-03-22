@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "pinecrire.h"
@@ -51,7 +52,45 @@ void PinEcrire::Optimisation(const map<string, int>& constantes)
 
 } //----- Fin de Optimisation
 
+void PinEcrire::AnalyseStatique(map<string, VarState> & vars, const map<string, int> & constantes, vector<string> & errors)
+{
+    vector<string> ids;
+    vector<string>::iterator itIds;
 
+    expression->GetIds(ids);
+
+    map<string,VarState>::iterator itFindVar;
+    map<string,int>::const_iterator itFindConst;
+
+    for(itIds = ids.begin(); itIds != ids.end(); ++itIds)
+    {
+        itFindVar = vars.find(*itIds);
+        itFindConst = constantes.find(*itIds);
+
+        if(itFindConst == constantes.end())
+        {
+            if (itFindVar != vars.end())
+            {
+                if (itFindVar->second == DECLAREE)
+                {
+                    stringstream err;
+                    err << "la valeur de " << *itIds << " dans l'expression exp n'est pas connue.";
+                    errors.push_back(err.str());
+                }
+                else
+                {
+                    itFindVar->second = UTILISEE;
+                }
+            }
+            else
+            {
+                stringstream err;
+                err << "la variable " << *itIds << " n'a pas ete declaree.";
+                errors.push_back(err.str());
+            }
+        }
+    }
+} //----- Fin de AnalyseStatique
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -64,7 +103,7 @@ PinEcrire::PinEcrire(Expression* expression) : expression(expression)
 
 PinEcrire::~PinEcrire()
 {
-
+    delete expression;
 } //----- Fin de ~PinEcrire
 
 
