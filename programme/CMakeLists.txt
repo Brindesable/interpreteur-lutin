@@ -23,4 +23,11 @@ add_executable(
         ${source_files}
 
 )
+
+
+ADD_CUSTOM_TARGET(
+	   test
+	      COMMAND make && cd ../Tests/ && ./mktest.sh  
+	      )
+
 target_link_libraries(main -lboost_regex)

@@ -91,9 +91,11 @@ bool GeneratedState312t::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState312t::Reduction (vector<Symbole*>& s)
 {
-    Const* cst = (Const*)s[4];
-    Valeur* val = (Valeur*)s[0];
-    Identifiant* id = (Identifiant*)s[2];
+    Const* cst = static_cast<Const*>(s[4]);
+    delete s[3];
+    Identifiant* id = static_cast<Identifiant*>(s[2]);
+    delete s[1];
+    Valeur* val = static_cast<Valeur*>(s[0]);
 
     cst->AddDeclaration(id, val);
 

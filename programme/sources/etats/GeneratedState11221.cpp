@@ -102,10 +102,11 @@ bool GeneratedState11221::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState11221::Reduction (vector<Symbole*>& s)
 {
-    Terme* terme = (Terme*)s[2];
-    Facteur* facteur = (Facteur*)s[0];
-    TermeDivision* termeDivision = new TermeDivision(terme, facteur);
-    return termeDivision;
+    Terme* terme = static_cast<Terme*>(s[2]);
+    delete s[1];
+    Facteur* facteur = static_cast<Facteur*>(s[0]);
+    
+    return new TermeDivision(terme, facteur);
 }
 
 

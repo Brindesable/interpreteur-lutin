@@ -104,8 +104,9 @@ bool GeneratedState11121::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState11121::Reduction (vector<Symbole*>& s)
 {
-    Terme* terme = (Terme*)s[0];
-    Expression* expression = (Expression*)s[2];
+    Expression* expression = static_cast<Expression*>(s[2]);
+    delete s[1];
+    Terme* terme = static_cast<Terme*>(s[0]);
 
     return new ExpressionPlus(expression, terme);
 }

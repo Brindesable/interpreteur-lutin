@@ -102,8 +102,10 @@ bool GeneratedState311::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState311::Reduction (vector<Symbole*>& s)
 {
-    Pdecl* pdecl = (Pdecl*)s[3];
-    Const* cst = (Const*)s[1];
+    Pdecl* pdecl = static_cast<Pdecl*>(s[3]);
+    delete s[2];
+    Const* cst = static_cast<Const*>(s[1]);
+    delete s[0];
 
     pdecl->AddDecl(cst);
 

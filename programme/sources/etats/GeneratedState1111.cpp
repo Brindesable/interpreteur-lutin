@@ -101,9 +101,13 @@ bool GeneratedState1111::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState1111::Reduction (vector<Symbole*>& s)
 {
-    Pin* pin = (Pin*)s[3];
-    Expression* exp = (Expression*)s[1];
+    Pin* pin = static_cast<Pin*>(s[3]);
+    delete s[2];
+    Expression* exp = static_cast<Expression*>(s[1]);
+    delete s[0];
+    
     pin->AddPinInst(new PinEcrire(exp));
+    
     return pin;
 }
 

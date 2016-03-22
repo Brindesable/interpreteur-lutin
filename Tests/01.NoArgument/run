@@ -1,1 +1,1 @@
-../lut
+timeout -s 1 2 ../lut

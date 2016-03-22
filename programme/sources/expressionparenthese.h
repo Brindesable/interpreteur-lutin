@@ -47,6 +47,8 @@ public:
     void GetIds(vector<string>& ids);
     // Mode d'emploi :
     // Obtient tous les identifiants impliques dans l'expression (utilise pour l'analyse statique)
+    
+    string ToString() const;
 
 //------------------------------------------------- Surcharge d'opérateurs
 

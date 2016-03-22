@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "termemultiplication.h"
@@ -82,6 +83,13 @@ void TermeMultiplication::GetIds(vector<string>& ids)
     terme->GetIds(ids);
     facteur->GetIds(ids);
 } //----- Fin de GetIds
+
+string TermeMultiplication::ToString() const
+{
+    stringstream ss;
+    ss << terme->ToString() << "*" << facteur->ToString();
+    return ss.str();
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 

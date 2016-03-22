@@ -50,25 +50,20 @@ Programme* Automate::Lecture()
             cerr << lexer.GetSyntaxError() << endl;
             return nullptr;
         }
-
     }
-    while(!erreur && (pileSymboles.empty() ||(int)*pileSymboles.top() != PROGRAMME));
-
-    if(erreur){
+    while(!erreur && !accepte);
+    
+    //On libère l'état 0 qui reste sur la pile.
+    ViderPileEtats();
+    
+    //En cas d'erreur on prévient l'utilisateur.
+    if(erreur)
+    {
         cout<<"An error occured during the parsing at line "<<lexer.GetCurrLine()<<" near symbol : ";
         lexer.SymboleCourant()->Print();
         cout<<endl;
         return nullptr;
     }
-    
-    //Suppression des états restants.
-    while (!pileEtats.empty()) {
-        delete pileEtats.top();
-        pileEtats.pop();
-    }
-    
-    //Suppression du caractère de FIN.
-    delete lexer.SymboleCourant();
     
     //Lecture du programme.
     Programme* programme = static_cast<Programme*>(pileSymboles.top());
@@ -112,16 +107,28 @@ void Automate::Reduction(int nbSymboles)
     sommet->Transition(*this, symbole);
 } //----- Fin de Reduction
 
-void Automate::AddAvertissement(string avertissement){
+void Automate::Accepter(Programme* programme)
+{
+    //On empile le programme sur la pile des symboles.
+    pileSymboles.push(programme);
+    
+    //Suppression du caractère de FIN.
+    delete lexer.SymboleCourant();
+    
+    //On lève le flag pour accepter le programme.
+    accepte = true;
+} //----- Fin de Accepter
 
-    cout<<RED_BEGIN<<"Warning : "<<avertissement<<" ligne "<<lexer.GetCurrLine()<<RED_END<<endl;
-}
+void Automate::AddAvertissement(const string& avertissement)
+{
+    cerr << RED_BEGIN << "Warning : " << avertissement << " ligne " << lexer.GetCurrLine() << RED_END << endl;
+} //----- Fin de AddAvertissement
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Automate::Automate(istream& sources) : lexer(sources), erreur(false)
+Automate::Automate(istream& sources) : lexer(sources), erreur(false), accepte(false)
 {
 
 } //----- Fin de Automate
@@ -129,17 +136,8 @@ Automate::Automate(istream& sources) : lexer(sources), erreur(false)
 
 Automate::~Automate()
 {
-	//Suppression des états.
-    while (!pileEtats.empty()) {
-        delete pileEtats.top();
-        pileEtats.pop();
-    }
-    
-    //Suppression des symboles.
-    while (!pileSymboles.empty()) {
-        delete pileSymboles.top();
-        pileSymboles.pop();
-    }
+    ViderPileEtats();
+    ViderPileSymboles();
 } //----- Fin de ~Automate
 
 //------------------------------------------------------------------ PRIVE
@@ -147,3 +145,18 @@ Automate::~Automate()
 //----------------------------------------------------- Méthodes protégées
 
 //------------------------------------------------------- Méthodes privées
+void Automate::ViderPileEtats()
+{
+    while (!pileEtats.empty()) {
+        delete pileEtats.top();
+        pileEtats.pop();
+    }
+}
+    
+void Automate::ViderPileSymboles()
+{
+    while (!pileSymboles.empty()) {
+        delete pileSymboles.top();
+        pileSymboles.pop();
+    }
+}
