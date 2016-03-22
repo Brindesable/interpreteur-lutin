@@ -14,6 +14,7 @@ using namespace std;
 #include <map>
 #include "expression.h"
 #include "pininst.h"
+#include "varstate.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -40,6 +41,10 @@ public:
     void Optimisation(const map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise l'instruction
+
+    void AnalyseStatique(map<string, VarState> & vars, const map<string, int> & constantes, vector<string> & errors);
+    // Mode d'emploi :
+    // Ajoute des erreur dans le vecteur lorsque l'on trouve des erreurs statiques
 
 	
 //------------------------------------------------- Surcharge d'opérateurs

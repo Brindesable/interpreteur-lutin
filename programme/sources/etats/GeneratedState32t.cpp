@@ -135,7 +135,9 @@ Symbole* GeneratedState32t::Reduction (vector<Symbole*>& s)
 {
     cout<<"redu"<<endl;
     Identifiant* id = (Identifiant*)s[3];
+    delete s[1];
     Valeur* val = (Valeur*)s[1];
+    delete s[0];
 
     return new Const(id, val);
 }

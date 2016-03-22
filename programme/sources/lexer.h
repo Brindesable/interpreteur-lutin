@@ -53,6 +53,8 @@ public:
     // Mode d'emploi :
     // Accesseur de syntaxError
     
+    int GetCurrLine(){return currLine;}
+
 //------------------------------------------------- Surcharge d'opérateurs
     
     

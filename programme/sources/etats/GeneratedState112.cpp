@@ -71,66 +71,33 @@ using namespace std;
 
 bool GeneratedState112::Transition (Automate & automate, Symbole *s)
 {
-	// Generated code :
-	switch ((int)*s) {
-		case MOINS:
-			automate.Reduction(1);
-			break;
-		case OUVRE_PAR:
-			break;
-		case FERME_PAR:
-			automate.Reduction(1);
-			break;
-		case MULTIPLIE:
-            automate.Consommer();
-			automate.Decalage(s, new GeneratedState1121);
-			break;
-		case DIVISE:
-            automate.Consommer();
-			automate.Decalage(s, new GeneratedState1122);
-			break;
-		case PLUS:
-			automate.Reduction(1);
-			break;
-		case EGAL:
-			break;
-		case FIN:
-			break;
-		case CONST:
-			break;
-		case CONSTp:
-			break;
-		case EXPRESSION:
-			break;
-		case ECRIRE:
-			break;
-		case FACTEUR:
-			break;
-		case POINT_VIRGULE:
-			automate.Reduction(1);
-			break;
-		case IDENTIFIANT:
-			break;
-		case LIRE:
-			break;
-		case PDECL:
-			break;
-		case PIN:
-			break;
-		case TERME:
-			break;
-		case VALEUR:
-			break;
-		case VAR:
-			break;
-		case VARp:
-			break;
-		case VIRGULE:
-			break;
-		default:
-			break;
-	}
-	return false;
+    // Generated code :
+    switch ((int)*s) {
+    case MOINS:
+        automate.Reduction(1);
+        break;
+    case FERME_PAR:
+        automate.Reduction(1);
+        break;
+    case MULTIPLIE:
+        automate.Consommer();
+        automate.Decalage(s, new GeneratedState1121);
+        break;
+    case DIVISE:
+        automate.Consommer();
+        automate.Decalage(s, new GeneratedState1122);
+        break;
+    case PLUS:
+        automate.Reduction(1);
+        break;
+    case POINT_VIRGULE:
+        automate.Reduction(1);
+        break;
+    default:
+        automate.SetErreur();
+        break;
+    }
+    return false;
 
 }
 
@@ -160,36 +127,36 @@ GeneratedState112::GeneratedState112 ()
 
 #endif
 
-    } //----- Fin de GeneratedState112 (constructeur de copie)
-        
+} //----- Fin de GeneratedState112 (constructeur de copie)
 
-    GeneratedState112::~GeneratedState112 ( )
 
-    // Algorithme :
+GeneratedState112::~GeneratedState112 ( )
 
-    //
+// Algorithme :
 
-    {
+//
+
+{
 
 #ifdef MAP
 
-        cout << "Appel au destructeur de <GeneratedState112>" << endl;
+    cout << "Appel au destructeur de <GeneratedState112>" << endl;
 
 #endif
 
-    } //----- Fin de ~GeneratedState112
+} //----- Fin de ~GeneratedState112
 
-    
 
-    
 
-    //------------------------------------------------------------------ PRIVE
 
-    
 
-    //----------------------------------------------------- Méthodes protégées
+//------------------------------------------------------------------ PRIVE
 
-    
 
-    //------------------------------------------------------- Méthodes privées
+
+//----------------------------------------------------- Méthodes protégées
+
+
+
+//------------------------------------------------------- Méthodes privées
 

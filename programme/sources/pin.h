@@ -15,7 +15,7 @@ using namespace std;
 #include <vector>
 #include "symbole.h"
 #include "pininst.h"
-
+#include "varstate.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -73,9 +73,18 @@ public:
             pinInst->Optimisation(constantes);
         }
     }
-
     // Mode d'emploi :
     // Optimise les instructions
+
+    void AnalyseStatique(map<string, VarState> & vars, const map<string, int> & constantes, vector<string> & errors)
+    {
+        vector<PinInst*>::iterator itInst;
+
+        for(itInst = inst.begin(); itInst != inst.end(); ++itInst)
+        {
+            (*itInst)->AnalyseStatique(vars, constantes, errors);
+        }
+    }
 
 //------------------------------------------------- Surcharge d'opérateursœ
 

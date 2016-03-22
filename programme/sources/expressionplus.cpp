@@ -70,6 +70,12 @@ Expression* ExpressionPlus::Optimisation(const map<string, int>& constantes){
     return this;
 
 } //----- Fin de Optimisation
+
+void ExpressionPlus::GetIds(vector<string>& ids)
+{
+    expression->GetIds(ids);
+    terme->GetIds(ids);
+} //----- Fin de GetIds
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -82,7 +88,8 @@ ExpressionPlus::ExpressionPlus(Expression* expression, Terme* terme) : Expressio
 
 ExpressionPlus::~ExpressionPlus()
 {
-
+    delete expression;
+    delete terme;
 } //----- Fin de ~ExpressionPlus
 
 

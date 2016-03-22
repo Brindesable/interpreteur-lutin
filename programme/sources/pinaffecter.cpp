@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "pinaffecter.h"
@@ -50,6 +51,67 @@ void PinAffecter::Optimisation(const map<string, int>& constantes)
     }
 
 } //----- Fin de Optimisation
+
+void PinAffecter::AnalyseStatique(map<string, VarState> & vars, const map<string, int> & constantes, vector<string> & errors)
+{
+    vector<string> ids;
+    vector<string>::iterator itIds;
+
+    expression->GetIds(ids);
+
+    map<string,VarState>::iterator itFindVar;
+    map<string,int>::const_iterator itFindConst;
+
+    for(itIds = ids.begin(); itIds != ids.end(); ++itIds)
+    {
+
+        itFindVar = vars.find(*itIds);
+        itFindConst = constantes.find(*itIds);
+
+        if(itFindConst == constantes.end())
+        {
+            if (itFindVar != vars.end())
+            {
+                if (itFindVar->second == DECLAREE)
+                {
+                    stringstream err;
+                    err << "la valeur de " << *itIds << " dans l'expression exp n'est pas connue.";
+                    errors.push_back(err.str());
+                }
+                else
+                {
+                    itFindVar->second = UTILISEE;
+                }
+            }
+            else
+            {
+                stringstream err;
+                err << "la variable " << *itIds << " n'a pas ete declaree.";
+                errors.push_back(err.str());
+            }
+        }
+    }
+
+    itFindVar = vars.find(id->Nom());
+    itFindConst = constantes.find(id->Nom());
+
+    if(itFindConst != constantes.end())
+    {
+        stringstream err;
+        err << "la variable " << id->Nom() << " est constante, elle ne peut etre modifiee.";
+        errors.push_back(err.str());
+    }
+    else if(itFindVar != vars.end())
+    {
+        itFindVar->second = AFFECTEE;
+    }
+    else
+    {
+        stringstream err;
+        err << "la variable " << id->Nom() << " n'a pas ete declaree.";
+        errors.push_back(err.str());
+    }
+} //----- Fin de AnalyseStatique
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

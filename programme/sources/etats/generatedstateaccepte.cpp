@@ -93,7 +93,7 @@ bool GeneratedStateACCEPTE::Transition (Automate & automate, Symbole *s)
 
         break;
     case FIN:
-        automate.Reduction(1);
+        automate.Reduction(2);
         break;
     case CONST:
 
