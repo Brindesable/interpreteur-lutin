@@ -15,6 +15,8 @@ using namespace std;
 #include "automate.h"
 #include "etats/GeneratedState0.h"
 //------------------------------------------------------------- Constantes
+const string RED_BEGIN = "\033[1;31m";
+const string RED_END = "\033[0m";
 //---------------------------------------------------- Variables de classe
 //----------------------------------------------------------- Types privés
 //----------------------------------------------------------------- PUBLIC
@@ -33,9 +35,6 @@ Programme* Automate::Lecture()
 {
     lexer.Read();
     pileEtats.push(new GeneratedState0);
-
-
-
 
     do{
         if(!lexer.CheckSyntaxError())
@@ -112,6 +111,11 @@ void Automate::Reduction(int nbSymboles)
     Etat* sommet = pileEtats.top();
     sommet->Transition(*this, symbole);
 } //----- Fin de Reduction
+
+void Automate::AddAvertissement(string avertissement){
+
+    cout<<RED_BEGIN<<"Warning : "<<avertissement<<" ligne "<<lexer.GetCurrLine()<<RED_END<<endl;
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 
