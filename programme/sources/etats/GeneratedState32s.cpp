@@ -91,9 +91,9 @@ bool GeneratedState32s::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState32s::Reduction (vector<Symbole*>& s)
 {
-    Identifiant* id = (Identifiant*)s[2];
+    Identifiant* id = static_cast<Identifiant*>(s[2]);
     delete s[1];
-    Valeur* val = (Valeur*)s[0];
+    Valeur* val = static_cast<Valeur*>(s[0]);
 
     return new Const(id, val);
 }

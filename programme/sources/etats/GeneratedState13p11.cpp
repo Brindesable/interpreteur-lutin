@@ -98,8 +98,13 @@ bool GeneratedState13p11::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState13p11::Reduction (vector<Symbole*>& s)
 {
-    Pin* pin = (Pin*)s[4];
-    PinAffecter* pinAffecter = new PinAffecter((Identifiant*)s[3],(Expression*)s[1]);
+    Pin* pin = static_cast<Pin*>(s[4]);
+    Identifiant* identifiant = static_cast<Identifiant*>(s[3]);
+    delete s[2];
+    Expression* expression = static_cast<Expression*>(s[1]);
+    delete s[0];
+    
+    PinAffecter* pinAffecter = new PinAffecter(identifiant, expression);
     pin->AddPinInst(pinAffecter);
 
     return pin;

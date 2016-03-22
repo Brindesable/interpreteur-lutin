@@ -104,11 +104,11 @@ bool GeneratedState11211::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState11211::Reduction (vector<Symbole*>& s)
 {
-
-    Terme* terme = (Terme*)s[2];
-    Facteur* facteur = (Facteur*)s[0];
-    TermeMultiplication* termeMultiplication = new TermeMultiplication(terme, facteur);
-    return termeMultiplication;
+    Terme* terme = static_cast<Terme*>(s[2]);
+    delete s[1];
+    Facteur* facteur = static_cast<Facteur*>(s[0]);
+    
+    return new TermeMultiplication(terme, facteur);
 }
 
 
