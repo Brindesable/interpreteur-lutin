@@ -46,6 +46,8 @@ public:
     // Mode d'emploi :
     // Obtient tous les identifiants impliques dans l'expression (utilise pour l'analyse statique)
 
+    virtual string ToString() const = 0;
+
 //------------------------------------------------------------- Constantes
     static const int VALEUR_INDEFINIE = INT_MIN;
     //Valeur par défaut d'une variable non définie.

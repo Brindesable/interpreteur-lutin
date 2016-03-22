@@ -43,3 +43,9 @@ Tests/results.csv
 
 # ~ files
 *~
+
+# vim swap files
+*swp
+
+# test results
+results.csv

@@ -47,6 +47,8 @@ public:
     // Mode d'emploi :
     // Obtient tous les identifiants impliques dans le terme (utilise pour l'analyse statique)
 
+    string ToString() const;
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

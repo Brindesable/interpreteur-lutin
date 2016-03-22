@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "expressionmoins.h"
@@ -72,6 +73,13 @@ void ExpressionMoins::GetIds(vector<string>& ids)
     expression->GetIds(ids);
     terme->GetIds(ids);
 } //----- Fin de GetIds
+
+string ExpressionMoins::ToString() const
+{
+    stringstream ss;
+    ss << expression->ToString() << "-" << terme->ToString();
+    return ss.str();
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 
