@@ -48,10 +48,18 @@ public:
     void Reduction(int nbSymboles);
     // Mode d'emploi :
     //
+    
+    void Accepter(Programme* programme);
+    // Mode d'emploi :
+    // Accepte le symbole Programme et lève le flag accepte de l'automate.
 
-    void SetErreur(){erreur=true;}
+    void SetErreur() {erreur=true;}
+    // Mode d'emploi :
+    // Lève le flag d'erreur de l'automate.
 
-    void AddAvertissement(string warning);
+    void AddAvertissement(const string& warning);
+    // Mode d'emploi :
+    // Affiche un avertissement suite à un problème synthaxique.
     
     //------------------------------------------------- Surcharge d'opérateurs
 
@@ -71,6 +79,13 @@ protected:
 
 private:
     //------------------------------------------------------- Méthodes privées
+    void ViderPileEtats();
+    // Mode d'emploi :
+    // Vide et libère la pile des etats.
+    
+    void ViderPileSymboles();
+    // Mode d'emploi :
+    // Vide et libère la pile des symboles.
 
 protected:
     //----------------------------------------------------- Attributs protégés
@@ -81,6 +96,7 @@ private:
     stack<Etat*> pileEtats;
     Lexer lexer;
     bool erreur;
+    bool accepte;
     
     //---------------------------------------------------------- Classes amies
     
