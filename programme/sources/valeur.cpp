@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "valeur.h"
@@ -45,6 +46,13 @@ Expression* Valeur::Optimisation(const map<string, int>& constantes){
 void Valeur::GetIds(vector<string>& ids)
 {
 } //----- Fin de GetIds
+
+string Valeur::ToString() const
+{
+    stringstream ss;
+    ss << valeur;
+    return ss.str();
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 

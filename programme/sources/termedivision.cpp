@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "termedivision.h"
@@ -73,6 +74,13 @@ void TermeDivision::GetIds(vector<string>& ids)
     terme->GetIds(ids);
     facteur->GetIds(ids);
 } //----- Fin de GetIds
+
+string TermeDivision::ToString() const
+{
+    stringstream ss;
+    ss << terme->ToString() << "/" << facteur->ToString();
+    return ss.str();
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 

@@ -65,6 +65,11 @@ void Identifiant::GetIds(vector<string>& ids)
     ids.push_back(nom);
 } //----- Fin de GetIds
 
+string Identifiant::ToString() const
+{
+    return nom;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

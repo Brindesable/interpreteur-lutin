@@ -75,7 +75,7 @@ void PinAffecter::AnalyseStatique(map<string, VarState> & vars, const map<string
                 if (itFindVar->second == DECLAREE)
                 {
                     stringstream err;
-                    err << "la valeur de " << *itIds << " dans l'expression exp n'est pas connue.";
+                    err << "la valeur de " << *itIds << " dans l'expression " << expression->ToString() << " n'est pas connue.";
                     errors.push_back(err.str());
                 }
                 else
