@@ -1,2 +1,2 @@
-../lut ../files/m-erreursemantique.lt
+timeout -s 1 2 ../lut ../files/m-erreursemantique.lt
 

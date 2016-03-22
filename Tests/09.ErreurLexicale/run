@@ -1,1 +1,1 @@
-../lut ../files/lexerror.lt
+timeout -s 1 2 ../lut ../files/lexerror.lt
