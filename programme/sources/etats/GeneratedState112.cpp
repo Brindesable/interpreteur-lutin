@@ -103,7 +103,6 @@ bool GeneratedState112::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState112::Reduction (vector<Symbole*>& s)
 {
-
     Symbole* terme = s[0];
     terme->SetSymboleType(EXPRESSION);
 

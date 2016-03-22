@@ -102,9 +102,10 @@ bool GeneratedState115::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState115::Reduction (vector<Symbole*>& s)
 {
-    Identifiant* id = (Identifiant*)s[0];
-    id->SetSymboleType(FACTEUR);
-    return id;
+    Symbole* identifiant = s[0];
+    identifiant->SetSymboleType(FACTEUR);
+    
+    return identifiant;
 }
 
 

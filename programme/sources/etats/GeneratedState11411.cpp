@@ -102,7 +102,9 @@ bool GeneratedState11411::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState11411::Reduction (vector<Symbole*>& s)
 {
+    delete s[2];
     Expression* expression = static_cast<Expression*>(s[1]);
+    delete s[0];
     
     ExpressionParenthese* expressionParenthese = new ExpressionParenthese(expression);
     expressionParenthese->SetSymboleType(FACTEUR);

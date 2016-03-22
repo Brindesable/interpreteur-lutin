@@ -101,9 +101,10 @@ bool GeneratedState116::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState116::Reduction (vector<Symbole*>& s)
 {
-    Valeur* val = (Valeur*)s[0];
-    val->SetSymboleType(FACTEUR);
-    return val;
+    Symbole* valeur = s[0];
+    valeur->SetSymboleType(FACTEUR);
+    
+    return valeur;
 }
 
 

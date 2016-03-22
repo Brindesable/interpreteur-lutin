@@ -12,6 +12,7 @@ ExpressionParenthese  -  Représente une expression parenthesée du langage.
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "expressionparenthese.h"
@@ -58,6 +59,13 @@ void ExpressionParenthese::GetIds(vector<string>& ids)
 {
     expression->GetIds(ids);
 } //----- Fin de GetIds
+
+string ExpressionParenthese::ToString() const
+{
+    stringstream ss;
+    ss << "(" << expression->ToString() << ")";
+    return ss.str();
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 

@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "expressionplus.h"
@@ -76,6 +77,13 @@ void ExpressionPlus::GetIds(vector<string>& ids)
     expression->GetIds(ids);
     terme->GetIds(ids);
 } //----- Fin de GetIds
+
+string ExpressionPlus::ToString() const
+{
+    stringstream ss;
+    ss << expression->ToString() << "+" << terme->ToString();
+    return ss.str();
+}
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

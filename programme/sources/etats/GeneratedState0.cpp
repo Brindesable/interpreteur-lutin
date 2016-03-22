@@ -34,7 +34,6 @@ using namespace std;
 
 #include "GeneratedState0.h"
 #include "GeneratedState0p.h"
-#include "generatedstateaccepte.h"
 #include "../pdecl.h"
 
 
@@ -78,17 +77,13 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
     // Generated code :
     switch ((int)*s) {
     case OUVRE_PAR:
-        automate.Consommer();
         break;
     case POINT_VIRGULE:
-        //automate.Decalage(s, new GeneratedStateACCEPTE);
         break;
     case FIN:
-        //automate.Decalage(s, new GeneratedStateACCEPTE);
         break;
     case CONST:
         automate.Reduction(0);
-        //automate.Decalage(s, new GeneratedState0p);
         break;
     case ECRIRE:
          automate.Reduction(0);
@@ -107,7 +102,11 @@ bool GeneratedState0::Transition (Automate & automate, Symbole *s)
         break;
     case PROGRAMME:
         automate.Consommer();
-        automate.Decalage(s, new GeneratedStateACCEPTE);
+        //On limite la portée de la variable progSymbole à ce case du switch.
+        {
+            Programme* progSymbole = static_cast<Programme*>(s);
+            automate.Accepter(progSymbole);
+        }
         break;
     default:
         automate.SetErreur();

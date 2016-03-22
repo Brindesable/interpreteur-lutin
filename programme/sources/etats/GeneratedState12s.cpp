@@ -97,9 +97,13 @@ bool GeneratedState12s::Transition (Automate & automate, Symbole *s)
 
 Symbole* GeneratedState12s::Reduction (vector<Symbole*>& s)
 {
-    Pin* pin = (Pin*)s[3];
-    Identifiant* id = (Identifiant*)s[1];
+    Pin* pin = static_cast<Pin*>(s[3]);
+    delete s[2];
+    Identifiant* id = static_cast<Identifiant*>(s[1]);
+    delete s[0];
+    
     pin->AddPinInst(new PinLire(id));
+    
     return pin;
 }
 
