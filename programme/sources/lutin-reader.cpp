@@ -45,7 +45,7 @@ void LutinReader::AnalyseStatique()
 
     for(itErrors = errors.begin(); itErrors != errors.end(); ++itErrors)
     {
-        cout << *itErrors << endl;
+        cerr << *itErrors << endl;
     }
 
 } //----- Fin de AnalyseStatique
