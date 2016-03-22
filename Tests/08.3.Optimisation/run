@@ -1,1 +1,1 @@
-../lut -o -p ../files/t-optim-affectation.lt
+timeout -s 1 2 ../lut -o -p ../files/t-optim-affectation.lt

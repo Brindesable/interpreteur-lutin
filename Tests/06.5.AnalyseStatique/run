@@ -1,1 +1,1 @@
-../lut -a ../files/t-constmodified.lt
+timeout -s 1 2 ../lut -a ../files/t-constmodified.lt
