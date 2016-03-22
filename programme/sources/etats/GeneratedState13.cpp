@@ -33,7 +33,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState13.h"
-
+#include "../fabriquesymbole.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -76,6 +76,18 @@ bool GeneratedState13::Transition (Automate & automate, Symbole *s)
     case AFFECTATION:
         automate.Consommer();
         automate.Decalage(s, new GeneratedState13p);
+        break;
+
+    case IDENTIFIANT:
+    case VALEUR:
+    case OUVRE_PAR:
+        //dans ce cas (premiers de Expression)
+        //l'utilisateur a oublié le égal, probablement.
+        //On ajoute "artificiellement" le symbole.
+        automate.AddAvertissement("':=' oublié !");
+        Symbole* affectation;
+        affectation = FabriqueSymbole::CreerSymbole(AFFECTATION, ":=");
+        automate.Decalage(affectation, new GeneratedState13p);
         break;
     default:
         automate.SetErreur();

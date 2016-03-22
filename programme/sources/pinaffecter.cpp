@@ -46,7 +46,7 @@ void PinAffecter::Optimisation(const map<string, int>& constantes)
     Expression* res = expression->Optimisation(constantes);
 
     if(res != expression){
-        delete res;
+        delete expression;
         expression = res;
     }
 
