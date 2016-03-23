@@ -69,7 +69,7 @@ bool Lexer::Read()
         {
 			tampon += '\n';
 		}
-		
+
         currLine++;
         currCol = 0;
     }
@@ -97,9 +97,9 @@ bool Lexer::Read()
 			symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
 
             // on maj le tampon et on enregistre de combien de caracteres on s'est deplace
-            int prevSize = tampon.size();
-			tampon = matche.suffix().str();
-            currCol += prevSize - tampon.size();
+            int prevSize = tampon.length();
+            tampon = matche.suffix().str();
+            currCol += prevSize - tampon.length();
 
 			return true;
         }
