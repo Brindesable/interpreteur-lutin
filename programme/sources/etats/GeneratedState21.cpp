@@ -33,6 +33,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState21.h"
+#include "../fabriquesymbole.h"
 
 
 
@@ -80,6 +81,13 @@ bool GeneratedState21::Transition (Automate & automate, Symbole *s)
     case VIRGULE:
         automate.Consommer();
         automate.Decalage(s, new GeneratedState212);
+        break;
+    case IDENTIFIANT:
+        //On ajoute "artificiellement" le symbole.
+        Symbole* virgule;
+        virgule = FabriqueSymbole::CreerSymbole(VIRGULE, ",");
+        automate.AddAvertissement(virgule);
+        automate.Decalage(virgule, new GeneratedState212);
         break;
     default:
         automate.SetErreur();

@@ -81,8 +81,8 @@ bool GeneratedState312p::Transition (Automate & automate, Symbole *s)
         //dans ce cas, l'utilisateur a oublié le égal, probablement.
         //On ajoute "artificiellement" le symbole.
         Symbole* egal;
-        automate.AddAvertissement("'=' oublié !");
         egal = FabriqueSymbole::CreerSymbole(EGAL, "=");
+        automate.AddAvertissement(egal);
         automate.Decalage(egal, new GeneratedState312s);
         break;
     default:

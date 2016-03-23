@@ -13,6 +13,7 @@
 using namespace std;
 #include <iostream>
 #include <sstream>
+#include <limits>
 
 //------------------------------------------------------ Include personnel
 #include "termedivision.h"
@@ -38,7 +39,33 @@ void TermeDivision::Print() const
 
 int TermeDivision::Evaluate(const map<string, int>& variables) const
 {
-    return terme->Evaluate(variables) / facteur->Evaluate(variables);
+    int resultat = 0;
+    int numerateur = terme->Evaluate(variables);
+    int denominateur = facteur->Evaluate(variables);
+    
+    if (denominateur != 0)
+    {
+        resultat = numerateur / denominateur;
+    }
+    else
+    {
+        cerr << "Erreur : division par 0." << endl;
+        //On continue l'execution du programme en retournant une valeur infinie.
+        if (numerateur > 0)
+        {
+            resultat = numeric_limits<int>::max();
+        }
+        else if (numerateur < 0)
+        {
+            resultat = numeric_limits<int>::min();
+        }
+        else
+        {
+            resultat = 0;
+        }
+    }
+    
+    return resultat;
 }
 
 Expression* TermeDivision::Optimisation(const map<string, int>& constantes){

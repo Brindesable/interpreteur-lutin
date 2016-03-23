@@ -53,21 +53,28 @@ Programme* Automate::Lecture()
     }
     while(!erreur && !accepte);
     
-    //On libère l'état 0 qui reste sur la pile.
-    ViderPileEtats();
+    Programme* programme = nullptr;
     
-    //En cas d'erreur on prévient l'utilisateur.
-    if(erreur)
+    if (!erreur)
     {
-        cerr<<"An error occured during the parsing at line "<<lexer.GetCurrLine()<<" near symbol : ";
+        //Lecture du programme.
+        programme = static_cast<Programme*>(pileSymboles.top());
+        pileSymboles.pop();
+    }
+    else
+    {
+        cerr<<"Erreur Syntaxique ("<<lexer.GetCurrLine()<<":"<<lexer.GetCurrCol()<<")"<<" près du symbole  ";
         lexer.SymboleCourant()->Print();
-        cout<<endl;
-        return nullptr;
+        cerr<<endl;
+
     }
     
-    //Lecture du programme.
-    Programme* programme = static_cast<Programme*>(pileSymboles.top());
-    pileSymboles.pop();
+    //On libère l'état 0 qui reste sur la pile.
+    ViderPileEtats();
+    //Pour être sûr, on libère les eventuels symboles qui resteraient.
+    ViderPileSymboles();
+    //Suppression du dernier caractère lu par le lexer.
+    delete lexer.SymboleCourant();
 
     return programme;
 } //----- Fin de Lecture
@@ -112,16 +119,15 @@ void Automate::Accepter(Programme* programme)
     //On empile le programme sur la pile des symboles.
     pileSymboles.push(programme);
     
-    //Suppression du caractère de FIN.
-    delete lexer.SymboleCourant();
-    
     //On lève le flag pour accepter le programme.
     accepte = true;
 } //----- Fin de Accepter
 
-void Automate::AddAvertissement(const string& avertissement)
+void Automate::AddAvertissement(const Symbole* symbole)
 {
-    cerr << RED_BEGIN << "Warning : " << avertissement << " ligne " << lexer.GetCurrLine() << RED_END << endl;
+    cerr<<"Erreur Syntaxique ("<<lexer.GetCurrLine()<<":"<<lexer.GetCurrCol()<<")"<<" symbole attendu : ";
+    symbole->Print();
+    cerr<<endl;
 } //----- Fin de AddAvertissement
 
 //------------------------------------------------- Surcharge d'opérateurs

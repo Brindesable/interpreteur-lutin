@@ -81,6 +81,9 @@ bool GeneratedState312t::Transition (Automate & automate, Symbole *s)
     case VIRGULE:
         automate.Reduction(5);
         break;
+    case VAR:
+        automate.Reduction(5);
+        break;
     default:
         automate.SetErreur();
         break;

@@ -54,6 +54,7 @@ public:
     // Accesseur de syntaxError
     
     int GetCurrLine(){return currLine;}
+    int GetCurrCol(){return currCol;}
 
 //------------------------------------------------- Surcharge d'opérateurs
     

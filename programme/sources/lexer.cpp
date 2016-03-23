@@ -132,7 +132,7 @@ Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(nullptr), syn
 
 Lexer::~Lexer()
 {
-
+    
 } //----- Fin de ~Lexer
     
     
