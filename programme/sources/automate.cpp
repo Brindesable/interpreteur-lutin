@@ -59,7 +59,7 @@ Programme* Automate::Lecture()
     //En cas d'erreur on prévient l'utilisateur.
     if(erreur)
     {
-        cout<<"An error occured during the parsing at line "<<lexer.GetCurrLine()<<" near symbol : ";
+        cerr<<"An error occured during the parsing at line "<<lexer.GetCurrLine()<<" near symbol : ";
         lexer.SymboleCourant()->Print();
         cout<<endl;
         return nullptr;
