@@ -86,7 +86,7 @@ bool GeneratedState13::Transition (Automate & automate, Symbole *s)
         //On ajoute "artificiellement" le symbole.
         Symbole* affectation;
         affectation = FabriqueSymbole::CreerSymbole(AFFECTATION, ":=");
-        automate.AddAvertissement(affectation, ":=", static_cast<SymboleTerminal*>(s)->Terminal().length(), "operateur");
+        automate.AddAvertissement(affectation, ":=", static_cast<SymboleTerminal*>(affectation)->Terminal().length(), "operateur");
         automate.Decalage(affectation, new GeneratedState13p);
         break;
     default:
