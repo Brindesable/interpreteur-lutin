@@ -55,7 +55,7 @@ int Identifiant::Evaluate(const map<string, int>& variables) const
 
 } //----- Fin de Evaluate
 
-Expression* Identifiant::Optimisation(const map<string, int>& constantes)
+Expression* Identifiant::Optimisation(map<string, int>& constantes)
 {
     map<string, int>::const_iterator res(constantes.find(nom));
 

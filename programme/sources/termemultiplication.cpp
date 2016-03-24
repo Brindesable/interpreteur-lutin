@@ -47,7 +47,7 @@ int TermeMultiplication::Evaluate(const map<string, int>& variables) const
     return terme->Evaluate(variables) * facteur->Evaluate(variables);
 } //----- Fin de Evaluate
 
-Expression* TermeMultiplication::Optimisation(const map<string, int>& constantes){
+Expression* TermeMultiplication::Optimisation(map<string, int>& constantes){
 
     //On optimise les deux branches
     Expression* facteurOpti = facteur->Optimisation(constantes);

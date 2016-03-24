@@ -43,7 +43,7 @@ public:
     // Permet d'évaluer le TermeDivision
     // L'entier retourné est la valeur du TermeDivision
 
-    Expression* Optimisation(const map<string, int>& constantes);
+    Expression* Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise le terme
 

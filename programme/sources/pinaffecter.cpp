@@ -46,13 +46,21 @@ void PinAffecter::Execute(map<string, int>& variables)
     variables[id->Nom()] = expression->Evaluate(variables);
 } //----- Fin de Execute
 
-void PinAffecter::Optimisation(const map<string, int>& constantes)
+void PinAffecter::Optimisation(map<string, int>& constantes)
 {
     Expression* res = expression->Optimisation(constantes);
 
-    if(res != expression){
+    if(res != expression)
+    {
         delete expression;
         expression = res;
+    }
+    
+    //On controle si une variable est affectée par une valeur.
+    if (*expression == VALEUR)
+    {
+        //On met dans les constantes, la valeur de cette variable.
+        Execute(constantes);
     }
 
 } //----- Fin de Optimisation

@@ -46,7 +46,7 @@ int ExpressionParenthese::Evaluate(const map<string, int>& variables) const
     return expression->Evaluate(variables);
 }
 
-Expression* ExpressionParenthese::Optimisation(const map<string, int>& constantes){
+Expression* ExpressionParenthese::Optimisation(map<string, int>& constantes){
     //On optimise les deux branches
     Expression* expressionOpti = expression->Optimisation(constantes);
 

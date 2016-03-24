@@ -70,7 +70,7 @@ public:
 	// Mode d'emploi :
     // Execute le contenu du PIN.
 
-    void Optimisation(const map<string, int>& constantes){
+    void Optimisation(map<string, int>& constantes){
         vector<PinInst*>::iterator it;
 
         for(it=inst.begin(); it!=inst.end(); it++)

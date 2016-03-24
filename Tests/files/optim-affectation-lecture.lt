@@ -1,0 +1,6 @@
+var id;
+const x=3;
+id := (2 + 2)*x;
+ecrire id + x;
+lire id;
+ecrire id;

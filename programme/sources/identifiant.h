@@ -47,7 +47,7 @@ public:
     // Mode d'emploi :
     // Retourne le nom de l'identifiant.
 
-    Expression* Optimisation(const map<string, int>& constantes);
+    Expression* Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise le terme
 

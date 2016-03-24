@@ -42,7 +42,7 @@ public:
 	// Mode d'emploi :
     // Execute le contenu du PinAffecter.
 
-    void Optimisation(const map<string, int>& constantes);
+    void Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise l'instruction
 

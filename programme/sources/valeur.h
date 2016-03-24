@@ -43,7 +43,7 @@ public:
     // Permet d'évaluer l'Identifiant.
     // L'entier retourné est la valeur de l'Identifiant.
 
-    Expression* Optimisation(const map<string, int>& constantes);
+    Expression* Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise le terme
 

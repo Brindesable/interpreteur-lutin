@@ -43,7 +43,10 @@ int Valeur::Evaluate(const map<string, int>& variables) const
     return valeur;
 } //----- Fin de Evaluate
 
-Expression* Valeur::Optimisation(const map<string, int>& constantes){
+Expression* Valeur::Optimisation(map<string, int>& constantes)
+{
+    // Pour aider les noeuds parents à optimiser,
+    // on précise le type de ce symbole.
     SetSymboleType(VALEUR);
     return this;
 } //----- Fin de Optimisation

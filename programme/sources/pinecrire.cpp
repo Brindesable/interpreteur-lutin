@@ -46,7 +46,7 @@ void PinEcrire::Execute(map<string, int>& variables)
     cout << expression->Evaluate(variables) << endl;
 } //----- Fin de Execute
 
-void PinEcrire::Optimisation(const map<string, int>& constantes)
+void PinEcrire::Optimisation(map<string, int>& constantes)
 {
     Expression* res = expression->Optimisation(constantes);
 

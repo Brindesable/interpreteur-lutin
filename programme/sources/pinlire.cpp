@@ -50,9 +50,19 @@ void PinLire::Execute(map<string, int>& variables)
     variables[id->Nom()] = val;
 } //----- Fin de Execute
 
-void PinLire::Optimisation(const map<string, int>& constantes)
+void PinLire::Optimisation(map<string, int>& constantes)
 {
-    //pas d'optimisation à effectuer.
+    //Pas d'optimisation à effectuer.
+    
+    //On retire l'identifiant de la variable lue des constantes.
+    //En effet, nous ne connaissons plus sa valeur maintenant.
+    map<string, int>::iterator itVar = constantes.find(id->Nom());
+    if (itVar != constantes.end())
+    {
+        //La variable apparait dans les constantes, on la retire.
+        constantes.erase(itVar);
+    }
+    
 } //----- Fin de Optimisation
 
 void PinLire::AnalyseStatique(map<string, VarState> & vars, const map<string, int> & constantes, vector<string> & errors)

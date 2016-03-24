@@ -45,7 +45,7 @@ public:
     // Permet d'évaluer l'ExpressionPlus
     // L'entier retourné est la valeur de l'ExpressionPlus
 
-    Expression* Optimisation(const map<string, int>& constantes);
+    Expression* Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise l'expression
 

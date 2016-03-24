@@ -44,7 +44,7 @@ public:
     // Permet d'évaluer l'ExpressionParenthese
     // L'entier retourné est la valeur de l'ExpressionParenthese
 
-    Expression* Optimisation(const map<string, int>& constantes);
+    Expression* Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise l'expression
 

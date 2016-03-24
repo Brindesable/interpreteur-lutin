@@ -73,7 +73,7 @@ int TermeDivision::Evaluate(const map<string, int>& variables) const
     return resultat;
 }
 
-Expression* TermeDivision::Optimisation(const map<string, int>& constantes){
+Expression* TermeDivision::Optimisation(map<string, int>& constantes){
     //On optimise les deux branches
     Expression* facteurOpti = facteur->Optimisation(constantes);
     Expression* termeOpti = terme->Optimisation(constantes);

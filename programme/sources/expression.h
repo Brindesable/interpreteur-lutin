@@ -38,7 +38,7 @@ public:
     // L'entier retourné est la valeur de l'Expression
     
 
-    virtual Expression* Optimisation(const map<string, int>& constantes) = 0;
+    virtual Expression* Optimisation(map<string, int>& constantes) = 0;
     // Mode d'emploi :
     // Optimise l'expression
 
