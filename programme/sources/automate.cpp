@@ -123,13 +123,13 @@ void Automate::Accepter(Programme* programme)
     accepte = true;
 } //----- Fin de Accepter
 
-void Automate::AddAvertissement(const Symbole* symbole, string name, int tailleSymbole, string type)
+void Automate::AddAvertissement(const SymboleTerminal* symbole, const string& type)
 {
-    cerr<<"Erreur syntaxique ("<<lexer.GetCurrLine()<<":"<<lexer.GetCurrCol() + 1 - tailleSymbole <<")"<<" "<<type<<" ";
-    cerr<<name;
-    cerr<<" attendu";
-
-    cerr<<endl;
+    cerr << "Erreur syntaxique (";
+    cerr << lexer.GetCurrLine() << ":" << lexer.GetCurrCol() - lexer.GetCurrTailleSymbole() + 1 << ") ";
+    cerr << type << " ";
+    symbole->Print(cerr);
+    cerr << " attendu" << endl;
 } //----- Fin de AddAvertissement
 
 //------------------------------------------------- Surcharge d'opérateurs

@@ -23,22 +23,22 @@ using namespace boost;
 
 //------------------------------------------------------------- Constantes
 const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
-        {regex("^(var\\s+)"), VAR},
-        {regex("^(const\\s+)"), CONST},
-        {regex("^(ecrire\\s+)"), ECRIRE},
-        {regex("^(lire\\s+)"), LIRE},
-        {regex("^(;\\s*)"), POINT_VIRGULE},
-        {regex("^(:=\\s*)"), AFFECTATION},
-        {regex("^(=\\s*)"), EGAL},
-        {regex("^(,\\s*)"), VIRGULE},
-        {regex("^(\\+\\s*)"), PLUS},
-        {regex("^(-\\s*)"), MOINS},
-        {regex("^(/\\s*)"), DIVISE},
-        {regex("^(\\*\\s*)"), MULTIPLIE},
-        {regex("^(\\(\\s*)"), OUVRE_PAR},
-        {regex("^(\\)\\s*)"), FERME_PAR},
-        {regex("^(\\d+\\s*)"), VALEUR},
-        {regex("^([a-zA-Z]+\\s*)"), IDENTIFIANT}
+        {regex("^(var)\\s+"), VAR},
+        {regex("^(const)\\s+"), CONST},
+        {regex("^(ecrire)\\s+"), ECRIRE},
+        {regex("^(lire)\\s+"), LIRE},
+        {regex("^(;)\\s*"), POINT_VIRGULE},
+        {regex("^(:=)\\s*"), AFFECTATION},
+        {regex("^(=)\\s*"), EGAL},
+        {regex("^(,)\\s*"), VIRGULE},
+        {regex("^(\\+)\\s*"), PLUS},
+        {regex("^(-)\\s*"), MOINS},
+        {regex("^(/)\\s*"), DIVISE},
+        {regex("^(\\*)\\s*"), MULTIPLIE},
+        {regex("^(\\()\\s*"), OUVRE_PAR},
+        {regex("^(\\))\\s*"), FERME_PAR},
+        {regex("^(\\d+)\\s*"), VALEUR},
+        {regex("^([a-zA-Z]+)\\s*"), IDENTIFIANT}
     };
 
 //---------------------------------------------------- Variables de classe
@@ -98,10 +98,11 @@ bool Lexer::Read()
         {
 			symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
 
-            // on maj le tampon et on enregistre de combien de caracteres on s'est deplace
+            // on maj le tampon et on enregistre de combien de caracteres on s'est deplace.
             prevSize = tampon.length();
             tampon = matche.suffix().str();
-            currCol += prevSize - tampon.length();
+            currTailleSymbole = prevSize - tampon.length();
+            currCol += currTailleSymbole;
 
 			return true;
         }
@@ -128,7 +129,7 @@ bool Lexer::CheckSyntaxError()
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(nullptr), syntaxError(false), currLine(0), currCol(0)
+Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(nullptr), syntaxError(false), currLine(0), currCol(0), currTailleSymbole(0)
 {
     
 } //----- Fin de Lexer

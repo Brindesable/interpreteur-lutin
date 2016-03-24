@@ -84,9 +84,9 @@ bool GeneratedState13::Transition (Automate & automate, Symbole *s)
         //dans ce cas (premiers de Expression)
         //l'utilisateur a oublié le égal, probablement.
         //On ajoute "artificiellement" le symbole.
-        Symbole* affectation;
-        affectation = FabriqueSymbole::CreerSymbole(AFFECTATION, ":=");
-        automate.AddAvertissement(affectation, ":=", static_cast<SymboleTerminal*>(affectation)->Terminal().length(), "operateur");
+        SymboleTerminal* affectation;
+        affectation = static_cast<SymboleTerminal*>(FabriqueSymbole::CreerSymbole(AFFECTATION, ":="));
+        automate.AddAvertissement(affectation, "operateur");
         automate.Decalage(affectation, new GeneratedState13p);
         break;
     default:

@@ -84,9 +84,9 @@ bool GeneratedState31::Transition (Automate & automate, Symbole *s)
         break;
     case VAR:
         //On ajoute "artificiellement" le symbole.
-        Symbole* pointVirgule;
-        pointVirgule = FabriqueSymbole::CreerSymbole(POINT_VIRGULE, ";");
-        automate.AddAvertissement(pointVirgule, ";", static_cast<SymboleTerminal*>(pointVirgule)->Terminal().length(),"symbole");
+        SymboleTerminal* pointVirgule;
+        pointVirgule = static_cast<SymboleTerminal*>(FabriqueSymbole::CreerSymbole(POINT_VIRGULE, ";"));
+        automate.AddAvertissement(pointVirgule, "symbole");
         automate.Decalage(pointVirgule, new GeneratedState311);
         break;
     default:

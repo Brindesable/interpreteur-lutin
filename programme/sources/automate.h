@@ -13,6 +13,7 @@
 using namespace std;
 #include <stack>
 #include "symbole.h"
+#include "symboleterminal.h"
 #include "programme.h"
 #include "lexer.h"
 #include "etat.h"
@@ -57,7 +58,7 @@ public:
     // Mode d'emploi :
     // Lève le flag d'erreur de l'automate.
 
-    void AddAvertissement(const Symbole* symbole, string name, int tailleSymbole, string type);
+    void AddAvertissement(const SymboleTerminal* symbole, const string& type);
     // Mode d'emploi :
     // Affiche un avertissement suite à un problème synthaxique.
     

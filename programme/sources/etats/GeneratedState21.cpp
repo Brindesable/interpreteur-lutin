@@ -84,9 +84,9 @@ bool GeneratedState21::Transition (Automate & automate, Symbole *s)
         break;
     case IDENTIFIANT:
         //On ajoute "artificiellement" le symbole.
-        Symbole* virgule;
-        virgule = FabriqueSymbole::CreerSymbole(VIRGULE, ",");
-        automate.AddAvertissement(virgule, ",", static_cast<Identifiant*>(s)->tailleNom(), "symbole");
+        SymboleTerminal* virgule;
+        virgule = static_cast<SymboleTerminal*>(FabriqueSymbole::CreerSymbole(VIRGULE, ","));
+        automate.AddAvertissement(virgule, "symbole");
         automate.Decalage(virgule, new GeneratedState212);
         break;
     default:
