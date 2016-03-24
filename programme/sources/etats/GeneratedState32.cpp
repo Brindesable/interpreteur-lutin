@@ -84,7 +84,7 @@ bool GeneratedState32::Transition (Automate & automate, Symbole *s)
         //On ajoute "artificiellement" le symbole.
         Symbole* egal;
         egal = FabriqueSymbole::CreerSymbole(EGAL, "=");
-        automate.AddAvertissement(egal);
+        automate.AddAvertissement(egal, "=", static_cast<SymboleTerminal*>(s)->Terminal().length(), "operateur");
         automate.Decalage(egal, new GeneratedState32p);
         break;
     default:

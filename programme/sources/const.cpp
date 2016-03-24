@@ -39,7 +39,7 @@ void Const::Print() const
         cout << "const ";
         //On affiche l'affectation de constante.
         identifiantCourant->Print();
-        cout << "=";
+        cout << " = ";
         valeurCourante->Print();
         cout << ";" << endl;
 
@@ -49,7 +49,7 @@ void Const::Print() const
             cout << endl;
         }
     }
-} //----- Fin de print
+} //----- Fin de Print
 
 void Const::AddDeclaration(Identifiant* id, Valeur* val)
 {

@@ -123,10 +123,12 @@ void Automate::Accepter(Programme* programme)
     accepte = true;
 } //----- Fin de Accepter
 
-void Automate::AddAvertissement(const Symbole* symbole)
+void Automate::AddAvertissement(const Symbole* symbole, string name, int tailleSymbole, string type)
 {
-    cerr<<"Erreur Syntaxique ("<<lexer.GetCurrLine()<<":"<<lexer.GetCurrCol()<<")"<<" symbole attendu : ";
-    symbole->Print();
+    cerr<<"Erreur syntaxique ("<<lexer.GetCurrLine()<<":"<<lexer.GetCurrCol() + 1 - tailleSymbole <<")"<<" "<<type<<" ";
+    cerr<<name;
+    cerr<<" attendu";
+
     cerr<<endl;
 } //----- Fin de AddAvertissement
 

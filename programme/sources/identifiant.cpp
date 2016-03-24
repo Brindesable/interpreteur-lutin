@@ -13,6 +13,7 @@
 using namespace std;
 #include <iostream>
 #include <limits>
+#include <boost/algorithm/string.hpp>
 
 //------------------------------------------------------ Include personnel
 #include "identifiant.h"
@@ -32,7 +33,7 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Identifiant::Print() const
 {
-    cout << nom;
+    cout << boost::trim_copy(nom);
 } //----- Fin de Print
 
 int Identifiant::Evaluate(const map<string, int>& variables) const
@@ -74,9 +75,10 @@ string Identifiant::ToString() const
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Identifiant::Identifiant(const string& nom) : Facteur(IDENTIFIANT), nom(nom)
+Identifiant::Identifiant(const string& nom) : Facteur(IDENTIFIANT)
 {
-
+   this->nom = boost::trim_copy(nom);
+   spaces = nom.length() - this->nom.length();
 } //----- Fin de Identifiant
 
 

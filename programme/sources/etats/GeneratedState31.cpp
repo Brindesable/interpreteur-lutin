@@ -34,7 +34,7 @@ using namespace std;
 
 #include "GeneratedState31.h"
 #include "../fabriquesymbole.h"
-
+#include "../symboleterminal.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -86,7 +86,7 @@ bool GeneratedState31::Transition (Automate & automate, Symbole *s)
         //On ajoute "artificiellement" le symbole.
         Symbole* pointVirgule;
         pointVirgule = FabriqueSymbole::CreerSymbole(POINT_VIRGULE, ";");
-        automate.AddAvertissement(pointVirgule);
+        automate.AddAvertissement(pointVirgule, ";", static_cast<SymboleTerminal*>(s)->Terminal().length(),"symbole");
         automate.Decalage(pointVirgule, new GeneratedState311);
         break;
     default:

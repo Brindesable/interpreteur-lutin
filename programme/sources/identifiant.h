@@ -47,6 +47,8 @@ public:
     // Mode d'emploi :
     // Optimise le terme
 
+    int tailleNom(){return nom.length()+spaces;}
+
     void GetIds(vector<string>& ids);
     // Mode d'emploi :
     // Obtient tous les identifiants impliques dans l'expression (utilise pour l'analyse statique)
@@ -81,6 +83,8 @@ private:
 //------------------------------------------------------- Attributs privés
         //Nom de l'Identifiant
         string nom;
+        //espaces à la fin
+        int spaces;
 
 //---------------------------------------------------------- Classes amies
 

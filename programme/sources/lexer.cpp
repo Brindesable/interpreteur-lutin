@@ -23,22 +23,22 @@ using namespace boost;
 
 //------------------------------------------------------------- Constantes
 const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
-        {regex("^(var)\\s+"), VAR},
-        {regex("^(const)\\s+"), CONST},
-        {regex("^(ecrire)\\s+"), ECRIRE},
-        {regex("^(lire)\\s+"), LIRE},
-        {regex("^(;)\\s*"), POINT_VIRGULE},
-        {regex("^(:=)\\s*"), AFFECTATION},
-        {regex("^(=)\\s*"), EGAL},
-        {regex("^(,)\\s*"), VIRGULE},
-        {regex("^(\\+)\\s*"), PLUS},
-        {regex("^(-)\\s*"), MOINS},
-        {regex("^(/)\\s*"), DIVISE},
-        {regex("^(\\*)\\s*"), MULTIPLIE},
-        {regex("^(\\()\\s*"), OUVRE_PAR},
-        {regex("^(\\))\\s*"), FERME_PAR},
-        {regex("^(\\d+)\\s*"), VALEUR},
-        {regex("^([a-zA-Z]+)\\s*"), IDENTIFIANT}
+        {regex("^(var\\s+)"), VAR},
+        {regex("^(const\\s+)"), CONST},
+        {regex("^(ecrire\\s+)"), ECRIRE},
+        {regex("^(lire\\s+)"), LIRE},
+        {regex("^(;\\s*)"), POINT_VIRGULE},
+        {regex("^(:=\\s*)"), AFFECTATION},
+        {regex("^(=\\s*)"), EGAL},
+        {regex("^(,\\s*)"), VIRGULE},
+        {regex("^(\\+\\s*)"), PLUS},
+        {regex("^(-\\s*)"), MOINS},
+        {regex("^(/\\s*)"), DIVISE},
+        {regex("^(\\*\\s*)"), MULTIPLIE},
+        {regex("^(\\(\\s*)"), OUVRE_PAR},
+        {regex("^(\\)\\s*)"), FERME_PAR},
+        {regex("^(\\d+\\s*)"), VALEUR},
+        {regex("^([a-zA-Z]+\\s*)"), IDENTIFIANT}
     };
 
 //---------------------------------------------------- Variables de classe
@@ -74,8 +74,10 @@ bool Lexer::Read()
         currCol = 0;
     }
     
-    //On retire les espaces en début de ligne.
-    tampon = trim_left_copy(tampon);
+    //On retire les espaces en début de ligne, en comptant les caractères.
+    int prevSize = tampon.length();
+    trim_left(tampon);
+    currCol += prevSize - tampon.length();
 
     //On teste si on est arrivé à la fin des sources.
     if (tampon.empty() && sources.eof())
@@ -97,7 +99,7 @@ bool Lexer::Read()
 			symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
 
             // on maj le tampon et on enregistre de combien de caracteres on s'est deplace
-            int prevSize = tampon.length();
+            prevSize = tampon.length();
             tampon = matche.suffix().str();
             currCol += prevSize - tampon.length();
 

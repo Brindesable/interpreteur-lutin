@@ -57,7 +57,7 @@ public:
     // Mode d'emploi :
     // Lève le flag d'erreur de l'automate.
 
-    void AddAvertissement(const Symbole* symbole);
+    void AddAvertissement(const Symbole* symbole, string name, int tailleSymbole, string type);
     // Mode d'emploi :
     // Affiche un avertissement suite à un problème synthaxique.
     

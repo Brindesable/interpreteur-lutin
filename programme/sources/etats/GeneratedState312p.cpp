@@ -34,7 +34,7 @@ using namespace std;
 
 #include "GeneratedState312p.h"
 #include "../fabriquesymbole.h"
-
+#include "../symboleterminal.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -82,7 +82,7 @@ bool GeneratedState312p::Transition (Automate & automate, Symbole *s)
         //On ajoute "artificiellement" le symbole.
         Symbole* egal;
         egal = FabriqueSymbole::CreerSymbole(EGAL, "=");
-        automate.AddAvertissement(egal);
+        automate.AddAvertissement(egal, "=", static_cast<SymboleTerminal*>(s)->Terminal().length(), "operateur");
         automate.Decalage(egal, new GeneratedState312s);
         break;
     default:
