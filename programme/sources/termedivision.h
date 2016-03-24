@@ -34,6 +34,10 @@ public:
     // Mode d'emploi :
     // Affiche le TermeDivision.
     
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le TermeDivision dans un flux.
+    
     int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :
     // Permet d'évaluer le TermeDivision

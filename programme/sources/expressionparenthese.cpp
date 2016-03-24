@@ -31,9 +31,14 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void ExpressionParenthese::Print() const
 {
-    cout << "(";
-    expression->Print();
-    cout << ")";
+    Print(cout);
+} //----- Fin de Print
+
+void ExpressionParenthese::Print(ostream& out) const
+{
+    out << "(";
+    expression->Print(out);
+    out << ")";
 } //----- Fin de Print
 
 int ExpressionParenthese::Evaluate(const map<string, int>& variables) const

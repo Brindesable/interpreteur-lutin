@@ -34,6 +34,10 @@ public:
     void Print() const;
     // Mode d'emploi :
     // Affiche le ExpressionParenthese.
+    
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le ExpressionParenthese dans un flux.
 
     int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :

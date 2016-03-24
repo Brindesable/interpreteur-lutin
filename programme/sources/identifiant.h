@@ -32,7 +32,11 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void Print() const;
     // Mode d'emploi :
-    // Affiche le Identifiant.
+    // Affiche l'Identifiant.
+    
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche l'Identifiant dans un flux.
 
     int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :

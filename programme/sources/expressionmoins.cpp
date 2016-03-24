@@ -32,10 +32,15 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void ExpressionMoins::Print() const
 {
-    expression->Print();
-    cout << "-";
-    terme->Print();
-} //----- Fin de print
+    Print(cout);
+} //----- Fin de Print
+
+void ExpressionMoins::Print(ostream& out) const
+{
+    expression->Print(out);
+    out << "-";
+    terme->Print(out);
+}
 
 int ExpressionMoins::Evaluate(const map<string, int>& variables) const
 {

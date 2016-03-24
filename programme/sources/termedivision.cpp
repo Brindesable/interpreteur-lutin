@@ -32,10 +32,15 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void TermeDivision::Print() const
 {
-    terme->Print();
-    cout << "/";
-    facteur->Print();
-} //----- Fin de print
+    Print(cout);
+} //----- Fin de Print
+
+void TermeDivision::Print(ostream& out) const
+{
+    terme->Print(out);
+    out << "/";
+    facteur->Print(out);
+} //----- Fin de Print
 
 int TermeDivision::Evaluate(const map<string, int>& variables) const
 {

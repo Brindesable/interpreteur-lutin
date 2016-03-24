@@ -10,6 +10,8 @@
 #define SYMBOLE_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
+#include <ostream>
 #include "symboletype.h"
 
 //------------------------------------------------------------- Constantes
@@ -31,6 +33,10 @@ public:
     virtual void Print() const = 0;
     // Mode d'emploi :
     // Affiche le Symbole.
+    
+    virtual void Print(ostream& out) const = 0;
+    // Mode d'emploi :
+    // Affiche le Symbole dans un flux.
 
     void SetSymboleType(SymboleType type){this->type = type;}
     // Mode d'emploi : 

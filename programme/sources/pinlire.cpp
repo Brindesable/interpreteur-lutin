@@ -30,9 +30,14 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void PinLire::Print() const
 {
-    cout << "lire ";
-    id->Print();
-    cout << ";" << endl;
+    Print(cout);
+} //----- Fin de Print
+
+void PinLire::Print(ostream& out) const
+{
+    out << "lire ";
+    id->Print(out);
+    out << ";" << endl;
 } //----- Fin de Print
 
 //------------------------------------------------- Surcharge d'opérateurs

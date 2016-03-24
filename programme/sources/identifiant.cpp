@@ -33,7 +33,12 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Identifiant::Print() const
 {
-    cout << boost::trim_copy(nom);
+    Print(cout);
+} //----- Fin de Print
+
+void Identifiant::Print(ostream& out) const
+{
+    out << nom;
 } //----- Fin de Print
 
 int Identifiant::Evaluate(const map<string, int>& variables) const
@@ -48,10 +53,10 @@ int Identifiant::Evaluate(const map<string, int>& variables) const
 
     return itResultat->second;
 
-} //----- Fin de print
+} //----- Fin de Evaluate
 
-Expression* Identifiant::Optimisation(const map<string, int>& constantes){
-
+Expression* Identifiant::Optimisation(const map<string, int>& constantes)
+{
     map<string, int>::const_iterator res(constantes.find(nom));
 
     if(res != constantes.end()){

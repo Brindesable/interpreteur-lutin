@@ -35,6 +35,10 @@ public:
     void Print() const;
     // Mode d'emploi :
     // Affiche le ExpressionPlus.
+    
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le ExpressionPlus dans un flux.
 
     int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :

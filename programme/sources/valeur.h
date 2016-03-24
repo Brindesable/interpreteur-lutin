@@ -32,7 +32,11 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void Print() const;
     // Mode d'emploi :
-    // Affiche le Valeur.
+    // Affiche la Valeur.
+    
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche la Valeur dans un flux.
     
     int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :

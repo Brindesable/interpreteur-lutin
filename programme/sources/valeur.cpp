@@ -30,7 +30,12 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Valeur::Print() const
 {
-    cout << valeur;
+    Print(cout);
+} //----- Fin de Print
+
+void Valeur::Print(ostream& out) const
+{
+    out << valeur;
 } //----- Fin de Print
 
 int Valeur::Evaluate(const map<string, int>& variables) const

@@ -29,8 +29,14 @@ class Pdecl : public Symbole
 
 public:
 //----------------------------------------------------- Méthodes publiques
-
     virtual void Print() const
+    {
+        Print(cout);
+    }
+    // Mode d'emploi :
+    // Affiche le contenu du Pdecl. 
+    
+    virtual void Print(ostream& out) const
     {
         vector<PdeclInst*>::const_iterator it;
 
@@ -38,11 +44,11 @@ public:
 
             PdeclInst* currDecl= *it;
 
-            currDecl->Print();
+            currDecl->Print(out);
         }
     }
     // Mode d'emploi :
-    // Affiche le contenu du Pdecl. 
+    // Affiche le contenu du Pdecl dans un flux.
 
     void AddDecl(PdeclInst* var) {decl.push_back(var);}
     // Mode d'emploi :

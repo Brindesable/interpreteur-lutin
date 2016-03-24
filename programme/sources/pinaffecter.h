@@ -34,6 +34,10 @@ public:
     // Mode d'emploi :
     // Affiche le PinAffecter.
     
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le PinAffecter dans un flux.
+    
     void Execute(map<string, int>& variables);
 	// Mode d'emploi :
     // Execute le contenu du PinAffecter.

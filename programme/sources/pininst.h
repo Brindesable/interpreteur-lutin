@@ -33,6 +33,10 @@ public:
     virtual void Print() const = 0;
     // Mode d'emploi :
     // Affiche le contenu du PinInst.
+    
+    virtual void Print(ostream& out) const = 0;
+    // Mode d'emploi :
+    // Affiche le contenu du PinInst dans un flux.
 
     virtual void Execute(map<string, int>& variables) = 0;
     // Mode d'emploi :

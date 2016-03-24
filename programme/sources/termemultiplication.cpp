@@ -32,9 +32,14 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void TermeMultiplication::Print() const
 {
-    terme->Print();
-    cout << "*";
-    facteur->Print();
+    Print(cout);
+} //----- Fin de Print
+
+void TermeMultiplication::Print(ostream& out) const
+{
+    terme->Print(out);
+    out << "*";
+    facteur->Print(out);
 } //----- Fin de Print
 
 int TermeMultiplication::Evaluate(const map<string, int>& variables) const

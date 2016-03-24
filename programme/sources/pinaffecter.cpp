@@ -30,10 +30,15 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void PinAffecter::Print() const
 {
-    id->Print();
-    cout << " := ";
-    expression->Print();
-    cout << ";" << endl;
+    Print(cout);
+} //----- Fin de Print
+
+void PinAffecter::Print(ostream& out) const
+{
+    id->Print(out);
+    out << " := ";
+    expression->Print(out);
+    out << ";" << endl;
 } //----- Fin de Print
 
 void PinAffecter::Execute(map<string, int>& variables)

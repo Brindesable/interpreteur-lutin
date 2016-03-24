@@ -31,9 +31,14 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void PinEcrire::Print() const
 {
-    cout << "ecrire ";
-    expression->Print();
-    cout << ";" << endl;
+    Print(cout);
+} //----- Fin de Print
+
+void PinEcrire::Print(ostream& out) const
+{
+    out << "ecrire ";
+    expression->Print(out);
+    out << ";" << endl;
 } //----- Fin de Print
 
 void PinEcrire::Execute(map<string, int>& variables)

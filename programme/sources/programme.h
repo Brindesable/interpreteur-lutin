@@ -36,6 +36,10 @@ public:
     // Mode d'emploi :
     // Affiche le Programme.
     
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le Programme dans un flux.
+    
     void Execute(map<string, int>& variables);
 	// Mode d'emploi :
     // Execute le contenu du Programme.

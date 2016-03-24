@@ -32,10 +32,17 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void Print() const
     {
-		cout << terminal;
+		Print(cout);
     }
     // Mode d'emploi :
     // Affiche le SymboleTerminal.
+    
+    void Print(ostream& out) const
+    {
+        out << terminal;
+    }
+    // Mode d'emploi :
+    // Affiche le SymboleTerminal dans un flux.
 
     const string& Terminal() const {return terminal;}
     // Mode d'emploi :

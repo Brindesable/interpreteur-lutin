@@ -33,17 +33,24 @@ public:
 //----------------------------------------------------- Méthodes publiques
     virtual void Print() const
     {
+        Print(cout);
+    }
+    // Mode d'emploi
+    // Affiche le contenu du Pin.
+    
+    virtual void Print(ostream& out) const
+    {
         vector<PinInst*>::const_iterator it;
 
         for(it=inst.begin(); it!=inst.end(); it++)
         {
             PinInst* pinInst = *it;
 
-            pinInst->Print();
+            pinInst->Print(out);
         }
     }
-    // Mode d'emploi
-    // Affiche le contenu du Pin.
+    // Mode d'emploi :
+    // Affiche le contenu du Pin dans un flux.
 
     void AddPinInst(PinInst* pinInst){inst.push_back(pinInst);}
     // Mode d'emploi

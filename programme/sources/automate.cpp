@@ -63,10 +63,10 @@ Programme* Automate::Lecture()
     }
     else
     {
-        cerr<<"Erreur Syntaxique ("<<lexer.GetCurrLine()<<":"<<lexer.GetCurrCol()<<")"<<" près du symbole  ";
-        lexer.SymboleCourant()->Print();
-        cerr<<endl;
-
+        //On présente à l'utilisateur une erreur synthaxique que l'on a pas récupérée.
+        cerr << "Erreur syntaxique (" << lexer.GetCurrLine() << ":" << lexer.GetCurrCol() << ")" << " pres du symbole ";
+        lexer.SymboleCourant()->Print(cerr);
+        cerr << endl;
     }
     
     //On libère l'état 0 qui reste sur la pile.
