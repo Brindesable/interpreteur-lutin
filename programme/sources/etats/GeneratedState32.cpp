@@ -82,9 +82,9 @@ bool GeneratedState32::Transition (Automate & automate, Symbole *s)
     case VALEUR:
         //dans ce cas, l'utilisateur a oublié le égal, probablement.
         //On ajoute "artificiellement" le symbole.
-        Symbole* egal;
-        automate.AddAvertissement("'=' oublié !");
-        egal = FabriqueSymbole::CreerSymbole(EGAL, "=");
+        SymboleTerminal* egal;
+        egal = static_cast<SymboleTerminal*>(FabriqueSymbole::CreerSymbole(EGAL, "="));
+        automate.AddAvertissement(egal, "operateur");
         automate.Decalage(egal, new GeneratedState32p);
         break;
     default:

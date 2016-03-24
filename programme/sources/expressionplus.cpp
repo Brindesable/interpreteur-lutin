@@ -31,17 +31,22 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void ExpressionPlus::Print() const
 {
-    expression->Print();
+    Print(cout);
+} //----- Fin de Print
+
+void ExpressionPlus::Print(ostream& out) const
+{
+    expression->Print(out);
     cout << "+";
-    terme->Print();
-} //----- Fin de print
+    terme->Print(out);
+} //----- Fin de Print
 
 int ExpressionPlus::Evaluate(const map<string, int>& variables) const
 {
     return expression->Evaluate(variables) + terme->Evaluate(variables);
 }
 
-Expression* ExpressionPlus::Optimisation(const map<string, int>& constantes){
+Expression* ExpressionPlus::Optimisation(map<string, int>& constantes){
     //On optimise les deux branches
     Expression* expressionOpti = expression->Optimisation(constantes);
     Expression* termeOpti = terme->Optimisation(constantes);

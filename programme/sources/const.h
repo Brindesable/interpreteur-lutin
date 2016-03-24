@@ -35,6 +35,10 @@ public:
     void Print() const;
     // Mode d'emploi :
     // Affiche le PdeclConst.
+    
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le PdeclConst dans un flux.
 
     void Execute(map<string, int>& constiables);
     // Mode d'emploi :

@@ -29,6 +29,11 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Const::Print() const
 {
+    Print(cout);
+} //----- Fin de Print
+
+void Const::Print(ostream& out) const
+{
     vector<pair<Identifiant*, Valeur*>>::const_iterator it;
 
     for(it = declarations.begin(); it != declarations.end(); ++it)
@@ -36,20 +41,20 @@ void Const::Print() const
         Identifiant* identifiantCourant = it->first;
         Valeur* valeurCourante = it->second;
 
-        cout << "const ";
+        out << "const ";
         //On affiche l'affectation de constante.
         identifiantCourant->Print();
-        cout << "=";
+        out << " = ";
         valeurCourante->Print();
-        cout << ";" << endl;
+        out << ";" << endl;
 
         //Si on est a la fin de la liste.
         if (it == declarations.end())
         {
-            cout << endl;
+            out << endl;
         }
     }
-} //----- Fin de print
+} //----- Fin de Print
 
 void Const::AddDeclaration(Identifiant* id, Valeur* val)
 {

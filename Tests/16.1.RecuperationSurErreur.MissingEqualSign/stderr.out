@@ -1,2 +1,2 @@
-[1;31mWarning : '=' oublié ! ligne 1[0m
-[1;31mWarning : '=' oublié ! ligne 1[0m
+Erreur syntaxique (1:9) operateur = attendu
+Erreur syntaxique (1:14) operateur = attendu

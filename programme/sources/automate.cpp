@@ -63,10 +63,10 @@ Programme* Automate::Lecture()
     }
     else
     {
-        //En cas d'erreur on prévient l'utilisateur.
-        cout << "An error occured during the parsing at line " << lexer.GetCurrLine() << " near symbol : ";
-        lexer.SymboleCourant()->Print();
-        cout << endl;
+        //On présente à l'utilisateur une erreur synthaxique que l'on a pas récupérée.
+        cerr << "Erreur syntaxique (" << lexer.GetCurrLine() << ":" << lexer.GetCurrCol() << ")" << " pres du symbole ";
+        lexer.SymboleCourant()->Print(cerr);
+        cerr << endl;
     }
     
     //On libère l'état 0 qui reste sur la pile.
@@ -123,9 +123,13 @@ void Automate::Accepter(Programme* programme)
     accepte = true;
 } //----- Fin de Accepter
 
-void Automate::AddAvertissement(const string& avertissement)
+void Automate::AddAvertissement(const SymboleTerminal* symbole, const string& type)
 {
-    cerr << RED_BEGIN << "Warning : " << avertissement << " ligne " << lexer.GetCurrLine() << RED_END << endl;
+    cerr << "Erreur syntaxique (";
+    cerr << lexer.GetCurrLine() << ":" << lexer.GetCurrCol() - lexer.GetCurrTailleSymbole() + 1 << ") ";
+    cerr << type << " ";
+    symbole->Print(cerr);
+    cerr << " attendu" << endl;
 } //----- Fin de AddAvertissement
 
 //------------------------------------------------- Surcharge d'opérateurs

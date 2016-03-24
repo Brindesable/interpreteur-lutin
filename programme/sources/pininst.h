@@ -33,12 +33,16 @@ public:
     virtual void Print() const = 0;
     // Mode d'emploi :
     // Affiche le contenu du PinInst.
+    
+    virtual void Print(ostream& out) const = 0;
+    // Mode d'emploi :
+    // Affiche le contenu du PinInst dans un flux.
 
     virtual void Execute(map<string, int>& variables) = 0;
     // Mode d'emploi :
     // Execute le contenu du PinInst.
 
-    virtual void Optimisation(const map<string, int>& constantes) = 0;
+    virtual void Optimisation(map<string, int>& constantes) = 0;
     // Mode d'emploi :
     // Optimise l'instruction
 

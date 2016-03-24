@@ -34,13 +34,17 @@ public:
     void Print() const;
     // Mode d'emploi :
     // Affiche le ExpressionParenthese.
+    
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le ExpressionParenthese dans un flux.
 
     int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :
     // Permet d'évaluer l'ExpressionParenthese
     // L'entier retourné est la valeur de l'ExpressionParenthese
 
-    Expression* Optimisation(const map<string, int>& constantes);
+    Expression* Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise l'expression
 

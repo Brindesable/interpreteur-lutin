@@ -31,8 +31,13 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Programme::Print() const
 {
-    declarations->Print();
-    instructions->Print();
+    Print(cout);
+} //----- Fin de Print
+
+void Programme::Print(ostream& out) const
+{
+    declarations->Print(out);
+    instructions->Print(out);
 } //----- Fin de Print
 
 void Programme::Execute(map<string, int> &values)

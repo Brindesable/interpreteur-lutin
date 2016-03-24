@@ -1,0 +1,5 @@
+var id;
+id := 12;
+ecrire 15;
+lire id;
+ecrire id;

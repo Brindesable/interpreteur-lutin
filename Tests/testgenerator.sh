@@ -27,7 +27,7 @@ mkdir $testdir
 cd $testdir
 echo $description > description
 echo "0" > returncode
-echo "timeout -s 1 2 ../lut -p ../files/$lutinfile" > run
+echo "timeout -s 1 2 ../lut $lutinfile" > run
 echo $stdout > std.out
 
 cd ..

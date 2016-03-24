@@ -34,13 +34,17 @@ public:
     void Print() const;
     // Mode d'emploi :
     // Affiche le ExpressionMoins.
+    
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le ExpressionMoins dans un flux.
 
     int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :
     // Permet d'évaluer l'ExpressionMoins
     // L'entier retourné est la valeur de l'ExpressionMoins
 
-    Expression* Optimisation(const map<string, int>& constantes);
+    Expression* Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise l'expression
 

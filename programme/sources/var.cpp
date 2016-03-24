@@ -29,21 +29,26 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Var::Print() const
 {
+    Print(cout);
+} //----- Fin de Print
+
+void Var::Print(ostream& out) const
+{
     vector<Identifiant*>::const_iterator it;
 
     for(it = declarations.begin(); it != declarations.end(); ++it)
     {
         Identifiant* identifiantCourant = *it;
 
-        cout << "var ";
+        out << "var ";
         //On affiche l'identifiant défini.
-        identifiantCourant->Print();
-        cout << ";" << endl;
+        identifiantCourant->Print(out);
+        out << ";" << endl;
 
         //Si on n'est pas au début de la liste.
         if (it == declarations.end())
         {
-            cout << endl;
+            out << endl;
         }
     }
 } //----- Fin de Print

@@ -1,5 +1,3 @@
-Affichage du programme
-----------------------
 var a;
 var b;
 var e;
@@ -8,7 +6,5 @@ lire b;
 ecrire ((a*b)*(1));
 e := (b)+6;
 ecrire e;
-Execution
----------
 125
 11

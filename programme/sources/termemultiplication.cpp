@@ -32,9 +32,14 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void TermeMultiplication::Print() const
 {
-    terme->Print();
-    cout << "*";
-    facteur->Print();
+    Print(cout);
+} //----- Fin de Print
+
+void TermeMultiplication::Print(ostream& out) const
+{
+    terme->Print(out);
+    out << "*";
+    facteur->Print(out);
 } //----- Fin de Print
 
 int TermeMultiplication::Evaluate(const map<string, int>& variables) const
@@ -42,7 +47,7 @@ int TermeMultiplication::Evaluate(const map<string, int>& variables) const
     return terme->Evaluate(variables) * facteur->Evaluate(variables);
 } //----- Fin de Evaluate
 
-Expression* TermeMultiplication::Optimisation(const map<string, int>& constantes){
+Expression* TermeMultiplication::Optimisation(map<string, int>& constantes){
 
     //On optimise les deux branches
     Expression* facteurOpti = facteur->Optimisation(constantes);
