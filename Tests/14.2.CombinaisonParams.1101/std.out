@@ -1,0 +1,12 @@
+var a;
+var b;
+const c = 4;
+const d = 6;
+var e;
+a := (c+d)*3-5;
+ecrire a*b;
+b := 5;
+e := b+d;
+ecrire e;
+-2147483648
+11
