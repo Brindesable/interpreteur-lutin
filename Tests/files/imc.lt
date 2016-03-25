@@ -1,0 +1,5 @@
+var masse, taillecm;
+const c = 10000;
+lire masse;
+lire taillecm;
+ecrire masse*c/(taillecm*taillecm);
