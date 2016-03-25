@@ -1,0 +1,2 @@
+timeout -s 1 2 ../lut -a ../files/kilian-analyse-syntaxique-8.lt
+

@@ -1,0 +1,13 @@
+une valeur dans l'expression (a+b-c)*2+d/2 n'est pas connue.
+une valeur dans l'expression (a+b-c)*2+d/2 n'est pas connue.
+une valeur dans l'expression (a+b-c)*2+d/2 n'est pas connue.
+une valeur dans l'expression (a+b-c)*2+d/2 n'est pas connue.
+variable non affectee :  a
+variable non utilisee :  a
+variable non affectee :  b
+variable non utilisee :  b
+variable non affectee :  c
+variable non utilisee :  c
+variable non affectee :  d
+variable non utilisee :  d
+variable non utilisee :  z

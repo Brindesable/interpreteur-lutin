@@ -1,0 +1,5 @@
+const a=1, b=2;
+var b,c,d;
+c := 3;
+a := a+c+d+e;
+ecrire a-c-d-e;

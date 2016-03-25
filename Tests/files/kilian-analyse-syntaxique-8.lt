@@ -1,0 +1,7 @@
+const c=3;
+var a;
+var b;
+lire a;
+lire b;
+c := 3;
+lire c;
