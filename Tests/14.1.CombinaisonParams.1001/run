@@ -1,1 +1,1 @@
-timeout -s 1 2 ../lut -a -p../files/valide.lt
+timeout -s 1 2 ../lut -a -p ../files/correct.lt
