@@ -49,19 +49,22 @@ int ExpressionParenthese::Evaluate(const map<string, int>& variables) const
 Expression* ExpressionParenthese::Optimisation(map<string, int>& constantes){
     //On optimise les deux branches
     Expression* expressionOpti = expression->Optimisation(constantes);
-
-    if((int)*expressionOpti == VALEUR) //on enlève les parenthèses !
+    
+    //On supprime l'ancienne expression, si l'optimisation en a fait une nouvelle.
+    if (expressionOpti != expression)
     {
-        //Pas besoin de liberer l'ancienne expression.
-        //Elle sera liberée par l'expression qui demande l'optimisation.
+        delete expression;
+        expression = expressionOpti;
+    }
+    
+     //On enlève les parenthèses si besoin.
+    if(*expressionOpti == VALEUR or
+       *expressionOpti == IDENTIFIANT or 
+       *expressionOpti == EXPRESSION_PARENTHESE)
+    {
+        //On laisse l'ancienne expression en nullptr pour ne pas qu'elle soit liberée.
         expression = nullptr;
-        return static_cast<Expression*>(expressionOpti);
-    }else if((int)*expressionOpti == IDENTIFIANT){
-        expression = nullptr;
-        return static_cast<Expression*>(expressionOpti);
-    }else if((int)*expressionOpti == EXPRESSION_PARENTHESE){
-        expression = nullptr;
-        return static_cast<Expression*>(expressionOpti);
+        return expressionOpti;
     }
 
     this->SetSymboleType(EXPRESSION_PARENTHESE);
