@@ -17,6 +17,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "expressionplus.h"
 #include "valeur.h"
+#include "expressionparenthese.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -73,6 +74,23 @@ Expression* ExpressionPlus::Optimisation(map<string, int>& constantes){
         return ancienTerme;
     }
 
+    if((int)*expressionOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(expressionOpti);
+        expression = expr->GetExpression();
+        expr->SetExpression(nullptr);
+        delete expr;
+    }
+    if((int)*termeOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(termeOpti);
+        Expression* exprFille = expr->GetExpression();
+
+        terme = static_cast<Terme*>(expr->GetExpression());
+        expr->SetExpression(nullptr);
+        delete expr;
+
+    }
+
+    this->SetSymboleType(EXPRESSION_PLUS);
     return this;
 
 } //----- Fin de Optimisation

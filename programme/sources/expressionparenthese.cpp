@@ -50,13 +50,21 @@ Expression* ExpressionParenthese::Optimisation(map<string, int>& constantes){
     //On optimise les deux branches
     Expression* expressionOpti = expression->Optimisation(constantes);
 
-    if(expressionOpti != expression)
+    if((int)*expressionOpti == VALEUR) //on enlève les parenthèses !
     {
         //Pas besoin de liberer l'ancienne expression.
         //Elle sera liberée par l'expression qui demande l'optimisation.
+        expression = nullptr;
+        return static_cast<Expression*>(expressionOpti);
+    }else if((int)*expressionOpti == IDENTIFIANT){
+        expression = nullptr;
+        return static_cast<Expression*>(expressionOpti);
+    }else if((int)*expressionOpti == EXPRESSION_PARENTHESE){
+        expression = nullptr;
         return static_cast<Expression*>(expressionOpti);
     }
 
+    this->SetSymboleType(EXPRESSION_PARENTHESE);
     return this;
 } //----- Fin de Optimisation
 

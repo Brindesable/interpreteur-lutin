@@ -63,6 +63,7 @@ Expression* Identifiant::Optimisation(map<string, int>& constantes)
         Valeur* val = new Valeur(res->second);
         return val;
     }
+    this->SetSymboleType(IDENTIFIANT);
     return this;
 } //----- Fin de Optimisation
 

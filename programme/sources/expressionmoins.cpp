@@ -18,7 +18,7 @@ using namespace std;
 #include "expressionmoins.h"
 #include "symboletype.h"
 #include "valeur.h"
-
+#include "expressionparenthese.h"
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
@@ -61,6 +61,11 @@ Expression* ExpressionMoins::Optimisation(map<string, int>& constantes){
         terme = static_cast<Terme*>(termeOpti);
     }
 
+
+
+
+
+
     //on optimise avec les valeurs neutres
     if((int)*terme == VALEUR && (int)*expression == VALEUR) {
         return new Valeur(this->Evaluate(constantes));
@@ -70,6 +75,23 @@ Expression* ExpressionMoins::Optimisation(map<string, int>& constantes){
         return ancienExp;
     }
 
+    if((int)*expressionOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(expressionOpti);
+        expression = expr->GetExpression();
+        expr->SetExpression(nullptr);
+        delete expr;
+    }
+    if((int)*termeOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(termeOpti);
+        Expression* exprFille = expr->GetExpression();
+        if((int)*exprFille != EXPRESSION_MOINS && (int)*exprFille != EXPRESSION_PLUS){
+
+            terme = static_cast<Terme*>(expr->GetExpression());
+            expr->SetExpression(nullptr);
+            delete expr;
+        }
+    }
+    this->SetSymboleType(EXPRESSION_MOINS);
     return this;
 } //----- Fin de Optimisation
 

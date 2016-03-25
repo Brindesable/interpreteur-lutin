@@ -52,6 +52,9 @@ public:
     // Mode d'emploi :
     // Obtient tous les identifiants impliques dans l'expression (utilise pour l'analyse statique)
     
+    Expression* GetExpression() const {return expression;}
+    void SetExpression(Expression* expr){expression=expr;}
+
     string ToString() const;
 
 //------------------------------------------------- Surcharge d'opérateurs

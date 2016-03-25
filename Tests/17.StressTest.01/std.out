@@ -1,10 +1,20 @@
 var a;
 var b;
 var e;
-a := 10*(((3)))-(5);
+a := 25;
 lire b;
-ecrire ((a*b)*(1));
-e := (b)+6;
+ecrire 25+b-4*b;
+ecrire 25+b-4/b;
+ecrire 25+b-(4-b);
+ecrire 25+b+4+b;
+ecrire 25+b+4*b;
+ecrire 25*b;
+e := b+6;
 ecrire e;
+10
+30
+31
+39
+50
 125
 11
