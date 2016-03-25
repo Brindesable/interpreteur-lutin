@@ -82,9 +82,11 @@ bool GeneratedState11131::Transition (Automate & automate, Symbole *s)
         automate.Reduction(3);
         break;
     case MULTIPLIE:
+        automate.Consommer();
         automate.Decalage(s, new GeneratedState1121);
         break;
     case DIVISE:
+        automate.Consommer();
         automate.Decalage(s, new GeneratedState1122);
         break;
     case PLUS:

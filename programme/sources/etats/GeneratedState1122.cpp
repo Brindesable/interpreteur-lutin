@@ -70,7 +70,7 @@ using namespace std;
 
 
 bool GeneratedState1122::Transition (Automate & automate, Symbole *s)
-{
+{   
     // Generated code :
     switch ((int)*s) {
     case OUVRE_PAR:
@@ -93,7 +93,6 @@ bool GeneratedState1122::Transition (Automate & automate, Symbole *s)
         break;
     }
     return false;
-
 }
 
 Symbole* GeneratedState1122::Reduction (vector<Symbole*>& s)
