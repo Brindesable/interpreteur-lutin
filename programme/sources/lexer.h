@@ -54,6 +54,8 @@ public:
     // Accesseur de syntaxError
     
     int GetCurrLine(){return currLine;}
+    int GetCurrCol(){return currCol;}
+    int GetCurrTailleSymbole(){return currTailleSymbole;}
 
 //------------------------------------------------- Surcharge d'opérateurs
     
@@ -109,8 +111,11 @@ private:
     // deviens true si on trouve une erreur syntaxique
     bool syntaxError;
 
+    //La position du curseur dans le fichier source.
     int currLine;
     int currCol;
+    //La taille en caractere du dernier symbole lu.
+    int currTailleSymbole;
 
     static const vector<RegexSymbole> regex_symboles;
     

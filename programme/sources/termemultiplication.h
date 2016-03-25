@@ -34,12 +34,16 @@ public:
     // Mode d'emploi :
     // Affiche le TermeMultiplication.
     
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le TermeDivision dans un flux.
+    
     int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :
     // Permet d'évaluer le TermeMultiplication
     // L'entier retourné est la valeur du TermeMultiplication
 
-    Expression* Optimisation(const map<string, int>& constantes);
+    Expression* Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise le terme
 

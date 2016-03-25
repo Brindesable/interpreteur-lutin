@@ -13,6 +13,7 @@
 using namespace std;
 #include <iostream>
 #include <limits>
+#include <boost/algorithm/string.hpp>
 
 //------------------------------------------------------ Include personnel
 #include "identifiant.h"
@@ -32,7 +33,12 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Identifiant::Print() const
 {
-    cout << nom;
+    Print(cout);
+} //----- Fin de Print
+
+void Identifiant::Print(ostream& out) const
+{
+    out << nom;
 } //----- Fin de Print
 
 int Identifiant::Evaluate(const map<string, int>& variables) const
@@ -47,16 +53,17 @@ int Identifiant::Evaluate(const map<string, int>& variables) const
 
     return itResultat->second;
 
-} //----- Fin de print
+} //----- Fin de Evaluate
 
-Expression* Identifiant::Optimisation(const map<string, int>& constantes){
-
+Expression* Identifiant::Optimisation(map<string, int>& constantes)
+{
     map<string, int>::const_iterator res(constantes.find(nom));
 
     if(res != constantes.end()){
         Valeur* val = new Valeur(res->second);
         return val;
     }
+    this->SetSymboleType(IDENTIFIANT);
     return this;
 } //----- Fin de Optimisation
 
@@ -74,9 +81,10 @@ string Identifiant::ToString() const
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Identifiant::Identifiant(const string& nom) : Facteur(IDENTIFIANT), nom(nom)
+Identifiant::Identifiant(const string& nom) : Facteur(IDENTIFIANT)
 {
-
+   this->nom = boost::trim_copy(nom);
+   spaces = nom.length() - this->nom.length();
 } //----- Fin de Identifiant
 
 

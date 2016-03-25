@@ -18,6 +18,7 @@ using namespace std;
 #include "termemultiplication.h"
 #include "symboletype.h"
 #include "valeur.h"
+#include "expressionparenthese.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -32,9 +33,14 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void TermeMultiplication::Print() const
 {
-    terme->Print();
-    cout << "*";
-    facteur->Print();
+    Print(cout);
+} //----- Fin de Print
+
+void TermeMultiplication::Print(ostream& out) const
+{
+    terme->Print(out);
+    out << "*";
+    facteur->Print(out);
 } //----- Fin de Print
 
 int TermeMultiplication::Evaluate(const map<string, int>& variables) const
@@ -42,7 +48,7 @@ int TermeMultiplication::Evaluate(const map<string, int>& variables) const
     return terme->Evaluate(variables) * facteur->Evaluate(variables);
 } //----- Fin de Evaluate
 
-Expression* TermeMultiplication::Optimisation(const map<string, int>& constantes){
+Expression* TermeMultiplication::Optimisation(map<string, int>& constantes){
 
     //On optimise les deux branches
     Expression* facteurOpti = facteur->Optimisation(constantes);
@@ -74,6 +80,28 @@ Expression* TermeMultiplication::Optimisation(const map<string, int>& constantes
         return new Valeur(0);
     }
 
+    if((int)*termeOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(termeOpti);
+        Expression* exprFille = expr->GetExpression();
+        if((int)*exprFille != EXPRESSION_MOINS && (int)*exprFille != EXPRESSION_PLUS){
+
+            terme = static_cast<Terme*>(expr->GetExpression());
+            expr->SetExpression(nullptr);
+            delete expr;
+        }
+    }
+    if((int)*facteurOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(facteurOpti);
+        Expression* exprFille = expr->GetExpression();
+        if((int)*exprFille != EXPRESSION_MOINS && (int)*exprFille != EXPRESSION_PLUS){
+
+            facteur = static_cast<Facteur*>(expr->GetExpression());
+            expr->SetExpression(nullptr);
+            delete expr;
+        }
+    }
+
+    this->SetSymboleType(TERME_MULTIPLICATION);
     return this;
 
 } //----- Fin de Optimisation

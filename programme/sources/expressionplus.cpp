@@ -17,6 +17,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "expressionplus.h"
 #include "valeur.h"
+#include "expressionparenthese.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -31,17 +32,22 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void ExpressionPlus::Print() const
 {
-    expression->Print();
+    Print(cout);
+} //----- Fin de Print
+
+void ExpressionPlus::Print(ostream& out) const
+{
+    expression->Print(out);
     cout << "+";
-    terme->Print();
-} //----- Fin de print
+    terme->Print(out);
+} //----- Fin de Print
 
 int ExpressionPlus::Evaluate(const map<string, int>& variables) const
 {
     return expression->Evaluate(variables) + terme->Evaluate(variables);
 }
 
-Expression* ExpressionPlus::Optimisation(const map<string, int>& constantes){
+Expression* ExpressionPlus::Optimisation(map<string, int>& constantes){
     //On optimise les deux branches
     Expression* expressionOpti = expression->Optimisation(constantes);
     Expression* termeOpti = terme->Optimisation(constantes);
@@ -68,6 +74,23 @@ Expression* ExpressionPlus::Optimisation(const map<string, int>& constantes){
         return ancienTerme;
     }
 
+    if((int)*expressionOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(expressionOpti);
+        expression = expr->GetExpression();
+        expr->SetExpression(nullptr);
+        delete expr;
+    }
+    if((int)*termeOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(termeOpti);
+        Expression* exprFille = expr->GetExpression();
+
+        terme = static_cast<Terme*>(expr->GetExpression());
+        expr->SetExpression(nullptr);
+        delete expr;
+
+    }
+
+    this->SetSymboleType(EXPRESSION_PLUS);
     return this;
 
 } //----- Fin de Optimisation

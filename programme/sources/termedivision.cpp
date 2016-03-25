@@ -18,6 +18,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "termedivision.h"
 #include "valeur.h"
+#include "expressionparenthese.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -32,10 +33,15 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void TermeDivision::Print() const
 {
-    terme->Print();
-    cout << "/";
-    facteur->Print();
-} //----- Fin de print
+    Print(cout);
+} //----- Fin de Print
+
+void TermeDivision::Print(ostream& out) const
+{
+    terme->Print(out);
+    out << "/";
+    facteur->Print(out);
+} //----- Fin de Print
 
 int TermeDivision::Evaluate(const map<string, int>& variables) const
 {
@@ -68,7 +74,7 @@ int TermeDivision::Evaluate(const map<string, int>& variables) const
     return resultat;
 }
 
-Expression* TermeDivision::Optimisation(const map<string, int>& constantes){
+Expression* TermeDivision::Optimisation(map<string, int>& constantes){
     //On optimise les deux branches
     Expression* facteurOpti = facteur->Optimisation(constantes);
     Expression* termeOpti = terme->Optimisation(constantes);
@@ -93,6 +99,28 @@ Expression* TermeDivision::Optimisation(const map<string, int>& constantes){
         return ancienTerme;
     }
 
+    if((int)*termeOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(termeOpti);
+        Expression* exprFille = expr->GetExpression();
+        if((int)*exprFille != EXPRESSION_MOINS && (int)*exprFille != EXPRESSION_PLUS){
+
+            terme = static_cast<Terme*>(expr->GetExpression());
+            expr->SetExpression(nullptr);
+            delete expr;
+        }
+    }
+    if((int)*facteurOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(facteurOpti);
+        Expression* exprFille = expr->GetExpression();
+        if((int)*exprFille == IDENTIFIANT || (int)*exprFille == VALEUR){
+            facteur = static_cast<Facteur*>(expr->GetExpression());
+            expr->SetExpression(nullptr);
+            delete expr;
+        }
+    }
+
+
+    this->SetSymboleType(TERME_DIVISION);
     return this;
 } //----- Fin de Optimisation
 

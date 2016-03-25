@@ -33,8 +33,8 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState312p.h"
-
-
+#include "../fabriquesymbole.h"
+#include "../symboleterminal.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -76,6 +76,14 @@ bool GeneratedState312p::Transition (Automate & automate, Symbole *s)
     case EGAL:
         automate.Consommer();
         automate.Decalage(s, new GeneratedState312s);
+        break;
+    case VALEUR:
+        //dans ce cas, l'utilisateur a oublié le égal, probablement.
+        //On ajoute "artificiellement" le symbole.
+        SymboleTerminal* egal;
+        egal = static_cast<SymboleTerminal*>(FabriqueSymbole::CreerSymbole(EGAL, "="));
+        automate.AddAvertissement(egal, "operateur");
+        automate.Decalage(egal, new GeneratedState312s);
         break;
     default:
         automate.SetErreur();

@@ -1,0 +1,10 @@
+var a;
+var b;
+var e;
+a := 25;
+ecrire 25*b;
+b := 5;
+e := 11;
+ecrire 11;
+-2147483648
+11

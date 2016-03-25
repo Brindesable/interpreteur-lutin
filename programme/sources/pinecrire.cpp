@@ -17,6 +17,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "pinecrire.h"
 #include "symboletype.h"
+#include "expressionparenthese.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -31,9 +32,14 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void PinEcrire::Print() const
 {
-    cout << "ecrire ";
-    expression->Print();
-    cout << ";" << endl;
+    Print(cout);
+} //----- Fin de Print
+
+void PinEcrire::Print(ostream& out) const
+{
+    out << "ecrire ";
+    expression->Print(out);
+    out << ";" << endl;
 } //----- Fin de Print
 
 void PinEcrire::Execute(map<string, int>& variables)
@@ -41,14 +47,22 @@ void PinEcrire::Execute(map<string, int>& variables)
     cout << expression->Evaluate(variables) << endl;
 } //----- Fin de Execute
 
-void PinEcrire::Optimisation(const map<string, int>& constantes)
+void PinEcrire::Optimisation(map<string, int>& constantes)
 {
     Expression* res = expression->Optimisation(constantes);
 
-    if(res != expression){
-        delete expression;
-        expression = res;
-    }
+   if((int)*res == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(res);
+        if(res != expression){
+            delete expression;
+        }
+        expression = expr->GetExpression();
+        expr->SetExpression(nullptr);
+        delete expr;
+    }else  if(res != expression){
+       delete expression;
+       expression = res;
+   }
 
 } //----- Fin de Optimisation
 

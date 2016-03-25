@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <boost/regex.hpp>
+#include <boost/algorithm/string.hpp>
 
 using namespace std;
 using namespace boost;
@@ -63,9 +64,20 @@ bool Lexer::Read()
     {
         //Les sources contiennent encore du texte, on lit la prochaine ligne.
         getline(sources, tampon);
+        //Si une ligne a été lue, on ajoute le caractère de fin pour l'automate.
+        if (!tampon.empty())
+        {
+			tampon += '\n';
+		}
+
         currLine++;
         currCol = 0;
     }
+    
+    //On retire les espaces en début de ligne, en comptant les caractères.
+    int prevSize = tampon.length();
+    trim_left(tampon);
+    currCol += prevSize - tampon.length();
 
     //On teste si on est arrivé à la fin des sources.
     if (tampon.empty() && sources.eof())
@@ -84,12 +96,13 @@ bool Lexer::Read()
         smatch matche;
         if (regex_search(tampon, matche, itRegex->motif))
         {
-            symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
+			symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
 
-            // on maj le tampon et on enregistre de combien de caracteres on s'est deplace
-            int prevSize = tampon.size();
-			tampon = matche.suffix().str();
-            currCol += prevSize - tampon.size();
+            // on maj le tampon et on enregistre de combien de caracteres on s'est deplace.
+            prevSize = tampon.length();
+            tampon = matche.suffix().str();
+            currTailleSymbole = prevSize - tampon.length();
+            currCol += currTailleSymbole;
 
 			return true;
         }
@@ -116,17 +129,9 @@ bool Lexer::CheckSyntaxError()
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(nullptr), syntaxError(false), currLine(0), currCol(0)
+Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(nullptr), syntaxError(false), currLine(0), currCol(0), currTailleSymbole(0)
 {
-    //On supprime tous les espaces au début du programme.
-    char c;
-    do
-    {
-        sources.get(c);
-    }
-    while (isspace(c));
-    //On remet le dernier caractère lu dans le flux.
-    sources.unget();
+    
 } //----- Fin de Lexer
 
 

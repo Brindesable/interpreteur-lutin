@@ -1,0 +1,7 @@
+var a,b; 
+const c = 4;
+const d = 6;
+a := (c+d)*3-5;
+a := b;
+a := a / 0;
+ecrire a;

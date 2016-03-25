@@ -34,6 +34,10 @@ public:
     void Print() const;
     // Mode d'emploi :
     // Affiche le PdeclVar.
+    
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le PdeclVar dans un flux.
 
     void Execute(map<string, int>& variables);
     // Mode d'emploi :

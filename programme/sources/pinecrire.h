@@ -33,12 +33,16 @@ public:
     void Print() const;
     // Mode d'emploi :
     // Affiche le PinEcrire.
+    
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le PinEcrire dans un flux.
 	
 	void Execute(map<string, int>& variables);
 	// Mode d'emploi :
     // Execute le contenu du PinEcrire.
 
-    void Optimisation(const map<string, int>& constantes);
+    void Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise l'instruction
 

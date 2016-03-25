@@ -32,7 +32,11 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void Print() const;
     // Mode d'emploi :
-    // Affiche le Identifiant.
+    // Affiche l'Identifiant.
+    
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche l'Identifiant dans un flux.
 
     int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :
@@ -43,9 +47,11 @@ public:
     // Mode d'emploi :
     // Retourne le nom de l'identifiant.
 
-    Expression* Optimisation(const map<string, int>& constantes);
+    Expression* Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise le terme
+
+    int tailleNom(){return nom.length()+spaces;}
 
     void GetIds(vector<string>& ids);
     // Mode d'emploi :
@@ -81,6 +87,8 @@ private:
 //------------------------------------------------------- Attributs privés
         //Nom de l'Identifiant
         string nom;
+        //espaces à la fin
+        int spaces;
 
 //---------------------------------------------------------- Classes amies
 

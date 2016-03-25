@@ -33,7 +33,8 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 
 #include "GeneratedState31.h"
-
+#include "../fabriquesymbole.h"
+#include "../symboleterminal.h"
 
 
 //------------------------------------------------------------- Constantes
@@ -80,6 +81,13 @@ bool GeneratedState31::Transition (Automate & automate, Symbole *s)
     case VIRGULE:
         automate.Consommer();
         automate.Decalage(s, new GeneratedState312);
+        break;
+    case VAR:
+        //On ajoute "artificiellement" le symbole.
+        SymboleTerminal* pointVirgule;
+        pointVirgule = static_cast<SymboleTerminal*>(FabriqueSymbole::CreerSymbole(POINT_VIRGULE, ";"));
+        automate.AddAvertissement(pointVirgule, "symbole");
+        automate.Decalage(pointVirgule, new GeneratedState311);
         break;
     default:
         automate.SetErreur();

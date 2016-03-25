@@ -18,7 +18,7 @@ using namespace std;
 #include "expressionmoins.h"
 #include "symboletype.h"
 #include "valeur.h"
-
+#include "expressionparenthese.h"
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
@@ -32,17 +32,22 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void ExpressionMoins::Print() const
 {
-    expression->Print();
-    cout << "-";
-    terme->Print();
-} //----- Fin de print
+    Print(cout);
+} //----- Fin de Print
+
+void ExpressionMoins::Print(ostream& out) const
+{
+    expression->Print(out);
+    out << "-";
+    terme->Print(out);
+}
 
 int ExpressionMoins::Evaluate(const map<string, int>& variables) const
 {
     return expression->Evaluate(variables) - terme->Evaluate(variables);
 }
 
-Expression* ExpressionMoins::Optimisation(const map<string, int>& constantes){
+Expression* ExpressionMoins::Optimisation(map<string, int>& constantes){
     //On optimise les deux branches
     Expression* expressionOpti = expression->Optimisation(constantes);
     Expression* termeOpti = terme->Optimisation(constantes);
@@ -56,6 +61,11 @@ Expression* ExpressionMoins::Optimisation(const map<string, int>& constantes){
         terme = static_cast<Terme*>(termeOpti);
     }
 
+
+
+
+
+
     //on optimise avec les valeurs neutres
     if((int)*terme == VALEUR && (int)*expression == VALEUR) {
         return new Valeur(this->Evaluate(constantes));
@@ -65,6 +75,23 @@ Expression* ExpressionMoins::Optimisation(const map<string, int>& constantes){
         return ancienExp;
     }
 
+    if((int)*expressionOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(expressionOpti);
+        expression = expr->GetExpression();
+        expr->SetExpression(nullptr);
+        delete expr;
+    }
+    if((int)*termeOpti == EXPRESSION_PARENTHESE){
+        ExpressionParenthese* expr = static_cast<ExpressionParenthese*>(termeOpti);
+        Expression* exprFille = expr->GetExpression();
+        if((int)*exprFille != EXPRESSION_MOINS && (int)*exprFille != EXPRESSION_PLUS){
+
+            terme = static_cast<Terme*>(expr->GetExpression());
+            expr->SetExpression(nullptr);
+            delete expr;
+        }
+    }
+    this->SetSymboleType(EXPRESSION_MOINS);
     return this;
 } //----- Fin de Optimisation
 

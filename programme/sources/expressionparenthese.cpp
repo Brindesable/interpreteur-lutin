@@ -31,9 +31,14 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void ExpressionParenthese::Print() const
 {
-    cout << "(";
-    expression->Print();
-    cout << ")";
+    Print(cout);
+} //----- Fin de Print
+
+void ExpressionParenthese::Print(ostream& out) const
+{
+    out << "(";
+    expression->Print(out);
+    out << ")";
 } //----- Fin de Print
 
 int ExpressionParenthese::Evaluate(const map<string, int>& variables) const
@@ -41,17 +46,25 @@ int ExpressionParenthese::Evaluate(const map<string, int>& variables) const
     return expression->Evaluate(variables);
 }
 
-Expression* ExpressionParenthese::Optimisation(const map<string, int>& constantes){
+Expression* ExpressionParenthese::Optimisation(map<string, int>& constantes){
     //On optimise les deux branches
     Expression* expressionOpti = expression->Optimisation(constantes);
 
-    if(expressionOpti != expression)
+    if((int)*expressionOpti == VALEUR) //on enlève les parenthèses !
     {
         //Pas besoin de liberer l'ancienne expression.
         //Elle sera liberée par l'expression qui demande l'optimisation.
+        expression = nullptr;
+        return static_cast<Expression*>(expressionOpti);
+    }else if((int)*expressionOpti == IDENTIFIANT){
+        expression = nullptr;
+        return static_cast<Expression*>(expressionOpti);
+    }else if((int)*expressionOpti == EXPRESSION_PARENTHESE){
+        expression = nullptr;
         return static_cast<Expression*>(expressionOpti);
     }
 
+    this->SetSymboleType(EXPRESSION_PARENTHESE);
     return this;
 } //----- Fin de Optimisation
 

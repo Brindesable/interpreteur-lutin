@@ -34,13 +34,17 @@ public:
     void Print() const;
     // Mode d'emploi :
     // Affiche le ExpressionParenthese.
+    
+    void Print(ostream& out) const;
+    // Mode d'emploi :
+    // Affiche le ExpressionParenthese dans un flux.
 
     int Evaluate(const map<string, int>& variables) const;
     // Mode d'emploi :
     // Permet d'évaluer l'ExpressionParenthese
     // L'entier retourné est la valeur de l'ExpressionParenthese
 
-    Expression* Optimisation(const map<string, int>& constantes);
+    Expression* Optimisation(map<string, int>& constantes);
     // Mode d'emploi :
     // Optimise l'expression
 
@@ -48,6 +52,9 @@ public:
     // Mode d'emploi :
     // Obtient tous les identifiants impliques dans l'expression (utilise pour l'analyse statique)
     
+    Expression* GetExpression() const {return expression;}
+    void SetExpression(Expression* expr){expression=expr;}
+
     string ToString() const;
 
 //------------------------------------------------- Surcharge d'opérateurs

@@ -34,7 +34,7 @@ using namespace std;
 
 #include "GeneratedState13.h"
 #include "../fabriquesymbole.h"
-
+#include "../symboleterminal.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -84,9 +84,9 @@ bool GeneratedState13::Transition (Automate & automate, Symbole *s)
         //dans ce cas (premiers de Expression)
         //l'utilisateur a oublié le égal, probablement.
         //On ajoute "artificiellement" le symbole.
-        automate.AddAvertissement("':=' oublié !");
-        Symbole* affectation;
-        affectation = FabriqueSymbole::CreerSymbole(AFFECTATION, ":=");
+        SymboleTerminal* affectation;
+        affectation = static_cast<SymboleTerminal*>(FabriqueSymbole::CreerSymbole(AFFECTATION, ":="));
+        automate.AddAvertissement(affectation, "operateur");
         automate.Decalage(affectation, new GeneratedState13p);
         break;
     default:

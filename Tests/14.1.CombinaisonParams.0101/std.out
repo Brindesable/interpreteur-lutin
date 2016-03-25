@@ -1,5 +1,3 @@
-125
-11
 var a;
 var b; 
 const c = 4;
@@ -10,3 +8,5 @@ lire b;
 ecrire a*b;
 e := b+d;
 ecrire e;
+125
+11
