@@ -1,0 +1,1 @@
+timeout -s 1 2 ../lut -e -o -p ../files/static1.lt

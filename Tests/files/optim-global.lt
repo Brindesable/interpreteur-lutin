@@ -1,0 +1,8 @@
+var i;
+const x = 5;
+i := 0+x*1;
+ecrire i;
+lire i;
+ecrire i*0;
+ecrire i;
+

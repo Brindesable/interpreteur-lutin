@@ -1,0 +1,4 @@
+Le flux contient des jetons reconnus par l'analyseur lexical mais qui ne correspondent pas à la grammaire du langage - récupération sur erreur (exemple). L'option -p montre que les erreurs sont corrigées.
+
+FACULTATIF
+

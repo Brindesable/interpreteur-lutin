@@ -1,0 +1,8 @@
+la variable b est deja declaree
+une valeur dans l'expression a+c+d+e n'est pas connue.
+la variable e n'a pas ete declaree.
+la constante a a ete modifiee.
+une valeur dans l'expression a-c-d-e n'est pas connue.
+la variable e n'a pas ete declaree.
+variable non affectee :  d
+variable non utilisee :  d

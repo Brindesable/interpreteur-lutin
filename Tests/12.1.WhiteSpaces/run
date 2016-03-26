@@ -1,0 +1,1 @@
+timeout -s 1 2 ../lut -p ../files/t-whitespace.lt

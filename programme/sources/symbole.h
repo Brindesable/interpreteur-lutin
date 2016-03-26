@@ -10,6 +10,9 @@
 #define SYMBOLE_H
 
 //--------------------------------------------------- Interfaces utilisées
+using namespace std;
+#include <ostream>
+#include "symboletype.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -27,9 +30,17 @@ class Symbole
     
 public:
 //----------------------------------------------------- Méthodes publiques
-    void print();
+    virtual void Print() const = 0;
     // Mode d'emploi :
     // Affiche le Symbole.
+    
+    virtual void Print(ostream& out) const = 0;
+    // Mode d'emploi :
+    // Affiche le Symbole dans un flux.
+
+    void SetSymboleType(SymboleType type){this->type = type;}
+    // Mode d'emploi : 
+    // Permet de modifier le type d'un symbole.
     
 //------------------------------------------------- Surcharge d'opérateurs
     operator int() const;
@@ -38,9 +49,10 @@ public:
     // L'entier retourné est l'identifiant du Symbole.
     
 //-------------------------------------------- Constructeurs - destructeur    
-    Symbole(int identifiant);
+    Symbole(SymboleType type);
     // Mode d'emploi :
     //
+
     
     virtual ~Symbole();
     // Mode d'emploi :
@@ -56,11 +68,11 @@ private:
     
 protected:
 //----------------------------------------------------- Attributs protégés
-    
+    //L'identifiant du Symbole.
+    SymboleType type;
 private:
 //------------------------------------------------------- Attributs privés
-	//L'identifiant du Symbole.
-	int identifiant;
+
     
 //---------------------------------------------------------- Classes amies
     

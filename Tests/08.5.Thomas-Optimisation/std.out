@@ -1,0 +1,6 @@
+var i;
+i := 5;
+ecrire 5;
+lire i;
+ecrire 0;
+ecrire i;

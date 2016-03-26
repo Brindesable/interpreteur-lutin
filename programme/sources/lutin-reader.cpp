@@ -28,23 +28,54 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void LutinReader::Construire()
 {
-	//programme = automate.Lecture();
+
+    programme = automate.Lecture();
+
+    if(programme != nullptr)
+    {
+        errors = programme->AnalyseStatique();
+    }
 } //----- Fin de Construire
 
 void LutinReader::AnalyseStatique()
 {
+
+    if(programme == nullptr){
+        return;
+    }
+
+    vector<string>::iterator itErrors;
+    for(itErrors = errors.begin(); itErrors != errors.end(); ++itErrors)
+    {
+        cerr << *itErrors << endl;
+    }
+
 } //----- Fin de AnalyseStatique
 
 void LutinReader::Execution()
 {
+    if(programme != nullptr && errors.size() == 0)
+    {
+        map<string, int> valeurs;
+        programme->Execute(valeurs);
+    }
 } //----- Fin de Execution
 
 void LutinReader::Affichage()
 {
+    if(programme != nullptr)
+    {
+        programme->Print();
+    }
 } //----- Fin de Affichage
 
 void LutinReader::Transformation()
 {
+
+    if(programme != nullptr && errors.size() == 0)
+    {
+        programme->Optimisation();
+    }
 } //----- Fin de Transformation
 
 
@@ -59,11 +90,14 @@ LutinReader::LutinReader(istream& s) : sources(s), programme(0), automate(s)
 
 LutinReader::~LutinReader()
 {
+
+    delete programme;
 } //----- Fin de ~LutinReader
 
 
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+
 
 //------------------------------------------------------- Méthodes privées

@@ -1,0 +1,9 @@
+Var a,b; 
+const c = 4;
+ConST D = 6;
+var e;
+a := (c+d)*3-5;
+ecrire a*b;
+b := 5;
+E := b+d;
+ecrire e;

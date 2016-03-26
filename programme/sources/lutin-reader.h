@@ -13,6 +13,7 @@
 #include <istream>
 #include "symbole.h"
 #include "automate.h"
+#include "programme.h"
 
 using namespace std;
 
@@ -76,8 +77,12 @@ private:
     // Le flux d'entrée contenant les sources.
     istream& sources;
     // P
-    Symbole * programme;
+
+    Programme* programme;
     Automate automate;
+
+    // erreurs statiques
+    vector<string> errors;
 
 //---------------------------------------------------------- Classes amies
 

@@ -3,7 +3,7 @@
  -------------------
  début                : 01/03/2016
  copyright            : (C) 2016 par mgaillard
- *************************************************************************/
+ ************************************************************************/
 
 //---------- Interface de la classe <Lexer> (fichier lexer.h) ------
 #if ! defined ( LEXER_H )
@@ -11,10 +11,12 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <istream>
-#include <regex>
+#include <boost/regex.hpp>
 #include "symbole.h"
+#include "symboletype.h"
 
- using namespace std;
+using namespace std;
+using namespace boost;
 
 //------------------------------------------------------------- Constantes
 
@@ -32,7 +34,7 @@ class Lexer
     
 public:
 //----------------------------------------------------- Méthodes publiques
-    Symbole GetNext() const;
+    Symbole* SymboleCourant() const;
     // Mode d'emploi :
     // Retourne le Symbole sous le curseur.
     // Ne passe pas le curseur sur le prochain Symbole.
@@ -41,15 +43,28 @@ public:
     // Mode d'emploi :
     // Fait avancer le curseur d'un Symbole.
     // Retourne true si un Symbole a été lu.
+
+    string GetSyntaxError();
+    // Mode d'emploi :
+    // A appeler si flagError est positionne a true
+    // Donne l'erreur de syntaxe, le caractere incrimine et sa position
+
+    bool CheckSyntaxError();
+    // Mode d'emploi :
+    // Accesseur de syntaxError
     
-    
+    int GetCurrLine(){return currLine;}
+    int GetCurrCol(){return currCol;}
+    int GetCurrTailleSymbole(){return currTailleSymbole;}
+
 //------------------------------------------------- Surcharge d'opérateurs
     
     
 //-------------------------------------------- Constructeurs - destructeur    
     Lexer(istream& sources);
     // Mode d'emploi :
-    // Contruit un lexer pour analyser les sources provenant d'un flux d'entrée.
+    // Contruit un lexer pour analyser les sources provenant d'un 
+    // flux d'entrée.
     
     ~Lexer();
     // Mode d'emploi :
@@ -69,7 +84,11 @@ private:
         //Le motif a trouver.
         const regex motif;
 
-        RegexSymbole(const regex& motif) : motif(motif)
+        const SymboleType type; 
+
+        RegexSymbole(const regex& motif, const SymboleType& type) :
+            motif(motif),
+            type(type)
         {
 
         }
@@ -87,7 +106,16 @@ private:
     string tampon;
     
     //Le Symbole sous le curseur.
-    Symbole symbole_courant;
+    Symbole* symbole_courant;
+
+    // deviens true si on trouve une erreur syntaxique
+    bool syntaxError;
+
+    //La position du curseur dans le fichier source.
+    int currLine;
+    int currCol;
+    //La taille en caractere du dernier symbole lu.
+    int currTailleSymbole;
 
     static const vector<RegexSymbole> regex_symboles;
     

@@ -1,96 +1,111 @@
 /*************************************************************************
+               Automate  -  Automate à pile du langage lutin.
+ -------------------
+ début                : 01/03/2016
+ copyright            : (C) 2016 par Team-Papassau - H4101
+ ************************************************************************/
 
-						automate  -  description
-						-----------------------
-			début   : 01/03/2016
-		copyright   : (C) 2016 par Team-Papassau - H4101
+//-------- Interface de la classe <automate> (fichier automate.cpp) ----
 
-*************************************************************************/
-
-//---------- Interface de la classe <automate> (fichier automate.cpp) ------
 #if ! defined ( AUTOMATE_H )
 #define AUTOMATE_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <stack>
-#include <vector>
-#include "symbole.h"
-#include "lexer.h"
 using namespace std;
+#include <stack>
+#include "symbole.h"
+#include "symboleterminal.h"
+#include "programme.h"
+#include "lexer.h"
+#include "etat.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
-class Etat;
-
 //------------------------------------------------------------------------
 // Rôle de la classe <automate>
-//
-//
+// Automate à pile du langage lutin.
 //------------------------------------------------------------------------
 
 class Automate
 {
-	//----------------------------------------------------------------- PUBLIC
-
+    //----------------------------------------------------------------- PUBLIC
+    
 public:
-	//----------------------------------------------------- Méthodes publiques
-	// type Méthode ( liste de paramètres );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+    //----------------------------------------------------- Méthodes publiques
 
-	// Type de la méthode à confirmer
-	Symbole* Lecture();
-	// Mode d'emploi : Méthode initiant l'analyse du programme.
-	//
-	// Contrat :
-	//
+    void Consommer(){lexer.Read();}
+    // Mode d'emploi : Méthode initiant l'analyse du programme.
+    //
+    Programme* Lecture();
+    // Mode d'emploi : Méthode initiant l'analyse du programme.
+    //
 
-	//------------------------------------------------- Surcharge d'opérateurs
+    void Decalage(Symbole* symbole, Etat* etat);
+    // Mode d'emploi :
+    //
+    
+    void Reduction(int nbSymboles);
+    // Mode d'emploi :
+    //
+    
+    void Accepter(Programme* programme);
+    // Mode d'emploi :
+    // Accepte le symbole Programme et lève le flag accepte de l'automate.
 
+    void SetErreur() {erreur=true;}
+    // Mode d'emploi :
+    // Lève le flag d'erreur de l'automate.
 
-	//-------------------------------------------- Constructeurs - destructeur
-	Automate (istream& s);
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+    void AddAvertissement(const SymboleTerminal* symbole, const string& type);
+    // Mode d'emploi :
+    // Affiche un avertissement suite à un problème synthaxique.
+    
+    //------------------------------------------------- Surcharge d'opérateurs
 
-	virtual ~Automate ();
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+    //-------------------------------------------- Constructeurs - destructeur
+    Automate(istream& sources);
+    // Mode d'emploi :
+    //
 
-	//------------------------------------------------------------------ PRIVE
+    virtual ~Automate ();
+    // Mode d'emploi :
+    //
+
+    //------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+    //----------------------------------------------------- Méthodes protégées
 
 private:
-	//------------------------------------------------------- Méthodes privées
+    //------------------------------------------------------- Méthodes privées
+    void ViderPileEtats();
+    // Mode d'emploi :
+    // Vide et libère la pile des etats.
+    
+    void ViderPileSymboles();
+    // Mode d'emploi :
+    // Vide et libère la pile des symboles.
 
 protected:
-	//----------------------------------------------------- Attributs protégés
 
-	//Le flux d'entrée contenant les sources.
-    istream& sources;
-	stack<Symbole> pileSymboles;	// Pile des symboles
-	//stack<Etat> pileEtats;			// Pile des Etats
-	Lexer lexer;
+    //----------------------------------------------------- Attributs protégés
 
 private:
-	//------------------------------------------------------- Attributs privés
-
-	//---------------------------------------------------------- Classes amies
-
-	//-------------------------------------------------------- Classes privées
-
-	//----------------------------------------------------------- Types privés
-
+    //------------------------------------------------------- Attributs privés
+    stack<Symbole*> pileSymboles;
+    stack<Etat*> pileEtats;
+    Lexer lexer;
+    bool erreur;
+    bool accepte;
+    
+    //---------------------------------------------------------- Classes amies
+    
+    //-------------------------------------------------------- Classes privées
+    
+    //----------------------------------------------------------- Types privés
+    
 };
 
 //----------------------------------------- Types dépendants de <automate>

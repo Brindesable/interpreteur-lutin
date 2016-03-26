@@ -1,0 +1,9 @@
+const a=1,b=1,c=1,d=1,e=1,f=1,g=1;
+var a,b,c,d,e,f,g;
+lire a;
+lire b;
+lire c;
+lire d;
+lire e;
+lire f;
+lire g;

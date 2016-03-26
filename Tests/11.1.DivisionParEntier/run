@@ -1,0 +1,2 @@
+timeout -s 1 2 ../lut -e ../files/m-division.lt
+

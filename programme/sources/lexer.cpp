@@ -10,31 +10,35 @@
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
 #include <iostream>
-#include <regex>
+#include <boost/regex.hpp>
+#include <boost/algorithm/string.hpp>
 
 using namespace std;
+using namespace boost;
 
 //------------------------------------------------------ Include personnel
 #include "lexer.h"
+#include "fabriquesymbole.h"
 
 //------------------------------------------------------------- Constantes
 const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
-        {regex("^(var)\\s+")},
-        {regex("^(const)\\s+")},
-        {regex("^(ecrire)\\s+")},
-        {regex("^(lire)\\s+")},
-        {regex("^(;)\\s*")},
-        {regex("^(:=)\\s*")},
-        {regex("^(=)\\s*")},
-        {regex("^(,)\\s*")},
-        {regex("^(\\+)\\s*")},
-        {regex("^(-)\\s*")},
-        {regex("^(/)\\s*")},
-        {regex("^(\\*)\\s*")},
-        {regex("^(\\d+)\\s*")},
-        {regex("^(\\w+)\\s*")}
+        {regex("^(var)\\s+"), VAR},
+        {regex("^(const)\\s+"), CONST},
+        {regex("^(ecrire)\\s+"), ECRIRE},
+        {regex("^(lire)\\s+"), LIRE},
+        {regex("^(;)\\s*"), POINT_VIRGULE},
+        {regex("^(:=)\\s*"), AFFECTATION},
+        {regex("^(=)\\s*"), EGAL},
+        {regex("^(,)\\s*"), VIRGULE},
+        {regex("^(\\+)\\s*"), PLUS},
+        {regex("^(-)\\s*"), MOINS},
+        {regex("^(/)\\s*"), DIVISE},
+        {regex("^(\\*)\\s*"), MULTIPLIE},
+        {regex("^(\\()\\s*"), OUVRE_PAR},
+        {regex("^(\\))\\s*"), FERME_PAR},
+        {regex("^(\\d+)\\s*"), VALEUR},
+        {regex("^([a-zA-Z]+)\\s*"), IDENTIFIANT}
     };
 
 //---------------------------------------------------- Variables de classe
@@ -43,11 +47,12 @@ const vector<Lexer::RegexSymbole> Lexer::regex_symboles = {
 
 
 //----------------------------------------------------------------- PUBLIC
+
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
 
-Symbole Lexer::GetNext() const
+Symbole* Lexer::SymboleCourant() const
 {
     return symbole_courant;
 } //----- Fin de getNext
@@ -55,9 +60,34 @@ Symbole Lexer::GetNext() const
 bool Lexer::Read()
 {
     //On alimente le tampon avec les sources.
-    if (tampon.empty() && sources)
+    while (tampon.empty() && sources)
     {
+        //Les sources contiennent encore du texte, on lit la prochaine ligne.
         getline(sources, tampon);
+        //Si une ligne a été lue, on ajoute le caractère de fin pour l'automate.
+        if (!tampon.empty())
+        {
+			tampon += '\n';
+		}
+
+        currLine++;
+        currCol = 0;
+    }
+    
+    //On retire les espaces en début de ligne, en comptant les caractères.
+    int prevSize = tampon.length();
+    trim_left(tampon);
+    currCol += prevSize - tampon.length();
+
+    //On teste si on est arrivé à la fin des sources.
+    if (tampon.empty() && sources.eof())
+    {
+        //On retourne un symbole de fin, si on n'y est pas déjà.
+        if (*symbole_courant != FIN)
+        {
+            symbole_courant = FabriqueSymbole::CreerSymbole(FIN, "$");
+        }
+        return true;
     }
 
     //On recherche séquentiellement les motifs des symboles.
@@ -66,46 +96,48 @@ bool Lexer::Read()
         smatch matche;
         if (regex_search(tampon, matche, itRegex->motif))
         {
-            if (matche.ready())
-            {
-                //cout << matche.str(1) << endl;
+			symbole_courant = FabriqueSymbole::CreerSymbole(itRegex->type, matche.str(1));
 
-                symbole_courant = Symbole(itRegex - regex_symboles.begin());
+            // on maj le tampon et on enregistre de combien de caracteres on s'est deplace.
+            prevSize = tampon.length();
+            tampon = matche.suffix().str();
+            currTailleSymbole = prevSize - tampon.length();
+            currCol += currTailleSymbole;
 
-                tampon = matche.suffix().str();
-                
-                return true;
-            }
+			return true;
         }
     }
 
-    //Erreur, rien n'a été trouvé, ou bien le programme est terminé.
+    //Erreur, rien n'a été trouvé.
+    syntaxError = true;
     return false;
 } //----- Fin de Read
 
+string Lexer::GetSyntaxError()
+{
+    stringstream ss;
+    ss << "Erreur lexicale (" << currLine << ":" << currCol+1 << ") caractere " << tampon.c_str()[0];
+    return ss.str();
+}
+
+bool Lexer::CheckSyntaxError()
+{
+    return syntaxError;
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(-1)
+Lexer::Lexer(istream& sources) : sources(sources), symbole_courant(nullptr), syntaxError(false), currLine(0), currCol(0), currTailleSymbole(0)
 {
-    //On supprime tous les espaces au début du programme.
-    char c;
-    do
-    {
-        sources.get(c);
-    }
-    while (c == ' ');
-    //On remet le dernier caractère lu dans le flux.
-    sources.unget();
-
+    
 } //----- Fin de Lexer
 
 
 Lexer::~Lexer()
 {
-
+    
 } //----- Fin de ~Lexer
     
     
