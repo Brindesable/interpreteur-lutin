@@ -29,6 +29,11 @@ using namespace std;
 void LutinReader::Construire()
 {
     programme = automate.Lecture();
+
+    if(programme != nullptr)
+    {
+        errors = programme->AnalyseStatique();
+    }
 } //----- Fin de Construire
 
 void LutinReader::AnalyseStatique()
@@ -38,10 +43,6 @@ void LutinReader::AnalyseStatique()
     }
 
     vector<string>::iterator itErrors;
-    vector<string> errors;
-
-    errors = programme->AnalyseStatique();
-
     for(itErrors = errors.begin(); itErrors != errors.end(); ++itErrors)
     {
         cerr << *itErrors << endl;
@@ -51,7 +52,7 @@ void LutinReader::AnalyseStatique()
 
 void LutinReader::Execution()
 {
-    if(programme != nullptr)
+    if(programme != nullptr && errors.size() == 0)
     {
         map<string, int> valeurs;
         programme->Execute(valeurs);
@@ -68,7 +69,7 @@ void LutinReader::Affichage()
 
 void LutinReader::Transformation()
 {
-    if(programme != nullptr)
+    if(programme != nullptr && errors.size() == 0)
     {
         programme->Optimisation();
     }

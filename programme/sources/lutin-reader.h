@@ -80,6 +80,9 @@ private:
     Programme* programme;
     Automate automate;
 
+    // erreurs statiques
+    vector<string> errors;
+
 //---------------------------------------------------------- Classes amies
 
 //----------------------------------------------------------- Types privés
